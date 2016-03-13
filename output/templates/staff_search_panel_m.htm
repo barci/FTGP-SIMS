@@ -1,0 +1,77 @@
+<div class="searchOptions bottomPanelBorder" {$srchOpt_attrs}>
+	<!-- Search panel content -->
+	<div class="srchCritTop" style="display: none;">
+		Criteria:&nbsp;
+		<input type="radio" name="srchType" class="runner-radio-button" {$all_checkbox}> {BEGIN all_checkbox_label}all{END all_checkbox_label}
+		&nbsp;&nbsp;&nbsp;
+		<input type="radio" name="srchType" class="runner-radio-button" {$any_checkbox}> {BEGIN any_checkbox_label}any{END any_checkbox_label}
+	</div>
+	
+	<div class="addOption">
+		<span class="runner-btnframe">
+		<span class="runner-btnleft"></span>
+		<span class="runner-btnright"></span>
+		<a href="#" id="showHideControlChooseMenu{$id}" class="runner-button" {$showHideCtrls_attrs}>Add field</a>
+		</span>
+		&nbsp;&nbsp;&nbsp;
+		<span class="runner-btnframe">
+		<span class="runner-btnleft"></span>
+		<span class="runner-btnright"></span>
+		<a href="#" id="showHideSearchType{$id}" class="runner-button" {$showHideCtrlsOpt_attrs}>{$showHideOpt_mess}</a>
+		</span>
+	</div>
+	
+	<!-- choose controls div -->
+	<div class="runner-panel controlChooseMenu" {$controlChooseMenuDiv_attrs}>
+		{BEGIN addSearch_StaffID}
+			<a href="#" id="addSearchControl_StaffID" class="addSearchControl" {$addSearchControl_StaffID_attrs}>Staff ID</a><br>
+		{END addSearch_StaffID}
+		{BEGIN addSearch_UserName}
+			<a href="#" id="addSearchControl_UserName" class="addSearchControl" {$addSearchControl_UserName_attrs}>User Name</a><br>
+		{END addSearch_UserName}
+		{BEGIN addSearch_Fname}
+			<a href="#" id="addSearchControl_Fname" class="addSearchControl" {$addSearchControl_Fname_attrs}>First Name</a><br>
+		{END addSearch_Fname}
+		{BEGIN addSearch_Lname}
+			<a href="#" id="addSearchControl_Lname" class="addSearchControl" {$addSearchControl_Lname_attrs}>Last Name</a><br>
+		{END addSearch_Lname}
+		{BEGIN addSearch_DOB}
+			<a href="#" id="addSearchControl_DOB" class="addSearchControl" {$addSearchControl_DOB_attrs}>Date of Birth</a><br>
+		{END addSearch_DOB}
+		{BEGIN addSearch_Password}
+			<a href="#" id="addSearchControl_Password" class="addSearchControl" {$addSearchControl_Password_attrs}>Password</a><br>
+		{END addSearch_Password}
+		{BEGIN addSearch_Sex}
+			<a href="#" id="addSearchControl_Sex" class="addSearchControl" {$addSearchControl_Sex_attrs}>Sex</a><br>
+		{END addSearch_Sex}
+		{BEGIN addSearch_Phone}
+			<a href="#" id="addSearchControl_Phone" class="addSearchControl" {$addSearchControl_Phone_attrs}>Phone</a><br>
+		{END addSearch_Phone}
+		{BEGIN addSearch_RoleID}
+			<a href="#" id="addSearchControl_RoleID" class="addSearchControl" {$addSearchControl_RoleID_attrs}>Role ID</a><br>
+		{END addSearch_RoleID}
+		{BEGIN addSearch_Name}
+			<a href="#" id="addSearchControl_Name" class="addSearchControl" {$addSearchControl_Name_attrs}>Name</a><br>
+		{END addSearch_Name}
+		{BEGIN addSearch_Address}
+			<a href="#" id="addSearchControl_Address" class="addSearchControl" {$addSearchControl_Address_attrs}>Address</a><br>
+		{END addSearch_Address}
+	</div>
+	
+	<div class="controlsBlock">
+		{BEGIN searchCtrlBlock}
+		<div class="srchPanelRow" {$filterRow_attrs}>
+			<div class="srchPanelCell">{$delCtrlButt}&nbsp;{$fLabel}:&nbsp;</div>
+			<div class="srchPanelCell srchPanelCell2">{$searchtype} {$searchcontrol} {$searchcontrol1}</div>
+		</div>
+		{END searchCtrlBlock}
+	</div>
+		
+	<div class="bottomSearchButt" align="left" {$bottomSearchButt_attrs}>
+		<span class="runner-btnframe">
+		<span class="runner-btnleft"></span>
+		<span class="runner-btnright"></span>
+		<a href="#" class="runner-button" {$searchbutton_attrs}>Search</a>
+		</span>
+	</div>
+</div>

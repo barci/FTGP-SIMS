@@ -1,0 +1,352 @@
+<!doctype html>
+<html  {$html_attrs}>
+	<head>
+		<title>{$pagetitle}</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=7">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link REL="stylesheet" href="styles/default.css" type="text/css">
+		{BEGIN rtlCSS}
+		<link REL="stylesheet" href="styles/defaultRTL.css" type="text/css">
+		{END rtlCSS}
+		{BEGIN styleCSSFiles}
+		<link REL="stylesheet" href="{$stylepath}" type="text/css">
+		{END styleCSSFiles}
+		{BEGIN pageCSSFiles}
+		<link REL="stylesheet" href="{$pagestylepath}" type="text/css">
+		{END pageCSSFiles}
+		<!--[if IE]>
+			<link REL="stylesheet" href="styles/defaultIE.css" type="text/css">
+			{BEGIN IEcssFiles}
+			<link REL="stylesheet" href="{$stylepathIE}" type="text/css">
+			{END IEcssFiles}
+		<![endif]-->
+	</head>
+	
+	<body class="{$stylename}" {$bodyattrs}>
+	{BEGIN body}
+		{$header}
+		<table   cellpadding="0" class="runner-toptable">
+			<tr class="runner-header">
+				<td class="runner-top" colspan=3>
+					
+
+{BEGIN container_master}
+<table class="runner-c runner-c-master" cellpadding="0" >
+<tr class="{$cheaderclass_master}">
+<td class="runner-cl"><img src="images/spacer.gif"></td>
+<td class="runner-cc"></td><td class="runner-cr"><img src="images/spacer.gif"></td>
+</tr>
+<tr class="runner-row style1">
+<td class="runner-cl"></td>
+<td class="runner-cc">
+<table border="0" cellpadding="0" class="runner-hc">
+<tr>
+
+{BEGIN mastertable_block}
+<td  class="runner-cc runner-bl runner-b-masterinfoprint" {$brickclass_masterinfoprint}><span>{$showmasterfile}
+</span></td>
+{END mastertable_block}
+
+<td class="runner-cc filler"></td>
+</tr>
+</table></td>
+<td class="runner-cr"></td>
+</tr>
+
+<tr class="{$cfooterclass_master}">
+<td class="runner-cl"><img src="images/spacer.gif"></td>
+<td class="runner-cc"></td><td class="runner-cr"><img src="images/spacer.gif"></td>
+</tr>
+</table>
+{END container_master}
+
+
+
+
+				</td>
+			</tr>
+			<tr class="runner-body">
+				
+				<td class="runner-left {$blockclass_left}" >
+					
+				</td>	
+				
+				<td class="runner-center {$blockclass_center}">
+					
+
+{BEGIN container_grid}
+
+
+{BEGIN grid_block}
+{BEGIN page}
+<h1>Product Inventory</h1>
+<span>
+{BEGIN page_number}
+Page {$pageno} of {$maxpages} 
+{END page_number}
+</span>
+
+	<div class="runner-s-grid">	
+	<table class="runner-c runner-c-grid" cellpadding="0">
+		<thead>
+		{BEGIN grid_header}
+		<tr class="runner-toprow style1">
+			<td class="runner-cl"><img src="images/spacer.gif"></td>
+			{BEGIN record_header}
+					{BEGIN ProdID_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN ProdID_fieldheader}
+	<b>Prod ID</b>
+	{END ProdID_fieldheader}
+</th>
+{END ProdID_fieldheadercolumn}
+	{BEGIN Pname_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN Pname_fieldheader}
+	<b>Product Name</b>
+	{END Pname_fieldheader}
+</th>
+{END Pname_fieldheadercolumn}
+	{BEGIN CatID_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN CatID_fieldheader}
+	<b>Category</b>
+	{END CatID_fieldheader}
+</th>
+{END CatID_fieldheadercolumn}
+	{BEGIN Usize_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN Usize_fieldheader}
+	<b>Unit Size</b>
+	{END Usize_fieldheader}
+</th>
+{END Usize_fieldheadercolumn}
+	{BEGIN SuppID_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN SuppID_fieldheader}
+	<b>Supplier</b>
+	{END SuppID_fieldheader}
+</th>
+{END SuppID_fieldheadercolumn}
+	{BEGIN Uweight_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN Uweight_fieldheader}
+	<b>Unit Weight</b>
+	{END Uweight_fieldheader}
+</th>
+{END Uweight_fieldheadercolumn}
+	{BEGIN QPerUnit_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN QPerUnit_fieldheader}
+	<b>Quantity per Unit</b>
+	{END QPerUnit_fieldheader}
+</th>
+{END QPerUnit_fieldheadercolumn}
+	{BEGIN Qty_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN Qty_fieldheader}
+	<b>Available Quantity (pcs)</b>
+	{END Qty_fieldheader}
+</th>
+{END Qty_fieldheadercolumn}
+	{BEGIN ReOrLevel_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN ReOrLevel_fieldheader}
+	<b>Re-Order Level</b>
+	{END ReOrLevel_fieldheader}
+</th>
+{END ReOrLevel_fieldheadercolumn}
+	{BEGIN Uprice_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN Uprice_fieldheader}
+	<b>Unit Price</b>
+	{END Uprice_fieldheader}
+</th>
+{END Uprice_fieldheadercolumn}
+	{BEGIN USP_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN USP_fieldheader}
+	<b>Unit Selling Price</b>
+	{END USP_fieldheader}
+</th>
+{END USP_fieldheadercolumn}
+	{BEGIN Discount_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN Discount_fieldheader}
+	<b>Discount</b>
+	{END Discount_fieldheader}
+</th>
+{END Discount_fieldheadercolumn}
+	{BEGIN Note_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN Note_fieldheader}
+	<b>Note</b>
+	{END Note_fieldheader}
+</th>
+{END Note_fieldheadercolumn}
+		
+			{END record_header}
+			<td class="runner-cr"><img src="images/spacer.gif"></td>
+			{BEGIN endrecordheader_block}
+			<td class="runner-cs">&nbsp;</td>
+			{END endrecordheader_block}
+		</tr>
+	{END grid_header}
+		</thead>
+		<tbody>	
+		{BEGIN grid_row}
+	<tr class="runner-row style1" {$rowattrs} {$rowstyle} {$rowstyle}>
+		<td class="runner-cl"></td>
+		{BEGIN grid_record}
+				{BEGIN ProdID_fieldcolumn}
+<td  class="runner-cc {$ProdID_class}" {$ProdID_style}>
+	{$ProdID_value}
+</td>
+{END ProdID_fieldcolumn}
+	{BEGIN Pname_fieldcolumn}
+<td  class="runner-cc {$Pname_class}" {$Pname_style}>
+	{$Pname_value}
+</td>
+{END Pname_fieldcolumn}
+	{BEGIN CatID_fieldcolumn}
+<td  class="runner-cc {$CatID_class}" {$CatID_style}>
+	{$CatID_value}
+</td>
+{END CatID_fieldcolumn}
+	{BEGIN Usize_fieldcolumn}
+<td  class="runner-cc {$Usize_class}" {$Usize_style}>
+	{$Usize_value}
+</td>
+{END Usize_fieldcolumn}
+	{BEGIN SuppID_fieldcolumn}
+<td  class="runner-cc {$SuppID_class}" {$SuppID_style}>
+	{$SuppID_value}
+</td>
+{END SuppID_fieldcolumn}
+	{BEGIN Uweight_fieldcolumn}
+<td  class="runner-cc {$Uweight_class}" {$Uweight_style}>
+	{$Uweight_value}
+</td>
+{END Uweight_fieldcolumn}
+	{BEGIN QPerUnit_fieldcolumn}
+<td  class="runner-cc {$QPerUnit_class}" {$QPerUnit_style}>
+	{$QPerUnit_value}
+</td>
+{END QPerUnit_fieldcolumn}
+	{BEGIN Qty_fieldcolumn}
+<td  class="runner-cc {$Qty_class}" {$Qty_style}>
+	{$Qty_value}
+</td>
+{END Qty_fieldcolumn}
+	{BEGIN ReOrLevel_fieldcolumn}
+<td  class="runner-cc {$ReOrLevel_class}" {$ReOrLevel_style}>
+	{$ReOrLevel_value}
+</td>
+{END ReOrLevel_fieldcolumn}
+	{BEGIN Uprice_fieldcolumn}
+<td  class="runner-cc {$Uprice_class}" {$Uprice_style}>
+	{$Uprice_value}
+</td>
+{END Uprice_fieldcolumn}
+	{BEGIN USP_fieldcolumn}
+<td  class="runner-cc {$USP_class}" {$USP_style}>
+	{$USP_value}
+</td>
+{END USP_fieldcolumn}
+	{BEGIN Discount_fieldcolumn}
+<td  class="runner-cc {$Discount_class}" {$Discount_style}>
+	{$Discount_value}
+</td>
+{END Discount_fieldcolumn}
+	{BEGIN Note_fieldcolumn}
+<td  class="runner-cc {$Note_class}" {$Note_style}>
+	{$Note_value}
+</td>
+{END Note_fieldcolumn}
+
+		{END grid_record}
+		<td class="runner-cr"></td>
+		{BEGIN endrecord_block}
+		<td class="runner-cs">&nbsp;</td>
+		{END endrecord_block}
+	</tr>
+{END grid_row}
+										
+								<tr class="runner-bottomrow style1">
+									<td class="runner-cl"><img src="images/spacer.gif"></td>
+									{BEGIN record_footer}
+									{BEGIN ProdID_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END ProdID_fieldfootercolumn}
+{BEGIN Pname_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END Pname_fieldfootercolumn}
+{BEGIN CatID_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END CatID_fieldfootercolumn}
+{BEGIN Usize_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END Usize_fieldfootercolumn}
+{BEGIN SuppID_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END SuppID_fieldfootercolumn}
+{BEGIN Uweight_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END Uweight_fieldfootercolumn}
+{BEGIN QPerUnit_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END QPerUnit_fieldfootercolumn}
+{BEGIN Qty_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END Qty_fieldfootercolumn}
+{BEGIN ReOrLevel_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END ReOrLevel_fieldfootercolumn}
+{BEGIN Uprice_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END Uprice_fieldfootercolumn}
+{BEGIN USP_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END USP_fieldfootercolumn}
+{BEGIN Discount_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END Discount_fieldfootercolumn}
+{BEGIN Note_fieldfootercolumn}
+<td class="runner-cc runner-clast"></td>
+{END Note_fieldfootercolumn}
+
+									{END record_footer}
+									<td class="runner-cr"><img src="images/spacer.gif"></td>
+									{BEGIN endrecordtotals_block}
+									<td class="runner-cs"></td>
+									{END endrecordtotals_block}
+								</tr>
+
+		</tbody>
+	</table>
+</div>	
+{END page}
+
+{END grid_block}
+
+
+
+{END container_grid}
+
+
+				</td>	
+
+				<td class="runner-right {$blockclass_right}">
+					
+				</td>	
+			</tr>
+			<tr class="runner-footer">
+				<td class="runner-bottom" colspan=3>
+					<!--%%bottom%%-->
+				</td>
+			</tr>
+		</table>
+		{$footer}
+	{END body}
+	</body>
+</html>

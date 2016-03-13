@@ -1,0 +1,292 @@
+<!doctype html>
+<html  {$html_attrs}>
+	<head>
+		<title>{$pagetitle}</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=7">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link REL="stylesheet" href="styles/default.css" type="text/css">
+		{BEGIN rtlCSS}
+		<link REL="stylesheet" href="styles/defaultRTL.css" type="text/css">
+		{END rtlCSS}
+		{BEGIN styleCSSFiles}
+		<link REL="stylesheet" href="{$stylepath}" type="text/css">
+		{END styleCSSFiles}
+		{BEGIN pageCSSFiles}
+		<link REL="stylesheet" href="{$pagestylepath}" type="text/css">
+		{END pageCSSFiles}
+		<!--[if IE]>
+			<link REL="stylesheet" href="styles/defaultIE.css" type="text/css">
+			{BEGIN IEcssFiles}
+			<link REL="stylesheet" href="{$stylepathIE}" type="text/css">
+			{END IEcssFiles}
+		<![endif]-->
+	</head>
+	
+	<body class="{$stylename}" {$bodyattrs}>
+	{BEGIN body}
+		{$header}
+		<table   cellpadding="0" class="runner-toptable">
+			<tr class="runner-header">
+				<td class="runner-top" colspan=3>
+					
+
+
+
+
+				</td>
+			</tr>
+			<tr class="runner-body">
+				
+				<td class="runner-left {$blockclass_left}" >
+					
+				</td>	
+				
+				<td class="runner-center {$blockclass_center}">
+					
+
+{BEGIN container_grid}
+
+
+{BEGIN grid_block}
+{BEGIN page}
+<h1>Supplier Listing</h1>
+<span>
+{BEGIN page_number}
+Page {$pageno} of {$maxpages} 
+{END page_number}
+</span>
+
+	<div class="runner-s-grid">	
+	<table class="runner-c runner-c-grid" cellpadding="0">
+		<thead>
+		{BEGIN grid_header}
+		<tr class="runner-toprow style1">
+			<td class="runner-cl"><img src="images/spacer.gif"></td>
+			{BEGIN record_header}
+					{BEGIN SupplierID_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN SupplierID_fieldheader}
+	<b>Supplier ID</b>
+	{END SupplierID_fieldheader}
+</th>
+{END SupplierID_fieldheadercolumn}
+	{BEGIN ComName_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN ComName_fieldheader}
+	<b>Company Name</b>
+	{END ComName_fieldheader}
+</th>
+{END ComName_fieldheadercolumn}
+	{BEGIN ConFName_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN ConFName_fieldheader}
+	<b>Contact First Name</b>
+	{END ConFName_fieldheader}
+</th>
+{END ConFName_fieldheadercolumn}
+	{BEGIN ConLName_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN ConLName_fieldheader}
+	<b>Contact Last Name</b>
+	{END ConLName_fieldheader}
+</th>
+{END ConLName_fieldheadercolumn}
+	{BEGIN ConTitle_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN ConTitle_fieldheader}
+	<b>Contact Title</b>
+	{END ConTitle_fieldheader}
+</th>
+{END ConTitle_fieldheadercolumn}
+	{BEGIN Address_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN Address_fieldheader}
+	<b>Address</b>
+	{END Address_fieldheader}
+</th>
+{END Address_fieldheadercolumn}
+	{BEGIN Phone_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN Phone_fieldheader}
+	<b>Phone</b>
+	{END Phone_fieldheader}
+</th>
+{END Phone_fieldheadercolumn}
+	{BEGIN Email_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN Email_fieldheader}
+	<b>Email</b>
+	{END Email_fieldheader}
+</th>
+{END Email_fieldheadercolumn}
+	{BEGIN Fax_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN Fax_fieldheader}
+	<b>Fax</b>
+	{END Fax_fieldheader}
+</th>
+{END Fax_fieldheadercolumn}
+	{BEGIN PayMeth_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN PayMeth_fieldheader}
+	<b>Payment Method</b>
+	{END PayMeth_fieldheader}
+</th>
+{END PayMeth_fieldheadercolumn}
+	{BEGIN DisType_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN DisType_fieldheader}
+	<b>Discount Type</b>
+	{END DisType_fieldheader}
+</th>
+{END DisType_fieldheadercolumn}
+		
+			{END record_header}
+			<td class="runner-cr"><img src="images/spacer.gif"></td>
+			{BEGIN endrecordheader_block}
+			<td class="runner-cs">&nbsp;</td>
+			{END endrecordheader_block}
+		</tr>
+	{END grid_header}
+		</thead>
+		<tbody>	
+		{BEGIN grid_row}
+	<tr class="runner-row style1" {$rowattrs} {$rowstyle} {$rowstyle}>
+		<td class="runner-cl"></td>
+		{BEGIN grid_record}
+				{BEGIN SupplierID_fieldcolumn}
+<td  class="runner-cc {$SupplierID_class}" {$SupplierID_style}>
+	{$SupplierID_value}
+</td>
+{END SupplierID_fieldcolumn}
+	{BEGIN ComName_fieldcolumn}
+<td  class="runner-cc {$ComName_class}" {$ComName_style}>
+	{$ComName_value}
+</td>
+{END ComName_fieldcolumn}
+	{BEGIN ConFName_fieldcolumn}
+<td  class="runner-cc {$ConFName_class}" {$ConFName_style}>
+	{$ConFName_value}
+</td>
+{END ConFName_fieldcolumn}
+	{BEGIN ConLName_fieldcolumn}
+<td  class="runner-cc {$ConLName_class}" {$ConLName_style}>
+	{$ConLName_value}
+</td>
+{END ConLName_fieldcolumn}
+	{BEGIN ConTitle_fieldcolumn}
+<td  class="runner-cc {$ConTitle_class}" {$ConTitle_style}>
+	{$ConTitle_value}
+</td>
+{END ConTitle_fieldcolumn}
+	{BEGIN Address_fieldcolumn}
+<td  class="runner-cc {$Address_class}" {$Address_style}>
+	{$Address_value}
+</td>
+{END Address_fieldcolumn}
+	{BEGIN Phone_fieldcolumn}
+<td  class="runner-cc {$Phone_class}" {$Phone_style}>
+	{$Phone_value}
+</td>
+{END Phone_fieldcolumn}
+	{BEGIN Email_fieldcolumn}
+<td  class="runner-cc {$Email_class}" {$Email_style}>
+	{$Email_value}
+</td>
+{END Email_fieldcolumn}
+	{BEGIN Fax_fieldcolumn}
+<td  class="runner-cc {$Fax_class}" {$Fax_style}>
+	{$Fax_value}
+</td>
+{END Fax_fieldcolumn}
+	{BEGIN PayMeth_fieldcolumn}
+<td  class="runner-cc {$PayMeth_class}" {$PayMeth_style}>
+	{$PayMeth_value}
+</td>
+{END PayMeth_fieldcolumn}
+	{BEGIN DisType_fieldcolumn}
+<td  class="runner-cc {$DisType_class}" {$DisType_style}>
+	{$DisType_value}
+</td>
+{END DisType_fieldcolumn}
+
+		{END grid_record}
+		<td class="runner-cr"></td>
+		{BEGIN endrecord_block}
+		<td class="runner-cs">&nbsp;</td>
+		{END endrecord_block}
+	</tr>
+{END grid_row}
+										
+								<tr class="runner-bottomrow style1">
+									<td class="runner-cl"><img src="images/spacer.gif"></td>
+									{BEGIN record_footer}
+									{BEGIN SupplierID_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END SupplierID_fieldfootercolumn}
+{BEGIN ComName_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END ComName_fieldfootercolumn}
+{BEGIN ConFName_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END ConFName_fieldfootercolumn}
+{BEGIN ConLName_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END ConLName_fieldfootercolumn}
+{BEGIN ConTitle_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END ConTitle_fieldfootercolumn}
+{BEGIN Address_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END Address_fieldfootercolumn}
+{BEGIN Phone_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END Phone_fieldfootercolumn}
+{BEGIN Email_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END Email_fieldfootercolumn}
+{BEGIN Fax_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END Fax_fieldfootercolumn}
+{BEGIN PayMeth_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END PayMeth_fieldfootercolumn}
+{BEGIN DisType_fieldfootercolumn}
+<td class="runner-cc runner-clast"></td>
+{END DisType_fieldfootercolumn}
+
+									{END record_footer}
+									<td class="runner-cr"><img src="images/spacer.gif"></td>
+									{BEGIN endrecordtotals_block}
+									<td class="runner-cs"></td>
+									{END endrecordtotals_block}
+								</tr>
+
+		</tbody>
+	</table>
+</div>	
+{END page}
+
+{END grid_block}
+
+
+
+{END container_grid}
+
+
+				</td>	
+
+				<td class="runner-right {$blockclass_right}">
+					
+				</td>	
+			</tr>
+			<tr class="runner-footer">
+				<td class="runner-bottom" colspan=3>
+					<!--%%bottom%%-->
+				</td>
+			</tr>
+		</table>
+		{$footer}
+	{END body}
+	</body>
+</html>

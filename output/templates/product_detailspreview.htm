@@ -1,0 +1,106 @@
+<div {$pageattrs}>
+
+{BEGIN container_dcount}
+<table class="runner-c runner-c-dcount" cellpadding="0" >
+<tr class="{$cheaderclass_dcount}">
+<td class="runner-cl"><img src="images/spacer.gif"></td>
+<td class="runner-cc"></td><td class="runner-cr"><img src="images/spacer.gif"></td>
+</tr>
+
+
+<tr  class="runner-row style1 runner-b-detailspreviewheader {$brickclass_detailspreviewheader}"><td class="runner-cl"></td><td class="runner-cc runner-brickcontents" ><b>Product Inventory</b>
+</td><td class="runner-cr"></td></tr>
+
+
+
+<tr  class="runner-row style1 runner-b-detailspreviewdetailsfount {$brickclass_detailspreviewdetailsfount}"><td class="runner-cl"></td><td class="runner-cc runner-brickcontents" >Details found: <strong>{$row_count}.</strong>
+</td><td class="runner-cr"></td></tr>
+
+
+{BEGIN display_first}
+<tr  class="runner-row style1 runner-b-detailspreviewdispfirst {$brickclass_detailspreviewdispfirst}"><td class="runner-cl"></td><td class="runner-cc runner-brickcontents" >Displaying first: <strong>{$display_count}</strong>.
+</td><td class="runner-cr"></td></tr>{END display_first}
+
+
+<tr class="{$cfooterclass_dcount}">
+<td class="runner-cl"><img src="images/spacer.gif"></td>
+<td class="runner-cc"></td><td class="runner-cr"><img src="images/spacer.gif"></td>
+</tr>
+</table>
+{END container_dcount}
+
+
+
+{BEGIN container_detailspreviewgrid}
+
+
+{BEGIN details_data}
+<table class="runner-c runner-c-detailspreviewgrid runner-b-detailspreviewgrid">
+	<tr  class="runner-toprow style1">
+		<th class="runner-cl"><img src="images/spacer.gif"></th>
+		<th class="runner-cc ">Prod ID</th>
+		<th class="runner-cc ">Product Name</th>
+		<th class="runner-cc ">Category</th>
+		<th class="runner-cc ">Unit Size</th>
+		<th class="runner-cc ">Supplier</th>
+		<th class="runner-cc ">Unit Weight</th>
+		<th class="runner-cc ">Units In Stock</th>
+		<th class="runner-cc ">Quantity per Unit</th>
+		<th class="runner-cc ">Available Quantity (pcs)</th>
+		<th class="runner-cc ">Re-Order Level</th>
+		<th class="runner-cc ">Units In Order</th>
+		<th class="runner-cc ">Unit Price</th>
+		<th class="runner-cc ">Unit Selling Price</th>
+		<th class="runner-cc ">Discount</th>
+		<th class="runner-cc runner-clast">Note</th>
+		<th class="runner-cr"><img src="images/spacer.gif"></th>
+	</tr>
+	{BEGIN details_row}
+	<tr class="runner-row style1">
+		<td class="runner-cl"><img src="images/spacer.gif"></td>
+		<td class="runner-cc ">{$ProdID_value}</td>
+		<td class="runner-cc ">{$Pname_value}</td>
+		<td class="runner-cc ">{$CatID_value}</td>
+		<td class="runner-cc ">{$Usize_value}</td>
+		<td class="runner-cc ">{$SuppID_value}</td>
+		<td class="runner-cc ">{$Uweight_value}</td>
+		<td class="runner-cc ">{$UInStock_value}</td>
+		<td class="runner-cc ">{$QPerUnit_value}</td>
+		<td class="runner-cc ">{$Qty_value}</td>
+		<td class="runner-cc ">{$ReOrLevel_value}</td>
+		<td class="runner-cc ">{$UInOrder_value}</td>
+		<td class="runner-cc ">{$Uprice_value}</td>
+		<td class="runner-cc ">{$USP_value}</td>
+		<td class="runner-cc ">{$Discount_value}</td>
+		<td class="runner-cc runner-clast">{$Note_value}</td>
+		<td class="runner-cr"><img src="images/spacer.gif"></td>
+	</tr>
+	{END details_row}
+	<tr class="runner-bottomrow style1">
+		<td class="runner-cl"><img src="images/spacer.gif"></td>
+			<td class="runner-cc "></td>
+			<td class="runner-cc "></td>
+			<td class="runner-cc "></td>
+			<td class="runner-cc "></td>
+			<td class="runner-cc "></td>
+			<td class="runner-cc "></td>
+			<td class="runner-cc "></td>
+			<td class="runner-cc "></td>
+			<td class="runner-cc "></td>
+			<td class="runner-cc "></td>
+			<td class="runner-cc "></td>
+			<td class="runner-cc "></td>
+			<td class="runner-cc "></td>
+			<td class="runner-cc "></td>
+			<td class="runner-cc runner-clast"></td>
+		<td class="runner-cr"><img src="images/spacer.gif"></td>
+	</tr>
+</table>
+
+{END details_data}
+
+
+
+{END container_detailspreviewgrid}
+
+</div>
