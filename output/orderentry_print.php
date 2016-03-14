@@ -30,11 +30,6 @@ $layout->containers["grid"][] = array("name"=>"printgrid","block"=>"grid_block",
 
 $layout->skins["grid"] = "empty";
 $layout->blocks["center"][] = "grid";$layout->blocks["top"] = array();
-$layout->containers["master"] = array();
-
-$layout->containers["master"][] = array("name"=>"masterinfoprint","block"=>"mastertable_block","substyle"=>1);
-
-
 $layout->skins["master"] = "empty";
 $layout->blocks["top"][] = "master";
 $layout->skins["pdf"] = "empty";
@@ -412,47 +407,6 @@ if($colsonpage<1)
 	$xt->assignbyref("page",$page);
 
 	
-//	display master table info
-$mastertable = $_SESSION[$strTableName."_mastertable"];
-$masterkeys = array();
-
-if($mastertable == "customer")
-{
-//	include proper masterprint.php code
-	include("include/customer_masterprint.php");
-	$masterkeys[] = @$_SESSION[$strTableName."_masterkey1"];
-	$params = array("detailtable"=>"orderentry","keys"=>$masterkeys);
-	$master = array();
-	$master["func"] = "DisplayMasterTableInfo_customer";
-	$master["params"] = $params;
-	$xt->assignbyref("showmasterfile",$master);
-	$xt->assign("mastertable_block",true);
-	$layout = new TLayout("masterprint","BoldOrange","MobileOrange");
-$layout->blocks["bare"] = array();
-$layout->containers["0"] = array();
-
-$layout->containers["0"][] = array("name"=>"masterprintheader","block"=>"","substyle"=>1);
-
-
-$layout->skins["0"] = "empty";
-$layout->blocks["bare"][] = "0";
-$layout->containers["mastergrid"] = array();
-
-$layout->containers["mastergrid"][] = array("name"=>"masterprintfields","block"=>"","substyle"=>1);
-
-
-$layout->skins["mastergrid"] = "grid";
-$layout->blocks["bare"][] = "mastergrid";$page_layouts["customer_masterprint"] = $layout;
-
-	$layout = GetPageLayout("customer", 'masterprint');
-	if($layout)
-	{
-		$rtl = $pageObject->xt->getReadingOrder() == 'RTL' ? 'RTL' : '';
-		$xt->cssFiles[] = array("stylepath" => "styles/".$layout->style.'/style'.$rtl.".css"
-			, "pagestylepath" => "pagestyles/".$layout->name.$rtl.".css");
-		$xt->IEcssFiles[] = array("stylepathIE" => "styles/".$layout->style.'/styleIE'.".css");
-	}	
-}
 
 $strSQL = $_SESSION[$strTableName."_sql"];
 

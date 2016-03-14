@@ -80,11 +80,6 @@ $layout->containers["left"][] = array("name"=>"vrecsperpage","block"=>"recordspp
 
 $layout->skins["left"] = "menu";
 $layout->blocks["left"][] = "left";$layout->blocks["top"] = array();
-$layout->containers["master"] = array();
-
-$layout->containers["master"][] = array("name"=>"masterinfo","block"=>"mastertable_block","substyle"=>1);
-
-
 $layout->skins["master"] = "empty";
 $layout->blocks["top"][] = "master";
 $layout->containers["toplinks"] = array();
@@ -187,37 +182,6 @@ while(isset($_REQUEST["masterkey".$i]))
 $pageObject = ListPage::createListPage($strTableName, $options);
 
 
-$layout = new TLayout("masterlist","BoldOrange","MobileOrange");
-$layout->blocks["bare"] = array();
-$layout->containers["0"] = array();
-
-$layout->containers["0"][] = array("name"=>"masterlistheader","block"=>"","substyle"=>1);
-
-
-$layout->skins["0"] = "empty";
-$layout->blocks["bare"][] = "0";
-$layout->containers["mastergrid"] = array();
-
-$layout->containers["mastergrid"][] = array("name"=>"masterlistfields","block"=>"","substyle"=>1);
-
-
-$layout->skins["mastergrid"] = "grid";
-$layout->blocks["bare"][] = "mastergrid";$page_layouts["customer_masterlist"] = $layout;
-
-$layout = GetPageLayout("customer", 'masterlist');
-if($layout)
-{
-	$rtl = $xt->getReadingOrder() == 'RTL' ? 'RTL' : '';
-	$xt->cssFiles[] = array("stylepath" => "styles/".$layout->style.'/style'.$rtl.".css"
-		, "pagestylepath" => "pagestyles/".$layout->name.$rtl.".css");
-	$xt->IEcssFiles[] = array("stylepathIE" => "styles/".$layout->style.'/styleIE'.".css");
-}
-include_once getabspath('classes/controls/ViewControlsContainer.php');
-$viewControls = new ViewControlsContainer(new ProjectSettings("customer", PAGE_LIST), PAGE_LIST);
-$viewControls->addControlsJSAndCSS();
-$pageObject->includes_js = array_merge($pageObject->includes_js, $viewControls->includes_js);
-$pageObject->includes_jsreq = array_merge($pageObject->includes_jsreq, $viewControls->includes_jsreq);
-$pageObject->includes_css = array_merge($pageObject->includes_css, $viewControls->includes_css);
 
 if (!$noBlobReplace){
 	$gQuery->ReplaceFieldsWithDummies($pageObject->pSet->getBinaryFieldsIndices());
@@ -233,12 +197,6 @@ unset($_SESSION["message_edit"]);
 $pageObject->prepareForBuildPage();
 
 $includesArr = array();
-$masterTablesInfoArr = $pageObject->pSet->getMasterTablesArr($strTableName);
-for($i=0;$i<count($masterTablesInfoArr);$i++) 
-{
-	if($masterTablesInfoArr[$i]['dispInfo'])
-		$includesArr[] = getabspath("include/".$masterTablesInfoArr[$i]['mShortTable']."_masterlist.php");
-}
 
 //include files if need
 for($i=0;$i<count($includesArr);$i++)

@@ -198,7 +198,7 @@ if($inlineedit!=EDIT_INLINE)
 	if($pageObject->isShowDetailTables && !isMobile())
 	{
 		$ids = $id;
-			$pageObject->jsSettings['tableSettings'][$strTableName]['dpParams'] = array('tableNames'=>$dpParams['strTableNames'], 'ids'=>$dpParams['ids']);
+		$pageObject->jsSettings['tableSettings'][$strTableName]['dpParams'] = array('tableNames'=>$dpParams['strTableNames'], 'ids'=>$dpParams['ids']);
 	}
 }
 /////////////////////////////////////////////////////////////
@@ -759,7 +759,6 @@ if (postvalue("a")=="edited" && ($inlineedit == EDIT_INLINE || $inlineedit == ED
 	//Preparation   view values
 
 //	detail tables
-	$showDetailKeys["orderentry"]["masterkey1"] = $data["CID"];		
 
 	$keylink = "";
 	$keylink.= "&key1=".htmlspecialchars(rawurlencode(@$data["CID"]));

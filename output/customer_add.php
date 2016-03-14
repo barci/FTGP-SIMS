@@ -195,7 +195,7 @@ if($inlineadd==ADD_SIMPLE || $inlineadd==ADD_MASTER || $inlineadd==ADD_POPUP)
 	{
 		$ids = $id;
 		$countDetailsIsShow = 0;
-			$pageObject->jsSettings['tableSettings'][$strTableName]['isShowDetails'] = $countDetailsIsShow > 0 ? true : false;
+		$pageObject->jsSettings['tableSettings'][$strTableName]['isShowDetails'] = $countDetailsIsShow > 0 ? true : false;
 		$pageObject->jsSettings['tableSettings'][$strTableName]['dpParams'] = array('tableNames'=>$dpParams['strTableNames'], 'ids'=>$dpParams['ids']);
 	}
 }
@@ -693,7 +693,6 @@ if(@$_POST["a"]=="added" && ($inlineadd == ADD_INLINE || $inlineadd == ADD_MASTE
 		$HaveData=false;
 	}
 	//check if correct values added
-	$showDetailKeys["orderentry"]["masterkey1"] = $data["CID"];	
 
 	$keylink="";
 	$keylink.="&key1=".htmlspecialchars(rawurlencode(@$data["CID"]));

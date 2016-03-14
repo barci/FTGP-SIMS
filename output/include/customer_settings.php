@@ -103,7 +103,6 @@ $tdatacustomer[".isUseTimeForSearch"] = false;
 
 
 
-$tdatacustomer[".useDetailsPreview"] = true;
 
 $tdatacustomer[".allSearchFields"] = array();
 
@@ -146,7 +145,7 @@ $tdatacustomer[".isTableType"] = "list";
 
 
 // Access doesn't support subqueries from the same table as main
-	
+
 
 
 $tdatacustomer[".pageSize"] = 20;
@@ -1308,26 +1307,6 @@ $fieldToolTips["customer"] = &$fieldToolTipscustomer;
 // -----------------start  prepare master-details data arrays ------------------------------//
 // tables which are detail tables for current table (master)
 $detailsTablesData["customer"] = array();
-$dIndex = 1-1;
-			$strOriginalDetailsTable="orderentry";
-	$detailsParam["dDataSourceTable"]="orderentry";
-	$detailsParam["dOriginalTable"]=$strOriginalDetailsTable;
-	$detailsParam["dShortTable"]="orderentry";
-	$detailsParam["masterKeys"]=array();
-	$detailsParam["detailKeys"]=array();
-	$detailsParam["dispChildCount"]= "1";
-	$detailsParam["hideChild"]="0";
-	$detailsParam["previewOnList"]= 1;
-	$detailsParam["previewOnAdd"]= 0;
-	$detailsParam["previewOnEdit"]= 0;
-	$detailsParam["previewOnView"]= 0;
-		
-	$detailsTablesData["customer"][$dIndex] = $detailsParam;
-	
-		
-		$detailsTablesData["customer"][$dIndex]["masterKeys"][]="CID";
-		$detailsTablesData["customer"][$dIndex]["detailKeys"][]="CID";
-
 	
 // tables which are master tables for current table (detail)
 $masterTablesData["customer"] = array();

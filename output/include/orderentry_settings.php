@@ -806,24 +806,6 @@ $dIndex = 1-1;
 // tables which are master tables for current table (detail)
 $masterTablesData["orderentry"] = array();
 
-$mIndex = 1-1;
-			$strOriginalDetailsTable="customer";
-	$masterParams["mDataSourceTable"]="customer";
-	$masterParams["mOriginalTable"]= $strOriginalDetailsTable;
-	$masterParams["mShortTable"]= "customer";
-	$masterParams["masterKeys"]= array();
-	$masterParams["detailKeys"]= array();
-	$masterParams["dispChildCount"]= "1";
-	$masterParams["hideChild"]= "0";
-	$masterParams["dispInfo"]= "1";
-	$masterParams["previewOnList"]= 1;
-	$masterParams["previewOnAdd"]= 0;
-	$masterParams["previewOnEdit"]= 0;
-	$masterParams["previewOnView"]= 0;
-	$masterTablesData["orderentry"][$mIndex] = $masterParams;	
-		$masterTablesData["orderentry"][$mIndex]["masterKeys"][]="CID";
-		$masterTablesData["orderentry"][$mIndex]["detailKeys"][]="CID";
-
 // -----------------end  prepare master-details data arrays ------------------------------//
 
 require_once(getabspath("classes/sql.php"));

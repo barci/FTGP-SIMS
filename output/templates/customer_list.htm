@@ -417,9 +417,6 @@
 									</th>
 									{END checkbox_column}
 
-																		{BEGIN customer_dtable_column}
-									<th class="runner-cc">&nbsp;</th>
-									{END customer_dtable_column}
 																										{BEGIN BRegNo_fieldheadercolumn}
 									<th class="runner-cc ">
 									{BEGIN BRegNo_fieldheader}
@@ -566,19 +563,6 @@
 									</td>
 									{END checkbox_column}
 
-																		{BEGIN customer_dtable_column}
-									<td class="runner-cc runner-nowrap" {$rowstyle}>
-									{BEGIN orderentry_dtable_link}
-									<span>
-									<a {$orderentry_dtablelink_attrs}>
-										Order Entry
-																				<span {$orderentry_childnumber_attr} dir="ltr">{BEGIN orderentry_childcount}({$orderentry_childnumber}){END orderentry_childcount}</span>
-									</a>
-																		&nbsp;
-									</span>
-									{END orderentry_dtable_link}
-																		</td>
-									{END customer_dtable_column}
 
 										{BEGIN BRegNo_fieldcolumn}
 	<td class="runner-cc  {$BRegNo_class}" {$BRegNo_style}>
@@ -656,9 +640,6 @@
 									<td class="runner-cc"></td>
 									{END checkbox_column}
 
-																		{BEGIN customer_dtable_column}
-									<td class="runner-cc"></td>
-									{END customer_dtable_column}
 
 									{BEGIN BRegNo_fieldheadercolumn}
 <td class="runner-cc "></td>

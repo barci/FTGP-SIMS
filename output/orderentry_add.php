@@ -257,17 +257,6 @@ if(@$_POST["a"]=="added")
 //	processing ErrorMsg - end
 
 
-//	insert masterkey value if exists and if not specified
-	if(@$_SESSION[$sessionPrefix."_mastertable"]=="customer")
-	{
-		if(postvalue("masterkey1"))
-			$_SESSION[$sessionPrefix."_masterkey1"] = postvalue("masterkey1");
-		
-		if($avalues["CID"]==""){
-			$avalues["CID"] = prepare_for_db("CID",$_SESSION[$sessionPrefix."_masterkey1"]);
-		}
-			
-	}
 
 
 	$failed_inline_add=false;
@@ -442,17 +431,6 @@ else
 }
 
 
-//	set default values for the foreign keys
-
-if(@$_SESSION[$sessionPrefix."_mastertable"]=="customer")
-{
-	if(postvalue("masterkey1"))
-		$_SESSION[$sessionPrefix."_masterkey1"] = postvalue("masterkey1");
-
-	if(postvalue("mainMPageType")<>"add")
-		$defvalues["CID"] = @$_SESSION[$sessionPrefix."_masterkey1"];	
-	
-}
 
 if($readavalues)
 {

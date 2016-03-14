@@ -7,7 +7,6 @@ add_nocache_headers();
 
 include('include/xtempl.php');
 include("include/customer_variables.php");
-include_once("include/orderentry_settings.php");
 include('classes/runnerpage.php');
 include('classes/listpage.php');
 include("classes/searchpanel.php");
