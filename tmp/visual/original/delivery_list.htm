@@ -30,6 +30,38 @@
 				<td class="runner-top" colspan=3>
 					
 
+{BEGIN container_master}
+<table class="runner-c runner-c-master" cellpadding="0" >
+<tr class="{$cheaderclass_master}">
+<td class="runner-cl"><img src="images/spacer.gif"></td>
+<td class="runner-cc"></td><td class="runner-cr"><img src="images/spacer.gif"></td>
+</tr>
+<tr class="runner-row style1">
+<td class="runner-cl"></td>
+<td class="runner-cc">
+<table border="0" cellpadding="0" class="runner-hc">
+<tr>
+
+{BEGIN mastertable_block}
+<td  class="runner-cc runner-bl runner-b-masterinfo" {$brickclass_masterinfo}><span>{$showmasterfile}
+<a class="runner-link" {$backtomasterlink_attrs}>
+	<b>Back to {$backtomasterlink_caption}</b>
+</a></span></td>
+{END mastertable_block}
+
+<td class="runner-cc filler"></td>
+</tr>
+</table></td>
+<td class="runner-cr"></td>
+</tr>
+
+<tr class="{$cfooterclass_master}">
+<td class="runner-cl"><img src="images/spacer.gif"></td>
+<td class="runner-cc"></td><td class="runner-cr"><img src="images/spacer.gif"></td>
+</tr>
+</table>
+{END container_master}
+
 
 
 {BEGIN container_toplinks}
@@ -431,7 +463,7 @@
 									<th class="runner-cc ">
 									{BEGIN DrNo_fieldheader}
 																				<a {$DrNo_orderlinkattrs}>
-											Dr No
+											DR No
 										</a>
 									{END DrNo_fieldheader}
 									</th>
@@ -451,7 +483,7 @@
 									<th class="runner-cc ">
 									{BEGIN prodID_fieldheader}
 																				<a {$prodID_orderlinkattrs}>
-											Prod ID
+											Product
 										</a>
 									{END prodID_fieldheader}
 									</th>
@@ -461,7 +493,7 @@
 									<th class="runner-cc ">
 									{BEGIN qty_fieldheader}
 																				<a {$qty_orderlinkattrs}>
-											Qty
+											Qantity
 										</a>
 									{END qty_fieldheader}
 									</th>
@@ -471,21 +503,21 @@
 									<th class="runner-cc ">
 									{BEGIN eta_fieldheader}
 																				<a {$eta_orderlinkattrs}>
-											Eta
+											ETA
 										</a>
 									{END eta_fieldheader}
 									</th>
 									{END eta_fieldheadercolumn}
 
-																	{BEGIN acceptFlag_fieldheadercolumn}
+																	{BEGIN delFlag_fieldheadercolumn}
 									<th class="runner-cc runner-clast">
-									{BEGIN acceptFlag_fieldheader}
-																				<a {$acceptFlag_orderlinkattrs}>
-											Accept Flag
+									{BEGIN delFlag_fieldheader}
+																				<a {$delFlag_orderlinkattrs}>
+											Delivery Flag
 										</a>
-									{END acceptFlag_fieldheader}
+									{END delFlag_fieldheader}
 									</th>
-									{END acceptFlag_fieldheadercolumn}
+									{END delFlag_fieldheadercolumn}
 
 
 									
@@ -580,11 +612,11 @@
 	</td>
 {END eta_fieldcolumn}
 
-	{BEGIN acceptFlag_fieldcolumn}
-	<td class="runner-cc runner-clast {$acceptFlag_class}" {$acceptFlag_style}>
-		{$acceptFlag_value}
+	{BEGIN delFlag_fieldcolumn}
+	<td class="runner-cc runner-clast {$delFlag_class}" {$delFlag_style}>
+		{$delFlag_value}
 	</td>
-{END acceptFlag_fieldcolumn}
+{END delFlag_fieldcolumn}
 
 
 																		<td class="runner-cr" {$rowstyle}></td>
@@ -627,9 +659,9 @@
 {BEGIN eta_fieldheadercolumn}
 <td class="runner-cc "></td>
 {END eta_fieldheadercolumn}
-{BEGIN acceptFlag_fieldheadercolumn}
+{BEGIN delFlag_fieldheadercolumn}
 <td class="runner-cc runner-clast"></td>
-{END acceptFlag_fieldheadercolumn}
+{END delFlag_fieldheadercolumn}
 
 									<td class="runner-cr"><img src="images/spacer.gif"></td>
 									

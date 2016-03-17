@@ -134,10 +134,6 @@ if($rowcount) {
 			$viewContainer->recId = $recordsCounter;
 		    $value = $viewContainer->showDBValue("ProductID", $data, $keylink);
 			$row["ProductID_value"] = $value;
-	//	UPrice - Number
-			$viewContainer->recId = $recordsCounter;
-		    $value = $viewContainer->showDBValue("UPrice", $data, $keylink);
-			$row["UPrice_value"] = $value;
 	//	OrdQuant - 
 			$viewContainer->recId = $recordsCounter;
 		    $value = $viewContainer->showDBValue("OrdQuant", $data, $keylink);
@@ -146,14 +142,6 @@ if($rowcount) {
 			$viewContainer->recId = $recordsCounter;
 		    $value = $viewContainer->showDBValue("DelQuant", $data, $keylink);
 			$row["DelQuant_value"] = $value;
-	//	Discount - Number
-			$viewContainer->recId = $recordsCounter;
-		    $value = $viewContainer->showDBValue("Discount", $data, $keylink);
-			$row["Discount_value"] = $value;
-	//	Total - Number
-			$viewContainer->recId = $recordsCounter;
-		    $value = $viewContainer->showDBValue("Total", $data, $keylink);
-			$row["Total_value"] = $value;
 	//	DelDate - Short Date
 			$viewContainer->recId = $recordsCounter;
 		    $value = $viewContainer->showDBValue("DelDate", $data, $keylink);

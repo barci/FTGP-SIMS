@@ -100,6 +100,13 @@ Page {$pageno} of {$maxpages}
 	{END ProdID_fieldheader}
 </th>
 {END ProdID_fieldheadercolumn}
+	{BEGIN ProdNo_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN ProdNo_fieldheader}
+	<b>Product Number</b>
+	{END ProdNo_fieldheader}
+</th>
+{END ProdNo_fieldheadercolumn}
 	{BEGIN Pname_fieldheadercolumn}
 <th class="runner-cc">
 	{BEGIN Pname_fieldheader}
@@ -203,6 +210,11 @@ Page {$pageno} of {$maxpages}
 	{$ProdID_value}
 </td>
 {END ProdID_fieldcolumn}
+	{BEGIN ProdNo_fieldcolumn}
+<td  class="runner-cc {$ProdNo_class}" {$ProdNo_style}>
+	{$ProdNo_value}
+</td>
+{END ProdNo_fieldcolumn}
 	{BEGIN Pname_fieldcolumn}
 <td  class="runner-cc {$Pname_class}" {$Pname_style}>
 	{$Pname_value}
@@ -278,6 +290,9 @@ Page {$pageno} of {$maxpages}
 									{BEGIN ProdID_fieldfootercolumn}
 <td class="runner-cc "></td>
 {END ProdID_fieldfootercolumn}
+{BEGIN ProdNo_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END ProdNo_fieldfootercolumn}
 {BEGIN Pname_fieldfootercolumn}
 <td class="runner-cc "></td>
 {END Pname_fieldfootercolumn}

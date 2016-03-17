@@ -41,6 +41,8 @@ class tDAL
 	var $orderdetail;
 	var $orderentry;
 	var $delivery;
+	var $stockrequest;
+	var $stockreturn;
 	var $lstTables;
 	var $Table=array();
 
@@ -57,6 +59,8 @@ class tDAL
 	  $this->lstTables[]=array("name"=>"orderdetail","varname"=>"orderdetail");
 	  $this->lstTables[]=array("name"=>"orderentry","varname"=>"orderentry");
 	  $this->lstTables[]=array("name"=>"delivery","varname"=>"delivery");
+	  $this->lstTables[]=array("name"=>"stockrequest","varname"=>"stockrequest");
+	  $this->lstTables[]=array("name"=>"stockreturn","varname"=>"stockreturn");
 	}
 
 	/**

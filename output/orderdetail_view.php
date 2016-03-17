@@ -143,10 +143,6 @@ $arr['fName'] = "OrdQuant";
 $arr['viewFormat'] = $pageObject->pSet->getViewFormat("OrdQuant");
 $fieldsArr[] = $arr;
 $arr = array();
-$arr['fName'] = "Discount";
-$arr['viewFormat'] = $pageObject->pSet->getViewFormat("Discount");
-$fieldsArr[] = $arr;
-$arr = array();
 $arr['fName'] = "Total";
 $arr['viewFormat'] = $pageObject->pSet->getViewFormat("Total");
 $fieldsArr[] = $arr;
@@ -211,17 +207,6 @@ while($data)
 		$xt->assign("OrdQuant_fieldblock",true);
 	else
 		$xt->assign("OrdQuant_tabfieldblock",true);
-////////////////////////////////////////////
-//Discount - Number
-	
-	$value = $pageObject->showDBValue("Discount", $data, $keylink);
-	if($mainTableOwnerID=="Discount")
-		$ownerIdValue=$value;
-	$xt->assign("Discount_value",$value);
-	if(!$pageObject->isAppearOnTabs("Discount"))
-		$xt->assign("Discount_fieldblock",true);
-	else
-		$xt->assign("Discount_tabfieldblock",true);
 ////////////////////////////////////////////
 //Total - Number
 	

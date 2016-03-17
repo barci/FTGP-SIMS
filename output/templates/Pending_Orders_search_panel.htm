@@ -1,0 +1,73 @@
+<div class="searchOptions bottomPanelBorder" {$srchOpt_attrs}>
+	
+	<!-- Search panel content -->
+	<div class="srchCritTop" style="display: none;">
+		Criteria:&nbsp;
+		<input type="radio" name="srchType" class="runner-radio-button" {$all_checkbox}> {BEGIN all_checkbox_label}all{END all_checkbox_label}
+		&nbsp;&nbsp;&nbsp;
+		<input type="radio" name="srchType" class="runner-radio-button" {$any_checkbox}> {BEGIN any_checkbox_label}any{END any_checkbox_label}
+	</div>
+	
+	<div class="addOption">
+		<span class="runner-btnframe">
+		<span class="runner-btnleft"></span>
+		<span class="runner-btnright"></span>
+		<a href="#" id="showHideControlChooseMenu{$id}" class="runner-button" {$showHideCtrls_attrs}>Add field</a>
+		</span>
+		&nbsp;&nbsp;&nbsp;
+		<span class="runner-btnframe">
+		<span class="runner-btnleft"></span>
+		<span class="runner-btnright"></span>
+		<a href="#" id="showHideSearchType{$id}" class="runner-button" {$showHideCtrlsOpt_attrs}>{$showHideOpt_mess}</a>
+		</span>
+	</div>
+	
+	<!-- choose controls div -->
+	<div class="runner-panel controlChooseMenu" {$controlChooseMenuDiv_attrs}>
+		{BEGIN addSearch_ODetailID}
+			<a href="#" id="addSearchControl_ODetailID" class="addSearchControl" {$addSearchControl_ODetailID_attrs}>ID</a><br>
+		{END addSearch_ODetailID}
+		{BEGIN addSearch_OrderID}
+			<a href="#" id="addSearchControl_OrderID" class="addSearchControl" {$addSearchControl_OrderID_attrs}>Order ID</a><br>
+		{END addSearch_OrderID}
+		{BEGIN addSearch_ProductID}
+			<a href="#" id="addSearchControl_ProductID" class="addSearchControl" {$addSearchControl_ProductID_attrs}>Product</a><br>
+		{END addSearch_ProductID}
+		{BEGIN addSearch_OrdQuant}
+			<a href="#" id="addSearchControl_OrdQuant" class="addSearchControl" {$addSearchControl_OrdQuant_attrs}>Order Quantity</a><br>
+		{END addSearch_OrdQuant}
+		{BEGIN addSearch_DelQuant}
+			<a href="#" id="addSearchControl_DelQuant" class="addSearchControl" {$addSearchControl_DelQuant_attrs}>Delivered Quantity</a><br>
+		{END addSearch_DelQuant}
+		{BEGIN addSearch_Total}
+			<a href="#" id="addSearchControl_Total" class="addSearchControl" {$addSearchControl_Total_attrs}>Total</a><br>
+		{END addSearch_Total}
+		{BEGIN addSearch_DelDate}
+			<a href="#" id="addSearchControl_DelDate" class="addSearchControl" {$addSearchControl_DelDate_attrs}>Delivery Date</a><br>
+		{END addSearch_DelDate}
+		{BEGIN addSearch_BillNo}
+			<a href="#" id="addSearchControl_BillNo" class="addSearchControl" {$addSearchControl_BillNo_attrs}>Bill No</a><br>
+		{END addSearch_BillNo}
+	</div>
+	
+	<table class="controlsBlock">
+	{BEGIN searchCtrlBlock}
+		<tr class="srchPanelRow" {$filterRow_attrs}>
+			<td class="srchPanelCell">{$delCtrlButt}</td>
+			<td class="srchPanelCell">{$fLabel}:&nbsp;</td>
+			<td class="srchPanelCell srchPanelCell2">
+				<div class="runner-searchtype">{$searchtype}</div>
+				<div class="runner-searchcontrol">{$searchcontrol}</div>
+				<div class="runner-searchcontrol">{$searchcontrol1}</div>
+		</tr>
+	{END searchCtrlBlock}
+	</table>
+	
+	<div class="bottomSearchButt" align="left" {$bottomSearchButt_attrs}>
+		<span class="runner-btnframe">
+		<span class="runner-btnleft"></span>
+		<span class="runner-btnright"></span>
+		<a href="#" class="runner-button" {$searchbutton_attrs}>Search</a>
+		</span>
+	</div>
+</div>

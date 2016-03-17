@@ -62,6 +62,48 @@ Staff ID: {$show_key1}
 		</td>
 	<td class="runner-cr alt"><img src="images/spacer.gif"></td></tr>
 {END StaffID_fieldblock}
+	{BEGIN UserName_fieldblock}
+	<tr class="runner-row style1 runner-b-viewfields"><td class="runner-cl"></td>
+	<td class="runner-cc runner-cc1">
+		<div class="fieldlabel_UserName {$fielddispclass_UserName}">
+			<b>User Name</b>
+		</div>
+		</td>
+		<td class="runner-cc alt">
+		<div class="fieldvalue_UserName {$fielddispclass_UserName}">
+			{$UserName_value}&nbsp;
+		</div>
+		</td>
+	<td class="runner-cr alt"></td></tr>
+{END UserName_fieldblock}
+	{BEGIN RoleID_fieldblock}
+	<tr class="runner-row style1 runner-b-viewfields"><td class="runner-cl"></td>
+	<td class="runner-cc runner-cc1">
+		<div class="fieldlabel_RoleID {$fielddispclass_RoleID}">
+			<b>Role ID</b>
+		</div>
+		</td>
+		<td class="runner-cc alt">
+		<div class="fieldvalue_RoleID {$fielddispclass_RoleID}">
+			{$RoleID_value}&nbsp;
+		</div>
+		</td>
+	<td class="runner-cr alt"></td></tr>
+{END RoleID_fieldblock}
+	{BEGIN Name_fieldblock}
+	<tr class="runner-row style1 runner-b-viewfields"><td class="runner-cl"></td>
+	<td class="runner-cc runner-cc1">
+		<div class="fieldlabel_Name {$fielddispclass_Name}">
+			<b>Name</b>
+		</div>
+		</td>
+		<td class="runner-cc alt">
+		<div class="fieldvalue_Name {$fielddispclass_Name}">
+			{$Name_value}&nbsp;
+		</div>
+		</td>
+	<td class="runner-cr alt"></td></tr>
+{END Name_fieldblock}
 	{BEGIN Fname_fieldblock}
 	<tr class="runner-row style1 runner-b-viewfields"><td class="runner-cl"></td>
 	<td class="runner-cc runner-cc1">
@@ -90,20 +132,6 @@ Staff ID: {$show_key1}
 		</td>
 	<td class="runner-cr alt"></td></tr>
 {END Lname_fieldblock}
-	{BEGIN DOB_fieldblock}
-	<tr class="runner-row style1 runner-b-viewfields"><td class="runner-cl"></td>
-	<td class="runner-cc runner-cc1">
-		<div class="fieldlabel_DOB {$fielddispclass_DOB}">
-			<b>Date of Birth</b>
-		</div>
-		</td>
-		<td class="runner-cc alt">
-		<div class="fieldvalue_DOB {$fielddispclass_DOB}">
-			{$DOB_value}&nbsp;
-		</div>
-		</td>
-	<td class="runner-cr alt"></td></tr>
-{END DOB_fieldblock}
 	{BEGIN Sex_fieldblock}
 	<tr class="runner-row style1 runner-b-viewfields"><td class="runner-cl"></td>
 	<td class="runner-cc runner-cc1">
@@ -118,76 +146,6 @@ Staff ID: {$show_key1}
 		</td>
 	<td class="runner-cr alt"></td></tr>
 {END Sex_fieldblock}
-	{BEGIN Phone_fieldblock}
-	<tr class="runner-row style1 runner-b-viewfields"><td class="runner-cl"></td>
-	<td class="runner-cc runner-cc1">
-		<div class="fieldlabel_Phone {$fielddispclass_Phone}">
-			<b>Phone</b>
-		</div>
-		</td>
-		<td class="runner-cc alt">
-		<div class="fieldvalue_Phone {$fielddispclass_Phone}">
-			{$Phone_value}&nbsp;
-		</div>
-		</td>
-	<td class="runner-cr alt"></td></tr>
-{END Phone_fieldblock}
-	{BEGIN RoleID_fieldblock}
-	<tr class="runner-row style1 runner-b-viewfields"><td class="runner-cl"></td>
-	<td class="runner-cc runner-cc1">
-		<div class="fieldlabel_RoleID {$fielddispclass_RoleID}">
-			<b>Role ID</b>
-		</div>
-		</td>
-		<td class="runner-cc alt">
-		<div class="fieldvalue_RoleID {$fielddispclass_RoleID}">
-			{$RoleID_value}&nbsp;
-		</div>
-		</td>
-	<td class="runner-cr alt"></td></tr>
-{END RoleID_fieldblock}
-	{BEGIN UserName_fieldblock}
-	<tr class="runner-row style1 runner-b-viewfields"><td class="runner-cl"></td>
-	<td class="runner-cc runner-cc1">
-		<div class="fieldlabel_UserName {$fielddispclass_UserName}">
-			<b>User Name</b>
-		</div>
-		</td>
-		<td class="runner-cc alt">
-		<div class="fieldvalue_UserName {$fielddispclass_UserName}">
-			{$UserName_value}&nbsp;
-		</div>
-		</td>
-	<td class="runner-cr alt"></td></tr>
-{END UserName_fieldblock}
-	{BEGIN Password_fieldblock}
-	<tr class="runner-row style1 runner-b-viewfields"><td class="runner-cl"></td>
-	<td class="runner-cc runner-cc1">
-		<div class="fieldlabel_Password {$fielddispclass_Password}">
-			<b>Password</b>
-		</div>
-		</td>
-		<td class="runner-cc alt">
-		<div class="fieldvalue_Password {$fielddispclass_Password}">
-			{$Password_value}&nbsp;
-		</div>
-		</td>
-	<td class="runner-cr alt"></td></tr>
-{END Password_fieldblock}
-	{BEGIN Name_fieldblock}
-	<tr class="runner-row style1 runner-b-viewfields"><td class="runner-cl"></td>
-	<td class="runner-cc runner-cc1">
-		<div class="fieldlabel_Name {$fielddispclass_Name}">
-			<b>Name</b>
-		</div>
-		</td>
-		<td class="runner-cc alt">
-		<div class="fieldvalue_Name {$fielddispclass_Name}">
-			{$Name_value}&nbsp;
-		</div>
-		</td>
-	<td class="runner-cr alt"></td></tr>
-{END Name_fieldblock}
 	{BEGIN Address_fieldblock}
 	<tr class="runner-row style1 runner-b-viewfields"><td class="runner-cl"></td>
 	<td class="runner-cc runner-cc1">
@@ -202,6 +160,34 @@ Staff ID: {$show_key1}
 		</td>
 	<td class="runner-cr alt"></td></tr>
 {END Address_fieldblock}
+	{BEGIN DOB_fieldblock}
+	<tr class="runner-row style1 runner-b-viewfields"><td class="runner-cl"></td>
+	<td class="runner-cc runner-cc1">
+		<div class="fieldlabel_DOB {$fielddispclass_DOB}">
+			<b>Date of Birth</b>
+		</div>
+		</td>
+		<td class="runner-cc alt">
+		<div class="fieldvalue_DOB {$fielddispclass_DOB}">
+			{$DOB_value}&nbsp;
+		</div>
+		</td>
+	<td class="runner-cr alt"></td></tr>
+{END DOB_fieldblock}
+	{BEGIN Phone_fieldblock}
+	<tr class="runner-row style1 runner-b-viewfields"><td class="runner-cl"></td>
+	<td class="runner-cc runner-cc1">
+		<div class="fieldlabel_Phone {$fielddispclass_Phone}">
+			<b>Phone</b>
+		</div>
+		</td>
+		<td class="runner-cc alt">
+		<div class="fieldvalue_Phone {$fielddispclass_Phone}">
+			{$Phone_value}&nbsp;
+		</div>
+		</td>
+	<td class="runner-cr alt"></td></tr>
+{END Phone_fieldblock}
 
 
 

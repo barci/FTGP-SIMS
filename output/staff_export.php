@@ -119,7 +119,6 @@ if (@$_REQUEST["a"]!="")
 		$sWhere.=KeyWhere($keys);
 	}
 
-	$sWhere = whereAdd($sWhere,SecuritySQL("Search"));
 
 	$strSQL = $gQuery->gSQLWhere($sWhere);
 	$strWhereClause=$sWhere;
@@ -140,8 +139,6 @@ else
 	$strWhereClause = @$_SESSION[$strTableName."_where"];
 	$strHavingClause = @$_SESSION[$strTableName."_having"];
 	$strSearchCriteria = @$_SESSION[$strTableName."_criteria"];
-	if($strWhereClause == "")
-		$strWhereClause = whereAdd($strWhereClause,SecuritySQL("Search"));
 	$strSQL = $gQuery->gSQLWhere($strWhereClause, $strHavingClause, $strSearchCriteria);
 }
 
@@ -353,15 +350,15 @@ function ExportToXML($cipherer)
 		$values = array();
 			$values["StaffID"] = $pageObject->showDBValue("StaffID", $row);
 			$values["UserName"] = $pageObject->showDBValue("UserName", $row);
-			$values["Fname"] = $pageObject->showDBValue("Fname", $row);
-			$values["Lname"] = $pageObject->showDBValue("Lname", $row);
-			$values["DOB"] = $pageObject->showDBValue("DOB", $row);
 			$values["Password"] = $pageObject->showDBValue("Password", $row);
-			$values["Sex"] = $pageObject->showDBValue("Sex", $row);
-			$values["Phone"] = $pageObject->showDBValue("Phone", $row);
 			$values["RoleID"] = $pageObject->showDBValue("RoleID", $row);
 			$values["Name"] = $pageObject->showDBValue("Name", $row);
+			$values["Fname"] = $pageObject->showDBValue("Fname", $row);
+			$values["Lname"] = $pageObject->showDBValue("Lname", $row);
+			$values["Sex"] = $pageObject->showDBValue("Sex", $row);
 			$values["Address"] = $pageObject->showDBValue("Address", $row);
+			$values["DOB"] = $pageObject->showDBValue("DOB", $row);
+			$values["Phone"] = $pageObject->showDBValue("Phone", $row);
 		
 		$eventRes = true;
 		if ($eventObj->exists('BeforeOut'))
@@ -411,22 +408,7 @@ function ExportToCSV($cipherer)
 	$outstr.= "\"UserName\"";
 	if($outstr!="")
 		$outstr.=",";
-	$outstr.= "\"Fname\"";
-	if($outstr!="")
-		$outstr.=",";
-	$outstr.= "\"Lname\"";
-	if($outstr!="")
-		$outstr.=",";
-	$outstr.= "\"DOB\"";
-	if($outstr!="")
-		$outstr.=",";
 	$outstr.= "\"Password\"";
-	if($outstr!="")
-		$outstr.=",";
-	$outstr.= "\"Sex\"";
-	if($outstr!="")
-		$outstr.=",";
-	$outstr.= "\"Phone\"";
 	if($outstr!="")
 		$outstr.=",";
 	$outstr.= "\"RoleID\"";
@@ -435,7 +417,22 @@ function ExportToCSV($cipherer)
 	$outstr.= "\"Name\"";
 	if($outstr!="")
 		$outstr.=",";
+	$outstr.= "\"Fname\"";
+	if($outstr!="")
+		$outstr.=",";
+	$outstr.= "\"Lname\"";
+	if($outstr!="")
+		$outstr.=",";
+	$outstr.= "\"Sex\"";
+	if($outstr!="")
+		$outstr.=",";
 	$outstr.= "\"Address\"";
+	if($outstr!="")
+		$outstr.=",";
+	$outstr.= "\"DOB\"";
+	if($outstr!="")
+		$outstr.=",";
+	$outstr.= "\"Phone\"";
 	echo $outstr;
 	echo "\r\n";
 
@@ -447,15 +444,15 @@ function ExportToCSV($cipherer)
 		$values = array();
 			$values["StaffID"] = $pageObject->getViewControl("StaffID")->showDBValue($row, "");
 			$values["UserName"] = $pageObject->getViewControl("UserName")->showDBValue($row, "");
-			$values["Fname"] = $pageObject->getViewControl("Fname")->showDBValue($row, "");
-			$values["Lname"] = $pageObject->getViewControl("Lname")->showDBValue($row, "");
-			$values["DOB"] = $pageObject->getViewControl("DOB")->showDBValue($row, "");
 			$values["Password"] = $pageObject->getViewControl("Password")->showDBValue($row, "");
-			$values["Sex"] = $pageObject->getViewControl("Sex")->showDBValue($row, "");
-			$values["Phone"] = $pageObject->getViewControl("Phone")->showDBValue($row, "");
 			$values["RoleID"] = $pageObject->getViewControl("RoleID")->showDBValue($row, "");
 			$values["Name"] = $pageObject->getViewControl("Name")->showDBValue($row, "");
+			$values["Fname"] = $pageObject->getViewControl("Fname")->showDBValue($row, "");
+			$values["Lname"] = $pageObject->getViewControl("Lname")->showDBValue($row, "");
+			$values["Sex"] = $pageObject->getViewControl("Sex")->showDBValue($row, "");
 			$values["Address"] = $pageObject->getViewControl("Address")->showDBValue($row, "");
+			$values["DOB"] = $pageObject->getViewControl("DOB")->showDBValue($row, "");
+			$values["Phone"] = $pageObject->getViewControl("Phone")->showDBValue($row, "");
 
 		$eventRes = true;
 		if ($eventObj->exists('BeforeOut'))
@@ -473,22 +470,7 @@ function ExportToCSV($cipherer)
 			$outstr.='"'.str_replace('"', '""', $values["UserName"]).'"';
 			if($outstr!="")
 				$outstr.=",";
-			$outstr.='"'.str_replace('"', '""', $values["Fname"]).'"';
-			if($outstr!="")
-				$outstr.=",";
-			$outstr.='"'.str_replace('"', '""', $values["Lname"]).'"';
-			if($outstr!="")
-				$outstr.=",";
-			$outstr.='"'.str_replace('"', '""', $values["DOB"]).'"';
-			if($outstr!="")
-				$outstr.=",";
 			$outstr.='"'.str_replace('"', '""', $values["Password"]).'"';
-			if($outstr!="")
-				$outstr.=",";
-			$outstr.='"'.str_replace('"', '""', $values["Sex"]).'"';
-			if($outstr!="")
-				$outstr.=",";
-			$outstr.='"'.str_replace('"', '""', $values["Phone"]).'"';
 			if($outstr!="")
 				$outstr.=",";
 			$outstr.='"'.str_replace('"', '""', $values["RoleID"]).'"';
@@ -497,7 +479,22 @@ function ExportToCSV($cipherer)
 			$outstr.='"'.str_replace('"', '""', $values["Name"]).'"';
 			if($outstr!="")
 				$outstr.=",";
+			$outstr.='"'.str_replace('"', '""', $values["Fname"]).'"';
+			if($outstr!="")
+				$outstr.=",";
+			$outstr.='"'.str_replace('"', '""', $values["Lname"]).'"';
+			if($outstr!="")
+				$outstr.=",";
+			$outstr.='"'.str_replace('"', '""', $values["Sex"]).'"';
+			if($outstr!="")
+				$outstr.=",";
 			$outstr.='"'.str_replace('"', '""', $values["Address"]).'"';
+			if($outstr!="")
+				$outstr.=",";
+			$outstr.='"'.str_replace('"', '""', $values["DOB"]).'"';
+			if($outstr!="")
+				$outstr.=",";
+			$outstr.='"'.str_replace('"', '""', $values["Phone"]).'"';
 			echo $outstr;
 		}
 		
@@ -528,29 +525,29 @@ function WriteTableData($cipherer)
 	{
 		echo '<td style="width: 100" x:str>'.PrepareForExcel("Staff ID").'</td>';	
 		echo '<td style="width: 100" x:str>'.PrepareForExcel("User Name").'</td>';	
-		echo '<td style="width: 100" x:str>'.PrepareForExcel("First Name").'</td>';	
-		echo '<td style="width: 100" x:str>'.PrepareForExcel("Last Name").'</td>';	
-		echo '<td style="width: 100" x:str>'.PrepareForExcel("Date of Birth").'</td>';	
 		echo '<td style="width: 100" x:str>'.PrepareForExcel("Password").'</td>';	
-		echo '<td style="width: 100" x:str>'.PrepareForExcel("Sex").'</td>';	
-		echo '<td style="width: 100" x:str>'.PrepareForExcel("Phone").'</td>';	
 		echo '<td style="width: 100" x:str>'.PrepareForExcel("Role ID").'</td>';	
 		echo '<td style="width: 100" x:str>'.PrepareForExcel("Name").'</td>';	
+		echo '<td style="width: 100" x:str>'.PrepareForExcel("First Name").'</td>';	
+		echo '<td style="width: 100" x:str>'.PrepareForExcel("Last Name").'</td>';	
+		echo '<td style="width: 100" x:str>'.PrepareForExcel("Sex").'</td>';	
 		echo '<td style="width: 100" x:str>'.PrepareForExcel("Address").'</td>';	
+		echo '<td style="width: 100" x:str>'.PrepareForExcel("Date of Birth").'</td>';	
+		echo '<td style="width: 100" x:str>'.PrepareForExcel("Phone").'</td>';	
 	}
 	else
 	{
 		echo "<td>"."Staff ID"."</td>";
 		echo "<td>"."User Name"."</td>";
-		echo "<td>"."First Name"."</td>";
-		echo "<td>"."Last Name"."</td>";
-		echo "<td>"."Date of Birth"."</td>";
 		echo "<td>"."Password"."</td>";
-		echo "<td>"."Sex"."</td>";
-		echo "<td>"."Phone"."</td>";
 		echo "<td>"."Role ID"."</td>";
 		echo "<td>"."Name"."</td>";
+		echo "<td>"."First Name"."</td>";
+		echo "<td>"."Last Name"."</td>";
+		echo "<td>"."Sex"."</td>";
 		echo "<td>"."Address"."</td>";
+		echo "<td>"."Date of Birth"."</td>";
+		echo "<td>"."Phone"."</td>";
 	}
 	echo "</tr>";
 	
@@ -565,15 +562,15 @@ function WriteTableData($cipherer)
 	
 					$values["StaffID"] = $pageObject->getViewControl("StaffID")->showDBValue($row, "");
 					$values["UserName"] = $pageObject->getViewControl("UserName")->showDBValue($row, "");
-					$values["Fname"] = $pageObject->getViewControl("Fname")->showDBValue($row, "");
-					$values["Lname"] = $pageObject->getViewControl("Lname")->showDBValue($row, "");
-					$values["DOB"] = $pageObject->getViewControl("DOB")->showDBValue($row, "");
 					$values["Password"] = $pageObject->getViewControl("Password")->showDBValue($row, "");
-					$values["Sex"] = $pageObject->getViewControl("Sex")->showDBValue($row, "");
-					$values["Phone"] = $pageObject->getViewControl("Phone")->showDBValue($row, "");
 					$values["RoleID"] = $pageObject->getViewControl("RoleID")->showDBValue($row, "");
 					$values["Name"] = $pageObject->getViewControl("Name")->showDBValue($row, "");
+					$values["Fname"] = $pageObject->getViewControl("Fname")->showDBValue($row, "");
+					$values["Lname"] = $pageObject->getViewControl("Lname")->showDBValue($row, "");
+					$values["Sex"] = $pageObject->getViewControl("Sex")->showDBValue($row, "");
 					$values["Address"] = $pageObject->getViewControl("Address")->showDBValue($row, "");
+					$values["DOB"] = $pageObject->getViewControl("DOB")->showDBValue($row, "");
+					$values["Phone"] = $pageObject->getViewControl("Phone")->showDBValue($row, "");
 		
 		$eventRes = true;
 		if ($eventObj->exists('BeforeOut'))
@@ -605,33 +602,6 @@ function WriteTableData($cipherer)
 					echo '<td>';
 			
 									if($_REQUEST["type"]=="excel")
-						echo PrepareForExcel($values["Fname"]);
-					else
-						echo $values["Fname"];
-			echo '</td>';
-							if($_REQUEST["type"]=="excel")
-					echo '<td x:str>';
-				else
-					echo '<td>';
-			
-									if($_REQUEST["type"]=="excel")
-						echo PrepareForExcel($values["Lname"]);
-					else
-						echo $values["Lname"];
-			echo '</td>';
-							echo '<td>';
-			
-									if($_REQUEST["type"]=="excel")
-						echo PrepareForExcel($values["DOB"]);
-					else
-						echo $values["DOB"];
-			echo '</td>';
-							if($_REQUEST["type"]=="excel")
-					echo '<td x:str>';
-				else
-					echo '<td>';
-			
-									if($_REQUEST["type"]=="excel")
 						echo PrepareForExcel($values["Password"]);
 					else
 						echo $values["Password"];
@@ -641,30 +611,12 @@ function WriteTableData($cipherer)
 				else
 					echo '<td>';
 			
-									if($_REQUEST["type"]=="excel")
-						echo PrepareForExcel($values["Sex"]);
-					else
-						echo $values["Sex"];
-			echo '</td>';
-							if($_REQUEST["type"]=="excel")
-					echo '<td x:str>';
+				
+								if($_REQUEST["type"]=="excel")
+					echo PrepareForExcel($values["RoleID"]);
 				else
-					echo '<td>';
-			
-									if($_REQUEST["type"]=="excel")
-						echo PrepareForExcel($values["Phone"]);
-					else
-						echo $values["Phone"];
-			echo '</td>';
-							if($_REQUEST["type"]=="excel")
-					echo '<td x:str>';
-				else
-					echo '<td>';
-			
-									if($_REQUEST["type"]=="excel")
-						echo PrepareForExcel($values["RoleID"]);
-					else
-						echo $values["RoleID"];
+					echo $values["RoleID"];//echo htmlspecialchars($values["RoleID"]); commented for bug #6823
+					
 			echo '</td>';
 							if($_REQUEST["type"]=="excel")
 					echo '<td x:str>';
@@ -682,9 +634,56 @@ function WriteTableData($cipherer)
 					echo '<td>';
 			
 									if($_REQUEST["type"]=="excel")
+						echo PrepareForExcel($values["Fname"]);
+					else
+						echo $values["Fname"];
+			echo '</td>';
+							if($_REQUEST["type"]=="excel")
+					echo '<td x:str>';
+				else
+					echo '<td>';
+			
+									if($_REQUEST["type"]=="excel")
+						echo PrepareForExcel($values["Lname"]);
+					else
+						echo $values["Lname"];
+			echo '</td>';
+							if($_REQUEST["type"]=="excel")
+					echo '<td x:str>';
+				else
+					echo '<td>';
+			
+									if($_REQUEST["type"]=="excel")
+						echo PrepareForExcel($values["Sex"]);
+					else
+						echo $values["Sex"];
+			echo '</td>';
+							if($_REQUEST["type"]=="excel")
+					echo '<td x:str>';
+				else
+					echo '<td>';
+			
+									if($_REQUEST["type"]=="excel")
 						echo PrepareForExcel($values["Address"]);
 					else
 						echo $values["Address"];
+			echo '</td>';
+							echo '<td>';
+			
+									if($_REQUEST["type"]=="excel")
+						echo PrepareForExcel($values["DOB"]);
+					else
+						echo $values["DOB"];
+			echo '</td>';
+							if($_REQUEST["type"]=="excel")
+					echo '<td x:str>';
+				else
+					echo '<td>';
+			
+									if($_REQUEST["type"]=="excel")
+						echo PrepareForExcel($values["Phone"]);
+					else
+						echo $values["Phone"];
 			echo '</td>';
 			echo "</tr>";
 		}

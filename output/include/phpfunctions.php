@@ -647,6 +647,18 @@ function GetDefaultValue($field, $ptype, $table="")
 	global $strTableName;
 	if(!$table)
 		$table=$strTableName;
+				if($table=="delivery" && $field=="delFlag") 
+	{
+		return NO;
+	}
+				if($table=="stockrequest" && $field=="ReceiveFlag") 
+	{
+		return "NO";
+	}
+				if($table=="Stocks Received" && $field=="ReceiveFlag") 
+	{
+		return "NO";
+	}
 	return "";
 }
 

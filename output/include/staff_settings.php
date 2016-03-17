@@ -3,7 +3,7 @@ require_once(getabspath("classes/cipherer.php"));
 $tdatastaff = array();
 	$tdatastaff[".NumberOfChars"] = 80; 
 	$tdatastaff[".ShortName"] = "staff";
-	$tdatastaff[".OwnerID"] = "StaffID";
+	$tdatastaff[".OwnerID"] = "";
 	$tdatastaff[".OriginalTable"] = "staff";
 
 //	field labels
@@ -48,9 +48,9 @@ if(mlang_getcurrentlang()=="English")
 
 
 $tdatastaff[".shortTableName"] = "staff";
-$tdatastaff[".nSecOptions"] = 1;
+$tdatastaff[".nSecOptions"] = 0;
 $tdatastaff[".recsPerRowList"] = 1;
-$tdatastaff[".mainTableOwnerID"] = "StaffID";
+$tdatastaff[".mainTableOwnerID"] = "";
 $tdatastaff[".moveNext"] = 1;
 $tdatastaff[".nType"] = 0;
 
@@ -78,14 +78,8 @@ else
 
 $tdatastaff[".listIcons"] = true;
 $tdatastaff[".edit"] = true;
-$tdatastaff[".inlineEdit"] = true;
-$tdatastaff[".inlineAdd"] = true;
-$tdatastaff[".copy"] = true;
-$tdatastaff[".view"] = true;
 
-$tdatastaff[".exportTo"] = true;
 
-$tdatastaff[".printFriendly"] = true;
 
 $tdatastaff[".delete"] = true;
 
@@ -114,15 +108,14 @@ $tdatastaff[".allSearchFields"] = array();
 
 $tdatastaff[".allSearchFields"][] = "StaffID";
 $tdatastaff[".allSearchFields"][] = "UserName";
-$tdatastaff[".allSearchFields"][] = "Fname";
-$tdatastaff[".allSearchFields"][] = "Lname";
-$tdatastaff[".allSearchFields"][] = "DOB";
-$tdatastaff[".allSearchFields"][] = "Password";
-$tdatastaff[".allSearchFields"][] = "Sex";
-$tdatastaff[".allSearchFields"][] = "Phone";
 $tdatastaff[".allSearchFields"][] = "RoleID";
 $tdatastaff[".allSearchFields"][] = "Name";
+$tdatastaff[".allSearchFields"][] = "Fname";
+$tdatastaff[".allSearchFields"][] = "Lname";
+$tdatastaff[".allSearchFields"][] = "Sex";
 $tdatastaff[".allSearchFields"][] = "Address";
+$tdatastaff[".allSearchFields"][] = "DOB";
+$tdatastaff[".allSearchFields"][] = "Phone";
 
 $tdatastaff[".googleLikeFields"][] = "StaffID";
 $tdatastaff[".googleLikeFields"][] = "Name";
@@ -139,15 +132,14 @@ $tdatastaff[".googleLikeFields"][] = "Password";
 
 $tdatastaff[".advSearchFields"][] = "StaffID";
 $tdatastaff[".advSearchFields"][] = "UserName";
-$tdatastaff[".advSearchFields"][] = "Fname";
-$tdatastaff[".advSearchFields"][] = "Lname";
-$tdatastaff[".advSearchFields"][] = "DOB";
-$tdatastaff[".advSearchFields"][] = "Password";
-$tdatastaff[".advSearchFields"][] = "Sex";
-$tdatastaff[".advSearchFields"][] = "Phone";
 $tdatastaff[".advSearchFields"][] = "RoleID";
 $tdatastaff[".advSearchFields"][] = "Name";
+$tdatastaff[".advSearchFields"][] = "Fname";
+$tdatastaff[".advSearchFields"][] = "Lname";
+$tdatastaff[".advSearchFields"][] = "Sex";
 $tdatastaff[".advSearchFields"][] = "Address";
+$tdatastaff[".advSearchFields"][] = "DOB";
+$tdatastaff[".advSearchFields"][] = "Phone";
 
 $tdatastaff[".isTableType"] = "list";
 
@@ -203,106 +195,49 @@ $tableKeysstaff[] = "StaffID";
 $tdatastaff[".Keys"] = $tableKeysstaff;
 
 $tdatastaff[".listFields"] = array();
-$tdatastaff[".listFields"][] = "StaffID";
 $tdatastaff[".listFields"][] = "UserName";
-$tdatastaff[".listFields"][] = "Fname";
-$tdatastaff[".listFields"][] = "Lname";
-$tdatastaff[".listFields"][] = "DOB";
-$tdatastaff[".listFields"][] = "Password";
-$tdatastaff[".listFields"][] = "Sex";
-$tdatastaff[".listFields"][] = "Phone";
 $tdatastaff[".listFields"][] = "RoleID";
 $tdatastaff[".listFields"][] = "Name";
+$tdatastaff[".listFields"][] = "Fname";
+$tdatastaff[".listFields"][] = "Lname";
+$tdatastaff[".listFields"][] = "Sex";
 $tdatastaff[".listFields"][] = "Address";
+$tdatastaff[".listFields"][] = "DOB";
+$tdatastaff[".listFields"][] = "Phone";
 
 $tdatastaff[".viewFields"] = array();
-$tdatastaff[".viewFields"][] = "StaffID";
-$tdatastaff[".viewFields"][] = "UserName";
-$tdatastaff[".viewFields"][] = "Fname";
-$tdatastaff[".viewFields"][] = "Lname";
-$tdatastaff[".viewFields"][] = "DOB";
-$tdatastaff[".viewFields"][] = "Password";
-$tdatastaff[".viewFields"][] = "Sex";
-$tdatastaff[".viewFields"][] = "Phone";
-$tdatastaff[".viewFields"][] = "RoleID";
-$tdatastaff[".viewFields"][] = "Name";
-$tdatastaff[".viewFields"][] = "Address";
 
 $tdatastaff[".addFields"] = array();
-$tdatastaff[".addFields"][] = "Sex";
-$tdatastaff[".addFields"][] = "Fname";
-$tdatastaff[".addFields"][] = "Lname";
-$tdatastaff[".addFields"][] = "DOB";
 $tdatastaff[".addFields"][] = "UserName";
 $tdatastaff[".addFields"][] = "Password";
-$tdatastaff[".addFields"][] = "Phone";
 $tdatastaff[".addFields"][] = "RoleID";
 $tdatastaff[".addFields"][] = "Name";
+$tdatastaff[".addFields"][] = "Fname";
+$tdatastaff[".addFields"][] = "Lname";
+$tdatastaff[".addFields"][] = "Sex";
 $tdatastaff[".addFields"][] = "Address";
+$tdatastaff[".addFields"][] = "DOB";
+$tdatastaff[".addFields"][] = "Phone";
 
 $tdatastaff[".inlineAddFields"] = array();
-$tdatastaff[".inlineAddFields"][] = "Sex";
-$tdatastaff[".inlineAddFields"][] = "Fname";
-$tdatastaff[".inlineAddFields"][] = "Lname";
-$tdatastaff[".inlineAddFields"][] = "DOB";
-$tdatastaff[".inlineAddFields"][] = "UserName";
-$tdatastaff[".inlineAddFields"][] = "Password";
-$tdatastaff[".inlineAddFields"][] = "Phone";
-$tdatastaff[".inlineAddFields"][] = "RoleID";
-$tdatastaff[".inlineAddFields"][] = "Name";
-$tdatastaff[".inlineAddFields"][] = "Address";
 
 $tdatastaff[".editFields"] = array();
-$tdatastaff[".editFields"][] = "StaffID";
 $tdatastaff[".editFields"][] = "UserName";
-$tdatastaff[".editFields"][] = "Fname";
-$tdatastaff[".editFields"][] = "Lname";
-$tdatastaff[".editFields"][] = "DOB";
 $tdatastaff[".editFields"][] = "Password";
-$tdatastaff[".editFields"][] = "Sex";
-$tdatastaff[".editFields"][] = "Phone";
 $tdatastaff[".editFields"][] = "RoleID";
 $tdatastaff[".editFields"][] = "Name";
+$tdatastaff[".editFields"][] = "Fname";
+$tdatastaff[".editFields"][] = "Lname";
+$tdatastaff[".editFields"][] = "Sex";
 $tdatastaff[".editFields"][] = "Address";
+$tdatastaff[".editFields"][] = "DOB";
+$tdatastaff[".editFields"][] = "Phone";
 
 $tdatastaff[".inlineEditFields"] = array();
-$tdatastaff[".inlineEditFields"][] = "StaffID";
-$tdatastaff[".inlineEditFields"][] = "UserName";
-$tdatastaff[".inlineEditFields"][] = "Fname";
-$tdatastaff[".inlineEditFields"][] = "Lname";
-$tdatastaff[".inlineEditFields"][] = "DOB";
-$tdatastaff[".inlineEditFields"][] = "Password";
-$tdatastaff[".inlineEditFields"][] = "Sex";
-$tdatastaff[".inlineEditFields"][] = "Phone";
-$tdatastaff[".inlineEditFields"][] = "RoleID";
-$tdatastaff[".inlineEditFields"][] = "Name";
-$tdatastaff[".inlineEditFields"][] = "Address";
 
 $tdatastaff[".exportFields"] = array();
-$tdatastaff[".exportFields"][] = "StaffID";
-$tdatastaff[".exportFields"][] = "UserName";
-$tdatastaff[".exportFields"][] = "Fname";
-$tdatastaff[".exportFields"][] = "Lname";
-$tdatastaff[".exportFields"][] = "DOB";
-$tdatastaff[".exportFields"][] = "Password";
-$tdatastaff[".exportFields"][] = "Sex";
-$tdatastaff[".exportFields"][] = "Phone";
-$tdatastaff[".exportFields"][] = "RoleID";
-$tdatastaff[".exportFields"][] = "Name";
-$tdatastaff[".exportFields"][] = "Address";
 
 $tdatastaff[".printFields"] = array();
-$tdatastaff[".printFields"][] = "StaffID";
-$tdatastaff[".printFields"][] = "UserName";
-$tdatastaff[".printFields"][] = "Fname";
-$tdatastaff[".printFields"][] = "Lname";
-$tdatastaff[".printFields"][] = "DOB";
-$tdatastaff[".printFields"][] = "Password";
-$tdatastaff[".printFields"][] = "Sex";
-$tdatastaff[".printFields"][] = "Phone";
-$tdatastaff[".printFields"][] = "RoleID";
-$tdatastaff[".printFields"][] = "Name";
-$tdatastaff[".printFields"][] = "Address";
 
 //	StaffID
 //	Custom field settings
@@ -317,22 +252,16 @@ $tdatastaff[".printFields"][] = "Address";
 		$fdata["AutoInc"] = true;
 	
 		
-		$fdata["bListPage"] = true; 
-	
 		
 		
-		$fdata["bEditPage"] = true; 
-	
-		$fdata["bInlineEdit"] = true; 
-	
-		$fdata["bViewPage"] = true; 
-	
+		
+		
+		
+		
 		$fdata["bAdvancedSearch"] = true; 
 	
-		$fdata["bPrinterPage"] = true; 
-	
-		$fdata["bExportPage"] = true; 
-	
+		
+		
 		$fdata["strField"] = "StaffID"; 
 		$fdata["FullName"] = "StaffID";
 	
@@ -420,20 +349,15 @@ $tdatastaff[".printFields"][] = "Address";
 	
 		$fdata["bAddPage"] = true; 
 	
-		$fdata["bInlineAdd"] = true; 
-	
+		
 		$fdata["bEditPage"] = true; 
 	
-		$fdata["bInlineEdit"] = true; 
-	
-		$fdata["bViewPage"] = true; 
-	
+		
+		
 		$fdata["bAdvancedSearch"] = true; 
 	
-		$fdata["bPrinterPage"] = true; 
-	
-		$fdata["bExportPage"] = true; 
-	
+		
+		
 		$fdata["strField"] = "Name"; 
 		$fdata["FullName"] = "Name";
 	
@@ -521,20 +445,15 @@ $tdatastaff[".printFields"][] = "Address";
 	
 		$fdata["bAddPage"] = true; 
 	
-		$fdata["bInlineAdd"] = true; 
-	
+		
 		$fdata["bEditPage"] = true; 
 	
-		$fdata["bInlineEdit"] = true; 
-	
-		$fdata["bViewPage"] = true; 
-	
+		
+		
 		$fdata["bAdvancedSearch"] = true; 
 	
-		$fdata["bPrinterPage"] = true; 
-	
-		$fdata["bExportPage"] = true; 
-	
+		
+		
 		$fdata["strField"] = "Fname"; 
 		$fdata["FullName"] = "Fname";
 	
@@ -621,20 +540,15 @@ $tdatastaff[".printFields"][] = "Address";
 	
 		$fdata["bAddPage"] = true; 
 	
-		$fdata["bInlineAdd"] = true; 
-	
+		
 		$fdata["bEditPage"] = true; 
 	
-		$fdata["bInlineEdit"] = true; 
-	
-		$fdata["bViewPage"] = true; 
-	
+		
+		
 		$fdata["bAdvancedSearch"] = true; 
 	
-		$fdata["bPrinterPage"] = true; 
-	
-		$fdata["bExportPage"] = true; 
-	
+		
+		
 		$fdata["strField"] = "Lname"; 
 		$fdata["FullName"] = "Lname";
 	
@@ -721,20 +635,15 @@ $tdatastaff[".printFields"][] = "Address";
 	
 		$fdata["bAddPage"] = true; 
 	
-		$fdata["bInlineAdd"] = true; 
-	
+		
 		$fdata["bEditPage"] = true; 
 	
-		$fdata["bInlineEdit"] = true; 
-	
-		$fdata["bViewPage"] = true; 
-	
+		
+		
 		$fdata["bAdvancedSearch"] = true; 
 	
-		$fdata["bPrinterPage"] = true; 
-	
-		$fdata["bExportPage"] = true; 
-	
+		
+		
 		$fdata["strField"] = "DOB"; 
 		$fdata["FullName"] = "DOB";
 	
@@ -823,20 +732,15 @@ $tdatastaff[".printFields"][] = "Address";
 	
 		$fdata["bAddPage"] = true; 
 	
-		$fdata["bInlineAdd"] = true; 
-	
+		
 		$fdata["bEditPage"] = true; 
 	
-		$fdata["bInlineEdit"] = true; 
-	
-		$fdata["bViewPage"] = true; 
-	
+		
+		
 		$fdata["bAdvancedSearch"] = true; 
 	
-		$fdata["bPrinterPage"] = true; 
-	
-		$fdata["bExportPage"] = true; 
-	
+		
+		
 		$fdata["strField"] = "Address"; 
 		$fdata["FullName"] = "Address";
 	
@@ -924,20 +828,15 @@ $tdatastaff[".printFields"][] = "Address";
 	
 		$fdata["bAddPage"] = true; 
 	
-		$fdata["bInlineAdd"] = true; 
-	
+		
 		$fdata["bEditPage"] = true; 
 	
-		$fdata["bInlineEdit"] = true; 
-	
-		$fdata["bViewPage"] = true; 
-	
+		
+		
 		$fdata["bAdvancedSearch"] = true; 
 	
-		$fdata["bPrinterPage"] = true; 
-	
-		$fdata["bExportPage"] = true; 
-	
+		
+		
 		$fdata["strField"] = "Sex"; 
 		$fdata["FullName"] = "Sex";
 	
@@ -1024,20 +923,15 @@ $tdatastaff[".printFields"][] = "Address";
 	
 		$fdata["bAddPage"] = true; 
 	
-		$fdata["bInlineAdd"] = true; 
-	
+		
 		$fdata["bEditPage"] = true; 
 	
-		$fdata["bInlineEdit"] = true; 
-	
-		$fdata["bViewPage"] = true; 
-	
+		
+		
 		$fdata["bAdvancedSearch"] = true; 
 	
-		$fdata["bPrinterPage"] = true; 
-	
-		$fdata["bExportPage"] = true; 
-	
+		
+		
 		$fdata["strField"] = "Phone"; 
 		$fdata["FullName"] = "Phone";
 	
@@ -1124,20 +1018,15 @@ $tdatastaff[".printFields"][] = "Address";
 	
 		$fdata["bAddPage"] = true; 
 	
-		$fdata["bInlineAdd"] = true; 
-	
+		
 		$fdata["bEditPage"] = true; 
 	
-		$fdata["bInlineEdit"] = true; 
-	
-		$fdata["bViewPage"] = true; 
-	
+		
+		
 		$fdata["bAdvancedSearch"] = true; 
 	
-		$fdata["bPrinterPage"] = true; 
-	
-		$fdata["bExportPage"] = true; 
-	
+		
+		
 		$fdata["strField"] = "RoleID"; 
 		$fdata["FullName"] = "RoleID";
 	
@@ -1170,12 +1059,35 @@ $tdatastaff[".printFields"][] = "Address";
 //	Begin Edit Formats 	
 	$fdata["EditFormats"] = array();
 	
-	$edata = array("EditFormat" => "Text field");
+	$edata = array("EditFormat" => "Lookup wizard");
 	
 		
 		
 	
 //	Begin Lookup settings
+								$edata["LookupType"] = 2;
+	$edata["freeInput"] = 0;
+	$edata["autoCompleteFieldsOnEdit"] = 0;
+	$edata["autoCompleteFields"] = array();
+				
+		
+			
+	$edata["LinkField"] = "RoleID";
+	$edata["LinkFieldType"] = 200;
+	$edata["DisplayField"] = "RoleName";
+	
+		
+	$edata["LookupTable"] = "role";
+	$edata["LookupOrderBy"] = "";
+	
+		
+		
+		
+		
+		
+				
+	
+	
 	//	End Lookup Settings
 
 		
@@ -1190,8 +1102,7 @@ $tdatastaff[".printFields"][] = "Address";
 		
 		
 		
-		$edata["EditParams"] = "";
-			
+		
 		
 //	Begin validation
 	$edata["validateAs"] = array();
@@ -1224,20 +1135,15 @@ $tdatastaff[".printFields"][] = "Address";
 	
 		$fdata["bAddPage"] = true; 
 	
-		$fdata["bInlineAdd"] = true; 
-	
+		
 		$fdata["bEditPage"] = true; 
 	
-		$fdata["bInlineEdit"] = true; 
-	
-		$fdata["bViewPage"] = true; 
-	
+		
+		
 		$fdata["bAdvancedSearch"] = true; 
 	
-		$fdata["bPrinterPage"] = true; 
-	
-		$fdata["bExportPage"] = true; 
-	
+		
+		
 		$fdata["strField"] = "UserName"; 
 		$fdata["FullName"] = "UserName";
 	
@@ -1320,24 +1226,17 @@ $tdatastaff[".printFields"][] = "Address";
 	
 		
 		
-		$fdata["bListPage"] = true; 
-	
+		
 		$fdata["bAddPage"] = true; 
 	
-		$fdata["bInlineAdd"] = true; 
-	
+		
 		$fdata["bEditPage"] = true; 
 	
-		$fdata["bInlineEdit"] = true; 
-	
-		$fdata["bViewPage"] = true; 
-	
-		$fdata["bAdvancedSearch"] = true; 
-	
-		$fdata["bPrinterPage"] = true; 
-	
-		$fdata["bExportPage"] = true; 
-	
+		
+		
+		
+		
+		
 		$fdata["strField"] = "Password"; 
 		$fdata["FullName"] = "Password";
 	
@@ -1370,7 +1269,7 @@ $tdatastaff[".printFields"][] = "Address";
 //	Begin Edit Formats 	
 	$fdata["EditFormats"] = array();
 	
-	$edata = array("EditFormat" => "Text field");
+	$edata = array("EditFormat" => "Password");
 	
 		
 		

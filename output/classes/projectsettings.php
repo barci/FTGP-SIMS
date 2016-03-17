@@ -1556,6 +1556,12 @@ function GetTableURL($table = "")
 		return "delivery";
 	if("Product Listing" == $table) 
 		return "Product_Listing";
+	if("stockrequest" == $table) 
+		return "stockrequest";
+	if("Pending Orders" == $table) 
+		return "Pending_Orders";
+	if("Stocks Received" == $table) 
+		return "Stocks_Received";
 }
 
 //	return strTableName by short table name
@@ -1586,6 +1592,12 @@ function GetTableByShort($shortTName = "")
 		return "delivery";
 	if("Product_Listing" == $shortTName) 
 		return "Product Listing";
+	if("stockrequest" == $shortTName) 
+		return "stockrequest";
+	if("Pending_Orders" == $shortTName) 
+		return "Pending Orders";
+	if("Stocks_Received" == $shortTName) 
+		return "Stocks Received";
 }
 
 //	A

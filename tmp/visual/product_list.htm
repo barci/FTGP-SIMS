@@ -46,12 +46,17 @@
           <TD class=runner-cc></TD>
           <TD class=runner-cr><IMG src="images/spacer.gif"></TD></TR>
         <TR class="runner-row style1"><TD class=runner-cl></TD>
-          <TD class=runner-cc><TABLE class=runner-hc cellPadding=0 border=0><TR>{BEGIN newrecord_controls_block}<TD class="runner-cc runner-bl runner-b-recordcontrols_new" {$brickclass_recordcontrols_new}><SPAN>{BEGIN add_link}<SPAN class=runner-btnframe><SPAN class=runner-btnleft></SPAN><SPAN class=runner-btnright></SPAN><A class=runner-button href="#" {$addlink_attrs}>Add new</A> 
-                  </SPAN>{END add_link}{BEGIN inlineadd_link}<SPAN class=runner-btnframe><SPAN class=runner-btnleft></SPAN><SPAN class=runner-btnright></SPAN><A class=runner-button href="#" {$inlineaddlink_attrs}>Inline 
+          <TD class=runner-cc><TABLE class=runner-hc cellPadding=0 border=0><TR>{BEGIN newrecord_controls_block}<TD class="runner-cc runner-bl runner-b-recordcontrols_new" {$brickclass_recordcontrols_new}><SPAN>{BEGIN add_link}<span class="runner-btnframe"><span class="runner-btnleft"></span>
+		<span class="runner-btnright"></span>
+		<a href="#" class="runner-button" {$addlink_attrs}>Add new</a>
+		</span>
+	{END add_link}
+
+		{BEGIN inlineadd_link}<SPAN class=runner-btnframe><SPAN class=runner-btnleft></SPAN><SPAN class=runner-btnright></SPAN><A class=runner-button href="#" {$inlineaddlink_attrs}>Inline 
                   Add</A> </SPAN>{END inlineadd_link}</SPAN></TD>
                 {END newrecord_controls_block}{BEGIN record_controls_block}<TD class="runner-cc runner-bl runner-b-recordcontrol" {$brickclass_recordcontrol}><SPAN>{BEGIN editselected_link}<SPAN class=runner-btnframe {$editselectedlink_span}><SPAN class=runner-btnleft></SPAN><SPAN class=runner-btnright></SPAN><A class=runner-button href="#" {$editselectedlink_attrs}>Edit 
                   selected</A> </SPAN>{END editselected_link}{BEGIN saveall_link}<SPAN class=runner-btnframe {$savealllink_span}><SPAN class=runner-btnleft></SPAN><SPAN class=runner-btnright></SPAN><A class=runner-button href="#" {$savealllink_attrs}>Save 
-                  all</A> </SPAN>{END saveall_link}{BEGIN cancelall_link}<SPAN class=runner-btnframe {$cancelalllink_span}><SPAN class=runner-btnleft></SPAN><SPAN class=runner-btnright></SPAN><A class=runner-button href="#" {$cancelalllink_attrs}>Cancel</A> </SPAN>{END cancelall_link}{BEGIN deleteselected_link}<SPAN class=runner-btnframe {$deleteselectedlink_span}><SPAN class=runner-btnleft></SPAN><SPAN class=runner-btnright></SPAN><A class=runner-button href="#" {$deleteselectedlink_attrs}>Delete selected</A> </SPAN>{END deleteselected_link}{BEGIN printselected_link}<SPAN class=runner-btnframe {$printselectedlink_span}><SPAN class=runner-btnleft></SPAN><SPAN class=runner-btnright></SPAN><A class=runner-button href="#" {$printselectedlink_attrs}>Print 
+                  all</A> </SPAN>{END saveall_link}{BEGIN cancelall_link}<SPAN class=runner-btnframe {$cancelalllink_span}><SPAN class=runner-btnleft></SPAN><SPAN class=runner-btnright></SPAN><A class=runner-button href="#" {$cancelalllink_attrs}>Cancel</A> </SPAN>{END cancelall_link}{BEGIN printselected_link}<SPAN class=runner-btnframe {$printselectedlink_span}><SPAN class=runner-btnleft></SPAN><SPAN class=runner-btnright></SPAN><A class=runner-button href="#" {$printselectedlink_attrs}>Print 
                   selected</A> </SPAN>{END printselected_link}</SPAN></TD>
                 {END record_controls_block}<TD class="runner-cc filler"></TD></TR></TABLE></TD>
           <TD class=runner-cr></TD></TR>
@@ -100,9 +105,18 @@
           {BEGIN listIcons_column}<TH class=runner-cc iEditCont="all"></TH>
           {END listIcons_column}{BEGIN checkbox_column}<TH class="runner-cc runner-bc"><INPUT type=checkbox 
             {$checkboxheader_attrs}></TH>
-          {END checkbox_column}{BEGIN ProdID_fieldheadercolumn}<TH class="runner-cc "><P align=center>{BEGIN ProdID_fieldheader}<A {$ProdID_orderlinkattrs}>Prod ID 
+          {END checkbox_column}{BEGIN product_dtable_column}<th class="runner-cc">&nbsp;</th>
+									{END product_dtable_column}
+																										{BEGIN ProdID_fieldheadercolumn}<TH class="runner-cc "><P align=center>{BEGIN ProdID_fieldheader}<A {$ProdID_orderlinkattrs}>Prod ID 
             </A>{END ProdID_fieldheader}</P></TH>
-          {END ProdID_fieldheadercolumn}{BEGIN Pname_fieldheadercolumn}<TH class="runner-cc ">{BEGIN Pname_fieldheader}<A {$Pname_orderlinkattrs}>Product Name </A>{END Pname_fieldheader}</TH>
+          {END ProdID_fieldheadercolumn}
+
+																	{BEGIN ProdNo_fieldheadercolumn}<th class="runner-cc ">{BEGIN ProdNo_fieldheader}<a {$ProdNo_orderlinkattrs}>
+											Product Number
+										</a>
+									{END ProdNo_fieldheader}
+									</th>
+									{END ProdNo_fieldheadercolumn}{BEGIN Pname_fieldheadercolumn}<TH class="runner-cc ">{BEGIN Pname_fieldheader}<A {$Pname_orderlinkattrs}>Product Name </A>{END Pname_fieldheader}</TH>
           {END Pname_fieldheadercolumn}{BEGIN CatID_fieldheadercolumn}<TH class="runner-cc ">{BEGIN CatID_fieldheader}<A {$CatID_orderlinkattrs}>Category </A>{END CatID_fieldheader}</TH>
           {END CatID_fieldheadercolumn}{BEGIN Usize_fieldheadercolumn}<TH class="runner-cc "><P align=center>{BEGIN Usize_fieldheader}<A {$Usize_orderlinkattrs}>Unit Size 
             </A>{END Usize_fieldheader}</P></TH>
@@ -119,20 +133,28 @@
           {END Qty_fieldheadercolumn}{BEGIN ReOrLevel_fieldheadercolumn}<TH class="runner-cc "><P align=center>{BEGIN ReOrLevel_fieldheader}<A {$ReOrLevel_orderlinkattrs}>Re-Order Level </A>{END ReOrLevel_fieldheader}</P></TH>
           {END ReOrLevel_fieldheadercolumn}{BEGIN UInOrder_fieldheadercolumn}<TH class="runner-cc "><P align=center>{BEGIN UInOrder_fieldheader}<A {$UInOrder_orderlinkattrs}>Units 
             In Order </A>{END UInOrder_fieldheader}</P></TH>
-          {END UInOrder_fieldheadercolumn}{BEGIN Uprice_fieldheadercolumn}<TH class="runner-cc "><P align=center>{BEGIN Uprice_fieldheader}<A {$Uprice_orderlinkattrs}>Unit 
-            Price </A>{END Uprice_fieldheader}</P></TH>
-          {END Uprice_fieldheadercolumn}{BEGIN USP_fieldheadercolumn}<TH class="runner-cc "><P align=center>{BEGIN USP_fieldheader}<A {$USP_orderlinkattrs}>Unit 
-            Selling Price </A>{END USP_fieldheader}</P></TH>
-          {END USP_fieldheadercolumn}{BEGIN Discount_fieldheadercolumn}<TH class="runner-cc "><P>{BEGIN Discount_fieldheader}<A {$Discount_orderlinkattrs}>Discount 
-            </A>{END Discount_fieldheader}</P></TH>
-          {END Discount_fieldheadercolumn}{BEGIN Note_fieldheadercolumn}<TH class="runner-cc runner-clast">{BEGIN Note_fieldheader}<A {$Note_orderlinkattrs}>Note </A>{END Note_fieldheader}</TH>
+          {END UInOrder_fieldheadercolumn}{BEGIN Note_fieldheadercolumn}<TH class="runner-cc runner-clast">{BEGIN Note_fieldheader}<A {$Note_orderlinkattrs}>Note </A>{END Note_fieldheader}</TH>
           {END Note_fieldheadercolumn}<TH class=runner-cr><IMG src="images/spacer.gif"></TH>
           {BEGIN endrecordheader_block}<TH class=runner-cs></TH>{END endrecordheader_block}{END record_header}</TR>{END grid_header}</THEAD>
         {BEGIN grid_row}<TR class="runner-row style1 {$rowclass}" {$rowstyle} {$rowattrs}>{BEGIN grid_record}<TD class=runner-cl {$rowstyle}></TD>
-          {BEGIN listIcons_column}<TD class="runner-cc runner-bc runner-icons" iEditCont="all" {$rowstyle}>{BEGIN inlineedit_column}{BEGIN inlineedit_link}<A title="Inline Edit" class=runner-button-img {$inlineeditlink_attrs}><IMG class=runner-cicon alt="Inline Edit" src="images/icon_inline_edit_new.gif"></A> {END inlineedit_link}{END inlineedit_column}{BEGIN copy_column}{BEGIN copy_link}<A title=Copy class=runner-button-img {$copylink_attrs}><IMG class=runner-cicon alt=Copy src="images/icon_copy_new.gif"></A>{END copy_link}{END copy_column}</TD>
+          {BEGIN listIcons_column}<TD class="runner-cc runner-bc runner-icons" iEditCont="all" {$rowstyle}>{BEGIN inlineedit_column}{BEGIN inlineedit_link}<A title="Inline Edit" class=runner-button-img {$inlineeditlink_attrs}><IMG class=runner-cicon alt="Inline Edit" src="images/icon_inline_edit_new.gif"></A> {END inlineedit_link}{END inlineedit_column}</TD>
           {END listIcons_column}{BEGIN checkbox_column}<TD class="runner-cc runner-bc" iEditCont="checkBox" {$rowstyle}>{BEGIN checkbox}<INPUT type=checkbox {$checkbox_attrs}>{END checkbox}</TD>
-          {END checkbox_column}{BEGIN ProdID_fieldcolumn}<TD class="runner-cc  {$ProdID_class}" {$ProdID_style}><P align=center>{$ProdID_value}</P></TD>
-          {END ProdID_fieldcolumn}{BEGIN Pname_fieldcolumn}<TD class="runner-cc  {$Pname_class}" {$Pname_style}>{$Pname_value}</TD>
+          {END checkbox_column}{BEGIN product_dtable_column}<td class="runner-cc runner-nowrap" {$rowstyle}>{BEGIN stockrequest_dtable_link}<span><a {$stockrequest_dtablelink_attrs}>
+										Stockrequest
+																				<span {$stockrequest_childnumber_attr} dir="ltr">{BEGIN stockrequest_childcount}({$stockrequest_childnumber}){END stockrequest_childcount}</span>
+									</a>
+																		&nbsp;
+									</span>
+									{END stockrequest_dtable_link}
+																		</td>
+									{END product_dtable_column}
+
+										{BEGIN ProdID_fieldcolumn}<TD class="runner-cc  {$ProdID_class}" {$ProdID_style}><P align=center>{$ProdID_value}</P></TD>
+          {END ProdID_fieldcolumn}
+
+	{BEGIN ProdNo_fieldcolumn}<td class="runner-cc  {$ProdNo_class}" {$ProdNo_style}>{$ProdNo_value}
+	</td>
+{END ProdNo_fieldcolumn}{BEGIN Pname_fieldcolumn}<TD class="runner-cc  {$Pname_class}" {$Pname_style}>{$Pname_value}</TD>
           {END Pname_fieldcolumn}{BEGIN CatID_fieldcolumn}<TD class="runner-cc  {$CatID_class}" {$CatID_style}>{$CatID_value}</TD>
           {END CatID_fieldcolumn}{BEGIN Usize_fieldcolumn}<TD class="runner-cc  {$Usize_class}" {$Usize_style}><P align=center>{$Usize_value}</P></TD>
           {END Usize_fieldcolumn}{BEGIN SuppID_fieldcolumn}<TD class="runner-cc  {$SuppID_class}" {$SuppID_style}>{$SuppID_value}</TD>
@@ -144,17 +166,19 @@
           {END QPerUnit_fieldcolumn}{BEGIN Qty_fieldcolumn}<TD class="runner-cc  {$Qty_class}" {$Qty_style}><P align=center>{$Qty_value}</P></TD>
           {END Qty_fieldcolumn}{BEGIN ReOrLevel_fieldcolumn}<TD class="runner-cc  {$ReOrLevel_class}" {$ReOrLevel_style}><P align=center>{$ReOrLevel_value}</P></TD>
           {END ReOrLevel_fieldcolumn}{BEGIN UInOrder_fieldcolumn}<TD class="runner-cc  {$UInOrder_class}" {$UInOrder_style}><P align=center>{$UInOrder_value}</P></TD>
-          {END UInOrder_fieldcolumn}{BEGIN Uprice_fieldcolumn}<TD class="runner-cc  {$Uprice_class}" {$Uprice_style}><P>{$Uprice_value}</P></TD>
-          {END Uprice_fieldcolumn}{BEGIN USP_fieldcolumn}<TD class="runner-cc  {$USP_class}" {$USP_style}><P align=center>{$USP_value}</P></TD>
-          {END USP_fieldcolumn}{BEGIN Discount_fieldcolumn}<TD class="runner-cc  {$Discount_class}" {$Discount_style}><P>{$Discount_value}</P></TD>
-          {END Discount_fieldcolumn}{BEGIN Note_fieldcolumn}<TD class="runner-cc runner-clast {$Note_class}" {$Note_style}>{$Note_value}</TD>
+          {END UInOrder_fieldcolumn}{BEGIN Note_fieldcolumn}<TD class="runner-cc runner-clast {$Note_class}" {$Note_style}>{$Note_value}</TD>
           {END Note_fieldcolumn}<TD class=runner-cr {$rowstyle}></TD>
           {BEGIN endrecord_block}<TD class=runner-cs {$endrecordblock_attrs}></TD>{END endrecord_block}{END grid_record}</TR>
         {END grid_row}{BEGIN grid_footer}<TR class="runner-bottomrow style1{$gridFooter_class}">{BEGIN record_footer}<TD class=runner-cl><IMG src="images/spacer.gif"></TD>
           {BEGIN listIcons_column}<TD class=runner-cc></TD>
           {END listIcons_column}{BEGIN checkbox_column}<TD class=runner-cc></TD>
-          {END checkbox_column}{BEGIN ProdID_fieldheadercolumn}<TD class="runner-cc "></TD>
-          {END ProdID_fieldheadercolumn}{BEGIN Pname_fieldheadercolumn}<TD class="runner-cc "></TD>
+          {END checkbox_column}{BEGIN product_dtable_column}<td class="runner-cc"></td>
+									{END product_dtable_column}
+
+									{BEGIN ProdID_fieldheadercolumn}<TD class="runner-cc "></TD>
+          {END ProdID_fieldheadercolumn}
+{BEGIN ProdNo_fieldheadercolumn}<td class="runner-cc "></td>
+{END ProdNo_fieldheadercolumn}{BEGIN Pname_fieldheadercolumn}<TD class="runner-cc "></TD>
           {END Pname_fieldheadercolumn}{BEGIN CatID_fieldheadercolumn}<TD class="runner-cc "></TD>
           {END CatID_fieldheadercolumn}{BEGIN Usize_fieldheadercolumn}<TD class="runner-cc "></TD>
           {END Usize_fieldheadercolumn}{BEGIN SuppID_fieldheadercolumn}<TD class="runner-cc "></TD>
@@ -165,10 +189,7 @@
           {END QPerUnit_fieldheadercolumn}{BEGIN Qty_fieldheadercolumn}<TD class="runner-cc "></TD>
           {END Qty_fieldheadercolumn}{BEGIN ReOrLevel_fieldheadercolumn}<TD class="runner-cc "></TD>
           {END ReOrLevel_fieldheadercolumn}{BEGIN UInOrder_fieldheadercolumn}<TD class="runner-cc "></TD>
-          {END UInOrder_fieldheadercolumn}{BEGIN Uprice_fieldheadercolumn}<TD class="runner-cc "></TD>
-          {END Uprice_fieldheadercolumn}{BEGIN USP_fieldheadercolumn}<TD class="runner-cc "></TD>
-          {END USP_fieldheadercolumn}{BEGIN Discount_fieldheadercolumn}<TD class="runner-cc "></TD>
-          {END Discount_fieldheadercolumn}{BEGIN Note_fieldheadercolumn}<TD class="runner-cc runner-clast"></TD>
+          {END UInOrder_fieldheadercolumn}{BEGIN Note_fieldheadercolumn}<TD class="runner-cc runner-clast"></TD>
           {END Note_fieldheadercolumn}<TD class=runner-cr><IMG src="images/spacer.gif"></TD>
           {BEGIN endrecordfooter_block}<TD class=runner-cs></TD>{END endrecordfooter_block}{END record_footer}</TR>{END grid_footer}</TABLE>{END grid_block}{END container_grid}
       {BEGIN container_pagination}<TABLE class="runner-c runner-c-pagination" cellPadding=0><TR class="{$cheaderclass_pagination}"><TD class=runner-cl><IMG src="images/spacer.gif"></TD>

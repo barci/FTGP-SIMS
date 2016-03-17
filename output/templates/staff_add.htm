@@ -52,90 +52,6 @@
 </tr>
 
 
-	{BEGIN Fname_fieldblock}
-	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
-	<td class="runner-cc runner-cc1">
-		<div class="fieldlabel_Fname {$fielddispclass_Fname}">
-			{BEGIN Fname_label}First Name{END Fname_label}
-		</div>
-	</td>
-	<td class="runner-cc alt runner-fixedcell">
-		<div class="fieldcontrol_Fname {$fielddispclass_Fname}">
-			{$Fname_editcontrol}&nbsp;
-		</div>
-	</td>
-	<td class="runner-cr alt"></td></tr>
-{END Fname_fieldblock}
-	{BEGIN Lname_fieldblock}
-	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
-	<td class="runner-cc runner-cc1">
-		<div class="fieldlabel_Lname {$fielddispclass_Lname}">
-			{BEGIN Lname_label}Last Name{END Lname_label}
-		</div>
-	</td>
-	<td class="runner-cc alt runner-fixedcell">
-		<div class="fieldcontrol_Lname {$fielddispclass_Lname}">
-			{$Lname_editcontrol}&nbsp;
-		</div>
-	</td>
-	<td class="runner-cr alt"></td></tr>
-{END Lname_fieldblock}
-	{BEGIN DOB_fieldblock}
-	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
-	<td class="runner-cc runner-cc1">
-		<div class="fieldlabel_DOB {$fielddispclass_DOB}">
-			{BEGIN DOB_label}Date of Birth{END DOB_label}
-		</div>
-	</td>
-	<td class="runner-cc alt runner-fixedcell">
-		<div class="fieldcontrol_DOB {$fielddispclass_DOB}">
-			{$DOB_editcontrol}&nbsp;
-		</div>
-	</td>
-	<td class="runner-cr alt"></td></tr>
-{END DOB_fieldblock}
-	{BEGIN Sex_fieldblock}
-	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
-	<td class="runner-cc runner-cc1">
-		<div class="fieldlabel_Sex {$fielddispclass_Sex}">
-			{BEGIN Sex_label}Sex{END Sex_label}
-		</div>
-	</td>
-	<td class="runner-cc alt runner-fixedcell">
-		<div class="fieldcontrol_Sex {$fielddispclass_Sex}">
-			{$Sex_editcontrol}&nbsp;
-		</div>
-	</td>
-	<td class="runner-cr alt"></td></tr>
-{END Sex_fieldblock}
-	{BEGIN Phone_fieldblock}
-	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
-	<td class="runner-cc runner-cc1">
-		<div class="fieldlabel_Phone {$fielddispclass_Phone}">
-			{BEGIN Phone_label}Phone{END Phone_label}
-		</div>
-	</td>
-	<td class="runner-cc alt runner-fixedcell">
-		<div class="fieldcontrol_Phone {$fielddispclass_Phone}">
-			{$Phone_editcontrol}&nbsp;
-		</div>
-	</td>
-	<td class="runner-cr alt"></td></tr>
-{END Phone_fieldblock}
-	{BEGIN RoleID_fieldblock}
-	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
-	<td class="runner-cc runner-cc1">
-		<div class="fieldlabel_RoleID {$fielddispclass_RoleID}">
-			{BEGIN RoleID_label}Role ID{END RoleID_label}
-		</div>
-	</td>
-	<td class="runner-cc alt runner-fixedcell">
-		<div class="fieldcontrol_RoleID {$fielddispclass_RoleID}">
-			{$RoleID_editcontrol}&nbsp;
-		</div>
-	</td>
-	<td class="runner-cr alt"></td></tr>
-{END RoleID_fieldblock}
 	{BEGIN UserName_fieldblock}
 	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
 	<td class="runner-cc runner-cc1">
@@ -164,6 +80,20 @@
 	</td>
 	<td class="runner-cr alt"></td></tr>
 {END Password_fieldblock}
+	{BEGIN RoleID_fieldblock}
+	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
+	<td class="runner-cc runner-cc1">
+		<div class="fieldlabel_RoleID {$fielddispclass_RoleID}">
+			{BEGIN RoleID_label}Role ID{END RoleID_label}
+		</div>
+	</td>
+	<td class="runner-cc alt runner-fixedcell">
+		<div class="fieldcontrol_RoleID {$fielddispclass_RoleID}">
+			{$RoleID_editcontrol}&nbsp;
+		</div>
+	</td>
+	<td class="runner-cr alt"></td></tr>
+{END RoleID_fieldblock}
 	{BEGIN Name_fieldblock}
 	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
 	<td class="runner-cc runner-cc1">
@@ -178,6 +108,48 @@
 	</td>
 	<td class="runner-cr alt"></td></tr>
 {END Name_fieldblock}
+	{BEGIN Fname_fieldblock}
+	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
+	<td class="runner-cc runner-cc1">
+		<div class="fieldlabel_Fname {$fielddispclass_Fname}">
+			{BEGIN Fname_label}First Name{END Fname_label}
+		</div>
+	</td>
+	<td class="runner-cc alt runner-fixedcell">
+		<div class="fieldcontrol_Fname {$fielddispclass_Fname}">
+			{$Fname_editcontrol}&nbsp;
+		</div>
+	</td>
+	<td class="runner-cr alt"></td></tr>
+{END Fname_fieldblock}
+	{BEGIN Lname_fieldblock}
+	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
+	<td class="runner-cc runner-cc1">
+		<div class="fieldlabel_Lname {$fielddispclass_Lname}">
+			{BEGIN Lname_label}Last Name{END Lname_label}
+		</div>
+	</td>
+	<td class="runner-cc alt runner-fixedcell">
+		<div class="fieldcontrol_Lname {$fielddispclass_Lname}">
+			{$Lname_editcontrol}&nbsp;
+		</div>
+	</td>
+	<td class="runner-cr alt"></td></tr>
+{END Lname_fieldblock}
+	{BEGIN Sex_fieldblock}
+	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
+	<td class="runner-cc runner-cc1">
+		<div class="fieldlabel_Sex {$fielddispclass_Sex}">
+			{BEGIN Sex_label}Sex{END Sex_label}
+		</div>
+	</td>
+	<td class="runner-cc alt runner-fixedcell">
+		<div class="fieldcontrol_Sex {$fielddispclass_Sex}">
+			{$Sex_editcontrol}&nbsp;
+		</div>
+	</td>
+	<td class="runner-cr alt"></td></tr>
+{END Sex_fieldblock}
 	{BEGIN Address_fieldblock}
 	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
 	<td class="runner-cc runner-cc1">
@@ -192,6 +164,34 @@
 	</td>
 	<td class="runner-cr alt"></td></tr>
 {END Address_fieldblock}
+	{BEGIN DOB_fieldblock}
+	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
+	<td class="runner-cc runner-cc1">
+		<div class="fieldlabel_DOB {$fielddispclass_DOB}">
+			{BEGIN DOB_label}Date of Birth{END DOB_label}
+		</div>
+	</td>
+	<td class="runner-cc alt runner-fixedcell">
+		<div class="fieldcontrol_DOB {$fielddispclass_DOB}">
+			{$DOB_editcontrol}&nbsp;
+		</div>
+	</td>
+	<td class="runner-cr alt"></td></tr>
+{END DOB_fieldblock}
+	{BEGIN Phone_fieldblock}
+	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
+	<td class="runner-cc runner-cc1">
+		<div class="fieldlabel_Phone {$fielddispclass_Phone}">
+			{BEGIN Phone_label}Phone{END Phone_label}
+		</div>
+	</td>
+	<td class="runner-cc alt runner-fixedcell">
+		<div class="fieldcontrol_Phone {$fielddispclass_Phone}">
+			{$Phone_editcontrol}&nbsp;
+		</div>
+	</td>
+	<td class="runner-cr alt"></td></tr>
+{END Phone_fieldblock}
 
 
 

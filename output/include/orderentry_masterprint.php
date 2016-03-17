@@ -11,7 +11,7 @@ function DisplayMasterTableInfo_orderentry($params)
 	$oldTableName=$strTableName;
 	$strTableName="orderentry";
 
-//$strSQL = "SELECT OrderID,   StaffID,   CID,   ODate,   ErrorMsg  FROM orderentry ";
+//$strSQL = "SELECT  OrderID,  StaffID,  CID,  ODate,  ErrorMsg  FROM orderentry  ";
 
 	$cipherer = new RunnerCipherer($strTableName);
 	$settings = new ProjectSettings($strTableName, PAGE_PRINT);

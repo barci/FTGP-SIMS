@@ -90,7 +90,7 @@ $xt = new Xtempl();
 // assign an id
 $xt->assign("id",$id);
 
-$templatefile = ($inlineedit == EDIT_INLINE) ? "staff_inline_edit.htm" : "staff_edit.htm";
+$templatefile = "staff_edit.htm";
 
 //array of params for classes
 $params = array("pageType" => PAGE_EDIT,"id" => $id);
@@ -213,9 +213,7 @@ if ($inlineedit!=EDIT_INLINE)
 if(@$_POST["a"] == "edited")
 {
 	$strWhereClause = whereAdd($strWhereClause,KeyWhere($keys));
-		//	select only owned records
-	$strWhereClause = whereAdd($strWhereClause,SecuritySQL("Edit"));
-	$oldValuesRead = false;	
+		$oldValuesRead = false;	
 	if($eventObj->exists("AfterEdit") || $eventObj->exists("BeforeEdit") || $auditObj || isTableGeoUpdatable($pageObject->cipherer->pSet)
 		|| $globalEvents->exists("IsRecordEditable", $strTableName))
 	{
@@ -232,21 +230,8 @@ if(@$_POST["a"] == "edited")
 	$evalues = $efilename_values = $blobfields = array();
 	
 
-//	processing StaffID - begin
-	$condition = 1;
-
-	if($condition)
-	{
-		$control_StaffID = $pageObject->getControl("StaffID", $id);
-		$control_StaffID->readWebValue($evalues, $blobfields, $strWhereClause, $oldValuesRead, $efilename_values);
-
-		//	update key value
-		if($control_StaffID->getWebValue()!==false)
-			$keys["StaffID"] = $control_StaffID->getWebValue();
-	}
-//	processing StaffID - end
 //	processing Name - begin
-	$condition = 1;
+	$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 
 	if($condition)
 	{
@@ -256,7 +241,7 @@ if(@$_POST["a"] == "edited")
 		}
 //	processing Name - end
 //	processing Fname - begin
-	$condition = 1;
+	$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 
 	if($condition)
 	{
@@ -266,7 +251,7 @@ if(@$_POST["a"] == "edited")
 		}
 //	processing Fname - end
 //	processing Lname - begin
-	$condition = 1;
+	$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 
 	if($condition)
 	{
@@ -276,7 +261,7 @@ if(@$_POST["a"] == "edited")
 		}
 //	processing Lname - end
 //	processing DOB - begin
-	$condition = 1;
+	$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 
 	if($condition)
 	{
@@ -286,7 +271,7 @@ if(@$_POST["a"] == "edited")
 		}
 //	processing DOB - end
 //	processing Address - begin
-	$condition = 1;
+	$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 
 	if($condition)
 	{
@@ -296,7 +281,7 @@ if(@$_POST["a"] == "edited")
 		}
 //	processing Address - end
 //	processing Sex - begin
-	$condition = 1;
+	$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 
 	if($condition)
 	{
@@ -306,7 +291,7 @@ if(@$_POST["a"] == "edited")
 		}
 //	processing Sex - end
 //	processing Phone - begin
-	$condition = 1;
+	$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 
 	if($condition)
 	{
@@ -316,7 +301,7 @@ if(@$_POST["a"] == "edited")
 		}
 //	processing Phone - end
 //	processing RoleID - begin
-	$condition = 1;
+	$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 
 	if($condition)
 	{
@@ -326,7 +311,7 @@ if(@$_POST["a"] == "edited")
 		}
 //	processing RoleID - end
 //	processing UserName - begin
-	$condition = 1;
+	$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 
 	if($condition)
 	{
@@ -336,7 +321,7 @@ if(@$_POST["a"] == "edited")
 		}
 //	processing UserName - end
 //	processing Password - begin
-	$condition = 1;
+	$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 
 	if($condition)
 	{
@@ -402,16 +387,8 @@ if(@$_POST["a"] == "edited")
 				$IsSaved = true;
 
 			// Give possibility to all edit controls to clean their data				
-			//	processing StaffID - begin
-							$condition = 1;
-			
-				if($condition)
-				{
-					$control_StaffID->afterSuccessfulSave();
-				}
-	//	processing StaffID - end
 			//	processing Name - begin
-							$condition = 1;
+							$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 			
 				if($condition)
 				{
@@ -419,7 +396,7 @@ if(@$_POST["a"] == "edited")
 				}
 	//	processing Name - end
 			//	processing Fname - begin
-							$condition = 1;
+							$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 			
 				if($condition)
 				{
@@ -427,7 +404,7 @@ if(@$_POST["a"] == "edited")
 				}
 	//	processing Fname - end
 			//	processing Lname - begin
-							$condition = 1;
+							$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 			
 				if($condition)
 				{
@@ -435,7 +412,7 @@ if(@$_POST["a"] == "edited")
 				}
 	//	processing Lname - end
 			//	processing DOB - begin
-							$condition = 1;
+							$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 			
 				if($condition)
 				{
@@ -443,7 +420,7 @@ if(@$_POST["a"] == "edited")
 				}
 	//	processing DOB - end
 			//	processing Address - begin
-							$condition = 1;
+							$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 			
 				if($condition)
 				{
@@ -451,7 +428,7 @@ if(@$_POST["a"] == "edited")
 				}
 	//	processing Address - end
 			//	processing Sex - begin
-							$condition = 1;
+							$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 			
 				if($condition)
 				{
@@ -459,7 +436,7 @@ if(@$_POST["a"] == "edited")
 				}
 	//	processing Sex - end
 			//	processing Phone - begin
-							$condition = 1;
+							$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 			
 				if($condition)
 				{
@@ -467,7 +444,7 @@ if(@$_POST["a"] == "edited")
 				}
 	//	processing Phone - end
 			//	processing RoleID - begin
-							$condition = 1;
+							$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 			
 				if($condition)
 				{
@@ -475,7 +452,7 @@ if(@$_POST["a"] == "edited")
 				}
 	//	processing RoleID - end
 			//	processing UserName - begin
-							$condition = 1;
+							$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 			
 				if($condition)
 				{
@@ -483,7 +460,7 @@ if(@$_POST["a"] == "edited")
 				}
 	//	processing UserName - end
 			//	processing Password - begin
-							$condition = 1;
+							$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 			
 				if($condition)
 				{
@@ -622,7 +599,6 @@ if($globalEvents->exists("IsRecordEditable", $strTableName))
 
 if($readevalues)
 {
-	$data["StaffID"] = $evalues["StaffID"];
 	$data["Name"] = $evalues["Name"];
 	$data["Fname"] = $evalues["Fname"];
 	$data["Lname"] = $evalues["Lname"];
@@ -655,14 +631,6 @@ if($inlineedit != EDIT_INLINE)
 		$pageObject->body["begin"].= $includes;
 	}	
 
-	if(!$pageObject->isAppearOnTabs("StaffID"))
-		$xt->assign("StaffID_fieldblock",true);
-	else
-		$xt->assign("StaffID_tabfieldblock",true);
-	$xt->assign("StaffID_label",true);
-	if(isEnableSection508())
-		$xt->assign_section("StaffID_label","<label for=\"".GetInputElementId("StaffID", $id, PAGE_EDIT)."\">","</label>");
-		
 	if(!$pageObject->isAppearOnTabs("Name"))
 		$xt->assign("Name_fieldblock",true);
 	else
@@ -982,7 +950,7 @@ foreach($pageObject->editFields as $fName)
 				$control[$gfName]["params"]["mode"] = "edit";
 			$controls["controls"]['mode'] = "edit";
 		}
-												
+											
 	if(!$detailKeys || !in_array($fName, $detailKeys))
 		$xt->assignbyref($gfName."_editcontrol",$control[$gfName]);
 	elseif($detailKeys && in_array($fName, $detailKeys))

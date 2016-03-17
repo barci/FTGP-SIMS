@@ -30,6 +30,38 @@
 				<td class="runner-top" colspan=3>
 					
 
+{BEGIN container_master}
+<table class="runner-c runner-c-master" cellpadding="0" >
+<tr class="{$cheaderclass_master}">
+<td class="runner-cl"><img src="images/spacer.gif"></td>
+<td class="runner-cc"></td><td class="runner-cr"><img src="images/spacer.gif"></td>
+</tr>
+<tr class="runner-row style1">
+<td class="runner-cl"></td>
+<td class="runner-cc">
+<table border="0" cellpadding="0" class="runner-hc">
+<tr>
+
+{BEGIN mastertable_block}
+<td  class="runner-cc runner-bl runner-b-masterinfo" {$brickclass_masterinfo}><span>{$showmasterfile}
+<a class="runner-link" {$backtomasterlink_attrs}>
+	<b>Back to {$backtomasterlink_caption}</b>
+</a></span></td>
+{END mastertable_block}
+
+<td class="runner-cc filler"></td>
+</tr>
+</table></td>
+<td class="runner-cr"></td>
+</tr>
+
+<tr class="{$cfooterclass_master}">
+<td class="runner-cl"><img src="images/spacer.gif"></td>
+<td class="runner-cc"></td><td class="runner-cr"><img src="images/spacer.gif"></td>
+</tr>
+</table>
+{END container_master}
+
 
 
 {BEGIN container_toplinks}
@@ -44,29 +76,6 @@
 <table border="0" cellpadding="0" class="runner-hc">
 <tr>
 
-{BEGIN prints_block}
-<td  class="runner-cc runner-bl runner-b-toplinks_print" {$brickclass_toplinks_print}><span>{BEGIN print_link}
-	<span class="runner-btnframe">
-	<span class="runner-btnleft"></span>
-	<span class="runner-btnright"></span>
-	<a href="#" class="runner-button" {$printlink_attrs}>Print this page</a>
-	</span>
-{END print_link}
-
-{BEGIN printall_link}
-	<span class="runner-btnframe">
-	<span class="runner-btnleft"></span>
-	<span class="runner-btnright"></span>
-	<a href="#" class="runner-button" {$printalllink_attrs}>Print all pages</a>
-	</span>
-{END printall_link}
-
-
-
-
-</span></td>
-{END prints_block}
-
 
 {BEGIN asearch_link}
 <td  class="runner-cc runner-bl runner-b-toplinks_advsearch" {$brickclass_toplinks_advsearch}><span>	<span class="runner-btnframe">
@@ -78,24 +87,6 @@
 {END asearch_link}
 
 
-{BEGIN import_link}
-<td  class="runner-cc runner-bl runner-b-toplinks_import" {$brickclass_toplinks_import}><span>	<span class="runner-btnframe">
-	<span class="runner-btnleft"></span>
-	<span class="runner-btnright"></span>
-	<a href="orderdetail_import.php?{$crosstable_attrs}" class="runner-button" {$importlink_attrs}>Import</a>
-	</span>
-</span></td>
-{END import_link}
-
-
-{BEGIN export_link}
-<td  class="runner-cc runner-bl runner-b-toplinks_export" {$brickclass_toplinks_export}><span>	<span class="runner-btnframe">
-	<span class="runner-btnleft"></span>
-	<span class="runner-btnright"></span>
-	<a target="_blank" href="orderdetail_export.php" class="runner-button" {$exportlink_attrs}>Export results</a>
-	</span>
-</span></td>
-{END export_link}
 
 
 <td class="runner-cc filler"></td>
@@ -227,30 +218,9 @@
 		</span>
 	{END cancelall_link}
 
-		{BEGIN deleteselected_link}
-		<span class="runner-btnframe" {$deleteselectedlink_span}>
-		<span class="runner-btnleft"></span>
-		<span class="runner-btnright"></span>
-		<a href="#" class="runner-button" {$deleteselectedlink_attrs}>Delete selected</a>
-		</span>
-	{END deleteselected_link}
-
-		{BEGIN exportselected_link}
-		<span class="runner-btnframe" {$exportselectedlink_span}>
-		<span class="runner-btnleft"></span>
-		<span class="runner-btnright"></span>
-		<a href="#" class="runner-button" {$exportselectedlink_attrs}>Export selected</a>
-		</span>
-	{END exportselected_link}
-
-		{BEGIN printselected_link}
-		<span class="runner-btnframe" {$printselectedlink_span}>
-		<span class="runner-btnleft"></span>
-		<span class="runner-btnright"></span>
-		<a href="#" class="runner-button" {$printselectedlink_attrs}>Print selected</a>
-		</span>
-	{END printselected_link}
-
+	
+	
+	
 </span></td>
 {END record_controls_block}
 
@@ -421,7 +391,7 @@
 									<th class="runner-cc ">
 									{BEGIN ODetailID_fieldheader}
 																				<a {$ODetailID_orderlinkattrs}>
-											ODetail ID
+											ID
 										</a>
 									{END ODetailID_fieldheader}
 									</th>
@@ -441,27 +411,17 @@
 									<th class="runner-cc ">
 									{BEGIN ProductID_fieldheader}
 																				<a {$ProductID_orderlinkattrs}>
-											Product ID
+											Product
 										</a>
 									{END ProductID_fieldheader}
 									</th>
 									{END ProductID_fieldheadercolumn}
 
-																	{BEGIN UPrice_fieldheadercolumn}
-									<th class="runner-cc ">
-									{BEGIN UPrice_fieldheader}
-																				<a {$UPrice_orderlinkattrs}>
-											UPrice
-										</a>
-									{END UPrice_fieldheader}
-									</th>
-									{END UPrice_fieldheadercolumn}
-
 																	{BEGIN OrdQuant_fieldheadercolumn}
 									<th class="runner-cc ">
 									{BEGIN OrdQuant_fieldheader}
 																				<a {$OrdQuant_orderlinkattrs}>
-											Ord Quant
+											Order Quantity
 										</a>
 									{END OrdQuant_fieldheader}
 									</th>
@@ -471,37 +431,17 @@
 									<th class="runner-cc ">
 									{BEGIN DelQuant_fieldheader}
 																				<a {$DelQuant_orderlinkattrs}>
-											Del Quant
+											Delivered Quantity
 										</a>
 									{END DelQuant_fieldheader}
 									</th>
 									{END DelQuant_fieldheadercolumn}
 
-																	{BEGIN Discount_fieldheadercolumn}
-									<th class="runner-cc ">
-									{BEGIN Discount_fieldheader}
-																				<a {$Discount_orderlinkattrs}>
-											Discount
-										</a>
-									{END Discount_fieldheader}
-									</th>
-									{END Discount_fieldheadercolumn}
-
-																	{BEGIN Total_fieldheadercolumn}
-									<th class="runner-cc ">
-									{BEGIN Total_fieldheader}
-																				<a {$Total_orderlinkattrs}>
-											Total
-										</a>
-									{END Total_fieldheader}
-									</th>
-									{END Total_fieldheadercolumn}
-
 																	{BEGIN DelDate_fieldheadercolumn}
 									<th class="runner-cc ">
 									{BEGIN DelDate_fieldheader}
 																				<a {$DelDate_orderlinkattrs}>
-											Del Date
+											Delivery Date
 										</a>
 									{END DelDate_fieldheader}
 									</th>
@@ -552,12 +492,7 @@
 									{END inlineedit_column}
 
 									
-																		{BEGIN view_column}
-									{BEGIN view_link}
-									<a class="runner-button-img" {$viewlink_attrs} title="View"><img class="runner-cicon" src="images/icon_view_new.gif" alt="View"></a>
-									{END view_link}
-									{END view_column}
-									</td>	
+																		</td>	
 									{END listIcons_column}	
 
 																		{BEGIN checkbox_column}
@@ -587,12 +522,6 @@
 	</td>
 {END ProductID_fieldcolumn}
 
-	{BEGIN UPrice_fieldcolumn}
-	<td class="runner-cc  {$UPrice_class}" {$UPrice_style}>
-		{$UPrice_value}
-	</td>
-{END UPrice_fieldcolumn}
-
 	{BEGIN OrdQuant_fieldcolumn}
 	<td class="runner-cc  {$OrdQuant_class}" {$OrdQuant_style}>
 		{$OrdQuant_value}
@@ -604,18 +533,6 @@
 		{$DelQuant_value}
 	</td>
 {END DelQuant_fieldcolumn}
-
-	{BEGIN Discount_fieldcolumn}
-	<td class="runner-cc  {$Discount_class}" {$Discount_style}>
-		{$Discount_value}
-	</td>
-{END Discount_fieldcolumn}
-
-	{BEGIN Total_fieldcolumn}
-	<td class="runner-cc  {$Total_class}" {$Total_style}>
-		{$Total_value}
-	</td>
-{END Total_fieldcolumn}
 
 	{BEGIN DelDate_fieldcolumn}
 	<td class="runner-cc  {$DelDate_class}" {$DelDate_style}>
@@ -661,21 +578,12 @@
 {BEGIN ProductID_fieldheadercolumn}
 <td class="runner-cc "></td>
 {END ProductID_fieldheadercolumn}
-{BEGIN UPrice_fieldheadercolumn}
-<td class="runner-cc "></td>
-{END UPrice_fieldheadercolumn}
 {BEGIN OrdQuant_fieldheadercolumn}
 <td class="runner-cc "></td>
 {END OrdQuant_fieldheadercolumn}
 {BEGIN DelQuant_fieldheadercolumn}
 <td class="runner-cc "></td>
 {END DelQuant_fieldheadercolumn}
-{BEGIN Discount_fieldheadercolumn}
-<td class="runner-cc "></td>
-{END Discount_fieldheadercolumn}
-{BEGIN Total_fieldheadercolumn}
-<td class="runner-cc "></td>
-{END Total_fieldheadercolumn}
 {BEGIN DelDate_fieldheadercolumn}
 <td class="runner-cc "></td>
 {END DelDate_fieldheadercolumn}

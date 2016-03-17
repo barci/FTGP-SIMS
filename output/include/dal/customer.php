@@ -10,6 +10,7 @@ $dalTablecustomer["DAddress"] = array("type"=>200,"varname"=>"DAddress");
 $dalTablecustomer["Phone"] = array("type"=>200,"varname"=>"Phone");
 $dalTablecustomer["Email"] = array("type"=>200,"varname"=>"Email");
 $dalTablecustomer["StaffID"] = array("type"=>200,"varname"=>"StaffID");
+$dalTablecustomer["TimeStamp"] = array("type"=>135,"varname"=>"TimeStamp");
 	$dalTablecustomer["CID"]["key"]=true;
 $dal_info["customer"]=&$dalTablecustomer;
 

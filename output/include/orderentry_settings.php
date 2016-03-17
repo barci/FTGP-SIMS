@@ -131,7 +131,7 @@ $tdataorderentry[".strOrderBy"] = $tstrOrderBy;
 
 $tdataorderentry[".orderindexes"] = array();
 
-$tdataorderentry[".sqlHead"] = "SELECT OrderID,   StaffID,   CID,   ODate,   ErrorMsg";
+$tdataorderentry[".sqlHead"] = "SELECT OrderID,  StaffID,  CID,  ODate,  ErrorMsg";
 $tdataorderentry[".sqlFrom"] = "FROM orderentry";
 $tdataorderentry[".sqlWhereExpr"] = "";
 $tdataorderentry[".sqlTail"] = "";
@@ -823,7 +823,7 @@ function createSqlQuery_orderentry()
 {
 $proto0=array();
 $proto0["m_strHead"] = "SELECT";
-$proto0["m_strFieldList"] = "OrderID,   StaffID,   CID,   ODate,   ErrorMsg";
+$proto0["m_strFieldList"] = "OrderID,  StaffID,  CID,  ODate,  ErrorMsg";
 $proto0["m_strFrom"] = "FROM orderentry";
 $proto0["m_strWhere"] = "";
 $proto0["m_strOrderBy"] = "";
@@ -928,6 +928,7 @@ $proto16["m_columns"][] = "StaffID";
 $proto16["m_columns"][] = "CID";
 $proto16["m_columns"][] = "ODate";
 $proto16["m_columns"][] = "ErrorMsg";
+$proto16["m_columns"][] = "TimeStamp";
 $obj = new SQLTable($proto16);
 
 $proto15["m_table"] = $obj;

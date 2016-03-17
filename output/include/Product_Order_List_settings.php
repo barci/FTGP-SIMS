@@ -1595,6 +1595,7 @@ $proto39["m_columns"][] = "DelQuant";
 $proto39["m_columns"][] = "Discount";
 $proto39["m_columns"][] = "Total";
 $proto39["m_columns"][] = "DelDate";
+$proto39["m_columns"][] = "TimeStamp";
 $obj = new SQLTable($proto39);
 
 $proto38["m_table"] = $obj;
@@ -1624,6 +1625,7 @@ $proto42["m_link"] = "SQLL_CROSSJOIN";
 $proto43["m_strName"] = "product";
 $proto43["m_columns"] = array();
 $proto43["m_columns"][] = "ProdID";
+$proto43["m_columns"][] = "ProdNo";
 $proto43["m_columns"][] = "Pname";
 $proto43["m_columns"][] = "CatID";
 $proto43["m_columns"][] = "SuppID";
@@ -1637,6 +1639,7 @@ $proto43["m_columns"][] = "UInStock";
 $proto43["m_columns"][] = "UInOrder";
 $proto43["m_columns"][] = "ReOrLevel";
 $proto43["m_columns"][] = "Note";
+$proto43["m_columns"][] = "TimeStamp";
 $obj = new SQLTable($proto43);
 
 $proto42["m_table"] = $obj;

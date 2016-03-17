@@ -50,20 +50,62 @@ Staff ID: {$show_key1}
 <table class="runner-c runner-c-fields" cellpadding="0" >
 
 
-	{BEGIN StaffID_fieldblock}
+	{BEGIN UserName_fieldblock}
 	<tr class="runner-toprow header style1 runner-b-editfields"><td class="runner-cl"><img src="images/spacer.gif"></td>
 		<td class="runner-cc runner-cc1">
-			<div class="fieldlabel_StaffID {$fielddispclass_StaffID}">
-				{BEGIN StaffID_label}Staff ID{END StaffID_label}
+			<div class="fieldlabel_UserName {$fielddispclass_UserName}">
+				{BEGIN UserName_label}User Name{END UserName_label}
 			</div>
 		</td>
 		<td class="runner-cc alt runner-fixedcell">
-			<div class="fieldcontrol_StaffID {$fielddispclass_StaffID}">
-				{$StaffID_editcontrol}&nbsp;
+			<div class="fieldcontrol_UserName {$fielddispclass_UserName}">
+				{$UserName_editcontrol}&nbsp;
 			</div>
 		</td>
 	<td class="runner-cr alt"><img src="images/spacer.gif"></td></tr>
-{END StaffID_fieldblock}
+{END UserName_fieldblock}
+	{BEGIN Password_fieldblock}
+	<tr class="runner-row style1 runner-b-editfields"><td class="runner-cl"></td>
+		<td class="runner-cc runner-cc1">
+			<div class="fieldlabel_Password {$fielddispclass_Password}">
+				{BEGIN Password_label}Password{END Password_label}
+			</div>
+		</td>
+		<td class="runner-cc alt runner-fixedcell">
+			<div class="fieldcontrol_Password {$fielddispclass_Password}">
+				{$Password_editcontrol}&nbsp;
+			</div>
+		</td>
+	<td class="runner-cr alt"></td></tr>
+{END Password_fieldblock}
+	{BEGIN RoleID_fieldblock}
+	<tr class="runner-row style1 runner-b-editfields"><td class="runner-cl"></td>
+		<td class="runner-cc runner-cc1">
+			<div class="fieldlabel_RoleID {$fielddispclass_RoleID}">
+				{BEGIN RoleID_label}Role ID{END RoleID_label}
+			</div>
+		</td>
+		<td class="runner-cc alt runner-fixedcell">
+			<div class="fieldcontrol_RoleID {$fielddispclass_RoleID}">
+				{$RoleID_editcontrol}&nbsp;
+			</div>
+		</td>
+	<td class="runner-cr alt"></td></tr>
+{END RoleID_fieldblock}
+	{BEGIN Name_fieldblock}
+	<tr class="runner-row style1 runner-b-editfields"><td class="runner-cl"></td>
+		<td class="runner-cc runner-cc1">
+			<div class="fieldlabel_Name {$fielddispclass_Name}">
+				{BEGIN Name_label}Name{END Name_label}
+			</div>
+		</td>
+		<td class="runner-cc alt runner-fixedcell">
+			<div class="fieldcontrol_Name {$fielddispclass_Name}">
+				{$Name_editcontrol}&nbsp;
+			</div>
+		</td>
+	<td class="runner-cr alt"></td></tr>
+{END Name_fieldblock}
 	{BEGIN Fname_fieldblock}
 	<tr class="runner-row style1 runner-b-editfields"><td class="runner-cl"></td>
 		<td class="runner-cc runner-cc1">
@@ -92,20 +134,6 @@ Staff ID: {$show_key1}
 		</td>
 	<td class="runner-cr alt"></td></tr>
 {END Lname_fieldblock}
-	{BEGIN DOB_fieldblock}
-	<tr class="runner-row style1 runner-b-editfields"><td class="runner-cl"></td>
-		<td class="runner-cc runner-cc1">
-			<div class="fieldlabel_DOB {$fielddispclass_DOB}">
-				{BEGIN DOB_label}Date of Birth{END DOB_label}
-			</div>
-		</td>
-		<td class="runner-cc alt runner-fixedcell">
-			<div class="fieldcontrol_DOB {$fielddispclass_DOB}">
-				{$DOB_editcontrol}&nbsp;
-			</div>
-		</td>
-	<td class="runner-cr alt"></td></tr>
-{END DOB_fieldblock}
 	{BEGIN Sex_fieldblock}
 	<tr class="runner-row style1 runner-b-editfields"><td class="runner-cl"></td>
 		<td class="runner-cc runner-cc1">
@@ -120,76 +148,6 @@ Staff ID: {$show_key1}
 		</td>
 	<td class="runner-cr alt"></td></tr>
 {END Sex_fieldblock}
-	{BEGIN Phone_fieldblock}
-	<tr class="runner-row style1 runner-b-editfields"><td class="runner-cl"></td>
-		<td class="runner-cc runner-cc1">
-			<div class="fieldlabel_Phone {$fielddispclass_Phone}">
-				{BEGIN Phone_label}Phone{END Phone_label}
-			</div>
-		</td>
-		<td class="runner-cc alt runner-fixedcell">
-			<div class="fieldcontrol_Phone {$fielddispclass_Phone}">
-				{$Phone_editcontrol}&nbsp;
-			</div>
-		</td>
-	<td class="runner-cr alt"></td></tr>
-{END Phone_fieldblock}
-	{BEGIN RoleID_fieldblock}
-	<tr class="runner-row style1 runner-b-editfields"><td class="runner-cl"></td>
-		<td class="runner-cc runner-cc1">
-			<div class="fieldlabel_RoleID {$fielddispclass_RoleID}">
-				{BEGIN RoleID_label}Role ID{END RoleID_label}
-			</div>
-		</td>
-		<td class="runner-cc alt runner-fixedcell">
-			<div class="fieldcontrol_RoleID {$fielddispclass_RoleID}">
-				{$RoleID_editcontrol}&nbsp;
-			</div>
-		</td>
-	<td class="runner-cr alt"></td></tr>
-{END RoleID_fieldblock}
-	{BEGIN UserName_fieldblock}
-	<tr class="runner-row style1 runner-b-editfields"><td class="runner-cl"></td>
-		<td class="runner-cc runner-cc1">
-			<div class="fieldlabel_UserName {$fielddispclass_UserName}">
-				{BEGIN UserName_label}User Name{END UserName_label}
-			</div>
-		</td>
-		<td class="runner-cc alt runner-fixedcell">
-			<div class="fieldcontrol_UserName {$fielddispclass_UserName}">
-				{$UserName_editcontrol}&nbsp;
-			</div>
-		</td>
-	<td class="runner-cr alt"></td></tr>
-{END UserName_fieldblock}
-	{BEGIN Password_fieldblock}
-	<tr class="runner-row style1 runner-b-editfields"><td class="runner-cl"></td>
-		<td class="runner-cc runner-cc1">
-			<div class="fieldlabel_Password {$fielddispclass_Password}">
-				{BEGIN Password_label}Password{END Password_label}
-			</div>
-		</td>
-		<td class="runner-cc alt runner-fixedcell">
-			<div class="fieldcontrol_Password {$fielddispclass_Password}">
-				{$Password_editcontrol}&nbsp;
-			</div>
-		</td>
-	<td class="runner-cr alt"></td></tr>
-{END Password_fieldblock}
-	{BEGIN Name_fieldblock}
-	<tr class="runner-row style1 runner-b-editfields"><td class="runner-cl"></td>
-		<td class="runner-cc runner-cc1">
-			<div class="fieldlabel_Name {$fielddispclass_Name}">
-				{BEGIN Name_label}Name{END Name_label}
-			</div>
-		</td>
-		<td class="runner-cc alt runner-fixedcell">
-			<div class="fieldcontrol_Name {$fielddispclass_Name}">
-				{$Name_editcontrol}&nbsp;
-			</div>
-		</td>
-	<td class="runner-cr alt"></td></tr>
-{END Name_fieldblock}
 	{BEGIN Address_fieldblock}
 	<tr class="runner-row style1 runner-b-editfields"><td class="runner-cl"></td>
 		<td class="runner-cc runner-cc1">
@@ -204,6 +162,34 @@ Staff ID: {$show_key1}
 		</td>
 	<td class="runner-cr alt"></td></tr>
 {END Address_fieldblock}
+	{BEGIN DOB_fieldblock}
+	<tr class="runner-row style1 runner-b-editfields"><td class="runner-cl"></td>
+		<td class="runner-cc runner-cc1">
+			<div class="fieldlabel_DOB {$fielddispclass_DOB}">
+				{BEGIN DOB_label}Date of Birth{END DOB_label}
+			</div>
+		</td>
+		<td class="runner-cc alt runner-fixedcell">
+			<div class="fieldcontrol_DOB {$fielddispclass_DOB}">
+				{$DOB_editcontrol}&nbsp;
+			</div>
+		</td>
+	<td class="runner-cr alt"></td></tr>
+{END DOB_fieldblock}
+	{BEGIN Phone_fieldblock}
+	<tr class="runner-row style1 runner-b-editfields"><td class="runner-cl"></td>
+		<td class="runner-cc runner-cc1">
+			<div class="fieldlabel_Phone {$fielddispclass_Phone}">
+				{BEGIN Phone_label}Phone{END Phone_label}
+			</div>
+		</td>
+		<td class="runner-cc alt runner-fixedcell">
+			<div class="fieldcontrol_Phone {$fielddispclass_Phone}">
+				{$Phone_editcontrol}&nbsp;
+			</div>
+		</td>
+	<td class="runner-cr alt"></td></tr>
+{END Phone_fieldblock}
 
 
 

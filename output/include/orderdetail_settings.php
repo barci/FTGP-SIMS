@@ -20,14 +20,10 @@ if(mlang_getcurrentlang()=="English")
 	$fieldToolTipsorderdetail["English"]["BillNo"] = "";
 	$fieldLabelsorderdetail["English"]["ProductID"] = "Product";
 	$fieldToolTipsorderdetail["English"]["ProductID"] = "";
-	$fieldLabelsorderdetail["English"]["UPrice"] = "Unit Price";
-	$fieldToolTipsorderdetail["English"]["UPrice"] = "";
 	$fieldLabelsorderdetail["English"]["OrdQuant"] = "Order Quantity";
 	$fieldToolTipsorderdetail["English"]["OrdQuant"] = "";
 	$fieldLabelsorderdetail["English"]["DelQuant"] = "Delivered Quantity";
 	$fieldToolTipsorderdetail["English"]["DelQuant"] = "";
-	$fieldLabelsorderdetail["English"]["Discount"] = "Discount";
-	$fieldToolTipsorderdetail["English"]["Discount"] = "";
 	$fieldLabelsorderdetail["English"]["Total"] = "Total";
 	$fieldToolTipsorderdetail["English"]["Total"] = "";
 	$fieldLabelsorderdetail["English"]["DelDate"] = "Delivery Date";
@@ -71,14 +67,9 @@ $tdataorderdetail[".listIcons"] = true;
 $tdataorderdetail[".edit"] = true;
 $tdataorderdetail[".inlineEdit"] = true;
 $tdataorderdetail[".inlineAdd"] = true;
-$tdataorderdetail[".copy"] = true;
-$tdataorderdetail[".view"] = true;
 
-$tdataorderdetail[".exportTo"] = true;
 
-$tdataorderdetail[".printFriendly"] = true;
 
-$tdataorderdetail[".delete"] = true;
 
 $tdataorderdetail[".showSimpleSearchOptions"] = false;
 
@@ -100,7 +91,6 @@ $tdataorderdetail[".isUseTimeForSearch"] = false;
 
 
 
-$tdataorderdetail[".useDetailsPreview"] = true;
 
 $tdataorderdetail[".allSearchFields"] = array();
 
@@ -109,19 +99,14 @@ $tdataorderdetail[".allSearchFields"][] = "OrderID";
 $tdataorderdetail[".allSearchFields"][] = "ProductID";
 $tdataorderdetail[".allSearchFields"][] = "OrdQuant";
 $tdataorderdetail[".allSearchFields"][] = "DelQuant";
-$tdataorderdetail[".allSearchFields"][] = "Discount";
-$tdataorderdetail[".allSearchFields"][] = "Total";
 $tdataorderdetail[".allSearchFields"][] = "DelDate";
-$tdataorderdetail[".allSearchFields"][] = "BillNo";
 
 $tdataorderdetail[".googleLikeFields"][] = "ODetailID";
 $tdataorderdetail[".googleLikeFields"][] = "OrderID";
 $tdataorderdetail[".googleLikeFields"][] = "BillNo";
 $tdataorderdetail[".googleLikeFields"][] = "ProductID";
-$tdataorderdetail[".googleLikeFields"][] = "UPrice";
 $tdataorderdetail[".googleLikeFields"][] = "OrdQuant";
 $tdataorderdetail[".googleLikeFields"][] = "DelQuant";
-$tdataorderdetail[".googleLikeFields"][] = "Discount";
 $tdataorderdetail[".googleLikeFields"][] = "Total";
 $tdataorderdetail[".googleLikeFields"][] = "DelDate";
 
@@ -131,10 +116,7 @@ $tdataorderdetail[".advSearchFields"][] = "OrderID";
 $tdataorderdetail[".advSearchFields"][] = "ProductID";
 $tdataorderdetail[".advSearchFields"][] = "OrdQuant";
 $tdataorderdetail[".advSearchFields"][] = "DelQuant";
-$tdataorderdetail[".advSearchFields"][] = "Discount";
-$tdataorderdetail[".advSearchFields"][] = "Total";
 $tdataorderdetail[".advSearchFields"][] = "DelDate";
-$tdataorderdetail[".advSearchFields"][] = "BillNo";
 
 $tdataorderdetail[".isTableType"] = "list";
 
@@ -143,7 +125,7 @@ $tdataorderdetail[".isTableType"] = "list";
 
 
 // Access doesn't support subqueries from the same table as main
-	
+
 
 
 $tdataorderdetail[".pageSize"] = 20;
@@ -155,7 +137,7 @@ $tdataorderdetail[".strOrderBy"] = $tstrOrderBy;
 
 $tdataorderdetail[".orderindexes"] = array();
 
-$tdataorderdetail[".sqlHead"] = "SELECT ODetailID,   OrderID,   BillNo,   ProductID,   UPrice,   OrdQuant,   DelQuant,   Discount,   Total,   DelDate";
+$tdataorderdetail[".sqlHead"] = "SELECT ODetailID,  OrderID,  BillNo,  ProductID,  OrdQuant,  DelQuant,  Total,  DelDate";
 $tdataorderdetail[".sqlFrom"] = "FROM orderdetail";
 $tdataorderdetail[".sqlWhereExpr"] = "";
 $tdataorderdetail[".sqlTail"] = "";
@@ -193,74 +175,46 @@ $tdataorderdetail[".listFields"] = array();
 $tdataorderdetail[".listFields"][] = "ODetailID";
 $tdataorderdetail[".listFields"][] = "OrderID";
 $tdataorderdetail[".listFields"][] = "ProductID";
-$tdataorderdetail[".listFields"][] = "UPrice";
 $tdataorderdetail[".listFields"][] = "OrdQuant";
 $tdataorderdetail[".listFields"][] = "DelQuant";
-$tdataorderdetail[".listFields"][] = "Discount";
-$tdataorderdetail[".listFields"][] = "Total";
 $tdataorderdetail[".listFields"][] = "DelDate";
 $tdataorderdetail[".listFields"][] = "BillNo";
 
 $tdataorderdetail[".viewFields"] = array();
-$tdataorderdetail[".viewFields"][] = "ODetailID";
-$tdataorderdetail[".viewFields"][] = "OrderID";
-$tdataorderdetail[".viewFields"][] = "ProductID";
-$tdataorderdetail[".viewFields"][] = "OrdQuant";
-$tdataorderdetail[".viewFields"][] = "Discount";
-$tdataorderdetail[".viewFields"][] = "Total";
-$tdataorderdetail[".viewFields"][] = "DelDate";
 
 $tdataorderdetail[".addFields"] = array();
 $tdataorderdetail[".addFields"][] = "OrderID";
 $tdataorderdetail[".addFields"][] = "ProductID";
 $tdataorderdetail[".addFields"][] = "OrdQuant";
-$tdataorderdetail[".addFields"][] = "Discount";
 $tdataorderdetail[".addFields"][] = "DelDate";
 
 $tdataorderdetail[".inlineAddFields"] = array();
+$tdataorderdetail[".inlineAddFields"][] = "ODetailID";
 $tdataorderdetail[".inlineAddFields"][] = "OrderID";
 $tdataorderdetail[".inlineAddFields"][] = "ProductID";
 $tdataorderdetail[".inlineAddFields"][] = "OrdQuant";
-$tdataorderdetail[".inlineAddFields"][] = "Discount";
+$tdataorderdetail[".inlineAddFields"][] = "DelQuant";
 $tdataorderdetail[".inlineAddFields"][] = "DelDate";
+$tdataorderdetail[".inlineAddFields"][] = "BillNo";
 
 $tdataorderdetail[".editFields"] = array();
 $tdataorderdetail[".editFields"][] = "OrderID";
 $tdataorderdetail[".editFields"][] = "ProductID";
 $tdataorderdetail[".editFields"][] = "OrdQuant";
-$tdataorderdetail[".editFields"][] = "Discount";
 $tdataorderdetail[".editFields"][] = "DelDate";
 
 $tdataorderdetail[".inlineEditFields"] = array();
+$tdataorderdetail[".inlineEditFields"][] = "ODetailID";
 $tdataorderdetail[".inlineEditFields"][] = "OrderID";
 $tdataorderdetail[".inlineEditFields"][] = "ProductID";
 $tdataorderdetail[".inlineEditFields"][] = "OrdQuant";
-$tdataorderdetail[".inlineEditFields"][] = "Discount";
+$tdataorderdetail[".inlineEditFields"][] = "DelQuant";
 $tdataorderdetail[".inlineEditFields"][] = "DelDate";
+$tdataorderdetail[".inlineEditFields"][] = "BillNo";
 
 $tdataorderdetail[".exportFields"] = array();
-$tdataorderdetail[".exportFields"][] = "ODetailID";
-$tdataorderdetail[".exportFields"][] = "OrderID";
-$tdataorderdetail[".exportFields"][] = "ProductID";
-$tdataorderdetail[".exportFields"][] = "UPrice";
-$tdataorderdetail[".exportFields"][] = "OrdQuant";
-$tdataorderdetail[".exportFields"][] = "DelQuant";
-$tdataorderdetail[".exportFields"][] = "Discount";
-$tdataorderdetail[".exportFields"][] = "Total";
-$tdataorderdetail[".exportFields"][] = "DelDate";
-$tdataorderdetail[".exportFields"][] = "BillNo";
 
 $tdataorderdetail[".printFields"] = array();
-$tdataorderdetail[".printFields"][] = "ODetailID";
-$tdataorderdetail[".printFields"][] = "OrderID";
-$tdataorderdetail[".printFields"][] = "ProductID";
-$tdataorderdetail[".printFields"][] = "UPrice";
-$tdataorderdetail[".printFields"][] = "OrdQuant";
-$tdataorderdetail[".printFields"][] = "DelQuant";
-$tdataorderdetail[".printFields"][] = "Discount";
-$tdataorderdetail[".printFields"][] = "Total";
-$tdataorderdetail[".printFields"][] = "DelDate";
-$tdataorderdetail[".printFields"][] = "BillNo";
 
 //	ODetailID
 //	Custom field settings
@@ -278,17 +232,16 @@ $tdataorderdetail[".printFields"][] = "BillNo";
 		$fdata["bListPage"] = true; 
 	
 		
-		
-		
-		
-		$fdata["bViewPage"] = true; 
+		$fdata["bInlineAdd"] = true; 
 	
+		
+		$fdata["bInlineEdit"] = true; 
+	
+		
 		$fdata["bAdvancedSearch"] = true; 
 	
-		$fdata["bPrinterPage"] = true; 
-	
-		$fdata["bExportPage"] = true; 
-	
+		
+		
 		$fdata["strField"] = "ODetailID"; 
 		$fdata["FullName"] = "ODetailID";
 	
@@ -384,14 +337,11 @@ $tdataorderdetail[".printFields"][] = "BillNo";
 	
 		$fdata["bInlineEdit"] = true; 
 	
-		$fdata["bViewPage"] = true; 
-	
+		
 		$fdata["bAdvancedSearch"] = true; 
 	
-		$fdata["bPrinterPage"] = true; 
-	
-		$fdata["bExportPage"] = true; 
-	
+		
+		
 		$fdata["strField"] = "OrderID"; 
 		$fdata["FullName"] = "OrderID";
 	
@@ -478,16 +428,15 @@ $tdataorderdetail[".printFields"][] = "BillNo";
 		$fdata["bListPage"] = true; 
 	
 		
-		
-		
-		
-		
-		$fdata["bAdvancedSearch"] = true; 
+		$fdata["bInlineAdd"] = true; 
 	
-		$fdata["bPrinterPage"] = true; 
+		
+		$fdata["bInlineEdit"] = true; 
 	
-		$fdata["bExportPage"] = true; 
-	
+		
+		
+		
+		
 		$fdata["strField"] = "BillNo"; 
 		$fdata["FullName"] = "BillNo";
 	
@@ -581,14 +530,11 @@ $tdataorderdetail[".printFields"][] = "BillNo";
 	
 		$fdata["bInlineEdit"] = true; 
 	
-		$fdata["bViewPage"] = true; 
-	
+		
 		$fdata["bAdvancedSearch"] = true; 
 	
-		$fdata["bPrinterPage"] = true; 
-	
-		$fdata["bExportPage"] = true; 
-	
+		
+		
 		$fdata["strField"] = "ProductID"; 
 		$fdata["FullName"] = "ProductID";
 	
@@ -683,106 +629,10 @@ $tdataorderdetail[".printFields"][] = "BillNo";
 		
 		
 	$tdataorderdetail["ProductID"] = $fdata;
-//	UPrice
-//	Custom field settings
-	$fdata = array();
-	$fdata["Index"] = 5;
-	$fdata["strName"] = "UPrice";
-	$fdata["GoodName"] = "UPrice";
-	$fdata["ownerTable"] = "orderdetail";
-	$fdata["Label"] = "Unit Price"; 
-	$fdata["FieldType"] = 14;
-	
-		
-		
-		$fdata["bListPage"] = true; 
-	
-		
-		
-		
-		
-		
-		
-		$fdata["bPrinterPage"] = true; 
-	
-		$fdata["bExportPage"] = true; 
-	
-		$fdata["strField"] = "UPrice"; 
-		$fdata["FullName"] = "UPrice";
-	
-		
-		
-				$fdata["FieldPermissions"] = true;
-	
-				$fdata["UploadFolder"] = "files";
-		
-//  Begin View Formats
-	$fdata["ViewFormats"] = array();
-	
-	$vdata = array("ViewFormat" => "Number");
-	
-		
-		
-		
-			
-		
-		$vdata["DecimalDigits"] = 2;
-	
-		
-		
-		
-		
-		$vdata["NeedEncode"] = true;
-	
-	$fdata["ViewFormats"]["view"] = $vdata;
-//  End View Formats
-
-//	Begin Edit Formats 	
-	$fdata["EditFormats"] = array();
-	
-	$edata = array("EditFormat" => "Text field");
-	
-		
-		
-	
-//	Begin Lookup settings
-	//	End Lookup Settings
-
-		
-		
-		
-		
-			$edata["acceptFileTypes"] = ".+$";
-	
-		$edata["maxNumberOfFiles"] = 1;
-	
-		
-		
-		
-		
-		$edata["EditParams"] = "";
-			
-		
-//	Begin validation
-	$edata["validateAs"] = array();
-				$edata["validateAs"]["basicValidate"][] = getJsValidatorName("Number");	
-						
-	//	End validation
-	
-		
-				
-		$fdata["EditFormats"]["edit"] = $edata;
-//	End Edit Formats
-	
-		$fdata["isSeparate"] = false;
-	
-		
-		
-	$tdataorderdetail["UPrice"] = $fdata;
 //	OrdQuant
 //	Custom field settings
 	$fdata = array();
-	$fdata["Index"] = 6;
+	$fdata["Index"] = 5;
 	$fdata["strName"] = "OrdQuant";
 	$fdata["GoodName"] = "OrdQuant";
 	$fdata["ownerTable"] = "orderdetail";
@@ -801,14 +651,11 @@ $tdataorderdetail[".printFields"][] = "BillNo";
 	
 		$fdata["bInlineEdit"] = true; 
 	
-		$fdata["bViewPage"] = true; 
-	
+		
 		$fdata["bAdvancedSearch"] = true; 
 	
-		$fdata["bPrinterPage"] = true; 
-	
-		$fdata["bExportPage"] = true; 
-	
+		
+		
 		$fdata["strField"] = "OrdQuant"; 
 		$fdata["FullName"] = "OrdQuant";
 	
@@ -849,7 +696,8 @@ $tdataorderdetail[".printFields"][] = "BillNo";
 //	Begin Lookup settings
 	//	End Lookup Settings
 
-		
+		$edata["IsRequired"] = true; 
+	
 		
 		
 		
@@ -867,7 +715,8 @@ $tdataorderdetail[".printFields"][] = "BillNo";
 //	Begin validation
 	$edata["validateAs"] = array();
 				$edata["validateAs"]["basicValidate"][] = getJsValidatorName("Number");	
-						
+						$edata["validateAs"]["basicValidate"][] = "IsRequired";
+	
 	//	End validation
 	
 		
@@ -883,7 +732,7 @@ $tdataorderdetail[".printFields"][] = "BillNo";
 //	DelQuant
 //	Custom field settings
 	$fdata = array();
-	$fdata["Index"] = 7;
+	$fdata["Index"] = 6;
 	$fdata["strName"] = "DelQuant";
 	$fdata["GoodName"] = "DelQuant";
 	$fdata["ownerTable"] = "orderdetail";
@@ -895,16 +744,16 @@ $tdataorderdetail[".printFields"][] = "BillNo";
 		$fdata["bListPage"] = true; 
 	
 		
+		$fdata["bInlineAdd"] = true; 
+	
 		
-		
-		
+		$fdata["bInlineEdit"] = true; 
+	
 		
 		$fdata["bAdvancedSearch"] = true; 
 	
-		$fdata["bPrinterPage"] = true; 
-	
-		$fdata["bExportPage"] = true; 
-	
+		
+		
 		$fdata["strField"] = "DelQuant"; 
 		$fdata["FullName"] = "DelQuant";
 	
@@ -976,112 +825,10 @@ $tdataorderdetail[".printFields"][] = "BillNo";
 		
 		
 	$tdataorderdetail["DelQuant"] = $fdata;
-//	Discount
-//	Custom field settings
-	$fdata = array();
-	$fdata["Index"] = 8;
-	$fdata["strName"] = "Discount";
-	$fdata["GoodName"] = "Discount";
-	$fdata["ownerTable"] = "orderdetail";
-	$fdata["Label"] = "Discount"; 
-	$fdata["FieldType"] = 14;
-	
-		
-		
-		$fdata["bListPage"] = true; 
-	
-		$fdata["bAddPage"] = true; 
-	
-		$fdata["bInlineAdd"] = true; 
-	
-		$fdata["bEditPage"] = true; 
-	
-		$fdata["bInlineEdit"] = true; 
-	
-		$fdata["bViewPage"] = true; 
-	
-		$fdata["bAdvancedSearch"] = true; 
-	
-		$fdata["bPrinterPage"] = true; 
-	
-		$fdata["bExportPage"] = true; 
-	
-		$fdata["strField"] = "Discount"; 
-		$fdata["FullName"] = "Discount";
-	
-		
-		
-				$fdata["FieldPermissions"] = true;
-	
-				$fdata["UploadFolder"] = "files";
-		
-//  Begin View Formats
-	$fdata["ViewFormats"] = array();
-	
-	$vdata = array("ViewFormat" => "Number");
-	
-		
-		
-		
-			
-		
-		$vdata["DecimalDigits"] = 2;
-	
-		
-		
-		
-		
-		$vdata["NeedEncode"] = true;
-	
-	$fdata["ViewFormats"]["view"] = $vdata;
-//  End View Formats
-
-//	Begin Edit Formats 	
-	$fdata["EditFormats"] = array();
-	
-	$edata = array("EditFormat" => "Text field");
-	
-		
-		
-	
-//	Begin Lookup settings
-	//	End Lookup Settings
-
-		
-		
-		
-		
-			$edata["acceptFileTypes"] = ".+$";
-	
-		$edata["maxNumberOfFiles"] = 1;
-	
-		
-		
-		
-		
-		$edata["EditParams"] = "";
-			
-		
-//	Begin validation
-	$edata["validateAs"] = array();
-				$edata["validateAs"]["basicValidate"][] = getJsValidatorName("Number");	
-						
-	//	End validation
-	
-		
-				
-		$fdata["EditFormats"]["edit"] = $edata;
-//	End Edit Formats
-	
-		$fdata["isSeparate"] = false;
-	
-		
-		
-	$tdataorderdetail["Discount"] = $fdata;
 //	Total
 //	Custom field settings
 	$fdata = array();
-	$fdata["Index"] = 9;
+	$fdata["Index"] = 7;
 	$fdata["strName"] = "Total";
 	$fdata["GoodName"] = "Total";
 	$fdata["ownerTable"] = "orderdetail";
@@ -1090,27 +837,21 @@ $tdataorderdetail[".printFields"][] = "BillNo";
 	
 		
 		
-		$fdata["bListPage"] = true; 
-	
 		
 		
 		
 		
-		$fdata["bViewPage"] = true; 
-	
-		$fdata["bAdvancedSearch"] = true; 
-	
-		$fdata["bPrinterPage"] = true; 
-	
-		$fdata["bExportPage"] = true; 
-	
+		
+		
+		
+		
+		
 		$fdata["strField"] = "Total"; 
 		$fdata["FullName"] = "Total";
 	
 		
 		
-				$fdata["FieldPermissions"] = true;
-	
+				
 				$fdata["UploadFolder"] = "files";
 		
 //  Begin View Formats
@@ -1179,7 +920,7 @@ $tdataorderdetail[".printFields"][] = "BillNo";
 //	DelDate
 //	Custom field settings
 	$fdata = array();
-	$fdata["Index"] = 10;
+	$fdata["Index"] = 8;
 	$fdata["strName"] = "DelDate";
 	$fdata["GoodName"] = "DelDate";
 	$fdata["ownerTable"] = "orderdetail";
@@ -1198,14 +939,11 @@ $tdataorderdetail[".printFields"][] = "BillNo";
 	
 		$fdata["bInlineEdit"] = true; 
 	
-		$fdata["bViewPage"] = true; 
-	
+		
 		$fdata["bAdvancedSearch"] = true; 
 	
-		$fdata["bPrinterPage"] = true; 
-	
-		$fdata["bExportPage"] = true; 
-	
+		
+		
 		$fdata["strField"] = "DelDate"; 
 		$fdata["FullName"] = "DelDate";
 	
@@ -1287,26 +1025,6 @@ $fieldToolTips["orderdetail"] = &$fieldToolTipsorderdetail;
 // -----------------start  prepare master-details data arrays ------------------------------//
 // tables which are detail tables for current table (master)
 $detailsTablesData["orderdetail"] = array();
-$dIndex = 1-1;
-			$strOriginalDetailsTable="delivery";
-	$detailsParam["dDataSourceTable"]="delivery";
-	$detailsParam["dOriginalTable"]=$strOriginalDetailsTable;
-	$detailsParam["dShortTable"]="delivery";
-	$detailsParam["masterKeys"]=array();
-	$detailsParam["detailKeys"]=array();
-	$detailsParam["dispChildCount"]= "1";
-	$detailsParam["hideChild"]="0";
-	$detailsParam["previewOnList"]= 1;
-	$detailsParam["previewOnAdd"]= 0;
-	$detailsParam["previewOnEdit"]= 0;
-	$detailsParam["previewOnView"]= 0;
-		
-	$detailsTablesData["orderdetail"][$dIndex] = $detailsParam;
-	
-		
-		$detailsTablesData["orderdetail"][$dIndex]["masterKeys"][]="OrderID";
-		$detailsTablesData["orderdetail"][$dIndex]["detailKeys"][]="orderID";
-
 	
 // tables which are master tables for current table (detail)
 $masterTablesData["orderdetail"] = array();
@@ -1346,7 +1064,7 @@ function createSqlQuery_orderdetail()
 {
 $proto0=array();
 $proto0["m_strHead"] = "SELECT";
-$proto0["m_strFieldList"] = "ODetailID,   OrderID,   BillNo,   ProductID,   UPrice,   OrdQuant,   DelQuant,   Discount,   Total,   DelDate";
+$proto0["m_strFieldList"] = "ODetailID,  OrderID,  BillNo,  ProductID,  OrdQuant,  DelQuant,  Total,  DelDate";
 $proto0["m_strFrom"] = "FROM orderdetail";
 $proto0["m_strWhere"] = "";
 $proto0["m_strOrderBy"] = "";
@@ -1431,7 +1149,7 @@ $obj = new SQLFieldListItem($proto11);
 $proto0["m_fieldlist"][]=$obj;
 						$proto13=array();
 			$obj = new SQLField(array(
-	"m_strName" => "UPrice",
+	"m_strName" => "OrdQuant",
 	"m_strTable" => "orderdetail"
 ));
 
@@ -1442,7 +1160,7 @@ $obj = new SQLFieldListItem($proto13);
 $proto0["m_fieldlist"][]=$obj;
 						$proto15=array();
 			$obj = new SQLField(array(
-	"m_strName" => "OrdQuant",
+	"m_strName" => "DelQuant",
 	"m_strTable" => "orderdetail"
 ));
 
@@ -1453,7 +1171,7 @@ $obj = new SQLFieldListItem($proto15);
 $proto0["m_fieldlist"][]=$obj;
 						$proto17=array();
 			$obj = new SQLField(array(
-	"m_strName" => "DelQuant",
+	"m_strName" => "Total",
 	"m_strTable" => "orderdetail"
 ));
 
@@ -1464,7 +1182,7 @@ $obj = new SQLFieldListItem($proto17);
 $proto0["m_fieldlist"][]=$obj;
 						$proto19=array();
 			$obj = new SQLField(array(
-	"m_strName" => "Discount",
+	"m_strName" => "DelDate",
 	"m_strTable" => "orderdetail"
 ));
 
@@ -1473,65 +1191,44 @@ $proto19["m_alias"] = "";
 $obj = new SQLFieldListItem($proto19);
 
 $proto0["m_fieldlist"][]=$obj;
-						$proto21=array();
-			$obj = new SQLField(array(
-	"m_strName" => "Total",
-	"m_strTable" => "orderdetail"
-));
-
-$proto21["m_expr"]=$obj;
-$proto21["m_alias"] = "";
-$obj = new SQLFieldListItem($proto21);
-
-$proto0["m_fieldlist"][]=$obj;
-						$proto23=array();
-			$obj = new SQLField(array(
-	"m_strName" => "DelDate",
-	"m_strTable" => "orderdetail"
-));
-
-$proto23["m_expr"]=$obj;
-$proto23["m_alias"] = "";
-$obj = new SQLFieldListItem($proto23);
-
-$proto0["m_fieldlist"][]=$obj;
 $proto0["m_fromlist"] = array();
-												$proto25=array();
-$proto25["m_link"] = "SQLL_MAIN";
-			$proto26=array();
-$proto26["m_strName"] = "orderdetail";
-$proto26["m_columns"] = array();
-$proto26["m_columns"][] = "ODetailID";
-$proto26["m_columns"][] = "OrderID";
-$proto26["m_columns"][] = "BillNo";
-$proto26["m_columns"][] = "ProductID";
-$proto26["m_columns"][] = "UPrice";
-$proto26["m_columns"][] = "OrdQuant";
-$proto26["m_columns"][] = "DelQuant";
-$proto26["m_columns"][] = "Discount";
-$proto26["m_columns"][] = "Total";
-$proto26["m_columns"][] = "DelDate";
-$obj = new SQLTable($proto26);
+												$proto21=array();
+$proto21["m_link"] = "SQLL_MAIN";
+			$proto22=array();
+$proto22["m_strName"] = "orderdetail";
+$proto22["m_columns"] = array();
+$proto22["m_columns"][] = "ODetailID";
+$proto22["m_columns"][] = "OrderID";
+$proto22["m_columns"][] = "BillNo";
+$proto22["m_columns"][] = "ProductID";
+$proto22["m_columns"][] = "UPrice";
+$proto22["m_columns"][] = "OrdQuant";
+$proto22["m_columns"][] = "DelQuant";
+$proto22["m_columns"][] = "Discount";
+$proto22["m_columns"][] = "Total";
+$proto22["m_columns"][] = "DelDate";
+$proto22["m_columns"][] = "TimeStamp";
+$obj = new SQLTable($proto22);
 
-$proto25["m_table"] = $obj;
-$proto25["m_alias"] = "";
-$proto27=array();
-$proto27["m_sql"] = "";
-$proto27["m_uniontype"] = "SQLL_UNKNOWN";
+$proto21["m_table"] = $obj;
+$proto21["m_alias"] = "";
+$proto23=array();
+$proto23["m_sql"] = "";
+$proto23["m_uniontype"] = "SQLL_UNKNOWN";
 	$obj = new SQLNonParsed(array(
 	"m_sql" => ""
 ));
 
-$proto27["m_column"]=$obj;
-$proto27["m_contained"] = array();
-$proto27["m_strCase"] = "";
-$proto27["m_havingmode"] = "0";
-$proto27["m_inBrackets"] = "0";
-$proto27["m_useAlias"] = "0";
-$obj = new SQLLogicalExpr($proto27);
+$proto23["m_column"]=$obj;
+$proto23["m_contained"] = array();
+$proto23["m_strCase"] = "";
+$proto23["m_havingmode"] = "0";
+$proto23["m_inBrackets"] = "0";
+$proto23["m_useAlias"] = "0";
+$obj = new SQLLogicalExpr($proto23);
 
-$proto25["m_joinon"] = $obj;
-$obj = new SQLFromListItem($proto25);
+$proto21["m_joinon"] = $obj;
+$obj = new SQLFromListItem($proto21);
 
 $proto0["m_fromlist"][]=$obj;
 $proto0["m_groupby"] = array();
@@ -1541,7 +1238,7 @@ $obj = new SQLQuery($proto0);
 	return $obj;
 }
 $queryData_orderdetail = createSqlQuery_orderdetail();
-										$tdataorderdetail[".sqlquery"] = $queryData_orderdetail;
+								$tdataorderdetail[".sqlquery"] = $queryData_orderdetail;
 
 $tableEvents["orderdetail"] = new eventsBase;
 $tdataorderdetail[".hasEvents"] = false;

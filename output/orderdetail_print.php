@@ -271,20 +271,12 @@ $arr['fName'] = "ProductID";
 $arr['viewFormat'] = $pageObject->pSet->getViewFormat("ProductID");
 $fieldsArr[] = $arr;
 $arr = array();
-$arr['fName'] = "UPrice";
-$arr['viewFormat'] = $pageObject->pSet->getViewFormat("UPrice");
-$fieldsArr[] = $arr;
-$arr = array();
 $arr['fName'] = "OrdQuant";
 $arr['viewFormat'] = $pageObject->pSet->getViewFormat("OrdQuant");
 $fieldsArr[] = $arr;
 $arr = array();
 $arr['fName'] = "DelQuant";
 $arr['viewFormat'] = $pageObject->pSet->getViewFormat("DelQuant");
-$fieldsArr[] = $arr;
-$arr = array();
-$arr['fName'] = "Discount";
-$arr['viewFormat'] = $pageObject->pSet->getViewFormat("Discount");
 $fieldsArr[] = $arr;
 $arr = array();
 $arr['fName'] = "Total";
@@ -350,18 +342,12 @@ if($colsonpage<1)
 //	ProductID - 
 			$record["ProductID_value"] = $pageObject->showDBValue("ProductID", $data, $keylink);
 			$record["ProductID_class"] = $pageObject->fieldClass("ProductID");
-//	UPrice - Number
-			$record["UPrice_value"] = $pageObject->showDBValue("UPrice", $data, $keylink);
-			$record["UPrice_class"] = $pageObject->fieldClass("UPrice");
 //	OrdQuant - 
 			$record["OrdQuant_value"] = $pageObject->showDBValue("OrdQuant", $data, $keylink);
 			$record["OrdQuant_class"] = $pageObject->fieldClass("OrdQuant");
 //	DelQuant - 
 			$record["DelQuant_value"] = $pageObject->showDBValue("DelQuant", $data, $keylink);
 			$record["DelQuant_class"] = $pageObject->fieldClass("DelQuant");
-//	Discount - Number
-			$record["Discount_value"] = $pageObject->showDBValue("Discount", $data, $keylink);
-			$record["Discount_class"] = $pageObject->fieldClass("Discount");
 //	Total - Number
 			$record["Total_value"] = $pageObject->showDBValue("Total", $data, $keylink);
 			$record["Total_class"] = $pageObject->fieldClass("Total");
@@ -527,10 +513,6 @@ $xt->assign("ProductID_fieldheadercolumn",true);
 $xt->assign("ProductID_fieldheader",true);
 $xt->assign("ProductID_fieldcolumn",true);
 $xt->assign("ProductID_fieldfootercolumn",true);
-$xt->assign("UPrice_fieldheadercolumn",true);
-$xt->assign("UPrice_fieldheader",true);
-$xt->assign("UPrice_fieldcolumn",true);
-$xt->assign("UPrice_fieldfootercolumn",true);
 $xt->assign("OrdQuant_fieldheadercolumn",true);
 $xt->assign("OrdQuant_fieldheader",true);
 $xt->assign("OrdQuant_fieldcolumn",true);
@@ -539,10 +521,6 @@ $xt->assign("DelQuant_fieldheadercolumn",true);
 $xt->assign("DelQuant_fieldheader",true);
 $xt->assign("DelQuant_fieldcolumn",true);
 $xt->assign("DelQuant_fieldfootercolumn",true);
-$xt->assign("Discount_fieldheadercolumn",true);
-$xt->assign("Discount_fieldheader",true);
-$xt->assign("Discount_fieldcolumn",true);
-$xt->assign("Discount_fieldfootercolumn",true);
 $xt->assign("Total_fieldheadercolumn",true);
 $xt->assign("Total_fieldheader",true);
 $xt->assign("Total_fieldcolumn",true);

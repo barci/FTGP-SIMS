@@ -201,9 +201,9 @@ $layout->containers["mastergrid"][] = array("name"=>"masterlistfields","block"=>
 
 
 $layout->skins["mastergrid"] = "grid";
-$layout->blocks["bare"][] = "mastergrid";$page_layouts["orderdetail_masterlist"] = $layout;
+$layout->blocks["bare"][] = "mastergrid";$page_layouts["Pending_Orders_masterlist"] = $layout;
 
-$layout = GetPageLayout("orderdetail", 'masterlist');
+$layout = GetPageLayout("Pending_Orders", 'masterlist');
 if($layout)
 {
 	$rtl = $xt->getReadingOrder() == 'RTL' ? 'RTL' : '';
@@ -212,7 +212,7 @@ if($layout)
 	$xt->IEcssFiles[] = array("stylepathIE" => "styles/".$layout->style.'/styleIE'.".css");
 }
 include_once getabspath('classes/controls/ViewControlsContainer.php');
-$viewControls = new ViewControlsContainer(new ProjectSettings("orderdetail", PAGE_LIST), PAGE_LIST);
+$viewControls = new ViewControlsContainer(new ProjectSettings("Pending Orders", PAGE_LIST), PAGE_LIST);
 $viewControls->addControlsJSAndCSS();
 $pageObject->includes_js = array_merge($pageObject->includes_js, $viewControls->includes_js);
 $pageObject->includes_jsreq = array_merge($pageObject->includes_jsreq, $viewControls->includes_jsreq);

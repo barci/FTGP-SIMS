@@ -114,13 +114,6 @@ Page {$pageno} of {$maxpages}
 	{END ProductID_fieldheader}
 </th>
 {END ProductID_fieldheadercolumn}
-	{BEGIN UPrice_fieldheadercolumn}
-<th class="runner-cc">
-	{BEGIN UPrice_fieldheader}
-	<b>Unit Price</b>
-	{END UPrice_fieldheader}
-</th>
-{END UPrice_fieldheadercolumn}
 	{BEGIN OrdQuant_fieldheadercolumn}
 <th class="runner-cc">
 	{BEGIN OrdQuant_fieldheader}
@@ -135,13 +128,6 @@ Page {$pageno} of {$maxpages}
 	{END DelQuant_fieldheader}
 </th>
 {END DelQuant_fieldheadercolumn}
-	{BEGIN Discount_fieldheadercolumn}
-<th class="runner-cc">
-	{BEGIN Discount_fieldheader}
-	<b>Discount</b>
-	{END Discount_fieldheader}
-</th>
-{END Discount_fieldheadercolumn}
 	{BEGIN Total_fieldheadercolumn}
 <th class="runner-cc">
 	{BEGIN Total_fieldheader}
@@ -192,11 +178,6 @@ Page {$pageno} of {$maxpages}
 	{$ProductID_value}
 </td>
 {END ProductID_fieldcolumn}
-	{BEGIN UPrice_fieldcolumn}
-<td  class="runner-cc {$UPrice_class}" {$UPrice_style}>
-	{$UPrice_value}
-</td>
-{END UPrice_fieldcolumn}
 	{BEGIN OrdQuant_fieldcolumn}
 <td  class="runner-cc {$OrdQuant_class}" {$OrdQuant_style}>
 	{$OrdQuant_value}
@@ -207,11 +188,6 @@ Page {$pageno} of {$maxpages}
 	{$DelQuant_value}
 </td>
 {END DelQuant_fieldcolumn}
-	{BEGIN Discount_fieldcolumn}
-<td  class="runner-cc {$Discount_class}" {$Discount_style}>
-	{$Discount_value}
-</td>
-{END Discount_fieldcolumn}
 	{BEGIN Total_fieldcolumn}
 <td  class="runner-cc {$Total_class}" {$Total_style}>
 	{$Total_value}
@@ -248,18 +224,12 @@ Page {$pageno} of {$maxpages}
 {BEGIN ProductID_fieldfootercolumn}
 <td class="runner-cc "></td>
 {END ProductID_fieldfootercolumn}
-{BEGIN UPrice_fieldfootercolumn}
-<td class="runner-cc "></td>
-{END UPrice_fieldfootercolumn}
 {BEGIN OrdQuant_fieldfootercolumn}
 <td class="runner-cc "></td>
 {END OrdQuant_fieldfootercolumn}
 {BEGIN DelQuant_fieldfootercolumn}
 <td class="runner-cc "></td>
 {END DelQuant_fieldfootercolumn}
-{BEGIN Discount_fieldfootercolumn}
-<td class="runner-cc "></td>
-{END Discount_fieldfootercolumn}
 {BEGIN Total_fieldfootercolumn}
 <td class="runner-cc "></td>
 {END Total_fieldfootercolumn}

@@ -195,7 +195,7 @@ if($inlineadd==ADD_SIMPLE || $inlineadd==ADD_MASTER || $inlineadd==ADD_POPUP)
 	{
 		$ids = $id;
 		$countDetailsIsShow = 0;
-			$pageObject->jsSettings['tableSettings'][$strTableName]['isShowDetails'] = $countDetailsIsShow > 0 ? true : false;
+		$pageObject->jsSettings['tableSettings'][$strTableName]['isShowDetails'] = $countDetailsIsShow > 0 ? true : false;
 		$pageObject->jsSettings['tableSettings'][$strTableName]['dpParams'] = array('tableNames'=>$dpParams['strTableNames'], 'ids'=>$dpParams['ids']);
 	}
 }
@@ -215,6 +215,15 @@ if(@$_POST["a"]=="added")
 	$afilename_values=array();
 	$avalues=array();
 	$blobfields=array();
+//	processing ODetailID - start
+	$inlineAddOption = true;
+	$inlineAddOption = $inlineadd==ADD_INLINE;
+	if($inlineAddOption)
+	{
+		$control_ODetailID = $pageObject->getControl("ODetailID", $id);
+		$control_ODetailID->readWebValue($avalues, $blobfields, "", false, $afilename_values);
+	}
+//	processing ODetailID - end
 //	processing OrderID - start
 	$inlineAddOption = true;
 	if($inlineAddOption)
@@ -239,14 +248,15 @@ if(@$_POST["a"]=="added")
 		$control_OrdQuant->readWebValue($avalues, $blobfields, "", false, $afilename_values);
 	}
 //	processing OrdQuant - end
-//	processing Discount - start
+//	processing DelQuant - start
 	$inlineAddOption = true;
+	$inlineAddOption = $inlineadd==ADD_INLINE;
 	if($inlineAddOption)
 	{
-		$control_Discount = $pageObject->getControl("Discount", $id);
-		$control_Discount->readWebValue($avalues, $blobfields, "", false, $afilename_values);
+		$control_DelQuant = $pageObject->getControl("DelQuant", $id);
+		$control_DelQuant->readWebValue($avalues, $blobfields, "", false, $afilename_values);
 	}
-//	processing Discount - end
+//	processing DelQuant - end
 //	processing DelDate - start
 	$inlineAddOption = true;
 	if($inlineAddOption)
@@ -255,6 +265,15 @@ if(@$_POST["a"]=="added")
 		$control_DelDate->readWebValue($avalues, $blobfields, "", false, $afilename_values);
 	}
 //	processing DelDate - end
+//	processing BillNo - start
+	$inlineAddOption = true;
+	$inlineAddOption = $inlineadd==ADD_INLINE;
+	if($inlineAddOption)
+	{
+		$control_BillNo = $pageObject->getControl("BillNo", $id);
+		$control_BillNo->readWebValue($avalues, $blobfields, "", false, $afilename_values);
+	}
+//	processing BillNo - end
 
 
 //	insert masterkey value if exists and if not specified
@@ -299,6 +318,14 @@ if(@$_POST["a"]=="added")
 				$auditObj->LogAdd($strTableName,$avalues,$keys);
 				
 // Give possibility to all edit controls to clean their data				
+//	processing ODetailID - start
+			$inlineAddOption = true;
+			$inlineAddOption = $inlineadd==ADD_INLINE;
+			if($inlineAddOption)
+			{
+				$control_ODetailID->afterSuccessfulSave();
+			}
+//	processing ODetailID - end
 //	processing OrderID - start
 			$inlineAddOption = true;
 			if($inlineAddOption)
@@ -320,13 +347,14 @@ if(@$_POST["a"]=="added")
 				$control_OrdQuant->afterSuccessfulSave();
 			}
 //	processing OrdQuant - end
-//	processing Discount - start
+//	processing DelQuant - start
 			$inlineAddOption = true;
+			$inlineAddOption = $inlineadd==ADD_INLINE;
 			if($inlineAddOption)
 			{
-				$control_Discount->afterSuccessfulSave();
+				$control_DelQuant->afterSuccessfulSave();
 			}
-//	processing Discount - end
+//	processing DelQuant - end
 //	processing DelDate - start
 			$inlineAddOption = true;
 			if($inlineAddOption)
@@ -334,6 +362,14 @@ if(@$_POST["a"]=="added")
 				$control_DelDate->afterSuccessfulSave();
 			}
 //	processing DelDate - end
+//	processing BillNo - start
+			$inlineAddOption = true;
+			$inlineAddOption = $inlineadd==ADD_INLINE;
+			if($inlineAddOption)
+			{
+				$control_BillNo->afterSuccessfulSave();
+			}
+//	processing BillNo - end
 
 			$afterAdd_id = '';	
 			if($eventObj->exists("AfterAdd") && $inlineadd!=ADD_MASTER){
@@ -439,6 +475,7 @@ if(array_key_exists("copyid1",$_REQUEST) || array_key_exists("editid1",$_REQUEST
 }
 else
 {
+	$defvalues["OrdQuant"] = 0;
 }
 
 
@@ -459,7 +496,6 @@ if($readavalues)
 	$defvalues["OrderID"]=@$avalues["OrderID"];
 	$defvalues["ProductID"]=@$avalues["ProductID"];
 	$defvalues["OrdQuant"]=@$avalues["OrdQuant"];
-	$defvalues["Discount"]=@$avalues["Discount"];
 	$defvalues["DelDate"]=@$avalues["DelDate"];
 }
 
@@ -503,14 +539,6 @@ if($inlineadd!=ADD_INLINE)
 	$xt->assign("OrdQuant_label",true);
 	if(isEnableSection508())
 		$xt->assign_section("OrdQuant_label","<label for=\"".GetInputElementId("OrdQuant", $id, PAGE_ADD)."\">","</label>");
-	
-	if(!$pageObject->isAppearOnTabs("Discount"))
-		$xt->assign("Discount_fieldblock",true);
-	else
-		$xt->assign("Discount_tabfieldblock",true);
-	$xt->assign("Discount_label",true);
-	if(isEnableSection508())
-		$xt->assign_section("Discount_label","<label for=\"".GetInputElementId("Discount", $id, PAGE_ADD)."\">","</label>");
 	
 	if(!$pageObject->isAppearOnTabs("DelDate"))
 		$xt->assign("DelDate_fieldblock",true);
@@ -619,7 +647,6 @@ if(@$_POST["a"]=="added" && ($inlineadd == ADD_INLINE || $inlineadd == ADD_MASTE
 		$HaveData=false;
 	}
 	//check if correct values added
-	$showDetailKeys["delivery"]["masterkey1"] = $data["OrderID"];	
 
 	$keylink="";
 	$keylink.="&key1=".htmlspecialchars(rawurlencode(@$data["ODetailID"]));
@@ -669,16 +696,6 @@ if(@$_POST["a"]=="added" && ($inlineadd == ADD_INLINE || $inlineadd == ADD_MASTE
 		$showValues["ProductID"] = $value;
 		$showFields[] = "ProductID";
 	}	
-//	UPrice
-	$display = false;
-	if($inlineadd==ADD_INLINE || $inlineadd==ADD_ONTHEFLY || $inlineadd==ADD_POPUP)
-		$display = true;
-	if($display)
-	{	
-		$value = $pageObject->showDBValue("UPrice", $data, $keylink);
-		$showValues["UPrice"] = $value;
-		$showFields[] = "UPrice";
-	}	
 //	OrdQuant
 	$display = false;
 	if($inlineadd==ADD_MASTER)
@@ -701,28 +718,6 @@ if(@$_POST["a"]=="added" && ($inlineadd == ADD_INLINE || $inlineadd == ADD_MASTE
 		$showValues["DelQuant"] = $value;
 		$showFields[] = "DelQuant";
 	}	
-//	Discount
-	$display = false;
-	if($inlineadd==ADD_MASTER)
-		$display = true;
-	if($inlineadd==ADD_INLINE || $inlineadd==ADD_ONTHEFLY || $inlineadd==ADD_POPUP)
-		$display = true;
-	if($display)
-	{	
-		$value = $pageObject->showDBValue("Discount", $data, $keylink);
-		$showValues["Discount"] = $value;
-		$showFields[] = "Discount";
-	}	
-//	Total
-	$display = false;
-	if($inlineadd==ADD_INLINE || $inlineadd==ADD_ONTHEFLY || $inlineadd==ADD_POPUP)
-		$display = true;
-	if($display)
-	{	
-		$value = $pageObject->showDBValue("Total", $data, $keylink);
-		$showValues["Total"] = $value;
-		$showFields[] = "Total";
-	}	
 //	DelDate
 	$display = false;
 	if($inlineadd==ADD_MASTER)
@@ -739,10 +734,8 @@ if(@$_POST["a"]=="added" && ($inlineadd == ADD_INLINE || $inlineadd == ADD_MASTE
 		$showRawValues["OrderID"] = substr($data["OrderID"],0,100);
 		$showRawValues["BillNo"] = substr($data["BillNo"],0,100);
 		$showRawValues["ProductID"] = substr($data["ProductID"],0,100);
-		$showRawValues["UPrice"] = substr($data["UPrice"],0,100);
 		$showRawValues["OrdQuant"] = substr($data["OrdQuant"],0,100);
 		$showRawValues["DelQuant"] = substr($data["DelQuant"],0,100);
-		$showRawValues["Discount"] = substr($data["Discount"],0,100);
 		$showRawValues["Total"] = substr($data["Total"],0,100);
 		$showRawValues["DelDate"] = substr($data["DelDate"],0,100);
 	
@@ -1079,6 +1072,7 @@ if($inlineadd==ADD_ONTHEFLY || $inlineadd==ADD_MASTER || $inlineadd==ADD_POPUP)
 }	
 
 $xt->assign("style_block",true);
+$pageObject->xt->assign("legend", true);
 
 if($eventObj->exists("BeforeShowAdd"))
 	$eventObj->BeforeShowAdd($xt, $templatefile, $pageObject);

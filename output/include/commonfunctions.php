@@ -210,6 +210,12 @@ function checkTableName($shortTName, $type=false)
 		return true;
 	if ("Product_Listing" == $shortTName && ($type===false || ($type!==false && $type == 1)))
 		return true;
+	if ("stockrequest" == $shortTName && ($type===false || ($type!==false && $type == 0)))
+		return true;
+	if ("Pending_Orders" == $shortTName && ($type===false || ($type!==false && $type == 1)))
+		return true;
+	if ("Stocks_Received" == $shortTName && ($type===false || ($type!==false && $type == 1)))
+		return true;
 	return false;
 }
 
@@ -243,17 +249,76 @@ function GetEmailField($table = "")
 function GetTablesList($pdfMode = false)
 {
 	$arr = array();
+	$strPerm = GetUserPermissions("supplier");
+	if(strpos($strPerm, "P")!==false || ($pdfMode && strpos($strPerm, "S")!==false))
+	{
 		$arr[]="supplier";
+	}
+	$strPerm = GetUserPermissions("category");
+	if(strpos($strPerm, "P")!==false || ($pdfMode && strpos($strPerm, "S")!==false))
+	{
 		$arr[]="category";
+	}
+	$strPerm = GetUserPermissions("product");
+	if(strpos($strPerm, "P")!==false || ($pdfMode && strpos($strPerm, "S")!==false))
+	{
 		$arr[]="product";
+	}
+	$strPerm = GetUserPermissions("customer");
+	if(strpos($strPerm, "P")!==false || ($pdfMode && strpos($strPerm, "S")!==false))
+	{
 		$arr[]="customer";
+	}
+	$strPerm = GetUserPermissions("role");
+	if(strpos($strPerm, "P")!==false || ($pdfMode && strpos($strPerm, "S")!==false))
+	{
 		$arr[]="role";
+	}
+	$strPerm = GetUserPermissions("staff");
+	if(strpos($strPerm, "P")!==false || ($pdfMode && strpos($strPerm, "S")!==false))
+	{
 		$arr[]="staff";
+	}
+	$strPerm = GetUserPermissions("Product-Order List");
+	if(strpos($strPerm, "P")!==false || ($pdfMode && strpos($strPerm, "S")!==false))
+	{
 		$arr[]="Product-Order List";
+	}
+	$strPerm = GetUserPermissions("orderdetail");
+	if(strpos($strPerm, "P")!==false || ($pdfMode && strpos($strPerm, "S")!==false))
+	{
 		$arr[]="orderdetail";
+	}
+	$strPerm = GetUserPermissions("orderentry");
+	if(strpos($strPerm, "P")!==false || ($pdfMode && strpos($strPerm, "S")!==false))
+	{
 		$arr[]="orderentry";
+	}
+	$strPerm = GetUserPermissions("delivery");
+	if(strpos($strPerm, "P")!==false || ($pdfMode && strpos($strPerm, "S")!==false))
+	{
 		$arr[]="delivery";
+	}
+	$strPerm = GetUserPermissions("Product Listing");
+	if(strpos($strPerm, "P")!==false || ($pdfMode && strpos($strPerm, "S")!==false))
+	{
 		$arr[]="Product Listing";
+	}
+	$strPerm = GetUserPermissions("stockrequest");
+	if(strpos($strPerm, "P")!==false || ($pdfMode && strpos($strPerm, "S")!==false))
+	{
+		$arr[]="stockrequest";
+	}
+	$strPerm = GetUserPermissions("Pending Orders");
+	if(strpos($strPerm, "P")!==false || ($pdfMode && strpos($strPerm, "S")!==false))
+	{
+		$arr[]="Pending Orders";
+	}
+	$strPerm = GetUserPermissions("Stocks Received");
+	if(strpos($strPerm, "P")!==false || ($pdfMode && strpos($strPerm, "S")!==false))
+	{
+		$arr[]="Stocks Received";
+	}
 	return $arr;
 }
 
@@ -1391,60 +1456,299 @@ function GetUserPermissionsStatic($table="")
 		$table=$strTableName;
 
 	$sUserGroup=@$_SESSION["GroupID"];
+	if($table=="supplier" && $sUserGroup=="Warehouse")
+	{
+			return "AES";
+	}
+	if($table=="supplier" && $sUserGroup=="Sales")
+	{
+			return "";
+	}
+	if($table=="supplier" && $sUserGroup=="Admin")
+	{
+			return "AEDSPI";
+	}
+	if($table=="supplier" && $sUserGroup=="Purchasing")
+	{
+			return "AES";
+	}
 //	default permissions	
 	if($table=="supplier")
 	{
-	return "ADESPI";// grant all by default
+	return "AEDSPI";
+	}
+	if($table=="category" && $sUserGroup=="Warehouse")
+	{
+			return "AES";
+	}
+	if($table=="category" && $sUserGroup=="Sales")
+	{
+			return "";
+	}
+	if($table=="category" && $sUserGroup=="Admin")
+	{
+			return "AEDSPI";
+	}
+	if($table=="category" && $sUserGroup=="Purchasing")
+	{
+			return "";
 	}
 //	default permissions	
 	if($table=="category")
 	{
-	return "ADESPI";// grant all by default
+	return "AEDSPI";
+	}
+	if($table=="product" && $sUserGroup=="Warehouse")
+	{
+			return "AES";
+	}
+	if($table=="product" && $sUserGroup=="Sales")
+	{
+			return "S";
+	}
+	if($table=="product" && $sUserGroup=="Admin")
+	{
+			return "AEDSPI";
+	}
+	if($table=="product" && $sUserGroup=="Purchasing")
+	{
+			return "S";
 	}
 //	default permissions	
 	if($table=="product")
 	{
-	return "ADESPI";// grant all by default
+	return "AEDSPI";
+	}
+	if($table=="customer" && $sUserGroup=="Warehouse")
+	{
+			return "";
+	}
+	if($table=="customer" && $sUserGroup=="Sales")
+	{
+			return "AES";
+	}
+	if($table=="customer" && $sUserGroup=="Admin")
+	{
+			return "AEDSPI";
+	}
+	if($table=="customer" && $sUserGroup=="Purchasing")
+	{
+			return "";
 	}
 //	default permissions	
 	if($table=="customer")
 	{
-	return "ADESPI";// grant all by default
+	return "AEDSPI";
+	}
+	if($table=="role" && $sUserGroup=="Warehouse")
+	{
+			return "";
+	}
+	if($table=="role" && $sUserGroup=="Sales")
+	{
+			return "";
+	}
+	if($table=="role" && $sUserGroup=="Admin")
+	{
+			return "AEDSPI";
+	}
+	if($table=="role" && $sUserGroup=="Purchasing")
+	{
+			return "";
 	}
 //	default permissions	
 	if($table=="role")
 	{
-	return "ADESPI";// grant all by default
+	return "AEDSPI";
+	}
+	if($table=="staff" && $sUserGroup=="Warehouse")
+	{
+			return "";
+	}
+	if($table=="staff" && $sUserGroup=="Sales")
+	{
+			return "";
+	}
+	if($table=="staff" && $sUserGroup=="Admin")
+	{
+			return "AEDSPI";
+	}
+	if($table=="staff" && $sUserGroup=="Purchasing")
+	{
+			return "";
 	}
 //	default permissions	
 	if($table=="staff")
 	{
-	return "ADESPI";// grant all by default
+	return "AEDSPI";
+	}
+	if($table=="Product-Order List" && $sUserGroup=="Warehouse")
+	{
+			return "AES";
+	}
+	if($table=="Product-Order List" && $sUserGroup=="Sales")
+	{
+			return "";
+	}
+	if($table=="Product-Order List" && $sUserGroup=="Admin")
+	{
+			return "AEDSPI";
+	}
+	if($table=="Product-Order List" && $sUserGroup=="Purchasing")
+	{
+			return "";
 	}
 //	default permissions	
 	if($table=="Product-Order List")
 	{
-	return "ADESPI";// grant all by default
+	return "AEDSPI";
+	}
+	if($table=="orderdetail" && $sUserGroup=="Warehouse")
+	{
+			return "";
+	}
+	if($table=="orderdetail" && $sUserGroup=="Sales")
+	{
+			return "AES";
+	}
+	if($table=="orderdetail" && $sUserGroup=="Admin")
+	{
+			return "AEDSPI";
+	}
+	if($table=="orderdetail" && $sUserGroup=="Purchasing")
+	{
+			return "";
 	}
 //	default permissions	
 	if($table=="orderdetail")
 	{
-	return "ADESPI";// grant all by default
+	return "AEDSPI";
+	}
+	if($table=="orderentry" && $sUserGroup=="Warehouse")
+	{
+			return "";
+	}
+	if($table=="orderentry" && $sUserGroup=="Sales")
+	{
+			return "AES";
+	}
+	if($table=="orderentry" && $sUserGroup=="Admin")
+	{
+			return "AEDSPI";
+	}
+	if($table=="orderentry" && $sUserGroup=="Purchasing")
+	{
+			return "";
 	}
 //	default permissions	
 	if($table=="orderentry")
 	{
-	return "ADESPI";// grant all by default
+	return "AEDSPI";
+	}
+	if($table=="delivery" && $sUserGroup=="Warehouse")
+	{
+			return "AES";
+	}
+	if($table=="delivery" && $sUserGroup=="Sales")
+	{
+			return "";
+	}
+	if($table=="delivery" && $sUserGroup=="Admin")
+	{
+			return "AEDSPI";
+	}
+	if($table=="delivery" && $sUserGroup=="Purchasing")
+	{
+			return "";
 	}
 //	default permissions	
 	if($table=="delivery")
 	{
-	return "ADESPI";// grant all by default
+	return "AEDSPI";
+	}
+	if($table=="Product Listing" && $sUserGroup=="Warehouse")
+	{
+			return "AES";
+	}
+	if($table=="Product Listing" && $sUserGroup=="Sales")
+	{
+			return "";
+	}
+	if($table=="Product Listing" && $sUserGroup=="Admin")
+	{
+			return "AEDSPI";
+	}
+	if($table=="Product Listing" && $sUserGroup=="Purchasing")
+	{
+			return "";
 	}
 //	default permissions	
 	if($table=="Product Listing")
 	{
-	return "ADESPI";// grant all by default
+	return "AEDSPI";
+	}
+	if($table=="stockrequest" && $sUserGroup=="Warehouse")
+	{
+			return "AES";
+	}
+	if($table=="stockrequest" && $sUserGroup=="Sales")
+	{
+			return "";
+	}
+	if($table=="stockrequest" && $sUserGroup=="Admin")
+	{
+			return "AEDSPI";
+	}
+	if($table=="stockrequest" && $sUserGroup=="Purchasing")
+	{
+			return "AES";
+	}
+//	default permissions	
+	if($table=="stockrequest")
+	{
+	return "AEDSPI";
+	}
+	if($table=="Pending Orders" && $sUserGroup=="Warehouse")
+	{
+			return "AES";
+	}
+	if($table=="Pending Orders" && $sUserGroup=="Sales")
+	{
+			return "S";
+	}
+	if($table=="Pending Orders" && $sUserGroup=="Admin")
+	{
+			return "AEDSPI";
+	}
+	if($table=="Pending Orders" && $sUserGroup=="Purchasing")
+	{
+			return "";
+	}
+//	default permissions	
+	if($table=="Pending Orders")
+	{
+	return "AEDSPI";
+	}
+	if($table=="Stocks Received" && $sUserGroup=="Warehouse")
+	{
+			return "AES";
+	}
+	if($table=="Stocks Received" && $sUserGroup=="Sales")
+	{
+			return "";
+	}
+	if($table=="Stocks Received" && $sUserGroup=="Admin")
+	{
+			return "AEDSPI";
+	}
+	if($table=="Stocks Received" && $sUserGroup=="Purchasing")
+	{
+			return "S";
+	}
+//	default permissions	
+	if($table=="Stocks Received")
+	{
+	return "AEDSPI";
 	}
 }
 
@@ -1529,7 +1833,7 @@ function AfterFBLogIn($pUsername, $pPassword){
 function SetAuthSessionData($pUsername, &$data, $fromFacebook, $password)
 {
 	global $globalEvents;
-		$_SESSION["GroupID"] = "";
+		$_SESSION["GroupID"] = $data["RoleID"];
 
 
 			$_SESSION["OwnerID"] = $data["StaffID"];
@@ -1579,14 +1883,19 @@ function CheckSecurity($strValue, $strAction)
 	$strPerm = GetUserPermissions();
 	if(@$_SESSION["AccessLevel"]!=ACCESS_LEVEL_ADMINGROUP && strpos($strPerm, "M")===false)
 	{
-		if($strTableName=="staff")
-		{
-			
-				if(!($pSet->getCaseSensitiveUsername((string)$_SESSION["_".$strTableName."_OwnerID"])===$pSet->getCaseSensitiveUsername((string)$strValue)))
-				return false;
-		}
 	}
+	//	 check user group permissions
+	$localAction = strtolower($strAction);
+	if($localAction=="add" && !(strpos($strPerm, "A")===false) ||
+	   $localAction=="edit" && !(strpos($strPerm, "E")===false) ||
+	   $localAction=="delete" && !(strpos($strPerm, "D")===false) ||
+	   $localAction=="search" && !(strpos($strPerm, "S")===false) ||
+	   $localAction=="import" && !(strpos($strPerm, "I")===false) ||
+	   $localAction=="export" && !(strpos($strPerm, "P")===false) )
 		return true;
+	else
+		return false;
+	return true;
 }
 
 function CheckPermissionsEvent($strTableName, $permission){
@@ -1618,10 +1927,6 @@ function SecuritySQL($strAction, $table="")
 
 	if(@$_SESSION["AccessLevel"]!=ACCESS_LEVEL_ADMINGROUP && strpos($strPerm, "M") === false)
 	{
-		if($table=="staff")
-		{
-				$ret=GetFullFieldName($pSet->getTableOwnerID(), $table, false)."=".make_db_value($pSet->getTableOwnerID(),$ownerid, "", "", $table);
-		}
 	}
 	
 	if($strAction=="Edit" && !(strpos($strPerm, "E")===false) ||

@@ -30,38 +30,6 @@
 				<td class="runner-top" colspan=3>
 					
 
-{BEGIN container_master}
-<table class="runner-c runner-c-master" cellpadding="0" >
-<tr class="{$cheaderclass_master}">
-<td class="runner-cl"><img src="images/spacer.gif"></td>
-<td class="runner-cc"></td><td class="runner-cr"><img src="images/spacer.gif"></td>
-</tr>
-<tr class="runner-row style1">
-<td class="runner-cl"></td>
-<td class="runner-cc">
-<table border="0" cellpadding="0" class="runner-hc">
-<tr>
-
-{BEGIN mastertable_block}
-<td  class="runner-cc runner-bl runner-b-masterinfo" {$brickclass_masterinfo}><span>{$showmasterfile}
-<a class="runner-link" {$backtomasterlink_attrs}>
-	<b>Back to {$backtomasterlink_caption}</b>
-</a></span></td>
-{END mastertable_block}
-
-<td class="runner-cc filler"></td>
-</tr>
-</table></td>
-<td class="runner-cr"></td>
-</tr>
-
-<tr class="{$cfooterclass_master}">
-<td class="runner-cl"><img src="images/spacer.gif"></td>
-<td class="runner-cc"></td><td class="runner-cr"><img src="images/spacer.gif"></td>
-</tr>
-</table>
-{END container_master}
-
 
 
 {BEGIN container_toplinks}
@@ -131,6 +99,28 @@
 
 
 <td class="runner-cc filler"></td>
+{BEGIN security_block}
+<td  class="runner-cc runner-br runner-b-loggedas" {$brickclass_loggedas}><span>{BEGIN loggedas_message} 
+<span>Logged on as&nbsp;<b>{$username}</b>&nbsp;</span> 
+{END loggedas_message}
+{BEGIN guestloginbutton}
+<span class="runner-btnframe">
+<span class="runner-btnleft"></span>
+<span class="runner-btnright"></span>
+<a href="#" class="runner-button" {$guestloginlink_attrs}>Login</a>
+</span>
+{END guestloginbutton}
+{BEGIN logoutbutton}
+<span class="runner-btnframe">
+<span class="runner-btnleft"></span>
+<span class="runner-btnright"></span>
+<a href="#" class="runner-button" {$logoutlink_attrs}>Log out</a>
+</span>
+{END logoutbutton}
+
+</span></td>
+{END security_block}
+
 
 
 </tr>
@@ -212,6 +202,57 @@
 </span></td>
 {END newrecord_controls_block}
 
+
+{BEGIN record_controls_block}
+<td  class="runner-cc runner-bl runner-b-recordcontrol" {$brickclass_recordcontrol}><span>	
+			{BEGIN editselected_link}
+		<span class="runner-btnframe" {$editselectedlink_span}>
+		<span class="runner-btnleft"></span>
+		<span class="runner-btnright"></span>
+		<a href="#" class="runner-button" {$editselectedlink_attrs}>Edit selected</a>
+		</span>
+	{END editselected_link}
+	{BEGIN saveall_link}
+		<span class="runner-btnframe" {$savealllink_span}>
+		<span class="runner-btnleft"></span>
+		<span class="runner-btnright"></span>
+		<a href="#" class="runner-button" {$savealllink_attrs}>Save all</a>
+		</span>
+	{END saveall_link}
+	{BEGIN cancelall_link}
+		<span class="runner-btnframe" {$cancelalllink_span}>
+		<span class="runner-btnleft"></span>
+		<span class="runner-btnright"></span>
+		<a href="#" class="runner-button" {$cancelalllink_attrs}>Cancel</a>
+		</span>
+	{END cancelall_link}
+
+		{BEGIN deleteselected_link}
+		<span class="runner-btnframe" {$deleteselectedlink_span}>
+		<span class="runner-btnleft"></span>
+		<span class="runner-btnright"></span>
+		<a href="#" class="runner-button" {$deleteselectedlink_attrs}>Delete selected</a>
+		</span>
+	{END deleteselected_link}
+
+		{BEGIN exportselected_link}
+		<span class="runner-btnframe" {$exportselectedlink_span}>
+		<span class="runner-btnleft"></span>
+		<span class="runner-btnright"></span>
+		<a href="#" class="runner-button" {$exportselectedlink_attrs}>Export selected</a>
+		</span>
+	{END exportselected_link}
+
+		{BEGIN printselected_link}
+		<span class="runner-btnframe" {$printselectedlink_span}>
+		<span class="runner-btnleft"></span>
+		<span class="runner-btnright"></span>
+		<a href="#" class="runner-button" {$printselectedlink_attrs}>Print selected</a>
+		</span>
+	{END printselected_link}
+
+</span></td>
+{END record_controls_block}
 
 <td class="runner-cc filler"></td>
 </tr>
@@ -370,79 +411,41 @@
 									<th class="runner-cc" iEditCont="all">&nbsp;</th>
 									{END listIcons_column}	
 
-									
-																		{BEGIN staff_dtable_column}
-									<th class="runner-cc">&nbsp;</th>
-									{END staff_dtable_column}
-																										{BEGIN Name_fieldheadercolumn}
-									<th class="runner-cc ">
-									{BEGIN Name_fieldheader}
-																				<a {$Name_orderlinkattrs}>
-											Name
-										</a>
-									{END Name_fieldheader}
+																		{BEGIN checkbox_column}
+									<th class="runner-cc runner-bc">
+										<input type="checkbox" {$checkboxheader_attrs}>
 									</th>
-									{END Name_fieldheadercolumn}
+									{END checkbox_column}
 
-																	{BEGIN First_Name_fieldheadercolumn}
+																										{BEGIN StaffID_fieldheadercolumn}
 									<th class="runner-cc ">
-									{BEGIN First_Name_fieldheader}
-																				<a {$First_Name_orderlinkattrs}>
-											First Name
+									{BEGIN StaffID_fieldheader}
+																				<a {$StaffID_orderlinkattrs}>
+											Staff ID
 										</a>
-									{END First_Name_fieldheader}
+									{END StaffID_fieldheader}
 									</th>
-									{END First_Name_fieldheadercolumn}
+									{END StaffID_fieldheadercolumn}
 
-																	{BEGIN Last_Name_fieldheadercolumn}
+																	{BEGIN UserName_fieldheadercolumn}
 									<th class="runner-cc ">
-									{BEGIN Last_Name_fieldheader}
-																				<a {$Last_Name_orderlinkattrs}>
-											Last Name
+									{BEGIN UserName_fieldheader}
+																				<a {$UserName_orderlinkattrs}>
+											User Name
 										</a>
-									{END Last_Name_fieldheader}
+									{END UserName_fieldheader}
 									</th>
-									{END Last_Name_fieldheadercolumn}
+									{END UserName_fieldheadercolumn}
 
-																	{BEGIN Date_of_Birth_fieldheadercolumn}
+																	{BEGIN Password_fieldheadercolumn}
 									<th class="runner-cc ">
-									{BEGIN Date_of_Birth_fieldheader}
-																				<a {$Date_of_Birth_orderlinkattrs}>
-											Date of Birth
+									{BEGIN Password_fieldheader}
+																				<a {$Password_orderlinkattrs}>
+											Password
 										</a>
-									{END Date_of_Birth_fieldheader}
+									{END Password_fieldheader}
 									</th>
-									{END Date_of_Birth_fieldheadercolumn}
-
-																	{BEGIN Address_fieldheadercolumn}
-									<th class="runner-cc ">
-									{BEGIN Address_fieldheader}
-																				<a {$Address_orderlinkattrs}>
-											Address
-										</a>
-									{END Address_fieldheader}
-									</th>
-									{END Address_fieldheadercolumn}
-
-																	{BEGIN Sex_fieldheadercolumn}
-									<th class="runner-cc ">
-									{BEGIN Sex_fieldheader}
-																				<a {$Sex_orderlinkattrs}>
-											Sex
-										</a>
-									{END Sex_fieldheader}
-									</th>
-									{END Sex_fieldheadercolumn}
-
-																	{BEGIN Contact_Phone_fieldheadercolumn}
-									<th class="runner-cc ">
-									{BEGIN Contact_Phone_fieldheader}
-																				<a {$Contact_Phone_orderlinkattrs}>
-											Contact Phone
-										</a>
-									{END Contact_Phone_fieldheader}
-									</th>
-									{END Contact_Phone_fieldheadercolumn}
+									{END Password_fieldheadercolumn}
 
 																	{BEGIN RoleID_fieldheadercolumn}
 									<th class="runner-cc ">
@@ -454,15 +457,75 @@
 									</th>
 									{END RoleID_fieldheadercolumn}
 
-																	{BEGIN UserName_fieldheadercolumn}
-									<th class="runner-cc runner-clast">
-									{BEGIN UserName_fieldheader}
-																				<a {$UserName_orderlinkattrs}>
-											User Name
+																	{BEGIN Name_fieldheadercolumn}
+									<th class="runner-cc ">
+									{BEGIN Name_fieldheader}
+																				<a {$Name_orderlinkattrs}>
+											Name
 										</a>
-									{END UserName_fieldheader}
+									{END Name_fieldheader}
 									</th>
-									{END UserName_fieldheadercolumn}
+									{END Name_fieldheadercolumn}
+
+																	{BEGIN Fname_fieldheadercolumn}
+									<th class="runner-cc ">
+									{BEGIN Fname_fieldheader}
+																				<a {$Fname_orderlinkattrs}>
+											First Name
+										</a>
+									{END Fname_fieldheader}
+									</th>
+									{END Fname_fieldheadercolumn}
+
+																	{BEGIN Lname_fieldheadercolumn}
+									<th class="runner-cc ">
+									{BEGIN Lname_fieldheader}
+																				<a {$Lname_orderlinkattrs}>
+											Last Name
+										</a>
+									{END Lname_fieldheader}
+									</th>
+									{END Lname_fieldheadercolumn}
+
+																	{BEGIN Sex_fieldheadercolumn}
+									<th class="runner-cc ">
+									{BEGIN Sex_fieldheader}
+																				<a {$Sex_orderlinkattrs}>
+											Sex
+										</a>
+									{END Sex_fieldheader}
+									</th>
+									{END Sex_fieldheadercolumn}
+
+																	{BEGIN Address_fieldheadercolumn}
+									<th class="runner-cc ">
+									{BEGIN Address_fieldheader}
+																				<a {$Address_orderlinkattrs}>
+											Address
+										</a>
+									{END Address_fieldheader}
+									</th>
+									{END Address_fieldheadercolumn}
+
+																	{BEGIN DOB_fieldheadercolumn}
+									<th class="runner-cc ">
+									{BEGIN DOB_fieldheader}
+																				<a {$DOB_orderlinkattrs}>
+											Date of Birth
+										</a>
+									{END DOB_fieldheader}
+									</th>
+									{END DOB_fieldheadercolumn}
+
+																	{BEGIN Phone_fieldheadercolumn}
+									<th class="runner-cc runner-clast">
+									{BEGIN Phone_fieldheader}
+																				<a {$Phone_orderlinkattrs}>
+											Phone
+										</a>
+									{END Phone_fieldheader}
+									</th>
+									{END Phone_fieldheadercolumn}
 
 
 									
@@ -486,68 +549,58 @@
 
 																		{BEGIN listIcons_column}
 									<td class="runner-cc runner-bc runner-icons" iEditCont="all" {$rowstyle}>
-									
-									
-									
-																		</td>	
+																		{BEGIN edit_column}
+									{BEGIN edit_link}
+									<a class="runner-button-img" {$editlink_attrs} title="Edit"><img class="runner-cicon" src="images/icon_edit_new.gif" alt="Edit"></a>
+									{END edit_link}
+									{END edit_column}
+
+																		{BEGIN inlineedit_column}
+									{BEGIN inlineedit_link}
+									<a class="runner-button-img" {$inlineeditlink_attrs} title="Inline Edit"><img class="runner-cicon" src="images/icon_inline_edit_new.gif" alt="Inline Edit"></a>
+									{END inlineedit_link}
+									{END inlineedit_column}
+
+																		{BEGIN copy_column}
+									{BEGIN copy_link}
+									<a class="runner-button-img" {$copylink_attrs} title="Copy"><img class="runner-cicon" src="images/icon_copy_new.gif" alt="Copy"></a>
+									{END copy_link}
+									{END copy_column}
+
+																		{BEGIN view_column}
+									{BEGIN view_link}
+									<a class="runner-button-img" {$viewlink_attrs} title="View"><img class="runner-cicon" src="images/icon_view_new.gif" alt="View"></a>
+									{END view_link}
+									{END view_column}
+									</td>	
 									{END listIcons_column}	
 
-									
-																		{BEGIN staff_dtable_column}
-									<td class="runner-cc runner-nowrap" {$rowstyle}>
-									{BEGIN order_dtable_link}
-									<span>
-									<a {$order_dtablelink_attrs}>
-										Order
-																				<span {$order_childnumber_attr} dir="ltr">{BEGIN order_childcount}({$order_childnumber}){END order_childcount}</span>
-									</a>
-																		&nbsp;
-									</span>
-									{END order_dtable_link}
-																		</td>
-									{END staff_dtable_column}
+																		{BEGIN checkbox_column}
+									<td class="runner-cc runner-bc" iEditCont="checkBox" {$rowstyle}>
+									{BEGIN checkbox}
+									<input type="checkbox" {$checkbox_attrs}>
+									{END checkbox}
+									</td>
+									{END checkbox_column}
 
-										{BEGIN Name_fieldcolumn}
-	<td class="runner-cc  {$Name_class}" {$Name_style}>
-		{$Name_value}
-	</td>
-{END Name_fieldcolumn}
 
-	{BEGIN First_Name_fieldcolumn}
-	<td class="runner-cc  {$First_Name_class}" {$First_Name_style}>
-		{$First_Name_value}
+										{BEGIN StaffID_fieldcolumn}
+	<td class="runner-cc  {$StaffID_class}" {$StaffID_style}>
+		{$StaffID_value}
 	</td>
-{END First_Name_fieldcolumn}
+{END StaffID_fieldcolumn}
 
-	{BEGIN Last_Name_fieldcolumn}
-	<td class="runner-cc  {$Last_Name_class}" {$Last_Name_style}>
-		{$Last_Name_value}
+	{BEGIN UserName_fieldcolumn}
+	<td class="runner-cc  {$UserName_class}" {$UserName_style}>
+		{$UserName_value}
 	</td>
-{END Last_Name_fieldcolumn}
+{END UserName_fieldcolumn}
 
-	{BEGIN Date_of_Birth_fieldcolumn}
-	<td class="runner-cc  {$Date_of_Birth_class}" {$Date_of_Birth_style}>
-		{$Date_of_Birth_value}
+	{BEGIN Password_fieldcolumn}
+	<td class="runner-cc  {$Password_class}" {$Password_style}>
+		{$Password_value}
 	</td>
-{END Date_of_Birth_fieldcolumn}
-
-	{BEGIN Address_fieldcolumn}
-	<td class="runner-cc  {$Address_class}" {$Address_style}>
-		{$Address_value}
-	</td>
-{END Address_fieldcolumn}
-
-	{BEGIN Sex_fieldcolumn}
-	<td class="runner-cc  {$Sex_class}" {$Sex_style}>
-		{$Sex_value}
-	</td>
-{END Sex_fieldcolumn}
-
-	{BEGIN Contact_Phone_fieldcolumn}
-	<td class="runner-cc  {$Contact_Phone_class}" {$Contact_Phone_style}>
-		{$Contact_Phone_value}
-	</td>
-{END Contact_Phone_fieldcolumn}
+{END Password_fieldcolumn}
 
 	{BEGIN RoleID_fieldcolumn}
 	<td class="runner-cc  {$RoleID_class}" {$RoleID_style}>
@@ -555,11 +608,47 @@
 	</td>
 {END RoleID_fieldcolumn}
 
-	{BEGIN UserName_fieldcolumn}
-	<td class="runner-cc runner-clast {$UserName_class}" {$UserName_style}>
-		{$UserName_value}
+	{BEGIN Name_fieldcolumn}
+	<td class="runner-cc  {$Name_class}" {$Name_style}>
+		{$Name_value}
 	</td>
-{END UserName_fieldcolumn}
+{END Name_fieldcolumn}
+
+	{BEGIN Fname_fieldcolumn}
+	<td class="runner-cc  {$Fname_class}" {$Fname_style}>
+		{$Fname_value}
+	</td>
+{END Fname_fieldcolumn}
+
+	{BEGIN Lname_fieldcolumn}
+	<td class="runner-cc  {$Lname_class}" {$Lname_style}>
+		{$Lname_value}
+	</td>
+{END Lname_fieldcolumn}
+
+	{BEGIN Sex_fieldcolumn}
+	<td class="runner-cc  {$Sex_class}" {$Sex_style}>
+		{$Sex_value}
+	</td>
+{END Sex_fieldcolumn}
+
+	{BEGIN Address_fieldcolumn}
+	<td class="runner-cc  {$Address_class}" {$Address_style}>
+		{$Address_value}
+	</td>
+{END Address_fieldcolumn}
+
+	{BEGIN DOB_fieldcolumn}
+	<td class="runner-cc  {$DOB_class}" {$DOB_style}>
+		{$DOB_value}
+	</td>
+{END DOB_fieldcolumn}
+
+	{BEGIN Phone_fieldcolumn}
+	<td class="runner-cc runner-clast {$Phone_class}" {$Phone_style}>
+		{$Phone_value}
+	</td>
+{END Phone_fieldcolumn}
 
 
 																		<td class="runner-cr" {$rowstyle}></td>
@@ -579,38 +668,44 @@
 									<td class="runner-cc"></td>
 									{END listIcons_column}	
 									
-									
-																		{BEGIN staff_dtable_column}
+																		{BEGIN checkbox_column}
 									<td class="runner-cc"></td>
-									{END staff_dtable_column}
+									{END checkbox_column}
 
-									{BEGIN Name_fieldheadercolumn}
+
+									{BEGIN StaffID_fieldheadercolumn}
 <td class="runner-cc "></td>
-{END Name_fieldheadercolumn}
-{BEGIN First_Name_fieldheadercolumn}
+{END StaffID_fieldheadercolumn}
+{BEGIN UserName_fieldheadercolumn}
 <td class="runner-cc "></td>
-{END First_Name_fieldheadercolumn}
-{BEGIN Last_Name_fieldheadercolumn}
+{END UserName_fieldheadercolumn}
+{BEGIN Password_fieldheadercolumn}
 <td class="runner-cc "></td>
-{END Last_Name_fieldheadercolumn}
-{BEGIN Date_of_Birth_fieldheadercolumn}
-<td class="runner-cc "></td>
-{END Date_of_Birth_fieldheadercolumn}
-{BEGIN Address_fieldheadercolumn}
-<td class="runner-cc "></td>
-{END Address_fieldheadercolumn}
-{BEGIN Sex_fieldheadercolumn}
-<td class="runner-cc "></td>
-{END Sex_fieldheadercolumn}
-{BEGIN Contact_Phone_fieldheadercolumn}
-<td class="runner-cc "></td>
-{END Contact_Phone_fieldheadercolumn}
+{END Password_fieldheadercolumn}
 {BEGIN RoleID_fieldheadercolumn}
 <td class="runner-cc "></td>
 {END RoleID_fieldheadercolumn}
-{BEGIN UserName_fieldheadercolumn}
+{BEGIN Name_fieldheadercolumn}
+<td class="runner-cc "></td>
+{END Name_fieldheadercolumn}
+{BEGIN Fname_fieldheadercolumn}
+<td class="runner-cc "></td>
+{END Fname_fieldheadercolumn}
+{BEGIN Lname_fieldheadercolumn}
+<td class="runner-cc "></td>
+{END Lname_fieldheadercolumn}
+{BEGIN Sex_fieldheadercolumn}
+<td class="runner-cc "></td>
+{END Sex_fieldheadercolumn}
+{BEGIN Address_fieldheadercolumn}
+<td class="runner-cc "></td>
+{END Address_fieldheadercolumn}
+{BEGIN DOB_fieldheadercolumn}
+<td class="runner-cc "></td>
+{END DOB_fieldheadercolumn}
+{BEGIN Phone_fieldheadercolumn}
 <td class="runner-cc runner-clast"></td>
-{END UserName_fieldheadercolumn}
+{END Phone_fieldheadercolumn}
 
 									<td class="runner-cr"><img src="images/spacer.gif"></td>
 									

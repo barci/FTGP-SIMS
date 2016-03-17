@@ -42,6 +42,8 @@ if(mlang_getcurrentlang()=="English")
 	$fieldToolTipsproduct["English"]["UInOrder"] = "";
 	$fieldLabelsproduct["English"]["Qty"] = "Available Quantity (pcs)";
 	$fieldToolTipsproduct["English"]["Qty"] = "";
+	$fieldLabelsproduct["English"]["ProdNo"] = "Product Number";
+	$fieldToolTipsproduct["English"]["ProdNo"] = "";
 	if (count($fieldToolTipsproduct["English"]))
 		$tdataproduct[".isUseToolTips"] = true;
 }
@@ -83,12 +85,10 @@ else
 $tdataproduct[".listIcons"] = true;
 $tdataproduct[".inlineEdit"] = true;
 $tdataproduct[".inlineAdd"] = true;
-$tdataproduct[".copy"] = true;
 
 
 $tdataproduct[".printFriendly"] = true;
 
-$tdataproduct[".delete"] = true;
 
 $tdataproduct[".showSimpleSearchOptions"] = false;
 
@@ -110,9 +110,11 @@ $tdataproduct[".isUseTimeForSearch"] = false;
 
 
 
+$tdataproduct[".useDetailsPreview"] = true;
 
 $tdataproduct[".allSearchFields"] = array();
 
+$tdataproduct[".allSearchFields"][] = "ProdNo";
 $tdataproduct[".allSearchFields"][] = "Pname";
 $tdataproduct[".allSearchFields"][] = "CatID";
 $tdataproduct[".allSearchFields"][] = "Usize";
@@ -141,8 +143,10 @@ $tdataproduct[".googleLikeFields"][] = "Qty";
 $tdataproduct[".googleLikeFields"][] = "UInOrder";
 $tdataproduct[".googleLikeFields"][] = "ReOrLevel";
 $tdataproduct[".googleLikeFields"][] = "Note";
+$tdataproduct[".googleLikeFields"][] = "ProdNo";
 
 
+$tdataproduct[".advSearchFields"][] = "ProdNo";
 $tdataproduct[".advSearchFields"][] = "Pname";
 $tdataproduct[".advSearchFields"][] = "CatID";
 $tdataproduct[".advSearchFields"][] = "Usize";
@@ -163,7 +167,7 @@ $tdataproduct[".isTableType"] = "list";
 
 
 // Access doesn't support subqueries from the same table as main
-
+	
 
 
 $tdataproduct[".pageSize"] = 20;
@@ -175,7 +179,7 @@ $tdataproduct[".strOrderBy"] = $tstrOrderBy;
 
 $tdataproduct[".orderindexes"] = array();
 
-$tdataproduct[".sqlHead"] = "SELECT ProdID,  Pname,  CatID,  SuppID,  QPerUnit,  Uprice,  USP,  Uweight,  Usize,  Discount,  UInStock,  format((Qperunit*uinstock),0) as `Qty`,  UInOrder,  ReOrLevel,  Note";
+$tdataproduct[".sqlHead"] = "SELECT ProdID,  Pname,  CatID,  SuppID,  QPerUnit,  Uprice,  USP,  Uweight,  Usize,  Discount,  UInStock,  format((Qperunit*uinstock), 0) AS Qty,  UInOrder,  ReOrLevel,  Note,  ProdNo";
 $tdataproduct[".sqlFrom"] = "FROM product";
 $tdataproduct[".sqlWhereExpr"] = "";
 $tdataproduct[".sqlTail"] = "";
@@ -211,6 +215,7 @@ $tdataproduct[".Keys"] = $tableKeysproduct;
 
 $tdataproduct[".listFields"] = array();
 $tdataproduct[".listFields"][] = "ProdID";
+$tdataproduct[".listFields"][] = "ProdNo";
 $tdataproduct[".listFields"][] = "Pname";
 $tdataproduct[".listFields"][] = "CatID";
 $tdataproduct[".listFields"][] = "Usize";
@@ -221,14 +226,12 @@ $tdataproduct[".listFields"][] = "QPerUnit";
 $tdataproduct[".listFields"][] = "Qty";
 $tdataproduct[".listFields"][] = "ReOrLevel";
 $tdataproduct[".listFields"][] = "UInOrder";
-$tdataproduct[".listFields"][] = "Uprice";
-$tdataproduct[".listFields"][] = "USP";
-$tdataproduct[".listFields"][] = "Discount";
 $tdataproduct[".listFields"][] = "Note";
 
 $tdataproduct[".viewFields"] = array();
 
 $tdataproduct[".addFields"] = array();
+$tdataproduct[".addFields"][] = "ProdNo";
 $tdataproduct[".addFields"][] = "Pname";
 $tdataproduct[".addFields"][] = "CatID";
 $tdataproduct[".addFields"][] = "Usize";
@@ -236,43 +239,39 @@ $tdataproduct[".addFields"][] = "SuppID";
 $tdataproduct[".addFields"][] = "Uweight";
 $tdataproduct[".addFields"][] = "QPerUnit";
 $tdataproduct[".addFields"][] = "ReOrLevel";
-$tdataproduct[".addFields"][] = "Uprice";
-$tdataproduct[".addFields"][] = "USP";
-$tdataproduct[".addFields"][] = "Discount";
+$tdataproduct[".addFields"][] = "UInStock";
+$tdataproduct[".addFields"][] = "Qty";
 $tdataproduct[".addFields"][] = "Note";
 
 $tdataproduct[".inlineAddFields"] = array();
+$tdataproduct[".inlineAddFields"][] = "ProdNo";
 $tdataproduct[".inlineAddFields"][] = "Pname";
 $tdataproduct[".inlineAddFields"][] = "CatID";
 $tdataproduct[".inlineAddFields"][] = "Usize";
+$tdataproduct[".inlineAddFields"][] = "SuppID";
 $tdataproduct[".inlineAddFields"][] = "Uweight";
+$tdataproduct[".inlineAddFields"][] = "UInStock";
 $tdataproduct[".inlineAddFields"][] = "QPerUnit";
 $tdataproduct[".inlineAddFields"][] = "Qty";
 $tdataproduct[".inlineAddFields"][] = "ReOrLevel";
-$tdataproduct[".inlineAddFields"][] = "Uprice";
-$tdataproduct[".inlineAddFields"][] = "USP";
-$tdataproduct[".inlineAddFields"][] = "Discount";
 $tdataproduct[".inlineAddFields"][] = "Note";
 
 $tdataproduct[".editFields"] = array();
 
 $tdataproduct[".inlineEditFields"] = array();
+$tdataproduct[".inlineEditFields"][] = "ProdNo";
 $tdataproduct[".inlineEditFields"][] = "Pname";
 $tdataproduct[".inlineEditFields"][] = "CatID";
 $tdataproduct[".inlineEditFields"][] = "Usize";
+$tdataproduct[".inlineEditFields"][] = "SuppID";
 $tdataproduct[".inlineEditFields"][] = "Uweight";
-$tdataproduct[".inlineEditFields"][] = "QPerUnit";
-$tdataproduct[".inlineEditFields"][] = "Qty";
-$tdataproduct[".inlineEditFields"][] = "ReOrLevel";
-$tdataproduct[".inlineEditFields"][] = "Uprice";
-$tdataproduct[".inlineEditFields"][] = "USP";
-$tdataproduct[".inlineEditFields"][] = "Discount";
 $tdataproduct[".inlineEditFields"][] = "Note";
 
 $tdataproduct[".exportFields"] = array();
 
 $tdataproduct[".printFields"] = array();
 $tdataproduct[".printFields"][] = "ProdID";
+$tdataproduct[".printFields"][] = "ProdNo";
 $tdataproduct[".printFields"][] = "Pname";
 $tdataproduct[".printFields"][] = "CatID";
 $tdataproduct[".printFields"][] = "Usize";
@@ -644,9 +643,11 @@ $tdataproduct[".printFields"][] = "Note";
 	
 		$fdata["bAddPage"] = true; 
 	
+		$fdata["bInlineAdd"] = true; 
+	
 		
-		
-		
+		$fdata["bInlineEdit"] = true; 
+	
 		
 		$fdata["bAdvancedSearch"] = true; 
 	
@@ -769,8 +770,7 @@ $tdataproduct[".printFields"][] = "Note";
 		$fdata["bInlineAdd"] = true; 
 	
 		
-		$fdata["bInlineEdit"] = true; 
-	
+		
 		
 		$fdata["bAdvancedSearch"] = true; 
 	
@@ -859,15 +859,11 @@ $tdataproduct[".printFields"][] = "Note";
 	
 		
 		
-		$fdata["bListPage"] = true; 
-	
-		$fdata["bAddPage"] = true; 
-	
-		$fdata["bInlineAdd"] = true; 
-	
 		
-		$fdata["bInlineEdit"] = true; 
-	
+		
+		
+		
+		
 		
 		$fdata["bAdvancedSearch"] = true; 
 	
@@ -956,15 +952,11 @@ $tdataproduct[".printFields"][] = "Note";
 	
 		
 		
-		$fdata["bListPage"] = true; 
-	
-		$fdata["bAddPage"] = true; 
-	
-		$fdata["bInlineAdd"] = true; 
-	
 		
-		$fdata["bInlineEdit"] = true; 
-	
+		
+		
+		
+		
 		
 		$fdata["bAdvancedSearch"] = true; 
 	
@@ -1247,15 +1239,11 @@ $tdataproduct[".printFields"][] = "Note";
 	
 		
 		
-		$fdata["bListPage"] = true; 
-	
-		$fdata["bAddPage"] = true; 
-	
-		$fdata["bInlineAdd"] = true; 
-	
 		
-		$fdata["bInlineEdit"] = true; 
-	
+		
+		
+		
+		
 		
 		$fdata["bAdvancedSearch"] = true; 
 	
@@ -1347,8 +1335,10 @@ $tdataproduct[".printFields"][] = "Note";
 		
 		$fdata["bListPage"] = true; 
 	
-		
-		
+		$fdata["bAddPage"] = true; 
+	
+		$fdata["bInlineAdd"] = true; 
+	
 		
 		
 		
@@ -1440,12 +1430,12 @@ $tdataproduct[".printFields"][] = "Note";
 		
 		$fdata["bListPage"] = true; 
 	
-		
+		$fdata["bAddPage"] = true; 
+	
 		$fdata["bInlineAdd"] = true; 
 	
 		
-		$fdata["bInlineEdit"] = true; 
-	
+		
 		
 		$fdata["bAdvancedSearch"] = true; 
 	
@@ -1453,7 +1443,7 @@ $tdataproduct[".printFields"][] = "Note";
 	
 		
 		$fdata["strField"] = "Qty"; 
-		$fdata["FullName"] = "format((Qperunit*uinstock),0)";
+		$fdata["FullName"] = "format((Qperunit*uinstock), 0)";
 	
 		
 		
@@ -1634,8 +1624,7 @@ $tdataproduct[".printFields"][] = "Note";
 		$fdata["bInlineAdd"] = true; 
 	
 		
-		$fdata["bInlineEdit"] = true; 
-	
+		
 		
 		$fdata["bAdvancedSearch"] = true; 
 	
@@ -1813,6 +1802,103 @@ $tdataproduct[".printFields"][] = "Note";
 		
 		
 	$tdataproduct["Note"] = $fdata;
+//	ProdNo
+//	Custom field settings
+	$fdata = array();
+	$fdata["Index"] = 16;
+	$fdata["strName"] = "ProdNo";
+	$fdata["GoodName"] = "ProdNo";
+	$fdata["ownerTable"] = "product";
+	$fdata["Label"] = "Product Number"; 
+	$fdata["FieldType"] = 200;
+	
+		
+		
+		$fdata["bListPage"] = true; 
+	
+		$fdata["bAddPage"] = true; 
+	
+		$fdata["bInlineAdd"] = true; 
+	
+		
+		$fdata["bInlineEdit"] = true; 
+	
+		
+		$fdata["bAdvancedSearch"] = true; 
+	
+		$fdata["bPrinterPage"] = true; 
+	
+		
+		$fdata["strField"] = "ProdNo"; 
+		$fdata["FullName"] = "ProdNo";
+	
+		
+		
+				$fdata["FieldPermissions"] = true;
+	
+				$fdata["UploadFolder"] = "files";
+		
+//  Begin View Formats
+	$fdata["ViewFormats"] = array();
+	
+	$vdata = array("ViewFormat" => "");
+	
+		
+		
+		
+			
+		
+		
+		
+		
+		
+		
+		$vdata["NeedEncode"] = true;
+	
+	$fdata["ViewFormats"]["view"] = $vdata;
+//  End View Formats
+
+//	Begin Edit Formats 	
+	$fdata["EditFormats"] = array();
+	
+	$edata = array("EditFormat" => "Text field");
+	
+		
+		
+	
+//	Begin Lookup settings
+	//	End Lookup Settings
+
+		
+		
+		
+		
+			$edata["acceptFileTypes"] = ".+$";
+	
+		$edata["maxNumberOfFiles"] = 1;
+	
+		
+		
+		
+		
+		$edata["EditParams"] = "";
+			
+		
+//	Begin validation
+	$edata["validateAs"] = array();
+		
+	//	End validation
+	
+		
+				
+		$fdata["EditFormats"]["edit"] = $edata;
+//	End Edit Formats
+	
+		$fdata["isSeparate"] = false;
+	
+		
+		
+	$tdataproduct["ProdNo"] = $fdata;
 
 	
 $tables_data["product"]=&$tdataproduct;
@@ -1822,6 +1908,26 @@ $fieldToolTips["product"] = &$fieldToolTipsproduct;
 // -----------------start  prepare master-details data arrays ------------------------------//
 // tables which are detail tables for current table (master)
 $detailsTablesData["product"] = array();
+$dIndex = 1-1;
+			$strOriginalDetailsTable="stockrequest";
+	$detailsParam["dDataSourceTable"]="stockrequest";
+	$detailsParam["dOriginalTable"]=$strOriginalDetailsTable;
+	$detailsParam["dShortTable"]="stockrequest";
+	$detailsParam["masterKeys"]=array();
+	$detailsParam["detailKeys"]=array();
+	$detailsParam["dispChildCount"]= "1";
+	$detailsParam["hideChild"]="0";
+	$detailsParam["previewOnList"]= 1;
+	$detailsParam["previewOnAdd"]= 1;
+	$detailsParam["previewOnEdit"]= 1;
+	$detailsParam["previewOnView"]= 0;
+		
+	$detailsTablesData["product"][$dIndex] = $detailsParam;
+	
+		
+		$detailsTablesData["product"][$dIndex]["masterKeys"][]="ProdID";
+		$detailsTablesData["product"][$dIndex]["detailKeys"][]="ProductID";
+
 	
 // tables which are master tables for current table (detail)
 $masterTablesData["product"] = array();
@@ -1861,7 +1967,7 @@ function createSqlQuery_product()
 {
 $proto0=array();
 $proto0["m_strHead"] = "SELECT";
-$proto0["m_strFieldList"] = "ProdID,  Pname,  CatID,  SuppID,  QPerUnit,  Uprice,  USP,  Uweight,  Usize,  Discount,  UInStock,  format((Qperunit*uinstock),0) as `Qty`,  UInOrder,  ReOrLevel,  Note";
+$proto0["m_strFieldList"] = "ProdID,  Pname,  CatID,  SuppID,  QPerUnit,  Uprice,  USP,  Uweight,  Usize,  Discount,  UInStock,  format((Qperunit*uinstock), 0) AS Qty,  UInOrder,  ReOrLevel,  Note,  ProdNo";
 $proto0["m_strFrom"] = "FROM product";
 $proto0["m_strWhere"] = "";
 $proto0["m_strOrderBy"] = "";
@@ -2076,47 +2182,60 @@ $proto35["m_alias"] = "";
 $obj = new SQLFieldListItem($proto35);
 
 $proto0["m_fieldlist"][]=$obj;
-$proto0["m_fromlist"] = array();
-												$proto37=array();
-$proto37["m_link"] = "SQLL_MAIN";
-			$proto38=array();
-$proto38["m_strName"] = "product";
-$proto38["m_columns"] = array();
-$proto38["m_columns"][] = "ProdID";
-$proto38["m_columns"][] = "Pname";
-$proto38["m_columns"][] = "CatID";
-$proto38["m_columns"][] = "SuppID";
-$proto38["m_columns"][] = "QPerUnit";
-$proto38["m_columns"][] = "Uprice";
-$proto38["m_columns"][] = "USP";
-$proto38["m_columns"][] = "Uweight";
-$proto38["m_columns"][] = "Usize";
-$proto38["m_columns"][] = "Discount";
-$proto38["m_columns"][] = "UInStock";
-$proto38["m_columns"][] = "UInOrder";
-$proto38["m_columns"][] = "ReOrLevel";
-$proto38["m_columns"][] = "Note";
-$obj = new SQLTable($proto38);
+						$proto37=array();
+			$obj = new SQLField(array(
+	"m_strName" => "ProdNo",
+	"m_strTable" => "product"
+));
 
-$proto37["m_table"] = $obj;
+$proto37["m_expr"]=$obj;
 $proto37["m_alias"] = "";
-$proto39=array();
-$proto39["m_sql"] = "";
-$proto39["m_uniontype"] = "SQLL_UNKNOWN";
+$obj = new SQLFieldListItem($proto37);
+
+$proto0["m_fieldlist"][]=$obj;
+$proto0["m_fromlist"] = array();
+												$proto39=array();
+$proto39["m_link"] = "SQLL_MAIN";
+			$proto40=array();
+$proto40["m_strName"] = "product";
+$proto40["m_columns"] = array();
+$proto40["m_columns"][] = "ProdID";
+$proto40["m_columns"][] = "ProdNo";
+$proto40["m_columns"][] = "Pname";
+$proto40["m_columns"][] = "CatID";
+$proto40["m_columns"][] = "SuppID";
+$proto40["m_columns"][] = "QPerUnit";
+$proto40["m_columns"][] = "Uprice";
+$proto40["m_columns"][] = "USP";
+$proto40["m_columns"][] = "Uweight";
+$proto40["m_columns"][] = "Usize";
+$proto40["m_columns"][] = "Discount";
+$proto40["m_columns"][] = "UInStock";
+$proto40["m_columns"][] = "UInOrder";
+$proto40["m_columns"][] = "ReOrLevel";
+$proto40["m_columns"][] = "Note";
+$proto40["m_columns"][] = "TimeStamp";
+$obj = new SQLTable($proto40);
+
+$proto39["m_table"] = $obj;
+$proto39["m_alias"] = "";
+$proto41=array();
+$proto41["m_sql"] = "";
+$proto41["m_uniontype"] = "SQLL_UNKNOWN";
 	$obj = new SQLNonParsed(array(
 	"m_sql" => ""
 ));
 
-$proto39["m_column"]=$obj;
-$proto39["m_contained"] = array();
-$proto39["m_strCase"] = "";
-$proto39["m_havingmode"] = "0";
-$proto39["m_inBrackets"] = "0";
-$proto39["m_useAlias"] = "0";
-$obj = new SQLLogicalExpr($proto39);
+$proto41["m_column"]=$obj;
+$proto41["m_contained"] = array();
+$proto41["m_strCase"] = "";
+$proto41["m_havingmode"] = "0";
+$proto41["m_inBrackets"] = "0";
+$proto41["m_useAlias"] = "0";
+$obj = new SQLLogicalExpr($proto41);
 
-$proto37["m_joinon"] = $obj;
-$obj = new SQLFromListItem($proto37);
+$proto39["m_joinon"] = $obj;
+$obj = new SQLFromListItem($proto39);
 
 $proto0["m_fromlist"][]=$obj;
 $proto0["m_groupby"] = array();
@@ -2126,7 +2245,7 @@ $obj = new SQLQuery($proto0);
 	return $obj;
 }
 $queryData_product = createSqlQuery_product();
-															$tdataproduct[".sqlquery"] = $queryData_product;
+																$tdataproduct[".sqlquery"] = $queryData_product;
 
 $tableEvents["product"] = new eventsBase;
 $tdataproduct[".hasEvents"] = false;

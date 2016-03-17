@@ -38,6 +38,12 @@ include('include/xtempl.php');
 require_once(getabspath("classes/cipherer.php"));
 include('classes/runnerpage.php');
 
+include_once(getabspath("include/delivery_events.php"));
+$tableEvents["delivery"] = new eventclass_delivery;
+include_once(getabspath("include/stockrequest_events.php"));
+$tableEvents["stockrequest"] = new eventclass_stockrequest;
+include_once(getabspath("include/Stocks_Received_events.php"));
+$tableEvents["Stocks Received"] = new eventclass_Stocks_Received;
 
 $xt = new Xtempl();
 

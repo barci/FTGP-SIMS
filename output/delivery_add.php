@@ -266,13 +266,20 @@ if(@$_POST["a"]=="added")
 
 
 //	insert masterkey value if exists and if not specified
-	if(@$_SESSION[$sessionPrefix."_mastertable"]=="orderdetail")
+	if(@$_SESSION[$sessionPrefix."_mastertable"]=="Pending Orders")
 	{
 		if(postvalue("masterkey1"))
 			$_SESSION[$sessionPrefix."_masterkey1"] = postvalue("masterkey1");
 		
+		if($avalues["prodID"]==""){
+			$avalues["prodID"] = prepare_for_db("prodID",$_SESSION[$sessionPrefix."_masterkey1"]);
+		}
+			
+		if(postvalue("masterkey2"))
+			$_SESSION[$sessionPrefix."_masterkey2"] = postvalue("masterkey2");
+		
 		if($avalues["orderID"]==""){
-			$avalues["orderID"] = prepare_for_db("orderID",$_SESSION[$sessionPrefix."_masterkey1"]);
+			$avalues["orderID"] = prepare_for_db("orderID",$_SESSION[$sessionPrefix."_masterkey2"]);
 		}
 			
 	}
@@ -454,18 +461,25 @@ if(array_key_exists("copyid1",$_REQUEST) || array_key_exists("editid1",$_REQUEST
 }
 else
 {
+	$defvalues["delFlag"] = NO;
 }
 
 
 //	set default values for the foreign keys
 
-if(@$_SESSION[$sessionPrefix."_mastertable"]=="orderdetail")
+if(@$_SESSION[$sessionPrefix."_mastertable"]=="Pending Orders")
 {
 	if(postvalue("masterkey1"))
 		$_SESSION[$sessionPrefix."_masterkey1"] = postvalue("masterkey1");
 
 	if(postvalue("mainMPageType")<>"add")
-		$defvalues["orderID"] = @$_SESSION[$sessionPrefix."_masterkey1"];	
+		$defvalues["prodID"] = @$_SESSION[$sessionPrefix."_masterkey1"];	
+	
+	if(postvalue("masterkey2"))
+		$_SESSION[$sessionPrefix."_masterkey2"] = postvalue("masterkey2");
+
+	if(postvalue("mainMPageType")<>"add")
+		$defvalues["orderID"] = @$_SESSION[$sessionPrefix."_masterkey2"];	
 	
 }
 

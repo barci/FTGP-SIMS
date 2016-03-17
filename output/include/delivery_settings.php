@@ -141,9 +141,9 @@ $tdatadelivery[".strOrderBy"] = $tstrOrderBy;
 
 $tdatadelivery[".orderindexes"] = array();
 
-$tdatadelivery[".sqlHead"] = "SELECT ID,   DrNo,   orderID,   prodID,   qty,   eta,   delFlag";
+$tdatadelivery[".sqlHead"] = "SELECT ID,  DrNo,  orderID,  prodID,  qty,  eta,  delFlag";
 $tdatadelivery[".sqlFrom"] = "FROM delivery";
-$tdatadelivery[".sqlWhereExpr"] = "";
+$tdatadelivery[".sqlWhereExpr"] = "delFlag = 'NO'";
 $tdatadelivery[".sqlTail"] = "";
 
 
@@ -965,15 +965,29 @@ $tdatadelivery[".printFields"][] = "delFlag";
 //	Begin Edit Formats 	
 	$fdata["EditFormats"] = array();
 	
-	$edata = array("EditFormat" => "Text field");
+	$edata = array("EditFormat" => "Lookup wizard");
 	
 		
 		
 	
 //	Begin Lookup settings
+					$edata["LookupType"] = 0;
+	$edata["freeInput"] = 0;
+	$edata["autoCompleteFieldsOnEdit"] = 0;
+	$edata["autoCompleteFields"] = array();
+				$edata["LCType"] = 4;
+			
+		$edata["HorizontalLookup"] = true;
+	
+		
+		$edata["LookupValues"] = array();
+	$edata["LookupValues"][] = "NO";
+	$edata["LookupValues"][] = "YES";
+
 	//	End Lookup Settings
 
-		
+		$edata["IsRequired"] = true; 
+	
 		
 		
 		
@@ -985,12 +999,12 @@ $tdatadelivery[".printFields"][] = "delFlag";
 		
 		
 		
-		$edata["EditParams"] = "";
-			
+		
 		
 //	Begin validation
 	$edata["validateAs"] = array();
-		
+						$edata["validateAs"]["basicValidate"][] = "IsRequired";
+	
 	//	End validation
 	
 		
@@ -1018,20 +1032,22 @@ $masterTablesData["delivery"] = array();
 
 $mIndex = 1-1;
 			$strOriginalDetailsTable="orderdetail";
-	$masterParams["mDataSourceTable"]="orderdetail";
+	$masterParams["mDataSourceTable"]="Pending Orders";
 	$masterParams["mOriginalTable"]= $strOriginalDetailsTable;
-	$masterParams["mShortTable"]= "orderdetail";
+	$masterParams["mShortTable"]= "Pending_Orders";
 	$masterParams["masterKeys"]= array();
 	$masterParams["detailKeys"]= array();
 	$masterParams["dispChildCount"]= "1";
 	$masterParams["hideChild"]= "0";
 	$masterParams["dispInfo"]= "1";
 	$masterParams["previewOnList"]= 1;
-	$masterParams["previewOnAdd"]= 0;
-	$masterParams["previewOnEdit"]= 0;
+	$masterParams["previewOnAdd"]= 1;
+	$masterParams["previewOnEdit"]= 1;
 	$masterParams["previewOnView"]= 0;
 	$masterTablesData["delivery"][$mIndex] = $masterParams;	
+		$masterTablesData["delivery"][$mIndex]["masterKeys"][]="ProductID";
 		$masterTablesData["delivery"][$mIndex]["masterKeys"][]="OrderID";
+		$masterTablesData["delivery"][$mIndex]["detailKeys"][]="prodID";
 		$masterTablesData["delivery"][$mIndex]["detailKeys"][]="orderID";
 
 // -----------------end  prepare master-details data arrays ------------------------------//
@@ -1051,22 +1067,23 @@ function createSqlQuery_delivery()
 {
 $proto0=array();
 $proto0["m_strHead"] = "SELECT";
-$proto0["m_strFieldList"] = "ID,   DrNo,   orderID,   prodID,   qty,   eta,   delFlag";
+$proto0["m_strFieldList"] = "ID,  DrNo,  orderID,  prodID,  qty,  eta,  delFlag";
 $proto0["m_strFrom"] = "FROM delivery";
-$proto0["m_strWhere"] = "";
+$proto0["m_strWhere"] = "delFlag = 'NO'";
 $proto0["m_strOrderBy"] = "";
 $proto0["m_strTail"] = "";
 $proto0["cipherer"] = null;
 $proto1=array();
-$proto1["m_sql"] = "";
+$proto1["m_sql"] = "delFlag = 'NO'";
 $proto1["m_uniontype"] = "SQLL_UNKNOWN";
-	$obj = new SQLNonParsed(array(
-	"m_sql" => ""
+						$obj = new SQLField(array(
+	"m_strName" => "delFlag",
+	"m_strTable" => "delivery"
 ));
 
 $proto1["m_column"]=$obj;
 $proto1["m_contained"] = array();
-$proto1["m_strCase"] = "";
+$proto1["m_strCase"] = "= 'NO'";
 $proto1["m_havingmode"] = "0";
 $proto1["m_inBrackets"] = "0";
 $proto1["m_useAlias"] = "0";
@@ -1180,6 +1197,7 @@ $proto20["m_columns"][] = "prodID";
 $proto20["m_columns"][] = "qty";
 $proto20["m_columns"][] = "eta";
 $proto20["m_columns"][] = "delFlag";
+$proto20["m_columns"][] = "TimeStamp";
 $obj = new SQLTable($proto20);
 
 $proto19["m_table"] = $obj;
@@ -1212,8 +1230,9 @@ $obj = new SQLQuery($proto0);
 $queryData_delivery = createSqlQuery_delivery();
 							$tdatadelivery[".sqlquery"] = $queryData_delivery;
 
-$tableEvents["delivery"] = new eventsBase;
-$tdatadelivery[".hasEvents"] = false;
+include_once(getabspath("include/delivery_events.php"));
+$tableEvents["delivery"] = new eventclass_delivery;
+$tdatadelivery[".hasEvents"] = true;
 
 $cipherer = new RunnerCipherer("delivery");
 

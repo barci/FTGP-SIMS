@@ -11,7 +11,7 @@ function DisplayMasterTableInfo_orderdetail($params)
 	$oldTableName=$strTableName;
 	$strTableName="orderdetail";
 
-//$strSQL = "SELECT ODetailID,   OrderID,   BillNo,   ProductID,   UPrice,   OrdQuant,   DelQuant,   Discount,   Total,   DelDate  FROM orderdetail ";
+//$strSQL = "SELECT  ODetailID,  OrderID,  BillNo,  ProductID,  UPrice,  OrdQuant,  DelQuant,  Discount,  Total,  DelDate  FROM orderdetail  ";
 
 	$cipherer = new RunnerCipherer($strTableName);
 	$settings = new ProjectSettings($strTableName, PAGE_PRINT);

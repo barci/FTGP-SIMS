@@ -1,6 +1,7 @@
 <?php
 $dalTableproduct = array();
 $dalTableproduct["ProdID"] = array("type"=>3,"varname"=>"ProdID");
+$dalTableproduct["ProdNo"] = array("type"=>200,"varname"=>"ProdNo");
 $dalTableproduct["Pname"] = array("type"=>200,"varname"=>"Pname");
 $dalTableproduct["CatID"] = array("type"=>200,"varname"=>"CatID");
 $dalTableproduct["SuppID"] = array("type"=>200,"varname"=>"SuppID");
@@ -14,6 +15,7 @@ $dalTableproduct["UInStock"] = array("type"=>3,"varname"=>"UInStock");
 $dalTableproduct["UInOrder"] = array("type"=>3,"varname"=>"UInOrder");
 $dalTableproduct["ReOrLevel"] = array("type"=>3,"varname"=>"ReOrLevel");
 $dalTableproduct["Note"] = array("type"=>200,"varname"=>"Note");
+$dalTableproduct["TimeStamp"] = array("type"=>135,"varname"=>"TimeStamp");
 	$dalTableproduct["ProdID"]["key"]=true;
 $dal_info["product"]=&$dalTableproduct;
 

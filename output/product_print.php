@@ -306,6 +306,10 @@ $arr = array();
 $arr['fName'] = "Note";
 $arr['viewFormat'] = $pageObject->pSet->getViewFormat("Note");
 $fieldsArr[] = $arr;
+$arr = array();
+$arr['fName'] = "ProdNo";
+$arr['viewFormat'] = $pageObject->pSet->getViewFormat("ProdNo");
+$fieldsArr[] = $arr;
 $pageObject->setGoogleMapsParams($fieldsArr);
 
 $colsonpage=1;
@@ -356,6 +360,9 @@ if($colsonpage<1)
 //	ProdID - 
 			$record["ProdID_value"] = $pageObject->showDBValue("ProdID", $data, $keylink);
 			$record["ProdID_class"] = $pageObject->fieldClass("ProdID");
+//	ProdNo - 
+			$record["ProdNo_value"] = $pageObject->showDBValue("ProdNo", $data, $keylink);
+			$record["ProdNo_class"] = $pageObject->fieldClass("ProdNo");
 //	Pname - 
 			$record["Pname_value"] = $pageObject->showDBValue("Pname", $data, $keylink);
 			$record["Pname_class"] = $pageObject->fieldClass("Pname");
@@ -540,6 +547,10 @@ $xt->assign("ProdID_fieldheadercolumn",true);
 $xt->assign("ProdID_fieldheader",true);
 $xt->assign("ProdID_fieldcolumn",true);
 $xt->assign("ProdID_fieldfootercolumn",true);
+$xt->assign("ProdNo_fieldheadercolumn",true);
+$xt->assign("ProdNo_fieldheader",true);
+$xt->assign("ProdNo_fieldcolumn",true);
+$xt->assign("ProdNo_fieldfootercolumn",true);
 $xt->assign("Pname_fieldheadercolumn",true);
 $xt->assign("Pname_fieldheader",true);
 $xt->assign("Pname_fieldcolumn",true);

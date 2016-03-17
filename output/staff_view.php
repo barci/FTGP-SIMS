@@ -135,30 +135,6 @@ $arr['fName'] = "UserName";
 $arr['viewFormat'] = $pageObject->pSet->getViewFormat("UserName");
 $fieldsArr[] = $arr;
 $arr = array();
-$arr['fName'] = "Fname";
-$arr['viewFormat'] = $pageObject->pSet->getViewFormat("Fname");
-$fieldsArr[] = $arr;
-$arr = array();
-$arr['fName'] = "Lname";
-$arr['viewFormat'] = $pageObject->pSet->getViewFormat("Lname");
-$fieldsArr[] = $arr;
-$arr = array();
-$arr['fName'] = "DOB";
-$arr['viewFormat'] = $pageObject->pSet->getViewFormat("DOB");
-$fieldsArr[] = $arr;
-$arr = array();
-$arr['fName'] = "Password";
-$arr['viewFormat'] = $pageObject->pSet->getViewFormat("Password");
-$fieldsArr[] = $arr;
-$arr = array();
-$arr['fName'] = "Sex";
-$arr['viewFormat'] = $pageObject->pSet->getViewFormat("Sex");
-$fieldsArr[] = $arr;
-$arr = array();
-$arr['fName'] = "Phone";
-$arr['viewFormat'] = $pageObject->pSet->getViewFormat("Phone");
-$fieldsArr[] = $arr;
-$arr = array();
 $arr['fName'] = "RoleID";
 $arr['viewFormat'] = $pageObject->pSet->getViewFormat("RoleID");
 $fieldsArr[] = $arr;
@@ -167,8 +143,28 @@ $arr['fName'] = "Name";
 $arr['viewFormat'] = $pageObject->pSet->getViewFormat("Name");
 $fieldsArr[] = $arr;
 $arr = array();
+$arr['fName'] = "Fname";
+$arr['viewFormat'] = $pageObject->pSet->getViewFormat("Fname");
+$fieldsArr[] = $arr;
+$arr = array();
+$arr['fName'] = "Lname";
+$arr['viewFormat'] = $pageObject->pSet->getViewFormat("Lname");
+$fieldsArr[] = $arr;
+$arr = array();
+$arr['fName'] = "Sex";
+$arr['viewFormat'] = $pageObject->pSet->getViewFormat("Sex");
+$fieldsArr[] = $arr;
+$arr = array();
 $arr['fName'] = "Address";
 $arr['viewFormat'] = $pageObject->pSet->getViewFormat("Address");
+$fieldsArr[] = $arr;
+$arr = array();
+$arr['fName'] = "DOB";
+$arr['viewFormat'] = $pageObject->pSet->getViewFormat("DOB");
+$fieldsArr[] = $arr;
+$arr = array();
+$arr['fName'] = "Phone";
+$arr['viewFormat'] = $pageObject->pSet->getViewFormat("Phone");
 $fieldsArr[] = $arr;
 
 $mainTableOwnerID = $pageObject->pSet->getTableOwnerIdField();
@@ -206,72 +202,6 @@ while($data)
 	else
 		$xt->assign("UserName_tabfieldblock",true);
 ////////////////////////////////////////////
-//Fname - 
-	
-	$value = $pageObject->showDBValue("Fname", $data, $keylink);
-	if($mainTableOwnerID=="Fname")
-		$ownerIdValue=$value;
-	$xt->assign("Fname_value",$value);
-	if(!$pageObject->isAppearOnTabs("Fname"))
-		$xt->assign("Fname_fieldblock",true);
-	else
-		$xt->assign("Fname_tabfieldblock",true);
-////////////////////////////////////////////
-//Lname - 
-	
-	$value = $pageObject->showDBValue("Lname", $data, $keylink);
-	if($mainTableOwnerID=="Lname")
-		$ownerIdValue=$value;
-	$xt->assign("Lname_value",$value);
-	if(!$pageObject->isAppearOnTabs("Lname"))
-		$xt->assign("Lname_fieldblock",true);
-	else
-		$xt->assign("Lname_tabfieldblock",true);
-////////////////////////////////////////////
-//DOB - Short Date
-	
-	$value = $pageObject->showDBValue("DOB", $data, $keylink);
-	if($mainTableOwnerID=="DOB")
-		$ownerIdValue=$value;
-	$xt->assign("DOB_value",$value);
-	if(!$pageObject->isAppearOnTabs("DOB"))
-		$xt->assign("DOB_fieldblock",true);
-	else
-		$xt->assign("DOB_tabfieldblock",true);
-////////////////////////////////////////////
-//Password - 
-	
-	$value = $pageObject->showDBValue("Password", $data, $keylink);
-	if($mainTableOwnerID=="Password")
-		$ownerIdValue=$value;
-	$xt->assign("Password_value",$value);
-	if(!$pageObject->isAppearOnTabs("Password"))
-		$xt->assign("Password_fieldblock",true);
-	else
-		$xt->assign("Password_tabfieldblock",true);
-////////////////////////////////////////////
-//Sex - 
-	
-	$value = $pageObject->showDBValue("Sex", $data, $keylink);
-	if($mainTableOwnerID=="Sex")
-		$ownerIdValue=$value;
-	$xt->assign("Sex_value",$value);
-	if(!$pageObject->isAppearOnTabs("Sex"))
-		$xt->assign("Sex_fieldblock",true);
-	else
-		$xt->assign("Sex_tabfieldblock",true);
-////////////////////////////////////////////
-//Phone - 
-	
-	$value = $pageObject->showDBValue("Phone", $data, $keylink);
-	if($mainTableOwnerID=="Phone")
-		$ownerIdValue=$value;
-	$xt->assign("Phone_value",$value);
-	if(!$pageObject->isAppearOnTabs("Phone"))
-		$xt->assign("Phone_fieldblock",true);
-	else
-		$xt->assign("Phone_tabfieldblock",true);
-////////////////////////////////////////////
 //RoleID - 
 	
 	$value = $pageObject->showDBValue("RoleID", $data, $keylink);
@@ -294,6 +224,39 @@ while($data)
 	else
 		$xt->assign("Name_tabfieldblock",true);
 ////////////////////////////////////////////
+//Fname - 
+	
+	$value = $pageObject->showDBValue("Fname", $data, $keylink);
+	if($mainTableOwnerID=="Fname")
+		$ownerIdValue=$value;
+	$xt->assign("Fname_value",$value);
+	if(!$pageObject->isAppearOnTabs("Fname"))
+		$xt->assign("Fname_fieldblock",true);
+	else
+		$xt->assign("Fname_tabfieldblock",true);
+////////////////////////////////////////////
+//Lname - 
+	
+	$value = $pageObject->showDBValue("Lname", $data, $keylink);
+	if($mainTableOwnerID=="Lname")
+		$ownerIdValue=$value;
+	$xt->assign("Lname_value",$value);
+	if(!$pageObject->isAppearOnTabs("Lname"))
+		$xt->assign("Lname_fieldblock",true);
+	else
+		$xt->assign("Lname_tabfieldblock",true);
+////////////////////////////////////////////
+//Sex - 
+	
+	$value = $pageObject->showDBValue("Sex", $data, $keylink);
+	if($mainTableOwnerID=="Sex")
+		$ownerIdValue=$value;
+	$xt->assign("Sex_value",$value);
+	if(!$pageObject->isAppearOnTabs("Sex"))
+		$xt->assign("Sex_fieldblock",true);
+	else
+		$xt->assign("Sex_tabfieldblock",true);
+////////////////////////////////////////////
 //Address - 
 	
 	$value = $pageObject->showDBValue("Address", $data, $keylink);
@@ -304,6 +267,28 @@ while($data)
 		$xt->assign("Address_fieldblock",true);
 	else
 		$xt->assign("Address_tabfieldblock",true);
+////////////////////////////////////////////
+//DOB - Short Date
+	
+	$value = $pageObject->showDBValue("DOB", $data, $keylink);
+	if($mainTableOwnerID=="DOB")
+		$ownerIdValue=$value;
+	$xt->assign("DOB_value",$value);
+	if(!$pageObject->isAppearOnTabs("DOB"))
+		$xt->assign("DOB_fieldblock",true);
+	else
+		$xt->assign("DOB_tabfieldblock",true);
+////////////////////////////////////////////
+//Phone - 
+	
+	$value = $pageObject->showDBValue("Phone", $data, $keylink);
+	if($mainTableOwnerID=="Phone")
+		$ownerIdValue=$value;
+	$xt->assign("Phone_value",$value);
+	if(!$pageObject->isAppearOnTabs("Phone"))
+		$xt->assign("Phone_fieldblock",true);
+	else
+		$xt->assign("Phone_tabfieldblock",true);
 
 /////////////////////////////////////////////////////////////
 if($pageObject->isShowDetailTables && !isMobile())

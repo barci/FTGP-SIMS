@@ -184,7 +184,7 @@ function ImportFromExcel($uploadfile)
 
 		if(in_array("ODetailID",$fields))
 		$autoinc=true;
-											
+									
 	$ret=getImportExcelData($data,$fields);
 	
 		
@@ -226,7 +226,7 @@ function ImportFromCSV($uploadfile)
 	$autoinc = false;
 		if(in_array("ODetailID",$fields))
 		$autoinc=true;
-										
+								
 		
 	
 	

@@ -129,6 +129,55 @@ if ($mode==SEARCH_SIMPLE)
 	
 	// search fields data
 	
+	if($pageObject->pSet->getLookupTable("ProdNo"))
+		$pageObject->settingsMap["globalSettings"]['shortTNames'][$pageObject->pSet->getLookupTable("ProdNo")] = GetTableURL($pageObject->pSet->getLookupTable("ProdNo"));
+	
+	$pageObject->fillFieldToolTips("ProdNo");	
+	
+	$srchFields = $pageObject->searchClauseObj->getSearchCtrlParams("ProdNo");
+	$firstFieldParams = array();
+	if (count($srchFields))
+	{
+		$firstFieldParams = $srchFields[0];
+	}
+	else
+	{
+		$firstFieldParams['fName'] = "ProdNo";
+		$firstFieldParams['eType'] = '';
+		$firstFieldParams['value1'] = '';
+		$firstFieldParams['opt'] = '';
+		$firstFieldParams['value2'] = '';
+		$firstFieldParams['not'] = false;
+	}
+	// create control	
+	$ctrlBlockArr = $searchControlBuilder->buildSearchCtrlBlockArr($id, $firstFieldParams['fName'], 0, $firstFieldParams['opt'], $firstFieldParams['not'], false, $firstFieldParams['value1'], $firstFieldParams['value2']);	
+		
+	if(isEnableSection508())
+		$xt->assign_section("ProdNo_label","<label for=\"".GetInputElementId("ProdNo", $id, PAGE_SEARCH)."\">","</label>");
+	else 
+		$xt->assign("ProdNo_label", true);
+	
+	$xt->assign("ProdNo_fieldblock", true);
+	$xt->assignbyref("ProdNo_editcontrol", $ctrlBlockArr['searchcontrol']);
+	$xt->assign("ProdNo_notbox", $ctrlBlockArr['notbox']);
+	// create second control, if need it
+	$xt->assignbyref("ProdNo_editcontrol1", $ctrlBlockArr['searchcontrol1']);
+	// create search type select
+	$xt->assign("searchtype_ProdNo", $ctrlBlockArr['searchtype']);
+	$isFieldNeedSecCtrl = $searchControlBuilder->isNeedSecondCtrl("ProdNo");
+	$ctrlInd = 0;
+	if ($isFieldNeedSecCtrl)
+	{
+		$pageObject->controlsMap["search"]["searchBlocks"][] = array('fName'=>"ProdNo", 'recId'=>$id, 'ctrlsMap'=>array(0=>$ctrlInd, 1=>($ctrlInd+1)));
+		$ctrlInd+=2;
+	}
+	else
+	{
+		$pageObject->controlsMap["search"]["searchBlocks"][] = array('fName'=>"ProdNo", 'recId'=>$id, 'ctrlsMap'=>array(0=>$ctrlInd));			
+		$ctrlInd++;
+	}
+	// search fields data
+	
 	if($pageObject->pSet->getLookupTable("Pname"))
 		$pageObject->settingsMap["globalSettings"]['shortTNames'][$pageObject->pSet->getLookupTable("Pname")] = GetTableURL($pageObject->pSet->getLookupTable("Pname"));
 	

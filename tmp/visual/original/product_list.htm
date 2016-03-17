@@ -241,14 +241,7 @@
 		</span>
 	{END cancelall_link}
 
-		{BEGIN deleteselected_link}
-		<span class="runner-btnframe" {$deleteselectedlink_span}>
-		<span class="runner-btnleft"></span>
-		<span class="runner-btnright"></span>
-		<a href="#" class="runner-button" {$deleteselectedlink_attrs}>Delete selected</a>
-		</span>
-	{END deleteselected_link}
-
+	
 	
 		{BEGIN printselected_link}
 		<span class="runner-btnframe" {$printselectedlink_span}>
@@ -424,6 +417,9 @@
 									</th>
 									{END checkbox_column}
 
+																		{BEGIN product_dtable_column}
+									<th class="runner-cc">&nbsp;</th>
+									{END product_dtable_column}
 																										{BEGIN ProdID_fieldheadercolumn}
 									<th class="runner-cc ">
 									{BEGIN ProdID_fieldheader}
@@ -433,6 +429,16 @@
 									{END ProdID_fieldheader}
 									</th>
 									{END ProdID_fieldheadercolumn}
+
+																	{BEGIN ProdNo_fieldheadercolumn}
+									<th class="runner-cc ">
+									{BEGIN ProdNo_fieldheader}
+																				<a {$ProdNo_orderlinkattrs}>
+											Product Number
+										</a>
+									{END ProdNo_fieldheader}
+									</th>
+									{END ProdNo_fieldheadercolumn}
 
 																	{BEGIN Pname_fieldheadercolumn}
 									<th class="runner-cc ">
@@ -534,36 +540,6 @@
 									</th>
 									{END UInOrder_fieldheadercolumn}
 
-																	{BEGIN Uprice_fieldheadercolumn}
-									<th class="runner-cc ">
-									{BEGIN Uprice_fieldheader}
-																				<a {$Uprice_orderlinkattrs}>
-											Unit Price
-										</a>
-									{END Uprice_fieldheader}
-									</th>
-									{END Uprice_fieldheadercolumn}
-
-																	{BEGIN USP_fieldheadercolumn}
-									<th class="runner-cc ">
-									{BEGIN USP_fieldheader}
-																				<a {$USP_orderlinkattrs}>
-											Unit Selling Price
-										</a>
-									{END USP_fieldheader}
-									</th>
-									{END USP_fieldheadercolumn}
-
-																	{BEGIN Discount_fieldheadercolumn}
-									<th class="runner-cc ">
-									{BEGIN Discount_fieldheader}
-																				<a {$Discount_orderlinkattrs}>
-											Discount
-										</a>
-									{END Discount_fieldheader}
-									</th>
-									{END Discount_fieldheadercolumn}
-
 																	{BEGIN Note_fieldheadercolumn}
 									<th class="runner-cc runner-clast">
 									{BEGIN Note_fieldheader}
@@ -603,12 +579,7 @@
 									{END inlineedit_link}
 									{END inlineedit_column}
 
-																		{BEGIN copy_column}
-									{BEGIN copy_link}
-									<a class="runner-button-img" {$copylink_attrs} title="Copy"><img class="runner-cicon" src="images/icon_copy_new.gif" alt="Copy"></a>
-									{END copy_link}
-									{END copy_column}
-
+									
 																		</td>	
 									{END listIcons_column}	
 
@@ -620,12 +591,31 @@
 									</td>
 									{END checkbox_column}
 
+																		{BEGIN product_dtable_column}
+									<td class="runner-cc runner-nowrap" {$rowstyle}>
+									{BEGIN stockrequest_dtable_link}
+									<span>
+									<a {$stockrequest_dtablelink_attrs}>
+										Stockrequest
+																				<span {$stockrequest_childnumber_attr} dir="ltr">{BEGIN stockrequest_childcount}({$stockrequest_childnumber}){END stockrequest_childcount}</span>
+									</a>
+																		&nbsp;
+									</span>
+									{END stockrequest_dtable_link}
+																		</td>
+									{END product_dtable_column}
 
 										{BEGIN ProdID_fieldcolumn}
 	<td class="runner-cc  {$ProdID_class}" {$ProdID_style}>
 		{$ProdID_value}
 	</td>
 {END ProdID_fieldcolumn}
+
+	{BEGIN ProdNo_fieldcolumn}
+	<td class="runner-cc  {$ProdNo_class}" {$ProdNo_style}>
+		{$ProdNo_value}
+	</td>
+{END ProdNo_fieldcolumn}
 
 	{BEGIN Pname_fieldcolumn}
 	<td class="runner-cc  {$Pname_class}" {$Pname_style}>
@@ -687,24 +677,6 @@
 	</td>
 {END UInOrder_fieldcolumn}
 
-	{BEGIN Uprice_fieldcolumn}
-	<td class="runner-cc  {$Uprice_class}" {$Uprice_style}>
-		{$Uprice_value}
-	</td>
-{END Uprice_fieldcolumn}
-
-	{BEGIN USP_fieldcolumn}
-	<td class="runner-cc  {$USP_class}" {$USP_style}>
-		{$USP_value}
-	</td>
-{END USP_fieldcolumn}
-
-	{BEGIN Discount_fieldcolumn}
-	<td class="runner-cc  {$Discount_class}" {$Discount_style}>
-		{$Discount_value}
-	</td>
-{END Discount_fieldcolumn}
-
 	{BEGIN Note_fieldcolumn}
 	<td class="runner-cc runner-clast {$Note_class}" {$Note_style}>
 		{$Note_value}
@@ -733,10 +705,16 @@
 									<td class="runner-cc"></td>
 									{END checkbox_column}
 
+																		{BEGIN product_dtable_column}
+									<td class="runner-cc"></td>
+									{END product_dtable_column}
 
 									{BEGIN ProdID_fieldheadercolumn}
 <td class="runner-cc "></td>
 {END ProdID_fieldheadercolumn}
+{BEGIN ProdNo_fieldheadercolumn}
+<td class="runner-cc "></td>
+{END ProdNo_fieldheadercolumn}
 {BEGIN Pname_fieldheadercolumn}
 <td class="runner-cc "></td>
 {END Pname_fieldheadercolumn}
@@ -767,15 +745,6 @@
 {BEGIN UInOrder_fieldheadercolumn}
 <td class="runner-cc "></td>
 {END UInOrder_fieldheadercolumn}
-{BEGIN Uprice_fieldheadercolumn}
-<td class="runner-cc "></td>
-{END Uprice_fieldheadercolumn}
-{BEGIN USP_fieldheadercolumn}
-<td class="runner-cc "></td>
-{END USP_fieldheadercolumn}
-{BEGIN Discount_fieldheadercolumn}
-<td class="runner-cc "></td>
-{END Discount_fieldheadercolumn}
 {BEGIN Note_fieldheadercolumn}
 <td class="runner-cc runner-clast"></td>
 {END Note_fieldheadercolumn}

@@ -353,6 +353,18 @@ class AuditTrailTable
 		{
 			return false;
 		}
+		if($table=="stockrequest")
+		{
+			return false;
+		}
+		if($table=="Pending Orders")
+		{
+			return false;
+		}
+		if($table=="Stocks Received")
+		{
+			return false;
+		}
 	}
 }
 
@@ -686,6 +698,18 @@ class AuditTrailFile
 			return false;
 		}
 		if($table=="Product Listing")
+		{
+			return false;
+		}
+		if($table=="stockrequest")
+		{
+			return false;
+		}
+		if($table=="Pending Orders")
+		{
+			return false;
+		}
+		if($table=="Stocks Received")
 		{
 			return false;
 		}

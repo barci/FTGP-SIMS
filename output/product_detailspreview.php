@@ -178,6 +178,10 @@ if($rowcount) {
 			$viewContainer->recId = $recordsCounter;
 		    $value = $viewContainer->showDBValue("Note", $data, $keylink);
 			$row["Note_value"] = $value;
+	//	ProdNo - 
+			$viewContainer->recId = $recordsCounter;
+		    $value = $viewContainer->showDBValue("ProdNo", $data, $keylink);
+			$row["ProdNo_value"] = $value;
 		$rowinfo[] = $row;
 		$data = $cipherer->DecryptFetchedArray($rs);
 	}

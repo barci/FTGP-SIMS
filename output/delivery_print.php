@@ -430,14 +430,15 @@ if($colsonpage<1)
 $mastertable = $_SESSION[$strTableName."_mastertable"];
 $masterkeys = array();
 
-if($mastertable == "orderdetail")
+if($mastertable == "Pending Orders")
 {
 //	include proper masterprint.php code
-	include("include/orderdetail_masterprint.php");
+	include("include/Pending_Orders_masterprint.php");
 	$masterkeys[] = @$_SESSION[$strTableName."_masterkey1"];
+	$masterkeys[] = @$_SESSION[$strTableName."_masterkey2"];
 	$params = array("detailtable"=>"delivery","keys"=>$masterkeys);
 	$master = array();
-	$master["func"] = "DisplayMasterTableInfo_orderdetail";
+	$master["func"] = "DisplayMasterTableInfo_Pending_Orders";
 	$master["params"] = $params;
 	$xt->assignbyref("showmasterfile",$master);
 	$xt->assign("mastertable_block",true);
@@ -456,9 +457,9 @@ $layout->containers["mastergrid"][] = array("name"=>"masterprintfields","block"=
 
 
 $layout->skins["mastergrid"] = "grid";
-$layout->blocks["bare"][] = "mastergrid";$page_layouts["orderdetail_masterprint"] = $layout;
+$layout->blocks["bare"][] = "mastergrid";$page_layouts["Pending_Orders_masterprint"] = $layout;
 
-	$layout = GetPageLayout("orderdetail", 'masterprint');
+	$layout = GetPageLayout("Pending_Orders", 'masterprint');
 	if($layout)
 	{
 		$rtl = $pageObject->xt->getReadingOrder() == 'RTL' ? 'RTL' : '';

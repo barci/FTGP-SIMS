@@ -25,6 +25,93 @@ $page_layouts[""] = $layout;
 
 
 
+$layout = new TLayout("list3","BoldOrange","MobileOrange");
+$layout->blocks["center"] = array();
+$layout->containers["message"] = array();
+
+$layout->containers["message"][] = array("name"=>"message","block"=>"message_block","substyle"=>1);
+
+
+$layout->skins["message"] = "2";
+$layout->blocks["center"][] = "message";
+$layout->containers["grid"] = array();
+
+$layout->containers["grid"][] = array("name"=>"grid","block"=>"grid_block","substyle"=>1);
+
+
+$layout->skins["grid"] = "grid";
+$layout->blocks["center"][] = "grid";
+$layout->containers["pagination"] = array();
+
+$layout->containers["pagination"][] = array("name"=>"pagination","block"=>"pagination_block","substyle"=>1);
+
+
+$layout->skins["pagination"] = "2";
+$layout->blocks["center"][] = "pagination";$layout->blocks["left"] = array();
+$layout->containers["left"] = array();
+
+$layout->containers["left"][] = array("name"=>"vsearch1","block"=>"searchform_block","substyle"=>2);
+
+
+$layout->containers["left"][] = array("name"=>"vsearch2","block"=>"searchform_block","substyle"=>1);
+
+
+$layout->containers["left"][] = array("name"=>"searchpanel","block"=>"searchPanel","substyle"=>1);
+
+
+$layout->containers["left"][] = array("name"=>"vdetails_found","block"=>"details_block","substyle"=>2);
+
+
+$layout->containers["left"][] = array("name"=>"vpage_of","block"=>"pages_block","substyle"=>1);
+
+
+$layout->containers["left"][] = array("name"=>"vrecsperpage","block"=>"recordspp_block","substyle"=>1);
+
+
+$layout->skins["left"] = "menu";
+$layout->blocks["left"][] = "left";$layout->blocks["top"] = array();
+$layout->containers["master"] = array();
+
+$layout->containers["master"][] = array("name"=>"masterinfo","block"=>"mastertable_block","substyle"=>1);
+
+
+$layout->skins["master"] = "empty";
+$layout->blocks["top"][] = "master";
+$layout->containers["toplinks"] = array();
+
+$layout->containers["toplinks"][] = array("name"=>"toplinks_print","block"=>"prints_block","substyle"=>1);
+
+
+$layout->containers["toplinks"][] = array("name"=>"toplinks_advsearch","block"=>"asearch_link","substyle"=>1);
+
+
+
+
+
+$layout->containers["toplinks"][] = array("name"=>"loggedas","block"=>"security_block","substyle"=>1);
+
+
+
+$layout->skins["toplinks"] = "2";
+$layout->blocks["top"][] = "toplinks";
+$layout->containers["hmenu"] = array();
+
+$layout->containers["hmenu"][] = array("name"=>"hmenu","block"=>"menu_block","substyle"=>1);
+
+
+$layout->skins["hmenu"] = "hmenu";
+$layout->blocks["top"][] = "hmenu";
+$layout->containers["recordcontrols"] = array();
+
+$layout->containers["recordcontrols"][] = array("name"=>"recordcontrols_new","block"=>"newrecord_controls_block","substyle"=>1);
+
+
+$layout->containers["recordcontrols"][] = array("name"=>"recordcontrol","block"=>"record_controls_block","substyle"=>1);
+
+
+$layout->skins["recordcontrols"] = "1";
+$layout->blocks["top"][] = "recordcontrols";$page_layouts["stockrequest_list"] = $layout;
+
 
 if ((sizeof($_POST)==0) && (postvalue('ferror')) && (!postvalue("editid1"))){
 	$returnJSON['success'] = false;
@@ -170,6 +257,12 @@ if($inlineedit!=EDIT_INLINE)
 	if($pageObject->isShowDetailTables && !isMobile())
 	{
 		$ids = $id;
+			$dpPermis = $pageObject->getPermissions("stockrequest");
+		if($dpPermis['search'] || $dpPermis['edit']){
+			$mKeys["stockrequest"] = $pageObject->pSet->getMasterKeysByDetailTable("stockrequest");
+			$dpParams['strTableNames'][] = "stockrequest";
+			$dpParams['ids'][] = ++$ids;
+		}
 		$pageObject->jsSettings['tableSettings'][$strTableName]['dpParams'] = array('tableNames'=>$dpParams['strTableNames'], 'ids'=>$dpParams['ids']);
 	}
 }
@@ -222,36 +315,16 @@ if(@$_POST["a"] == "edited")
 
 		}
 //	processing CatID - end
-//	processing QPerUnit - begin
+//	processing SuppID - begin
 	$condition = $inlineedit==EDIT_INLINE;//($inlineedit) inline mode
 
 	if($condition)
 	{
-		$control_QPerUnit = $pageObject->getControl("QPerUnit", $id);
-		$control_QPerUnit->readWebValue($evalues, $blobfields, $strWhereClause, $oldValuesRead, $efilename_values);
+		$control_SuppID = $pageObject->getControl("SuppID", $id);
+		$control_SuppID->readWebValue($evalues, $blobfields, $strWhereClause, $oldValuesRead, $efilename_values);
 
 		}
-//	processing QPerUnit - end
-//	processing Uprice - begin
-	$condition = $inlineedit==EDIT_INLINE;//($inlineedit) inline mode
-
-	if($condition)
-	{
-		$control_Uprice = $pageObject->getControl("Uprice", $id);
-		$control_Uprice->readWebValue($evalues, $blobfields, $strWhereClause, $oldValuesRead, $efilename_values);
-
-		}
-//	processing Uprice - end
-//	processing USP - begin
-	$condition = $inlineedit==EDIT_INLINE;//($inlineedit) inline mode
-
-	if($condition)
-	{
-		$control_USP = $pageObject->getControl("USP", $id);
-		$control_USP->readWebValue($evalues, $blobfields, $strWhereClause, $oldValuesRead, $efilename_values);
-
-		}
-//	processing USP - end
+//	processing SuppID - end
 //	processing Uweight - begin
 	$condition = $inlineedit==EDIT_INLINE;//($inlineedit) inline mode
 
@@ -272,36 +345,6 @@ if(@$_POST["a"] == "edited")
 
 		}
 //	processing Usize - end
-//	processing Discount - begin
-	$condition = $inlineedit==EDIT_INLINE;//($inlineedit) inline mode
-
-	if($condition)
-	{
-		$control_Discount = $pageObject->getControl("Discount", $id);
-		$control_Discount->readWebValue($evalues, $blobfields, $strWhereClause, $oldValuesRead, $efilename_values);
-
-		}
-//	processing Discount - end
-//	processing Qty - begin
-	$condition = $inlineedit==EDIT_INLINE;//($inlineedit) inline mode
-
-	if($condition)
-	{
-		$control_Qty = $pageObject->getControl("Qty", $id);
-		$control_Qty->readWebValue($evalues, $blobfields, $strWhereClause, $oldValuesRead, $efilename_values);
-
-		}
-//	processing Qty - end
-//	processing ReOrLevel - begin
-	$condition = $inlineedit==EDIT_INLINE;//($inlineedit) inline mode
-
-	if($condition)
-	{
-		$control_ReOrLevel = $pageObject->getControl("ReOrLevel", $id);
-		$control_ReOrLevel->readWebValue($evalues, $blobfields, $strWhereClause, $oldValuesRead, $efilename_values);
-
-		}
-//	processing ReOrLevel - end
 //	processing Note - begin
 	$condition = $inlineedit==EDIT_INLINE;//($inlineedit) inline mode
 
@@ -312,6 +355,16 @@ if(@$_POST["a"] == "edited")
 
 		}
 //	processing Note - end
+//	processing ProdNo - begin
+	$condition = $inlineedit==EDIT_INLINE;//($inlineedit) inline mode
+
+	if($condition)
+	{
+		$control_ProdNo = $pageObject->getControl("ProdNo", $id);
+		$control_ProdNo->readWebValue($evalues, $blobfields, $strWhereClause, $oldValuesRead, $efilename_values);
+
+		}
+//	processing ProdNo - end
 
 	foreach($efilename_values as $ekey=>$value)
 		$evalues[$ekey] = $value;
@@ -385,30 +438,14 @@ if(@$_POST["a"] == "edited")
 					$control_CatID->afterSuccessfulSave();
 				}
 	//	processing CatID - end
-			//	processing QPerUnit - begin
+			//	processing SuppID - begin
 							$condition = $inlineedit==EDIT_INLINE;//($inlineedit) inline mode
 			
 				if($condition)
 				{
-					$control_QPerUnit->afterSuccessfulSave();
+					$control_SuppID->afterSuccessfulSave();
 				}
-	//	processing QPerUnit - end
-			//	processing Uprice - begin
-							$condition = $inlineedit==EDIT_INLINE;//($inlineedit) inline mode
-			
-				if($condition)
-				{
-					$control_Uprice->afterSuccessfulSave();
-				}
-	//	processing Uprice - end
-			//	processing USP - begin
-							$condition = $inlineedit==EDIT_INLINE;//($inlineedit) inline mode
-			
-				if($condition)
-				{
-					$control_USP->afterSuccessfulSave();
-				}
-	//	processing USP - end
+	//	processing SuppID - end
 			//	processing Uweight - begin
 							$condition = $inlineedit==EDIT_INLINE;//($inlineedit) inline mode
 			
@@ -425,30 +462,6 @@ if(@$_POST["a"] == "edited")
 					$control_Usize->afterSuccessfulSave();
 				}
 	//	processing Usize - end
-			//	processing Discount - begin
-							$condition = $inlineedit==EDIT_INLINE;//($inlineedit) inline mode
-			
-				if($condition)
-				{
-					$control_Discount->afterSuccessfulSave();
-				}
-	//	processing Discount - end
-			//	processing Qty - begin
-							$condition = $inlineedit==EDIT_INLINE;//($inlineedit) inline mode
-			
-				if($condition)
-				{
-					$control_Qty->afterSuccessfulSave();
-				}
-	//	processing Qty - end
-			//	processing ReOrLevel - begin
-							$condition = $inlineedit==EDIT_INLINE;//($inlineedit) inline mode
-			
-				if($condition)
-				{
-					$control_ReOrLevel->afterSuccessfulSave();
-				}
-	//	processing ReOrLevel - end
 			//	processing Note - begin
 							$condition = $inlineedit==EDIT_INLINE;//($inlineedit) inline mode
 			
@@ -457,6 +470,14 @@ if(@$_POST["a"] == "edited")
 					$control_Note->afterSuccessfulSave();
 				}
 	//	processing Note - end
+			//	processing ProdNo - begin
+							$condition = $inlineedit==EDIT_INLINE;//($inlineedit) inline mode
+			
+				if($condition)
+				{
+					$control_ProdNo->afterSuccessfulSave();
+				}
+	//	processing ProdNo - end
 				
 				//	after edit event
 				if($pageObject->lockingObj && $inlineedit == EDIT_INLINE)
@@ -591,15 +612,11 @@ if($readevalues)
 {
 	$data["Pname"] = $evalues["Pname"];
 	$data["CatID"] = $evalues["CatID"];
-	$data["QPerUnit"] = $evalues["QPerUnit"];
-	$data["Uprice"] = $evalues["Uprice"];
-	$data["USP"] = $evalues["USP"];
+	$data["SuppID"] = $evalues["SuppID"];
 	$data["Uweight"] = $evalues["Uweight"];
 	$data["Usize"] = $evalues["Usize"];
-	$data["Discount"] = $evalues["Discount"];
-	$data["Qty"] = $evalues["Qty"];
-	$data["ReOrLevel"] = $evalues["ReOrLevel"];
 	$data["Note"] = $evalues["Note"];
+	$data["ProdNo"] = $evalues["ProdNo"];
 }
 
 /////////////////////////////////////////////////////////////
@@ -697,6 +714,7 @@ if (postvalue("a")=="edited" && ($inlineedit == EDIT_INLINE || $inlineedit == ED
 	//Preparation   view values
 
 //	detail tables
+	$showDetailKeys["stockrequest"]["masterkey1"] = $data["ProdID"];		
 
 	$keylink = "";
 	$keylink.= "&key1=".htmlspecialchars(rawurlencode(@$data["ProdID"]));
@@ -791,6 +809,12 @@ if (postvalue("a")=="edited" && ($inlineedit == EDIT_INLINE || $inlineedit == ED
 	$showValues["Note"] = $value;
 	$showFields[] = "Note";
 		$showRawValues["Note"] = substr($data["Note"],0,100);
+
+//	ProdNo - 
+	$value = $pageObject->showDBValue("ProdNo", $data, $keylink);
+	$showValues["ProdNo"] = $value;
+	$showFields[] = "ProdNo";
+		$showRawValues["ProdNo"] = substr($data["ProdNo"],0,100);
 /////////////////////////////////////////////////////////////
 //	start inline output
 /////////////////////////////////////////////////////////////
@@ -885,7 +909,7 @@ foreach($pageObject->editFields as $fName)
 				$control[$gfName]["params"]["mode"] = "edit";
 			$controls["controls"]['mode'] = "edit";
 		}
-												
+								
 	if(!$detailKeys || !in_array($fName, $detailKeys))
 		$xt->assignbyref($gfName."_editcontrol",$control[$gfName]);
 	elseif($detailKeys && in_array($fName, $detailKeys))

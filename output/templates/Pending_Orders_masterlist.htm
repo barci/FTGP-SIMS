@@ -1,0 +1,83 @@
+<div {$pageattrs}>
+
+{BEGIN container_0}
+<table class="runner-c runner-c-0" cellpadding="0" >
+<tr class="{$cheaderclass_0}">
+<td class="runner-cl"><img src="images/spacer.gif"></td>
+<td class="runner-cc"></td><td class="runner-cr"><img src="images/spacer.gif"></td>
+</tr>
+<tr class="runner-row style1">
+<td class="runner-cl"></td>
+<td class="runner-cc">
+<table border="0" cellpadding="0" class="runner-hc">
+<tr>
+
+
+<td  class="runner-cc runner-bl runner-b-masterlistheader" {$brickclass_masterlistheader}><span><b><span dir="LTR">Pending Orders: [{$showKeys}]</span></b></span></td>
+
+
+<td class="runner-cc filler"></td>
+</tr>
+</table></td>
+<td class="runner-cr"></td>
+</tr>
+
+<tr class="{$cfooterclass_0}">
+<td class="runner-cl"><img src="images/spacer.gif"></td>
+<td class="runner-cc"></td><td class="runner-cr"><img src="images/spacer.gif"></td>
+</tr>
+</table>
+{END container_0}
+
+
+
+{BEGIN container_mastergrid}
+
+
+
+	<table class="runner-c runner-c-mastergrid runner-b-masterlistfields" cellpadding="0">
+		<tr class="runner-toprow style1">
+			<th class="runner-cl"><img src="images/spacer.gif"></th>
+			<th class="runner-cc ">ID</th>
+			<th class="runner-cc ">Order ID</th>
+			<th class="runner-cc ">Product</th>
+			<th class="runner-cc ">Order Quantity</th>
+			<th class="runner-cc ">Delivered Quantity</th>
+			<th class="runner-cc ">Total</th>
+			<th class="runner-cc ">Delivery Date</th>
+			<th class="runner-cc runner-clast">Bill No</th>
+			<th class="runner-cr"><img src="images/spacer.gif"></th>
+		</tr>
+		<tr class="runner-row style1">
+			<td class="runner-cl"><img src="images/spacer.gif"></td>
+			<td class="runner-cc ">{$ODetailID_mastervalue}</td>
+			<td class="runner-cc ">{$OrderID_mastervalue}</td>
+			<td class="runner-cc ">{$ProductID_mastervalue}</td>
+			<td class="runner-cc ">{$OrdQuant_mastervalue}</td>
+			<td class="runner-cc ">{$DelQuant_mastervalue}</td>
+			<td class="runner-cc ">{$Total_mastervalue}</td>
+			<td class="runner-cc ">{$DelDate_mastervalue}</td>
+			<td class="runner-cc runner-clast">{$BillNo_mastervalue}</td>
+			<td class="runner-cr"><img src="images/spacer.gif"></td>
+		</tr>
+		<tr class="runner-bottomrow style1">
+			<td class="runner-cl"><img src="images/spacer.gif"></td>
+				<td class="runner-cc "></td>
+				<td class="runner-cc "></td>
+				<td class="runner-cc "></td>
+				<td class="runner-cc "></td>
+				<td class="runner-cc "></td>
+				<td class="runner-cc "></td>
+				<td class="runner-cc "></td>
+				<td class="runner-cc runner-clast"></td>
+			<td class="runner-cr"><img src="images/spacer.gif"></td>
+		</tr>
+	</table>
+ 
+
+
+
+
+{END container_mastergrid}
+
+</div>

@@ -59,6 +59,36 @@
 	<td class="runner-cc">NOT</td>
 	<td class="runner-cc" colspan=3>&nbsp; </td>
 <td class="runner-cr"></td></tr>
+	{BEGIN ProdNo_fieldblock}		
+	<tr class="runner-row style1 runner-b-srchfields"><td class="runner-cl"></td>
+		<td class="runner-cc runner-cc1">
+			<div class="fieldlabel_ProdNo {$fielddispclass_ProdNo}">
+				Product Number
+			</div>
+		</td>
+	</td>
+	<td class="runner-cc alt">
+		<div class="fieldoption_ProdNo {$fielddispclass_ProdNo}">
+			<input type="checkbox" {$ProdNo_notbox}>
+		</div>
+	</td>
+	<td class="runner-cc alt">
+		<div class="fieldoption_ProdNo {$fielddispclass_ProdNo}">
+			{$searchtype_ProdNo}
+		</div>
+	</td>
+	<td class="runner-cc alt">
+		<div class="fieldcontrol_ProdNo {$fielddispclass_ProdNo}">
+			{$ProdNo_editcontrol}&nbsp;
+		</div>
+	</td>
+	<td class="runner-cc alt">
+		<div class="fieldcontrol_ProdNo {$fielddispclass_ProdNo}">
+			{$ProdNo_editcontrol1}&nbsp;
+		</div>
+	</td>
+	<td class="runner-cr alt"></td></tr>
+{END ProdNo_fieldblock}
 	{BEGIN Pname_fieldblock}		
 	<tr class="runner-row style1 runner-b-srchfields"><td class="runner-cl"></td>
 		<td class="runner-cc runner-cc1">

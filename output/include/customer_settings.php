@@ -157,7 +157,7 @@ $tdatacustomer[".strOrderBy"] = $tstrOrderBy;
 
 $tdatacustomer[".orderindexes"] = array();
 
-$tdatacustomer[".sqlHead"] = "SELECT CID,   BRegNo,   ComName,   Fname,   Lname,   OAddress,   DAddress,   Phone,   Email,   StaffID";
+$tdatacustomer[".sqlHead"] = "SELECT CID,  BRegNo,  ComName,  Fname,  Lname,  OAddress,  DAddress,  Phone,  Email,  StaffID";
 $tdatacustomer[".sqlFrom"] = "FROM customer";
 $tdatacustomer[".sqlWhereExpr"] = "";
 $tdatacustomer[".sqlTail"] = "";
@@ -1328,7 +1328,7 @@ function createSqlQuery_customer()
 {
 $proto0=array();
 $proto0["m_strHead"] = "SELECT";
-$proto0["m_strFieldList"] = "CID,   BRegNo,   ComName,   Fname,   Lname,   OAddress,   DAddress,   Phone,   Email,   StaffID";
+$proto0["m_strFieldList"] = "CID,  BRegNo,  ComName,  Fname,  Lname,  OAddress,  DAddress,  Phone,  Email,  StaffID";
 $proto0["m_strFrom"] = "FROM customer";
 $proto0["m_strWhere"] = "";
 $proto0["m_strOrderBy"] = "";
@@ -1493,6 +1493,7 @@ $proto26["m_columns"][] = "DAddress";
 $proto26["m_columns"][] = "Phone";
 $proto26["m_columns"][] = "Email";
 $proto26["m_columns"][] = "StaffID";
+$proto26["m_columns"][] = "TimeStamp";
 $obj = new SQLTable($proto26);
 
 $proto25["m_table"] = $obj;

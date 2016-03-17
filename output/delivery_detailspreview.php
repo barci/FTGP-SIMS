@@ -74,10 +74,12 @@ else
 
 //$strSQL = $gstrSQL;
 
-if($mastertable == "orderdetail")
+if($mastertable == "Pending Orders")
 {
 	$where = "";
-		$where .= GetFullFieldName("orderID", $strTableName, false)."=".make_db_value("orderID",$_SESSION[$strTableName."_masterkey1"]);
+		$where .= GetFullFieldName("prodID", $strTableName, false)."=".make_db_value("prodID",$_SESSION[$strTableName."_masterkey1"]);
+		$where.=" and ";
+	$where .= GetFullFieldName("orderID", $strTableName, false)."=".make_db_value("orderID",$_SESSION[$strTableName."_masterkey2"]);
 }
 
 $str = SecuritySQL("Search");

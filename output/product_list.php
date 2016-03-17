@@ -7,6 +7,7 @@ add_nocache_headers();
 
 include('include/xtempl.php');
 include("include/product_variables.php");
+include_once("include/stockrequest_settings.php");
 include('classes/runnerpage.php');
 include('classes/listpage.php');
 include("classes/searchpanel.php");
@@ -145,7 +146,7 @@ elseif(postvalue("mode") == "lookup")
 	$mode=LIST_LOOKUP;
 	//determine which field should be used to select values
 			$params["lookupSelectField"] = "ProdID";
-														}
+												}
 elseif(postvalue("mode")=="listdetails")
 {
 	

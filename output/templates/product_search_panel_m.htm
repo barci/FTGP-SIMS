@@ -23,6 +23,9 @@
 	
 	<!-- choose controls div -->
 	<div class="runner-panel controlChooseMenu" {$controlChooseMenuDiv_attrs}>
+		{BEGIN addSearch_ProdNo}
+			<a href="#" id="addSearchControl_ProdNo" class="addSearchControl" {$addSearchControl_ProdNo_attrs}>Product Number</a><br>
+		{END addSearch_ProdNo}
 		{BEGIN addSearch_Pname}
 			<a href="#" id="addSearchControl_Pname" class="addSearchControl" {$addSearchControl_Pname_attrs}>Product Name</a><br>
 		{END addSearch_Pname}

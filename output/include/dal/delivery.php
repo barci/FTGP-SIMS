@@ -7,6 +7,7 @@ $dalTabledelivery["prodID"] = array("type"=>200,"varname"=>"prodID");
 $dalTabledelivery["qty"] = array("type"=>3,"varname"=>"qty");
 $dalTabledelivery["eta"] = array("type"=>135,"varname"=>"eta");
 $dalTabledelivery["delFlag"] = array("type"=>200,"varname"=>"delFlag");
+$dalTabledelivery["TimeStamp"] = array("type"=>135,"varname"=>"TimeStamp");
 	$dalTabledelivery["ID"]["key"]=true;
 $dal_info["delivery"]=&$dalTabledelivery;
 

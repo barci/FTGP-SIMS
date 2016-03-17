@@ -269,7 +269,7 @@ $cLoginTable = "staff";
 $cDisplayNameField = "Name";
 $cUserNameField	= "UserName";
 $cPasswordField	= "Password";
-$cUserGroupField = "UserName";
+$cUserGroupField = "RoleID";
 $cEmailField = "";
 
 if ($cDisplayNameField == ''){
@@ -323,6 +323,9 @@ $tableCaptions["English"]["orderdetail"] = "Order Detail";
 $tableCaptions["English"]["orderentry"] = "Order Entry";
 $tableCaptions["English"]["delivery"] = "Delivery";
 $tableCaptions["English"]["Product_Listing"] = "Product Listing";
+$tableCaptions["English"]["stockrequest"] = "Stockrequest";
+$tableCaptions["English"]["Pending_Orders"] = "Pending Orders";
+$tableCaptions["English"]["Stocks_Received"] = "Stocks Received";
 
 $globalEvents = new class_GlobalEvents;
 $tableEvents = array();
@@ -332,7 +335,7 @@ $mlang_defaultlang = "English";
 
 $conn = db_connect();
 
-$isGroupSecurity = false;
+$isGroupSecurity = true;
 
 $isUseRTEBasic = true;
 

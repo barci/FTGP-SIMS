@@ -105,7 +105,6 @@ if (@$_REQUEST["a"]!="")
 		$sWhere = $sWhere . " or ";
 		$sWhere.=KeyWhere($keys);
 	}
-	$sWhere = whereAdd($sWhere,SecuritySQL("Search"));
 	$strSQL = $gQuery->gSQLWhere($sWhere);
 	$strWhereClause=$sWhere;
 }
@@ -114,8 +113,6 @@ else
 	$strWhereClause=@$_SESSION[$strTableName."_where"];
 	$strHavingClause=@$_SESSION[$strTableName."_having"];
 	$strSearchCriteria=@$_SESSION[$strTableName."_criteria"];
-	if(!$strWhereClause)
-		$strWhereClause = whereAdd($strWhereClause,SecuritySQL("Search"));
 	$strSQL = $gQuery->gSQLWhere($strWhereClause, $strHavingClause, $strSearchCriteria);
 }
 if(postvalue("pdf"))
@@ -292,10 +289,6 @@ $arr = array();
 $arr['fName'] = "UserName";
 $arr['viewFormat'] = $pageObject->pSet->getViewFormat("UserName");
 $fieldsArr[] = $arr;
-$arr = array();
-$arr['fName'] = "Password";
-$arr['viewFormat'] = $pageObject->pSet->getViewFormat("Password");
-$fieldsArr[] = $arr;
 $pageObject->setGoogleMapsParams($fieldsArr);
 
 $colsonpage=1;
@@ -349,33 +342,30 @@ if($colsonpage<1)
 //	UserName - 
 			$record["UserName_value"] = $pageObject->showDBValue("UserName", $data, $keylink);
 			$record["UserName_class"] = $pageObject->fieldClass("UserName");
-//	Fname - 
-			$record["Fname_value"] = $pageObject->showDBValue("Fname", $data, $keylink);
-			$record["Fname_class"] = $pageObject->fieldClass("Fname");
-//	Lname - 
-			$record["Lname_value"] = $pageObject->showDBValue("Lname", $data, $keylink);
-			$record["Lname_class"] = $pageObject->fieldClass("Lname");
-//	DOB - Short Date
-			$record["DOB_value"] = $pageObject->showDBValue("DOB", $data, $keylink);
-			$record["DOB_class"] = $pageObject->fieldClass("DOB");
-//	Password - 
-			$record["Password_value"] = $pageObject->showDBValue("Password", $data, $keylink);
-			$record["Password_class"] = $pageObject->fieldClass("Password");
-//	Sex - 
-			$record["Sex_value"] = $pageObject->showDBValue("Sex", $data, $keylink);
-			$record["Sex_class"] = $pageObject->fieldClass("Sex");
-//	Phone - 
-			$record["Phone_value"] = $pageObject->showDBValue("Phone", $data, $keylink);
-			$record["Phone_class"] = $pageObject->fieldClass("Phone");
 //	RoleID - 
 			$record["RoleID_value"] = $pageObject->showDBValue("RoleID", $data, $keylink);
 			$record["RoleID_class"] = $pageObject->fieldClass("RoleID");
 //	Name - 
 			$record["Name_value"] = $pageObject->showDBValue("Name", $data, $keylink);
 			$record["Name_class"] = $pageObject->fieldClass("Name");
+//	Fname - 
+			$record["Fname_value"] = $pageObject->showDBValue("Fname", $data, $keylink);
+			$record["Fname_class"] = $pageObject->fieldClass("Fname");
+//	Lname - 
+			$record["Lname_value"] = $pageObject->showDBValue("Lname", $data, $keylink);
+			$record["Lname_class"] = $pageObject->fieldClass("Lname");
+//	Sex - 
+			$record["Sex_value"] = $pageObject->showDBValue("Sex", $data, $keylink);
+			$record["Sex_class"] = $pageObject->fieldClass("Sex");
 //	Address - 
 			$record["Address_value"] = $pageObject->showDBValue("Address", $data, $keylink);
 			$record["Address_class"] = $pageObject->fieldClass("Address");
+//	DOB - Short Date
+			$record["DOB_value"] = $pageObject->showDBValue("DOB", $data, $keylink);
+			$record["DOB_class"] = $pageObject->fieldClass("DOB");
+//	Phone - 
+			$record["Phone_value"] = $pageObject->showDBValue("Phone", $data, $keylink);
+			$record["Phone_class"] = $pageObject->fieldClass("Phone");
 			if($col<$colsonpage)
 				$record["endrecord_block"] = true;
 			$record["grid_recordheader"] = true;
@@ -487,30 +477,6 @@ $xt->assign("UserName_fieldheadercolumn",true);
 $xt->assign("UserName_fieldheader",true);
 $xt->assign("UserName_fieldcolumn",true);
 $xt->assign("UserName_fieldfootercolumn",true);
-$xt->assign("Fname_fieldheadercolumn",true);
-$xt->assign("Fname_fieldheader",true);
-$xt->assign("Fname_fieldcolumn",true);
-$xt->assign("Fname_fieldfootercolumn",true);
-$xt->assign("Lname_fieldheadercolumn",true);
-$xt->assign("Lname_fieldheader",true);
-$xt->assign("Lname_fieldcolumn",true);
-$xt->assign("Lname_fieldfootercolumn",true);
-$xt->assign("DOB_fieldheadercolumn",true);
-$xt->assign("DOB_fieldheader",true);
-$xt->assign("DOB_fieldcolumn",true);
-$xt->assign("DOB_fieldfootercolumn",true);
-$xt->assign("Password_fieldheadercolumn",true);
-$xt->assign("Password_fieldheader",true);
-$xt->assign("Password_fieldcolumn",true);
-$xt->assign("Password_fieldfootercolumn",true);
-$xt->assign("Sex_fieldheadercolumn",true);
-$xt->assign("Sex_fieldheader",true);
-$xt->assign("Sex_fieldcolumn",true);
-$xt->assign("Sex_fieldfootercolumn",true);
-$xt->assign("Phone_fieldheadercolumn",true);
-$xt->assign("Phone_fieldheader",true);
-$xt->assign("Phone_fieldcolumn",true);
-$xt->assign("Phone_fieldfootercolumn",true);
 $xt->assign("RoleID_fieldheadercolumn",true);
 $xt->assign("RoleID_fieldheader",true);
 $xt->assign("RoleID_fieldcolumn",true);
@@ -519,10 +485,30 @@ $xt->assign("Name_fieldheadercolumn",true);
 $xt->assign("Name_fieldheader",true);
 $xt->assign("Name_fieldcolumn",true);
 $xt->assign("Name_fieldfootercolumn",true);
+$xt->assign("Fname_fieldheadercolumn",true);
+$xt->assign("Fname_fieldheader",true);
+$xt->assign("Fname_fieldcolumn",true);
+$xt->assign("Fname_fieldfootercolumn",true);
+$xt->assign("Lname_fieldheadercolumn",true);
+$xt->assign("Lname_fieldheader",true);
+$xt->assign("Lname_fieldcolumn",true);
+$xt->assign("Lname_fieldfootercolumn",true);
+$xt->assign("Sex_fieldheadercolumn",true);
+$xt->assign("Sex_fieldheader",true);
+$xt->assign("Sex_fieldcolumn",true);
+$xt->assign("Sex_fieldfootercolumn",true);
 $xt->assign("Address_fieldheadercolumn",true);
 $xt->assign("Address_fieldheader",true);
 $xt->assign("Address_fieldcolumn",true);
 $xt->assign("Address_fieldfootercolumn",true);
+$xt->assign("DOB_fieldheadercolumn",true);
+$xt->assign("DOB_fieldheader",true);
+$xt->assign("DOB_fieldcolumn",true);
+$xt->assign("DOB_fieldfootercolumn",true);
+$xt->assign("Phone_fieldheadercolumn",true);
+$xt->assign("Phone_fieldheader",true);
+$xt->assign("Phone_fieldcolumn",true);
+$xt->assign("Phone_fieldfootercolumn",true);
 
 	$record_header=array("data"=>array());
 	$record_footer=array("data"=>array());

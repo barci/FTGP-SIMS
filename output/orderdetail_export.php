@@ -351,10 +351,8 @@ function ExportToXML($cipherer)
 			$values["ODetailID"] = $pageObject->showDBValue("ODetailID", $row);
 			$values["OrderID"] = $pageObject->showDBValue("OrderID", $row);
 			$values["ProductID"] = $pageObject->showDBValue("ProductID", $row);
-			$values["UPrice"] = $pageObject->showDBValue("UPrice", $row);
 			$values["OrdQuant"] = $pageObject->showDBValue("OrdQuant", $row);
 			$values["DelQuant"] = $pageObject->showDBValue("DelQuant", $row);
-			$values["Discount"] = $pageObject->showDBValue("Discount", $row);
 			$values["Total"] = $pageObject->showDBValue("Total", $row);
 			$values["DelDate"] = $pageObject->showDBValue("DelDate", $row);
 			$values["BillNo"] = $pageObject->showDBValue("BillNo", $row);
@@ -410,16 +408,10 @@ function ExportToCSV($cipherer)
 	$outstr.= "\"ProductID\"";
 	if($outstr!="")
 		$outstr.=",";
-	$outstr.= "\"UPrice\"";
-	if($outstr!="")
-		$outstr.=",";
 	$outstr.= "\"OrdQuant\"";
 	if($outstr!="")
 		$outstr.=",";
 	$outstr.= "\"DelQuant\"";
-	if($outstr!="")
-		$outstr.=",";
-	$outstr.= "\"Discount\"";
 	if($outstr!="")
 		$outstr.=",";
 	$outstr.= "\"Total\"";
@@ -441,10 +433,8 @@ function ExportToCSV($cipherer)
 			$values["ODetailID"] = $pageObject->getViewControl("ODetailID")->showDBValue($row, "");
 			$values["OrderID"] = $pageObject->getViewControl("OrderID")->showDBValue($row, "");
 			$values["ProductID"] = $pageObject->getViewControl("ProductID")->showDBValue($row, "");
-			$values["UPrice"] = $row["UPrice"];
 			$values["OrdQuant"] = $pageObject->getViewControl("OrdQuant")->showDBValue($row, "");
 			$values["DelQuant"] = $pageObject->getViewControl("DelQuant")->showDBValue($row, "");
-			$values["Discount"] = $row["Discount"];
 			$values["Total"] = $row["Total"];
 			$values["DelDate"] = $pageObject->getViewControl("DelDate")->showDBValue($row, "");
 			$values["BillNo"] = $pageObject->getViewControl("BillNo")->showDBValue($row, "");
@@ -468,16 +458,10 @@ function ExportToCSV($cipherer)
 			$outstr.='"'.str_replace('"', '""', $values["ProductID"]).'"';
 			if($outstr!="")
 				$outstr.=",";
-			$outstr.='"'.str_replace('"', '""', $values["UPrice"]).'"';
-			if($outstr!="")
-				$outstr.=",";
 			$outstr.='"'.str_replace('"', '""', $values["OrdQuant"]).'"';
 			if($outstr!="")
 				$outstr.=",";
 			$outstr.='"'.str_replace('"', '""', $values["DelQuant"]).'"';
-			if($outstr!="")
-				$outstr.=",";
-			$outstr.='"'.str_replace('"', '""', $values["Discount"]).'"';
 			if($outstr!="")
 				$outstr.=",";
 			$outstr.='"'.str_replace('"', '""', $values["Total"]).'"';
@@ -518,10 +502,8 @@ function WriteTableData($cipherer)
 		echo '<td style="width: 100" x:str>'.PrepareForExcel("ID").'</td>';	
 		echo '<td style="width: 100" x:str>'.PrepareForExcel("Order ID").'</td>';	
 		echo '<td style="width: 100" x:str>'.PrepareForExcel("Product").'</td>';	
-		echo '<td style="width: 100" x:str>'.PrepareForExcel("Unit Price").'</td>';	
 		echo '<td style="width: 100" x:str>'.PrepareForExcel("Order Quantity").'</td>';	
 		echo '<td style="width: 100" x:str>'.PrepareForExcel("Delivered Quantity").'</td>';	
-		echo '<td style="width: 100" x:str>'.PrepareForExcel("Discount").'</td>';	
 		echo '<td style="width: 100" x:str>'.PrepareForExcel("Total").'</td>';	
 		echo '<td style="width: 100" x:str>'.PrepareForExcel("Delivery Date").'</td>';	
 		echo '<td style="width: 100" x:str>'.PrepareForExcel("Bill No").'</td>';	
@@ -531,10 +513,8 @@ function WriteTableData($cipherer)
 		echo "<td>"."ID"."</td>";
 		echo "<td>"."Order ID"."</td>";
 		echo "<td>"."Product"."</td>";
-		echo "<td>"."Unit Price"."</td>";
 		echo "<td>"."Order Quantity"."</td>";
 		echo "<td>"."Delivered Quantity"."</td>";
-		echo "<td>"."Discount"."</td>";
 		echo "<td>"."Total"."</td>";
 		echo "<td>"."Delivery Date"."</td>";
 		echo "<td>"."Bill No"."</td>";
@@ -553,10 +533,8 @@ function WriteTableData($cipherer)
 					$values["ODetailID"] = $pageObject->getViewControl("ODetailID")->showDBValue($row, "");
 					$values["OrderID"] = $pageObject->getViewControl("OrderID")->showDBValue($row, "");
 					$values["ProductID"] = $pageObject->getViewControl("ProductID")->showDBValue($row, "");
-					$values["UPrice"] = $pageObject->getViewControl("UPrice")->showDBValue($row, "");
 					$values["OrdQuant"] = $pageObject->getViewControl("OrdQuant")->showDBValue($row, "");
 					$values["DelQuant"] = $pageObject->getViewControl("DelQuant")->showDBValue($row, "");
-					$values["Discount"] = $pageObject->getViewControl("Discount")->showDBValue($row, "");
 					$values["Total"] = $pageObject->getViewControl("Total")->showDBValue($row, "");
 					$values["DelDate"] = $pageObject->getViewControl("DelDate")->showDBValue($row, "");
 					$values["BillNo"] = $pageObject->getViewControl("BillNo")->showDBValue($row, "");
@@ -599,19 +577,11 @@ function WriteTableData($cipherer)
 			echo '</td>';
 							echo '<td>';
 			
-									echo $values["UPrice"];
-			echo '</td>';
-							echo '<td>';
-			
 									echo $values["OrdQuant"];
 			echo '</td>';
 							echo '<td>';
 			
 									echo $values["DelQuant"];
-			echo '</td>';
-							echo '<td>';
-			
-									echo $values["Discount"];
 			echo '</td>';
 							echo '<td>';
 			

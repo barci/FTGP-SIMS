@@ -215,40 +215,9 @@ if(@$_POST["a"]=="added")
 	$afilename_values=array();
 	$avalues=array();
 	$blobfields=array();
-//	processing Sex - start
-	$inlineAddOption = true;
-	if($inlineAddOption)
-	{
-		$control_Sex = $pageObject->getControl("Sex", $id);
-		$control_Sex->readWebValue($avalues, $blobfields, "", false, $afilename_values);
-	}
-//	processing Sex - end
-//	processing Fname - start
-	$inlineAddOption = true;
-	if($inlineAddOption)
-	{
-		$control_Fname = $pageObject->getControl("Fname", $id);
-		$control_Fname->readWebValue($avalues, $blobfields, "", false, $afilename_values);
-	}
-//	processing Fname - end
-//	processing Lname - start
-	$inlineAddOption = true;
-	if($inlineAddOption)
-	{
-		$control_Lname = $pageObject->getControl("Lname", $id);
-		$control_Lname->readWebValue($avalues, $blobfields, "", false, $afilename_values);
-	}
-//	processing Lname - end
-//	processing DOB - start
-	$inlineAddOption = true;
-	if($inlineAddOption)
-	{
-		$control_DOB = $pageObject->getControl("DOB", $id);
-		$control_DOB->readWebValue($avalues, $blobfields, "", false, $afilename_values);
-	}
-//	processing DOB - end
 //	processing UserName - start
 	$inlineAddOption = true;
+	$inlineAddOption = $inlineadd!=ADD_INLINE;
 	if($inlineAddOption)
 	{
 		$control_UserName = $pageObject->getControl("UserName", $id);
@@ -257,22 +226,16 @@ if(@$_POST["a"]=="added")
 //	processing UserName - end
 //	processing Password - start
 	$inlineAddOption = true;
+	$inlineAddOption = $inlineadd!=ADD_INLINE;
 	if($inlineAddOption)
 	{
 		$control_Password = $pageObject->getControl("Password", $id);
 		$control_Password->readWebValue($avalues, $blobfields, "", false, $afilename_values);
 	}
 //	processing Password - end
-//	processing Phone - start
-	$inlineAddOption = true;
-	if($inlineAddOption)
-	{
-		$control_Phone = $pageObject->getControl("Phone", $id);
-		$control_Phone->readWebValue($avalues, $blobfields, "", false, $afilename_values);
-	}
-//	processing Phone - end
 //	processing RoleID - start
 	$inlineAddOption = true;
+	$inlineAddOption = $inlineadd!=ADD_INLINE;
 	if($inlineAddOption)
 	{
 		$control_RoleID = $pageObject->getControl("RoleID", $id);
@@ -281,24 +244,68 @@ if(@$_POST["a"]=="added")
 //	processing RoleID - end
 //	processing Name - start
 	$inlineAddOption = true;
+	$inlineAddOption = $inlineadd!=ADD_INLINE;
 	if($inlineAddOption)
 	{
 		$control_Name = $pageObject->getControl("Name", $id);
 		$control_Name->readWebValue($avalues, $blobfields, "", false, $afilename_values);
 	}
 //	processing Name - end
+//	processing Fname - start
+	$inlineAddOption = true;
+	$inlineAddOption = $inlineadd!=ADD_INLINE;
+	if($inlineAddOption)
+	{
+		$control_Fname = $pageObject->getControl("Fname", $id);
+		$control_Fname->readWebValue($avalues, $blobfields, "", false, $afilename_values);
+	}
+//	processing Fname - end
+//	processing Lname - start
+	$inlineAddOption = true;
+	$inlineAddOption = $inlineadd!=ADD_INLINE;
+	if($inlineAddOption)
+	{
+		$control_Lname = $pageObject->getControl("Lname", $id);
+		$control_Lname->readWebValue($avalues, $blobfields, "", false, $afilename_values);
+	}
+//	processing Lname - end
+//	processing Sex - start
+	$inlineAddOption = true;
+	$inlineAddOption = $inlineadd!=ADD_INLINE;
+	if($inlineAddOption)
+	{
+		$control_Sex = $pageObject->getControl("Sex", $id);
+		$control_Sex->readWebValue($avalues, $blobfields, "", false, $afilename_values);
+	}
+//	processing Sex - end
 //	processing Address - start
 	$inlineAddOption = true;
+	$inlineAddOption = $inlineadd!=ADD_INLINE;
 	if($inlineAddOption)
 	{
 		$control_Address = $pageObject->getControl("Address", $id);
 		$control_Address->readWebValue($avalues, $blobfields, "", false, $afilename_values);
 	}
 //	processing Address - end
+//	processing DOB - start
+	$inlineAddOption = true;
+	$inlineAddOption = $inlineadd!=ADD_INLINE;
+	if($inlineAddOption)
+	{
+		$control_DOB = $pageObject->getControl("DOB", $id);
+		$control_DOB->readWebValue($avalues, $blobfields, "", false, $afilename_values);
+	}
+//	processing DOB - end
+//	processing Phone - start
+	$inlineAddOption = true;
+	$inlineAddOption = $inlineadd!=ADD_INLINE;
+	if($inlineAddOption)
+	{
+		$control_Phone = $pageObject->getControl("Phone", $id);
+		$control_Phone->readWebValue($avalues, $blobfields, "", false, $afilename_values);
+	}
+//	processing Phone - end
 
-//	insert ownerid value if exists
-	if($strOriginalTableName == $pageObject->pSet->getOwnerTable("StaffID"))
-		$avalues["StaffID"] = prepare_for_db("StaffID",$_SESSION["_".$strTableName."_OwnerID"]);
 
 
 
@@ -331,36 +338,9 @@ if(@$_POST["a"]=="added")
 				$auditObj->LogAdd($strTableName,$avalues,$keys);
 				
 // Give possibility to all edit controls to clean their data				
-//	processing Sex - start
-			$inlineAddOption = true;
-			if($inlineAddOption)
-			{
-				$control_Sex->afterSuccessfulSave();
-			}
-//	processing Sex - end
-//	processing Fname - start
-			$inlineAddOption = true;
-			if($inlineAddOption)
-			{
-				$control_Fname->afterSuccessfulSave();
-			}
-//	processing Fname - end
-//	processing Lname - start
-			$inlineAddOption = true;
-			if($inlineAddOption)
-			{
-				$control_Lname->afterSuccessfulSave();
-			}
-//	processing Lname - end
-//	processing DOB - start
-			$inlineAddOption = true;
-			if($inlineAddOption)
-			{
-				$control_DOB->afterSuccessfulSave();
-			}
-//	processing DOB - end
 //	processing UserName - start
 			$inlineAddOption = true;
+			$inlineAddOption = $inlineadd!=ADD_INLINE;
 			if($inlineAddOption)
 			{
 				$control_UserName->afterSuccessfulSave();
@@ -368,20 +348,15 @@ if(@$_POST["a"]=="added")
 //	processing UserName - end
 //	processing Password - start
 			$inlineAddOption = true;
+			$inlineAddOption = $inlineadd!=ADD_INLINE;
 			if($inlineAddOption)
 			{
 				$control_Password->afterSuccessfulSave();
 			}
 //	processing Password - end
-//	processing Phone - start
-			$inlineAddOption = true;
-			if($inlineAddOption)
-			{
-				$control_Phone->afterSuccessfulSave();
-			}
-//	processing Phone - end
 //	processing RoleID - start
 			$inlineAddOption = true;
+			$inlineAddOption = $inlineadd!=ADD_INLINE;
 			if($inlineAddOption)
 			{
 				$control_RoleID->afterSuccessfulSave();
@@ -389,18 +364,60 @@ if(@$_POST["a"]=="added")
 //	processing RoleID - end
 //	processing Name - start
 			$inlineAddOption = true;
+			$inlineAddOption = $inlineadd!=ADD_INLINE;
 			if($inlineAddOption)
 			{
 				$control_Name->afterSuccessfulSave();
 			}
 //	processing Name - end
+//	processing Fname - start
+			$inlineAddOption = true;
+			$inlineAddOption = $inlineadd!=ADD_INLINE;
+			if($inlineAddOption)
+			{
+				$control_Fname->afterSuccessfulSave();
+			}
+//	processing Fname - end
+//	processing Lname - start
+			$inlineAddOption = true;
+			$inlineAddOption = $inlineadd!=ADD_INLINE;
+			if($inlineAddOption)
+			{
+				$control_Lname->afterSuccessfulSave();
+			}
+//	processing Lname - end
+//	processing Sex - start
+			$inlineAddOption = true;
+			$inlineAddOption = $inlineadd!=ADD_INLINE;
+			if($inlineAddOption)
+			{
+				$control_Sex->afterSuccessfulSave();
+			}
+//	processing Sex - end
 //	processing Address - start
 			$inlineAddOption = true;
+			$inlineAddOption = $inlineadd!=ADD_INLINE;
 			if($inlineAddOption)
 			{
 				$control_Address->afterSuccessfulSave();
 			}
 //	processing Address - end
+//	processing DOB - start
+			$inlineAddOption = true;
+			$inlineAddOption = $inlineadd!=ADD_INLINE;
+			if($inlineAddOption)
+			{
+				$control_DOB->afterSuccessfulSave();
+			}
+//	processing DOB - end
+//	processing Phone - start
+			$inlineAddOption = true;
+			$inlineAddOption = $inlineadd!=ADD_INLINE;
+			if($inlineAddOption)
+			{
+				$control_Phone->afterSuccessfulSave();
+			}
+//	processing Phone - end
 
 			$afterAdd_id = '';	
 			if($eventObj->exists("AfterAdd") && $inlineadd!=ADD_MASTER){
@@ -491,7 +508,6 @@ if(array_key_exists("copyid1",$_REQUEST) || array_key_exists("editid1",$_REQUEST
 		$copykeys["StaffID"]=postvalue("editid1");
 	}
 	$strWhere=KeyWhere($copykeys);
-	$strWhere=whereAdd($strWhere,SecuritySQL("Search"));
 	$strSQL = $gQuery->gSQLWhere($strWhere);
 
 	LogInfo($strSQL);
@@ -509,9 +525,6 @@ else
 {
 }
 
-//	insert default ownerid value if exists
-	if($strOriginalTableName == $pageObject->pSet->getOwnerTable("StaffID"))
-		$defvalues["StaffID"] = prepare_for_db("StaffID",$_SESSION["_".$strTableName."_OwnerID"]);
 
 
 if($readavalues)
@@ -701,9 +714,7 @@ if(@$_POST["a"]=="added" && ($inlineadd == ADD_INLINE || $inlineadd == ADD_MASTE
 	if(count($keys))
 	{
 		$where=KeyWhere($keys);
-		//	select only owned records
-		$where=whereAdd($where,SecuritySQL("Search"));
-		
+			
 		$forLookup = postvalue('forLookup');
 		if ($forLookup)
 		{
@@ -731,16 +742,6 @@ if(@$_POST["a"]=="added" && ($inlineadd == ADD_INLINE || $inlineadd == ADD_MASTE
 	$keylink.="&key1=".htmlspecialchars(rawurlencode(@$data["StaffID"]));
 	
 ////////////////////////////////////////////
-//	StaffID
-	$display = false;
-	if($inlineadd==ADD_INLINE || $inlineadd==ADD_ONTHEFLY || $inlineadd==ADD_POPUP)
-		$display = true;
-	if($display)
-	{	
-		$value = $pageObject->showDBValue("StaffID", $data, $keylink);
-		$showValues["StaffID"] = $value;
-		$showFields[] = "StaffID";
-	}	
 //	Name
 	$display = false;
 	if($inlineadd==ADD_MASTER)
@@ -853,8 +854,6 @@ if(@$_POST["a"]=="added" && ($inlineadd == ADD_INLINE || $inlineadd == ADD_MASTE
 	$display = false;
 	if($inlineadd==ADD_MASTER)
 		$display = true;
-	if($inlineadd==ADD_INLINE || $inlineadd==ADD_ONTHEFLY || $inlineadd==ADD_POPUP)
-		$display = true;
 	if($display)
 	{	
 		$value = $pageObject->showDBValue("Password", $data, $keylink);
@@ -961,9 +960,7 @@ if($inlineadd==ADD_MASTER)
 			if(count($keys))
 			{
 				$where=KeyWhere($keys);
-							//	select only owned records
-				$where=whereAdd($where,SecuritySQL("Search"));
-				$strSQL = $gQuery->gSQLWhere($where);
+							$strSQL = $gQuery->gSQLWhere($where);
 				LogInfo($strSQL);
 				$rs = db_query($strSQL,$conn);
 				$data = $pageObject->cipherer->DecryptFetchedArray($rs);

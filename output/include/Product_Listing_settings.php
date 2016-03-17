@@ -992,6 +992,7 @@ $proto26["m_link"] = "SQLL_CROSSJOIN";
 $proto27["m_strName"] = "product";
 $proto27["m_columns"] = array();
 $proto27["m_columns"][] = "ProdID";
+$proto27["m_columns"][] = "ProdNo";
 $proto27["m_columns"][] = "Pname";
 $proto27["m_columns"][] = "CatID";
 $proto27["m_columns"][] = "SuppID";
@@ -1005,6 +1006,7 @@ $proto27["m_columns"][] = "UInStock";
 $proto27["m_columns"][] = "UInOrder";
 $proto27["m_columns"][] = "ReOrLevel";
 $proto27["m_columns"][] = "Note";
+$proto27["m_columns"][] = "TimeStamp";
 $obj = new SQLTable($proto27);
 
 $proto26["m_table"] = $obj;

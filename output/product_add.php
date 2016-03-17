@@ -65,9 +65,101 @@ $layout->skins["fields"] = "fields";
 
 $layout->skins["add"] = "1";
 $layout->blocks["top"][] = "add";
+$layout->containers["details"] = array();
+
+$layout->containers["details"][] = array("name"=>"adddetails","block"=>"detail_tables","substyle"=>1);
+
+
 $layout->skins["details"] = "empty";
 $layout->blocks["top"][] = "details";$page_layouts["product_add"] = $layout;
 
+
+$layout = new TLayout("list3","BoldOrange","MobileOrange");
+$layout->blocks["center"] = array();
+$layout->containers["message"] = array();
+
+$layout->containers["message"][] = array("name"=>"message","block"=>"message_block","substyle"=>1);
+
+
+$layout->skins["message"] = "2";
+$layout->blocks["center"][] = "message";
+$layout->containers["grid"] = array();
+
+$layout->containers["grid"][] = array("name"=>"grid","block"=>"grid_block","substyle"=>1);
+
+
+$layout->skins["grid"] = "grid";
+$layout->blocks["center"][] = "grid";
+$layout->containers["pagination"] = array();
+
+$layout->containers["pagination"][] = array("name"=>"pagination","block"=>"pagination_block","substyle"=>1);
+
+
+$layout->skins["pagination"] = "2";
+$layout->blocks["center"][] = "pagination";$layout->blocks["left"] = array();
+$layout->containers["left"] = array();
+
+$layout->containers["left"][] = array("name"=>"vsearch1","block"=>"searchform_block","substyle"=>2);
+
+
+$layout->containers["left"][] = array("name"=>"vsearch2","block"=>"searchform_block","substyle"=>1);
+
+
+$layout->containers["left"][] = array("name"=>"searchpanel","block"=>"searchPanel","substyle"=>1);
+
+
+$layout->containers["left"][] = array("name"=>"vdetails_found","block"=>"details_block","substyle"=>2);
+
+
+$layout->containers["left"][] = array("name"=>"vpage_of","block"=>"pages_block","substyle"=>1);
+
+
+$layout->containers["left"][] = array("name"=>"vrecsperpage","block"=>"recordspp_block","substyle"=>1);
+
+
+$layout->skins["left"] = "menu";
+$layout->blocks["left"][] = "left";$layout->blocks["top"] = array();
+$layout->containers["master"] = array();
+
+$layout->containers["master"][] = array("name"=>"masterinfo","block"=>"mastertable_block","substyle"=>1);
+
+
+$layout->skins["master"] = "empty";
+$layout->blocks["top"][] = "master";
+$layout->containers["toplinks"] = array();
+
+$layout->containers["toplinks"][] = array("name"=>"toplinks_print","block"=>"prints_block","substyle"=>1);
+
+
+$layout->containers["toplinks"][] = array("name"=>"toplinks_advsearch","block"=>"asearch_link","substyle"=>1);
+
+
+
+
+
+$layout->containers["toplinks"][] = array("name"=>"loggedas","block"=>"security_block","substyle"=>1);
+
+
+
+$layout->skins["toplinks"] = "2";
+$layout->blocks["top"][] = "toplinks";
+$layout->containers["hmenu"] = array();
+
+$layout->containers["hmenu"][] = array("name"=>"hmenu","block"=>"menu_block","substyle"=>1);
+
+
+$layout->skins["hmenu"] = "hmenu";
+$layout->blocks["top"][] = "hmenu";
+$layout->containers["recordcontrols"] = array();
+
+$layout->containers["recordcontrols"][] = array("name"=>"recordcontrols_new","block"=>"newrecord_controls_block","substyle"=>1);
+
+
+$layout->containers["recordcontrols"][] = array("name"=>"recordcontrol","block"=>"record_controls_block","substyle"=>1);
+
+
+$layout->skins["recordcontrols"] = "1";
+$layout->blocks["top"][] = "recordcontrols";$page_layouts["stockrequest_list"] = $layout;
 
 
 $filename = "";
@@ -195,6 +287,13 @@ if($inlineadd==ADD_SIMPLE || $inlineadd==ADD_MASTER || $inlineadd==ADD_POPUP)
 	{
 		$ids = $id;
 		$countDetailsIsShow = 0;
+			$dpPermis = $pageObject->getPermissions("stockrequest");
+		if ($dpPermis['add']){
+			$countDetailsIsShow ++;
+			$mKeys["stockrequest"] = $pageObject->pSet->getMasterKeysByDetailTable("stockrequest");
+			$dpParams['strTableNames'][] = "stockrequest";
+			$dpParams['ids'][] = ++$ids;
+		}
 		$pageObject->jsSettings['tableSettings'][$strTableName]['isShowDetails'] = $countDetailsIsShow > 0 ? true : false;
 		$pageObject->jsSettings['tableSettings'][$strTableName]['dpParams'] = array('tableNames'=>$dpParams['strTableNames'], 'ids'=>$dpParams['ids']);
 	}
@@ -215,6 +314,14 @@ if(@$_POST["a"]=="added")
 	$afilename_values=array();
 	$avalues=array();
 	$blobfields=array();
+//	processing ProdNo - start
+	$inlineAddOption = true;
+	if($inlineAddOption)
+	{
+		$control_ProdNo = $pageObject->getControl("ProdNo", $id);
+		$control_ProdNo->readWebValue($avalues, $blobfields, "", false, $afilename_values);
+	}
+//	processing ProdNo - end
 //	processing Pname - start
 	$inlineAddOption = true;
 	if($inlineAddOption)
@@ -241,7 +348,6 @@ if(@$_POST["a"]=="added")
 //	processing Usize - end
 //	processing SuppID - start
 	$inlineAddOption = true;
-	$inlineAddOption = $inlineadd!=ADD_INLINE;
 	if($inlineAddOption)
 	{
 		$control_SuppID = $pageObject->getControl("SuppID", $id);
@@ -264,15 +370,6 @@ if(@$_POST["a"]=="added")
 		$control_QPerUnit->readWebValue($avalues, $blobfields, "", false, $afilename_values);
 	}
 //	processing QPerUnit - end
-//	processing Qty - start
-	$inlineAddOption = true;
-	$inlineAddOption = $inlineadd==ADD_INLINE;
-	if($inlineAddOption)
-	{
-		$control_Qty = $pageObject->getControl("Qty", $id);
-		$control_Qty->readWebValue($avalues, $blobfields, "", false, $afilename_values);
-	}
-//	processing Qty - end
 //	processing ReOrLevel - start
 	$inlineAddOption = true;
 	if($inlineAddOption)
@@ -281,30 +378,22 @@ if(@$_POST["a"]=="added")
 		$control_ReOrLevel->readWebValue($avalues, $blobfields, "", false, $afilename_values);
 	}
 //	processing ReOrLevel - end
-//	processing Uprice - start
+//	processing UInStock - start
 	$inlineAddOption = true;
 	if($inlineAddOption)
 	{
-		$control_Uprice = $pageObject->getControl("Uprice", $id);
-		$control_Uprice->readWebValue($avalues, $blobfields, "", false, $afilename_values);
+		$control_UInStock = $pageObject->getControl("UInStock", $id);
+		$control_UInStock->readWebValue($avalues, $blobfields, "", false, $afilename_values);
 	}
-//	processing Uprice - end
-//	processing USP - start
+//	processing UInStock - end
+//	processing Qty - start
 	$inlineAddOption = true;
 	if($inlineAddOption)
 	{
-		$control_USP = $pageObject->getControl("USP", $id);
-		$control_USP->readWebValue($avalues, $blobfields, "", false, $afilename_values);
+		$control_Qty = $pageObject->getControl("Qty", $id);
+		$control_Qty->readWebValue($avalues, $blobfields, "", false, $afilename_values);
 	}
-//	processing USP - end
-//	processing Discount - start
-	$inlineAddOption = true;
-	if($inlineAddOption)
-	{
-		$control_Discount = $pageObject->getControl("Discount", $id);
-		$control_Discount->readWebValue($avalues, $blobfields, "", false, $afilename_values);
-	}
-//	processing Discount - end
+//	processing Qty - end
 //	processing Note - start
 	$inlineAddOption = true;
 	if($inlineAddOption)
@@ -357,6 +446,13 @@ if(@$_POST["a"]=="added")
 				$auditObj->LogAdd($strTableName,$avalues,$keys);
 				
 // Give possibility to all edit controls to clean their data				
+//	processing ProdNo - start
+			$inlineAddOption = true;
+			if($inlineAddOption)
+			{
+				$control_ProdNo->afterSuccessfulSave();
+			}
+//	processing ProdNo - end
 //	processing Pname - start
 			$inlineAddOption = true;
 			if($inlineAddOption)
@@ -380,7 +476,6 @@ if(@$_POST["a"]=="added")
 //	processing Usize - end
 //	processing SuppID - start
 			$inlineAddOption = true;
-			$inlineAddOption = $inlineadd!=ADD_INLINE;
 			if($inlineAddOption)
 			{
 				$control_SuppID->afterSuccessfulSave();
@@ -400,14 +495,6 @@ if(@$_POST["a"]=="added")
 				$control_QPerUnit->afterSuccessfulSave();
 			}
 //	processing QPerUnit - end
-//	processing Qty - start
-			$inlineAddOption = true;
-			$inlineAddOption = $inlineadd==ADD_INLINE;
-			if($inlineAddOption)
-			{
-				$control_Qty->afterSuccessfulSave();
-			}
-//	processing Qty - end
 //	processing ReOrLevel - start
 			$inlineAddOption = true;
 			if($inlineAddOption)
@@ -415,27 +502,20 @@ if(@$_POST["a"]=="added")
 				$control_ReOrLevel->afterSuccessfulSave();
 			}
 //	processing ReOrLevel - end
-//	processing Uprice - start
+//	processing UInStock - start
 			$inlineAddOption = true;
 			if($inlineAddOption)
 			{
-				$control_Uprice->afterSuccessfulSave();
+				$control_UInStock->afterSuccessfulSave();
 			}
-//	processing Uprice - end
-//	processing USP - start
+//	processing UInStock - end
+//	processing Qty - start
 			$inlineAddOption = true;
 			if($inlineAddOption)
 			{
-				$control_USP->afterSuccessfulSave();
+				$control_Qty->afterSuccessfulSave();
 			}
-//	processing USP - end
-//	processing Discount - start
-			$inlineAddOption = true;
-			if($inlineAddOption)
-			{
-				$control_Discount->afterSuccessfulSave();
-			}
-//	processing Discount - end
+//	processing Qty - end
 //	processing Note - start
 			$inlineAddOption = true;
 			if($inlineAddOption)
@@ -569,13 +649,13 @@ if($readavalues)
 	$defvalues["CatID"]=@$avalues["CatID"];
 	$defvalues["SuppID"]=@$avalues["SuppID"];
 	$defvalues["QPerUnit"]=@$avalues["QPerUnit"];
-	$defvalues["Uprice"]=@$avalues["Uprice"];
-	$defvalues["USP"]=@$avalues["USP"];
 	$defvalues["Uweight"]=@$avalues["Uweight"];
 	$defvalues["Usize"]=@$avalues["Usize"];
-	$defvalues["Discount"]=@$avalues["Discount"];
+	$defvalues["UInStock"]=@$avalues["UInStock"];
+	$defvalues["Qty"]=@$avalues["Qty"];
 	$defvalues["ReOrLevel"]=@$avalues["ReOrLevel"];
 	$defvalues["Note"]=@$avalues["Note"];
+	$defvalues["ProdNo"]=@$avalues["ProdNo"];
 }
 
 if($eventObj->exists("ProcessValuesAdd"))
@@ -627,22 +707,6 @@ if($inlineadd!=ADD_INLINE)
 	if(isEnableSection508())
 		$xt->assign_section("QPerUnit_label","<label for=\"".GetInputElementId("QPerUnit", $id, PAGE_ADD)."\">","</label>");
 	
-	if(!$pageObject->isAppearOnTabs("Uprice"))
-		$xt->assign("Uprice_fieldblock",true);
-	else
-		$xt->assign("Uprice_tabfieldblock",true);
-	$xt->assign("Uprice_label",true);
-	if(isEnableSection508())
-		$xt->assign_section("Uprice_label","<label for=\"".GetInputElementId("Uprice", $id, PAGE_ADD)."\">","</label>");
-	
-	if(!$pageObject->isAppearOnTabs("USP"))
-		$xt->assign("USP_fieldblock",true);
-	else
-		$xt->assign("USP_tabfieldblock",true);
-	$xt->assign("USP_label",true);
-	if(isEnableSection508())
-		$xt->assign_section("USP_label","<label for=\"".GetInputElementId("USP", $id, PAGE_ADD)."\">","</label>");
-	
 	if(!$pageObject->isAppearOnTabs("Uweight"))
 		$xt->assign("Uweight_fieldblock",true);
 	else
@@ -659,13 +723,21 @@ if($inlineadd!=ADD_INLINE)
 	if(isEnableSection508())
 		$xt->assign_section("Usize_label","<label for=\"".GetInputElementId("Usize", $id, PAGE_ADD)."\">","</label>");
 	
-	if(!$pageObject->isAppearOnTabs("Discount"))
-		$xt->assign("Discount_fieldblock",true);
+	if(!$pageObject->isAppearOnTabs("UInStock"))
+		$xt->assign("UInStock_fieldblock",true);
 	else
-		$xt->assign("Discount_tabfieldblock",true);
-	$xt->assign("Discount_label",true);
+		$xt->assign("UInStock_tabfieldblock",true);
+	$xt->assign("UInStock_label",true);
 	if(isEnableSection508())
-		$xt->assign_section("Discount_label","<label for=\"".GetInputElementId("Discount", $id, PAGE_ADD)."\">","</label>");
+		$xt->assign_section("UInStock_label","<label for=\"".GetInputElementId("UInStock", $id, PAGE_ADD)."\">","</label>");
+	
+	if(!$pageObject->isAppearOnTabs("Qty"))
+		$xt->assign("Qty_fieldblock",true);
+	else
+		$xt->assign("Qty_tabfieldblock",true);
+	$xt->assign("Qty_label",true);
+	if(isEnableSection508())
+		$xt->assign_section("Qty_label","<label for=\"".GetInputElementId("Qty", $id, PAGE_ADD)."\">","</label>");
 	
 	if(!$pageObject->isAppearOnTabs("ReOrLevel"))
 		$xt->assign("ReOrLevel_fieldblock",true);
@@ -682,6 +754,14 @@ if($inlineadd!=ADD_INLINE)
 	$xt->assign("Note_label",true);
 	if(isEnableSection508())
 		$xt->assign_section("Note_label","<label for=\"".GetInputElementId("Note", $id, PAGE_ADD)."\">","</label>");
+	
+	if(!$pageObject->isAppearOnTabs("ProdNo"))
+		$xt->assign("ProdNo_fieldblock",true);
+	else
+		$xt->assign("ProdNo_tabfieldblock",true);
+	$xt->assign("ProdNo_label",true);
+	if(isEnableSection508())
+		$xt->assign_section("ProdNo_label","<label for=\"".GetInputElementId("ProdNo", $id, PAGE_ADD)."\">","</label>");
 	
 	
 	
@@ -782,6 +862,7 @@ if(@$_POST["a"]=="added" && ($inlineadd == ADD_INLINE || $inlineadd == ADD_MASTE
 		$HaveData=false;
 	}
 	//check if correct values added
+	$showDetailKeys["stockrequest"]["masterkey1"] = $data["ProdID"];	
 
 	$keylink="";
 	$keylink.="&key1=".htmlspecialchars(rawurlencode(@$data["ProdID"]));
@@ -845,30 +926,6 @@ if(@$_POST["a"]=="added" && ($inlineadd == ADD_INLINE || $inlineadd == ADD_MASTE
 		$showValues["QPerUnit"] = $value;
 		$showFields[] = "QPerUnit";
 	}	
-//	Uprice
-	$display = false;
-	if($inlineadd==ADD_MASTER)
-		$display = true;
-	if($inlineadd==ADD_INLINE || $inlineadd==ADD_ONTHEFLY || $inlineadd==ADD_POPUP)
-		$display = true;
-	if($display)
-	{	
-		$value = $pageObject->showDBValue("Uprice", $data, $keylink);
-		$showValues["Uprice"] = $value;
-		$showFields[] = "Uprice";
-	}	
-//	USP
-	$display = false;
-	if($inlineadd==ADD_MASTER)
-		$display = true;
-	if($inlineadd==ADD_INLINE || $inlineadd==ADD_ONTHEFLY || $inlineadd==ADD_POPUP)
-		$display = true;
-	if($display)
-	{	
-		$value = $pageObject->showDBValue("USP", $data, $keylink);
-		$showValues["USP"] = $value;
-		$showFields[] = "USP";
-	}	
 //	Uweight
 	$display = false;
 	if($inlineadd==ADD_MASTER)
@@ -893,20 +950,10 @@ if(@$_POST["a"]=="added" && ($inlineadd == ADD_INLINE || $inlineadd == ADD_MASTE
 		$showValues["Usize"] = $value;
 		$showFields[] = "Usize";
 	}	
-//	Discount
+//	UInStock
 	$display = false;
 	if($inlineadd==ADD_MASTER)
 		$display = true;
-	if($inlineadd==ADD_INLINE || $inlineadd==ADD_ONTHEFLY || $inlineadd==ADD_POPUP)
-		$display = true;
-	if($display)
-	{	
-		$value = $pageObject->showDBValue("Discount", $data, $keylink);
-		$showValues["Discount"] = $value;
-		$showFields[] = "Discount";
-	}	
-//	UInStock
-	$display = false;
 	if($inlineadd==ADD_INLINE || $inlineadd==ADD_ONTHEFLY || $inlineadd==ADD_POPUP)
 		$display = true;
 	if($display)
@@ -917,6 +964,8 @@ if(@$_POST["a"]=="added" && ($inlineadd == ADD_INLINE || $inlineadd == ADD_MASTE
 	}	
 //	Qty
 	$display = false;
+	if($inlineadd==ADD_MASTER)
+		$display = true;
 	if($inlineadd==ADD_INLINE || $inlineadd==ADD_ONTHEFLY || $inlineadd==ADD_POPUP)
 		$display = true;
 	if($display)
@@ -959,6 +1008,18 @@ if(@$_POST["a"]=="added" && ($inlineadd == ADD_INLINE || $inlineadd == ADD_MASTE
 		$showValues["Note"] = $value;
 		$showFields[] = "Note";
 	}	
+//	ProdNo
+	$display = false;
+	if($inlineadd==ADD_MASTER)
+		$display = true;
+	if($inlineadd==ADD_INLINE || $inlineadd==ADD_ONTHEFLY || $inlineadd==ADD_POPUP)
+		$display = true;
+	if($display)
+	{	
+		$value = $pageObject->showDBValue("ProdNo", $data, $keylink);
+		$showValues["ProdNo"] = $value;
+		$showFields[] = "ProdNo";
+	}	
 		$showRawValues["ProdID"] = substr($data["ProdID"],0,100);
 		$showRawValues["Pname"] = substr($data["Pname"],0,100);
 		$showRawValues["CatID"] = substr($data["CatID"],0,100);
@@ -974,6 +1035,7 @@ if(@$_POST["a"]=="added" && ($inlineadd == ADD_INLINE || $inlineadd == ADD_MASTE
 		$showRawValues["UInOrder"] = substr($data["UInOrder"],0,100);
 		$showRawValues["ReOrLevel"] = substr($data["ReOrLevel"],0,100);
 		$showRawValues["Note"] = substr($data["Note"],0,100);
+		$showRawValues["ProdNo"] = substr($data["ProdNo"],0,100);
 	
 	// for custom expression for display field
 	if ($dispFieldAlias)

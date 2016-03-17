@@ -77,48 +77,6 @@ Page {$pageno} of {$maxpages}
 	{END UserName_fieldheader}
 </th>
 {END UserName_fieldheadercolumn}
-	{BEGIN Fname_fieldheadercolumn}
-<th class="runner-cc">
-	{BEGIN Fname_fieldheader}
-	<b>First Name</b>
-	{END Fname_fieldheader}
-</th>
-{END Fname_fieldheadercolumn}
-	{BEGIN Lname_fieldheadercolumn}
-<th class="runner-cc">
-	{BEGIN Lname_fieldheader}
-	<b>Last Name</b>
-	{END Lname_fieldheader}
-</th>
-{END Lname_fieldheadercolumn}
-	{BEGIN DOB_fieldheadercolumn}
-<th class="runner-cc">
-	{BEGIN DOB_fieldheader}
-	<b>Date of Birth</b>
-	{END DOB_fieldheader}
-</th>
-{END DOB_fieldheadercolumn}
-	{BEGIN Password_fieldheadercolumn}
-<th class="runner-cc">
-	{BEGIN Password_fieldheader}
-	<b>Password</b>
-	{END Password_fieldheader}
-</th>
-{END Password_fieldheadercolumn}
-	{BEGIN Sex_fieldheadercolumn}
-<th class="runner-cc">
-	{BEGIN Sex_fieldheader}
-	<b>Sex</b>
-	{END Sex_fieldheader}
-</th>
-{END Sex_fieldheadercolumn}
-	{BEGIN Phone_fieldheadercolumn}
-<th class="runner-cc">
-	{BEGIN Phone_fieldheader}
-	<b>Phone</b>
-	{END Phone_fieldheader}
-</th>
-{END Phone_fieldheadercolumn}
 	{BEGIN RoleID_fieldheadercolumn}
 <th class="runner-cc">
 	{BEGIN RoleID_fieldheader}
@@ -133,6 +91,27 @@ Page {$pageno} of {$maxpages}
 	{END Name_fieldheader}
 </th>
 {END Name_fieldheadercolumn}
+	{BEGIN Fname_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN Fname_fieldheader}
+	<b>First Name</b>
+	{END Fname_fieldheader}
+</th>
+{END Fname_fieldheadercolumn}
+	{BEGIN Lname_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN Lname_fieldheader}
+	<b>Last Name</b>
+	{END Lname_fieldheader}
+</th>
+{END Lname_fieldheadercolumn}
+	{BEGIN Sex_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN Sex_fieldheader}
+	<b>Sex</b>
+	{END Sex_fieldheader}
+</th>
+{END Sex_fieldheadercolumn}
 	{BEGIN Address_fieldheadercolumn}
 <th class="runner-cc">
 	{BEGIN Address_fieldheader}
@@ -140,6 +119,20 @@ Page {$pageno} of {$maxpages}
 	{END Address_fieldheader}
 </th>
 {END Address_fieldheadercolumn}
+	{BEGIN DOB_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN DOB_fieldheader}
+	<b>Date of Birth</b>
+	{END DOB_fieldheader}
+</th>
+{END DOB_fieldheadercolumn}
+	{BEGIN Phone_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN Phone_fieldheader}
+	<b>Phone</b>
+	{END Phone_fieldheader}
+</th>
+{END Phone_fieldheadercolumn}
 		
 			{END record_header}
 			<td class="runner-cr"><img src="images/spacer.gif"></td>
@@ -164,36 +157,6 @@ Page {$pageno} of {$maxpages}
 	{$UserName_value}
 </td>
 {END UserName_fieldcolumn}
-	{BEGIN Fname_fieldcolumn}
-<td  class="runner-cc {$Fname_class}" {$Fname_style}>
-	{$Fname_value}
-</td>
-{END Fname_fieldcolumn}
-	{BEGIN Lname_fieldcolumn}
-<td  class="runner-cc {$Lname_class}" {$Lname_style}>
-	{$Lname_value}
-</td>
-{END Lname_fieldcolumn}
-	{BEGIN DOB_fieldcolumn}
-<td  class="runner-cc {$DOB_class}" {$DOB_style}>
-	{$DOB_value}
-</td>
-{END DOB_fieldcolumn}
-	{BEGIN Password_fieldcolumn}
-<td  class="runner-cc {$Password_class}" {$Password_style}>
-	{$Password_value}
-</td>
-{END Password_fieldcolumn}
-	{BEGIN Sex_fieldcolumn}
-<td  class="runner-cc {$Sex_class}" {$Sex_style}>
-	{$Sex_value}
-</td>
-{END Sex_fieldcolumn}
-	{BEGIN Phone_fieldcolumn}
-<td  class="runner-cc {$Phone_class}" {$Phone_style}>
-	{$Phone_value}
-</td>
-{END Phone_fieldcolumn}
 	{BEGIN RoleID_fieldcolumn}
 <td  class="runner-cc {$RoleID_class}" {$RoleID_style}>
 	{$RoleID_value}
@@ -204,11 +167,36 @@ Page {$pageno} of {$maxpages}
 	{$Name_value}
 </td>
 {END Name_fieldcolumn}
+	{BEGIN Fname_fieldcolumn}
+<td  class="runner-cc {$Fname_class}" {$Fname_style}>
+	{$Fname_value}
+</td>
+{END Fname_fieldcolumn}
+	{BEGIN Lname_fieldcolumn}
+<td  class="runner-cc {$Lname_class}" {$Lname_style}>
+	{$Lname_value}
+</td>
+{END Lname_fieldcolumn}
+	{BEGIN Sex_fieldcolumn}
+<td  class="runner-cc {$Sex_class}" {$Sex_style}>
+	{$Sex_value}
+</td>
+{END Sex_fieldcolumn}
 	{BEGIN Address_fieldcolumn}
 <td  class="runner-cc {$Address_class}" {$Address_style}>
 	{$Address_value}
 </td>
 {END Address_fieldcolumn}
+	{BEGIN DOB_fieldcolumn}
+<td  class="runner-cc {$DOB_class}" {$DOB_style}>
+	{$DOB_value}
+</td>
+{END DOB_fieldcolumn}
+	{BEGIN Phone_fieldcolumn}
+<td  class="runner-cc {$Phone_class}" {$Phone_style}>
+	{$Phone_value}
+</td>
+{END Phone_fieldcolumn}
 
 		{END grid_record}
 		<td class="runner-cr"></td>
@@ -227,33 +215,30 @@ Page {$pageno} of {$maxpages}
 {BEGIN UserName_fieldfootercolumn}
 <td class="runner-cc "></td>
 {END UserName_fieldfootercolumn}
-{BEGIN Fname_fieldfootercolumn}
-<td class="runner-cc "></td>
-{END Fname_fieldfootercolumn}
-{BEGIN Lname_fieldfootercolumn}
-<td class="runner-cc "></td>
-{END Lname_fieldfootercolumn}
-{BEGIN DOB_fieldfootercolumn}
-<td class="runner-cc "></td>
-{END DOB_fieldfootercolumn}
-{BEGIN Password_fieldfootercolumn}
-<td class="runner-cc "></td>
-{END Password_fieldfootercolumn}
-{BEGIN Sex_fieldfootercolumn}
-<td class="runner-cc "></td>
-{END Sex_fieldfootercolumn}
-{BEGIN Phone_fieldfootercolumn}
-<td class="runner-cc "></td>
-{END Phone_fieldfootercolumn}
 {BEGIN RoleID_fieldfootercolumn}
 <td class="runner-cc "></td>
 {END RoleID_fieldfootercolumn}
 {BEGIN Name_fieldfootercolumn}
 <td class="runner-cc "></td>
 {END Name_fieldfootercolumn}
+{BEGIN Fname_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END Fname_fieldfootercolumn}
+{BEGIN Lname_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END Lname_fieldfootercolumn}
+{BEGIN Sex_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END Sex_fieldfootercolumn}
 {BEGIN Address_fieldfootercolumn}
-<td class="runner-cc runner-clast"></td>
+<td class="runner-cc "></td>
 {END Address_fieldfootercolumn}
+{BEGIN DOB_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END DOB_fieldfootercolumn}
+{BEGIN Phone_fieldfootercolumn}
+<td class="runner-cc runner-clast"></td>
+{END Phone_fieldfootercolumn}
 
 									{END record_footer}
 									<td class="runner-cr"><img src="images/spacer.gif"></td>
