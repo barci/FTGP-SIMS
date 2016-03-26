@@ -11,7 +11,7 @@ function DisplayMasterTableInfo_orderentry($params)
 	$oldTableName=$strTableName;
 	$strTableName="orderentry";
 
-//$strSQL = "SELECT  OrderID,  StaffID,  CID,  ODate,  ErrorMsg  FROM orderentry  ";
+//$strSQL = "SELECT  ID,  OrderID,  StaffID,  CID,  DelDate,  Note,  `TimeStamp`  FROM orderentry  ";
 
 	$cipherer = new RunnerCipherer($strTableName);
 	$settings = new ProjectSettings($strTableName, PAGE_PRINT);
@@ -45,6 +45,10 @@ if($detailtable=="orderdetail")
 {
 		$where.= GetFullFieldName("OrderID", "", false)."=".$cipherer->MakeDBValue("OrderID",$keys[1-1], "", "", true);
 	$showKeys .= " "."Order ID".": ".$keys[1-1];
+		$where.=" and ";
+	$showKeys .=" , ";
+	$where.= GetFullFieldName("DelDate", "", false)."=".$cipherer->MakeDBValue("DelDate",$keys[2-1], "", "", true);
+	$showKeys .= " "."Del Date".": ".$keys[2-1];
 	$xt->assign('showKeys',$showKeys);
 	
 }
@@ -73,8 +77,11 @@ if(!$where)
 		return;
 	}
 	$keylink="";
-	$keylink.="&key1=".htmlspecialchars(rawurlencode(@$data["OrderID"]));
+	$keylink.="&key1=".htmlspecialchars(rawurlencode(@$data["ID"]));
 	
+
+//	ID - 
+			$xt->assign("ID_mastervalue", $viewControls->showDBValue("ID", $data, $keylink));
 
 //	OrderID - 
 			$xt->assign("OrderID_mastervalue", $viewControls->showDBValue("OrderID", $data, $keylink));
@@ -85,11 +92,11 @@ if(!$where)
 //	CID - 
 			$xt->assign("CID_mastervalue", $viewControls->showDBValue("CID", $data, $keylink));
 
-//	ODate - Short Date
-			$xt->assign("ODate_mastervalue", $viewControls->showDBValue("ODate", $data, $keylink));
+//	DelDate - Long Date
+			$xt->assign("DelDate_mastervalue", $viewControls->showDBValue("DelDate", $data, $keylink));
 
-//	ErrorMsg - 
-			$xt->assign("ErrorMsg_mastervalue", $viewControls->showDBValue("ErrorMsg", $data, $keylink));
+//	Note - 
+			$xt->assign("Note_mastervalue", $viewControls->showDBValue("Note", $data, $keylink));
 	$xt->display("orderentry_masterprint.htm");
 	$strTableName=$oldTableName;
 

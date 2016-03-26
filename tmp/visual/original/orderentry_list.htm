@@ -44,29 +44,6 @@
 <table border="0" cellpadding="0" class="runner-hc">
 <tr>
 
-{BEGIN prints_block}
-<td  class="runner-cc runner-bl runner-b-toplinks_print" {$brickclass_toplinks_print}><span>{BEGIN print_link}
-	<span class="runner-btnframe">
-	<span class="runner-btnleft"></span>
-	<span class="runner-btnright"></span>
-	<a href="#" class="runner-button" {$printlink_attrs}>Print this page</a>
-	</span>
-{END print_link}
-
-{BEGIN printall_link}
-	<span class="runner-btnframe">
-	<span class="runner-btnleft"></span>
-	<span class="runner-btnright"></span>
-	<a href="#" class="runner-button" {$printalllink_attrs}>Print all pages</a>
-	</span>
-{END printall_link}
-
-
-
-
-</span></td>
-{END prints_block}
-
 
 {BEGIN asearch_link}
 <td  class="runner-cc runner-bl runner-b-toplinks_advsearch" {$brickclass_toplinks_advsearch}><span>	<span class="runner-btnframe">
@@ -78,24 +55,6 @@
 {END asearch_link}
 
 
-{BEGIN import_link}
-<td  class="runner-cc runner-bl runner-b-toplinks_import" {$brickclass_toplinks_import}><span>	<span class="runner-btnframe">
-	<span class="runner-btnleft"></span>
-	<span class="runner-btnright"></span>
-	<a href="orderentry_import.php?{$crosstable_attrs}" class="runner-button" {$importlink_attrs}>Import</a>
-	</span>
-</span></td>
-{END import_link}
-
-
-{BEGIN export_link}
-<td  class="runner-cc runner-bl runner-b-toplinks_export" {$brickclass_toplinks_export}><span>	<span class="runner-btnframe">
-	<span class="runner-btnleft"></span>
-	<span class="runner-btnright"></span>
-	<a target="_blank" href="orderentry_export.php" class="runner-button" {$exportlink_attrs}>Export results</a>
-	</span>
-</span></td>
-{END export_link}
 
 
 <td class="runner-cc filler"></td>
@@ -205,14 +164,7 @@
 
 {BEGIN record_controls_block}
 <td  class="runner-cc runner-bl runner-b-recordcontrol" {$brickclass_recordcontrol}><span>	
-			{BEGIN editselected_link}
-		<span class="runner-btnframe" {$editselectedlink_span}>
-		<span class="runner-btnleft"></span>
-		<span class="runner-btnright"></span>
-		<a href="#" class="runner-button" {$editselectedlink_attrs}>Edit selected</a>
-		</span>
-	{END editselected_link}
-	{BEGIN saveall_link}
+			{BEGIN saveall_link}
 		<span class="runner-btnframe" {$savealllink_span}>
 		<span class="runner-btnleft"></span>
 		<span class="runner-btnright"></span>
@@ -235,22 +187,8 @@
 		</span>
 	{END deleteselected_link}
 
-		{BEGIN exportselected_link}
-		<span class="runner-btnframe" {$exportselectedlink_span}>
-		<span class="runner-btnleft"></span>
-		<span class="runner-btnright"></span>
-		<a href="#" class="runner-button" {$exportselectedlink_attrs}>Export selected</a>
-		</span>
-	{END exportselected_link}
-
-		{BEGIN printselected_link}
-		<span class="runner-btnframe" {$printselectedlink_span}>
-		<span class="runner-btnleft"></span>
-		<span class="runner-btnright"></span>
-		<a href="#" class="runner-button" {$printselectedlink_attrs}>Print selected</a>
-		</span>
-	{END printselected_link}
-
+	
+	
 </span></td>
 {END record_controls_block}
 
@@ -417,6 +355,9 @@
 									</th>
 									{END checkbox_column}
 
+																		{BEGIN orderentry_dtable_column}
+									<th class="runner-cc">&nbsp;</th>
+									{END orderentry_dtable_column}
 																										{BEGIN OrderID_fieldheadercolumn}
 									<th class="runner-cc ">
 									{BEGIN OrderID_fieldheader}
@@ -427,45 +368,55 @@
 									</th>
 									{END OrderID_fieldheadercolumn}
 
-																	{BEGIN StaffID_fieldheadercolumn}
-									<th class="runner-cc ">
-									{BEGIN StaffID_fieldheader}
-																				<a {$StaffID_orderlinkattrs}>
-											Staff ID
-										</a>
-									{END StaffID_fieldheader}
-									</th>
-									{END StaffID_fieldheadercolumn}
-
 																	{BEGIN CID_fieldheadercolumn}
 									<th class="runner-cc ">
 									{BEGIN CID_fieldheader}
 																				<a {$CID_orderlinkattrs}>
-											CID
+											Customer
 										</a>
 									{END CID_fieldheader}
 									</th>
 									{END CID_fieldheadercolumn}
 
-																	{BEGIN ODate_fieldheadercolumn}
+																	{BEGIN DelDate_fieldheadercolumn}
 									<th class="runner-cc ">
-									{BEGIN ODate_fieldheader}
-																				<a {$ODate_orderlinkattrs}>
-											ODate
+									{BEGIN DelDate_fieldheader}
+																				<a {$DelDate_orderlinkattrs}>
+											Delivery Date
 										</a>
-									{END ODate_fieldheader}
+									{END DelDate_fieldheader}
 									</th>
-									{END ODate_fieldheadercolumn}
+									{END DelDate_fieldheadercolumn}
 
-																	{BEGIN ErrorMsg_fieldheadercolumn}
-									<th class="runner-cc runner-clast">
-									{BEGIN ErrorMsg_fieldheader}
-																				<a {$ErrorMsg_orderlinkattrs}>
-											Error Msg
+																	{BEGIN Note_fieldheadercolumn}
+									<th class="runner-cc ">
+									{BEGIN Note_fieldheader}
+																				<a {$Note_orderlinkattrs}>
+											Note
 										</a>
-									{END ErrorMsg_fieldheader}
+									{END Note_fieldheader}
 									</th>
-									{END ErrorMsg_fieldheadercolumn}
+									{END Note_fieldheadercolumn}
+
+																	{BEGIN TimeStamp_fieldheadercolumn}
+									<th class="runner-cc ">
+									{BEGIN TimeStamp_fieldheader}
+																				<a {$TimeStamp_orderlinkattrs}>
+											Time Stamp
+										</a>
+									{END TimeStamp_fieldheader}
+									</th>
+									{END TimeStamp_fieldheadercolumn}
+
+																	{BEGIN StaffID_fieldheadercolumn}
+									<th class="runner-cc runner-clast">
+									{BEGIN StaffID_fieldheader}
+																				<a {$StaffID_orderlinkattrs}>
+											Staff Incharge
+										</a>
+									{END StaffID_fieldheader}
+									</th>
+									{END StaffID_fieldheadercolumn}
 
 
 									
@@ -495,19 +446,9 @@
 									{END edit_link}
 									{END edit_column}
 
-																		{BEGIN inlineedit_column}
-									{BEGIN inlineedit_link}
-									<a class="runner-button-img" {$inlineeditlink_attrs} title="Inline Edit"><img class="runner-cicon" src="images/icon_inline_edit_new.gif" alt="Inline Edit"></a>
-									{END inlineedit_link}
-									{END inlineedit_column}
-
 									
-																		{BEGIN view_column}
-									{BEGIN view_link}
-									<a class="runner-button-img" {$viewlink_attrs} title="View"><img class="runner-cicon" src="images/icon_view_new.gif" alt="View"></a>
-									{END view_link}
-									{END view_column}
-									</td>	
+									
+																		</td>	
 									{END listIcons_column}	
 
 																		{BEGIN checkbox_column}
@@ -518,6 +459,19 @@
 									</td>
 									{END checkbox_column}
 
+																		{BEGIN orderentry_dtable_column}
+									<td class="runner-cc runner-nowrap" {$rowstyle}>
+									{BEGIN orderdetail_dtable_link}
+									<span>
+									<a {$orderdetail_dtablelink_attrs}>
+										Order Detail
+																				<span {$orderdetail_childnumber_attr} dir="ltr">{BEGIN orderdetail_childcount}({$orderdetail_childnumber}){END orderdetail_childcount}</span>
+									</a>
+																		&nbsp;
+									</span>
+									{END orderdetail_dtable_link}
+																		</td>
+									{END orderentry_dtable_column}
 
 										{BEGIN OrderID_fieldcolumn}
 	<td class="runner-cc  {$OrderID_class}" {$OrderID_style}>
@@ -525,29 +479,35 @@
 	</td>
 {END OrderID_fieldcolumn}
 
-	{BEGIN StaffID_fieldcolumn}
-	<td class="runner-cc  {$StaffID_class}" {$StaffID_style}>
-		{$StaffID_value}
-	</td>
-{END StaffID_fieldcolumn}
-
 	{BEGIN CID_fieldcolumn}
 	<td class="runner-cc  {$CID_class}" {$CID_style}>
 		{$CID_value}
 	</td>
 {END CID_fieldcolumn}
 
-	{BEGIN ODate_fieldcolumn}
-	<td class="runner-cc  {$ODate_class}" {$ODate_style}>
-		{$ODate_value}
+	{BEGIN DelDate_fieldcolumn}
+	<td class="runner-cc  {$DelDate_class}" {$DelDate_style}>
+		{$DelDate_value}
 	</td>
-{END ODate_fieldcolumn}
+{END DelDate_fieldcolumn}
 
-	{BEGIN ErrorMsg_fieldcolumn}
-	<td class="runner-cc runner-clast {$ErrorMsg_class}" {$ErrorMsg_style}>
-		{$ErrorMsg_value}
+	{BEGIN Note_fieldcolumn}
+	<td class="runner-cc  {$Note_class}" {$Note_style}>
+		{$Note_value}
 	</td>
-{END ErrorMsg_fieldcolumn}
+{END Note_fieldcolumn}
+
+	{BEGIN TimeStamp_fieldcolumn}
+	<td class="runner-cc  {$TimeStamp_class}" {$TimeStamp_style}>
+		{$TimeStamp_value}
+	</td>
+{END TimeStamp_fieldcolumn}
+
+	{BEGIN StaffID_fieldcolumn}
+	<td class="runner-cc runner-clast {$StaffID_class}" {$StaffID_style}>
+		{$StaffID_value}
+	</td>
+{END StaffID_fieldcolumn}
 
 
 																		<td class="runner-cr" {$rowstyle}></td>
@@ -571,22 +531,28 @@
 									<td class="runner-cc"></td>
 									{END checkbox_column}
 
+																		{BEGIN orderentry_dtable_column}
+									<td class="runner-cc"></td>
+									{END orderentry_dtable_column}
 
 									{BEGIN OrderID_fieldheadercolumn}
 <td class="runner-cc "></td>
 {END OrderID_fieldheadercolumn}
-{BEGIN StaffID_fieldheadercolumn}
-<td class="runner-cc "></td>
-{END StaffID_fieldheadercolumn}
 {BEGIN CID_fieldheadercolumn}
 <td class="runner-cc "></td>
 {END CID_fieldheadercolumn}
-{BEGIN ODate_fieldheadercolumn}
+{BEGIN DelDate_fieldheadercolumn}
 <td class="runner-cc "></td>
-{END ODate_fieldheadercolumn}
-{BEGIN ErrorMsg_fieldheadercolumn}
+{END DelDate_fieldheadercolumn}
+{BEGIN Note_fieldheadercolumn}
+<td class="runner-cc "></td>
+{END Note_fieldheadercolumn}
+{BEGIN TimeStamp_fieldheadercolumn}
+<td class="runner-cc "></td>
+{END TimeStamp_fieldheadercolumn}
+{BEGIN StaffID_fieldheadercolumn}
 <td class="runner-cc runner-clast"></td>
-{END ErrorMsg_fieldheadercolumn}
+{END StaffID_fieldheadercolumn}
 
 									<td class="runner-cr"><img src="images/spacer.gif"></td>
 									

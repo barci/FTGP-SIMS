@@ -146,7 +146,7 @@ elseif(postvalue("mode") == "lookup")
 	$mode=LIST_LOOKUP;
 	//determine which field should be used to select values
 			$params["lookupSelectField"] = "ProdID";
-												}
+													}
 elseif(postvalue("mode")=="listdetails")
 {
 	

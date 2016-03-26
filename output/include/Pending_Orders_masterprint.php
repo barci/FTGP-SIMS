@@ -11,7 +11,7 @@ function DisplayMasterTableInfo_Pending_Orders($params)
 	$oldTableName=$strTableName;
 	$strTableName="Pending Orders";
 
-//$strSQL = "SELECT  ODetailID,  OrderID,  BillNo,  ProductID,  OrdQuant,  DelQuant,  Total,  DelDate  FROM orderdetail  WHERE OrdQuant > DelQuant  ";
+//$strSQL = "SELECT  ODetailID,  OrderID,  BillNo,  ProductID,  OrdQuant,  DelQuant,  Total,  DelDate  FROM orderdetail  WHERE (OrdQuant > DelQuant)  ORDER BY DelDate ASC  ";
 
 	$cipherer = new RunnerCipherer($strTableName);
 	$settings = new ProjectSettings($strTableName, PAGE_PRINT);
@@ -80,14 +80,8 @@ if(!$where)
 	$keylink.="&key1=".htmlspecialchars(rawurlencode(@$data["ODetailID"]));
 	
 
-//	ODetailID - 
-			$xt->assign("ODetailID_mastervalue", $viewControls->showDBValue("ODetailID", $data, $keylink));
-
 //	OrderID - 
 			$xt->assign("OrderID_mastervalue", $viewControls->showDBValue("OrderID", $data, $keylink));
-
-//	BillNo - 
-			$xt->assign("BillNo_mastervalue", $viewControls->showDBValue("BillNo", $data, $keylink));
 
 //	ProductID - 
 			$xt->assign("ProductID_mastervalue", $viewControls->showDBValue("ProductID", $data, $keylink));
@@ -98,10 +92,7 @@ if(!$where)
 //	DelQuant - 
 			$xt->assign("DelQuant_mastervalue", $viewControls->showDBValue("DelQuant", $data, $keylink));
 
-//	Total - Number
-			$xt->assign("Total_mastervalue", $viewControls->showDBValue("Total", $data, $keylink));
-
-//	DelDate - Short Date
+//	DelDate - Long Date
 			$xt->assign("DelDate_mastervalue", $viewControls->showDBValue("DelDate", $data, $keylink));
 	$xt->display("Pending_Orders_masterprint.htm");
 	$strTableName=$oldTableName;

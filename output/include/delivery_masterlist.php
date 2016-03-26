@@ -42,10 +42,18 @@ $layout->skins["mastergrid"] = "grid";
 $layout->blocks["bare"][] = "mastergrid";$page_layouts["delivery_masterlist"] = $layout;
 
 
-if($detailtable == "orderdetail")
+if($detailtable == "DR Printing")
 {
-		$where.= GetFullFieldName("orderID", "", false)."=".$cipherer->MakeDBValue("orderID",$keys[1-1], "", "", true);
-	$showKeys .= " "."Order ID".": ".$keys[1-1];
+		$where.= GetFullFieldName("DrNo", "", false)."=".$cipherer->MakeDBValue("DrNo",$keys[1-1], "", "", true);
+	$showKeys .= " "."DR No".": ".$keys[1-1];
+		$where.=" and ";
+	$showKeys .=" , ";
+	$where.= GetFullFieldName("orderID", "", false)."=".$cipherer->MakeDBValue("orderID",$keys[2-1], "", "", true);
+	$showKeys .= " "."Order ID".": ".$keys[2-1];
+		$where.=" and ";
+	$showKeys .=" , ";
+	$where.= GetFullFieldName("eta", "", false)."=".$cipherer->MakeDBValue("eta",$keys[3-1], "", "", true);
+	$showKeys .= " "."ETA".": ".$keys[3-1];
 	$xt->assign('showKeys',$showKeys);
 }
 	if(!$where)
@@ -105,10 +113,15 @@ if($detailtable == "orderdetail")
 
 					$xt->assign("eta_mastervalue", $viewControls->showDBValue("eta", $data, $keylink));
 
-//	acceptFlag - 
+//	delFlag - 
 			$value="";
 
-					$xt->assign("acceptFlag_mastervalue", $viewControls->showDBValue("acceptFlag", $data, $keylink));
+					$xt->assign("delFlag_mastervalue", $viewControls->showDBValue("delFlag", $data, $keylink));
+
+//	staffID - 
+			$value="";
+
+					$xt->assign("staffID_mastervalue", $viewControls->showDBValue("staffID", $data, $keylink));
 
 	$viewControls->addControlsJSAndCSS();
 	$detailPageObj->viewControlsMap['mViewControlsMap'] = $viewControls->viewControlsMap;

@@ -36,8 +36,8 @@
 <table class="runner-c runner-c-view" cellpadding="0" align=center>
 
 
-<tr class="runner-toprow style2 header"><td class="runner-cl"><img src="images/spacer.gif"></td><td class="runner-cc" ><div  class="runner-b-viewheader {$brickclass_viewheader}">Order Entry, View record [
-Order ID: {$show_key1}
+<tr class="runner-toprow style2 header"><td class="runner-cl"><img src="images/spacer.gif"></td><td class="runner-cc" ><div  class="runner-b-viewheader {$brickclass_viewheader}">Orderentry, View record [
+ID: {$show_key1}
 ]</div></td><td class="runner-cr"><img src="images/spacer.gif"></td></tr>
 
 
@@ -48,8 +48,22 @@ Order ID: {$show_key1}
 <table class="runner-c runner-c-fields" cellpadding="0" >
 
 
-	{BEGIN OrderID_fieldblock}
+	{BEGIN ID_fieldblock}
 	<tr class="runner-toprow header style1 runner-b-viewfields"><td class="runner-cl"><img src="images/spacer.gif"></td>
+	<td class="runner-cc runner-cc1">
+		<div class="fieldlabel_ID {$fielddispclass_ID}">
+			<b>ID</b>
+		</div>
+		</td>
+		<td class="runner-cc alt">
+		<div class="fieldvalue_ID {$fielddispclass_ID}">
+			{$ID_value}&nbsp;
+		</div>
+		</td>
+	<td class="runner-cr alt"><img src="images/spacer.gif"></td></tr>
+{END ID_fieldblock}
+	{BEGIN OrderID_fieldblock}
+	<tr class="runner-row style1 runner-b-viewfields"><td class="runner-cl"></td>
 	<td class="runner-cc runner-cc1">
 		<div class="fieldlabel_OrderID {$fielddispclass_OrderID}">
 			<b>Order ID</b>
@@ -60,41 +74,13 @@ Order ID: {$show_key1}
 			{$OrderID_value}&nbsp;
 		</div>
 		</td>
-	<td class="runner-cr alt"><img src="images/spacer.gif"></td></tr>
+	<td class="runner-cr alt"></td></tr>
 {END OrderID_fieldblock}
-	{BEGIN CID_fieldblock}
-	<tr class="runner-row style1 runner-b-viewfields"><td class="runner-cl"></td>
-	<td class="runner-cc runner-cc1">
-		<div class="fieldlabel_CID {$fielddispclass_CID}">
-			<b>Customer</b>
-		</div>
-		</td>
-		<td class="runner-cc alt">
-		<div class="fieldvalue_CID {$fielddispclass_CID}">
-			{$CID_value}&nbsp;
-		</div>
-		</td>
-	<td class="runner-cr alt"></td></tr>
-{END CID_fieldblock}
-	{BEGIN ODate_fieldblock}
-	<tr class="runner-row style1 runner-b-viewfields"><td class="runner-cl"></td>
-	<td class="runner-cc runner-cc1">
-		<div class="fieldlabel_ODate {$fielddispclass_ODate}">
-			<b>Order Date</b>
-		</div>
-		</td>
-		<td class="runner-cc alt">
-		<div class="fieldvalue_ODate {$fielddispclass_ODate}">
-			{$ODate_value}&nbsp;
-		</div>
-		</td>
-	<td class="runner-cr alt"></td></tr>
-{END ODate_fieldblock}
 	{BEGIN StaffID_fieldblock}
 	<tr class="runner-row style1 runner-b-viewfields"><td class="runner-cl"></td>
 	<td class="runner-cc runner-cc1">
 		<div class="fieldlabel_StaffID {$fielddispclass_StaffID}">
-			<b>Staff Incharge</b>
+			<b>Staff ID</b>
 		</div>
 		</td>
 		<td class="runner-cc alt">
@@ -104,20 +90,62 @@ Order ID: {$show_key1}
 		</td>
 	<td class="runner-cr alt"></td></tr>
 {END StaffID_fieldblock}
-	{BEGIN ErrorMsg_fieldblock}
+	{BEGIN CID_fieldblock}
 	<tr class="runner-row style1 runner-b-viewfields"><td class="runner-cl"></td>
 	<td class="runner-cc runner-cc1">
-		<div class="fieldlabel_ErrorMsg {$fielddispclass_ErrorMsg}">
-			<b>Error Msg</b>
+		<div class="fieldlabel_CID {$fielddispclass_CID}">
+			<b>CID</b>
 		</div>
 		</td>
 		<td class="runner-cc alt">
-		<div class="fieldvalue_ErrorMsg {$fielddispclass_ErrorMsg}">
-			{$ErrorMsg_value}&nbsp;
+		<div class="fieldvalue_CID {$fielddispclass_CID}">
+			{$CID_value}&nbsp;
 		</div>
 		</td>
 	<td class="runner-cr alt"></td></tr>
-{END ErrorMsg_fieldblock}
+{END CID_fieldblock}
+	{BEGIN DelDate_fieldblock}
+	<tr class="runner-row style1 runner-b-viewfields"><td class="runner-cl"></td>
+	<td class="runner-cc runner-cc1">
+		<div class="fieldlabel_DelDate {$fielddispclass_DelDate}">
+			<b>Del Date</b>
+		</div>
+		</td>
+		<td class="runner-cc alt">
+		<div class="fieldvalue_DelDate {$fielddispclass_DelDate}">
+			{$DelDate_value}&nbsp;
+		</div>
+		</td>
+	<td class="runner-cr alt"></td></tr>
+{END DelDate_fieldblock}
+	{BEGIN Note_fieldblock}
+	<tr class="runner-row style1 runner-b-viewfields"><td class="runner-cl"></td>
+	<td class="runner-cc runner-cc1">
+		<div class="fieldlabel_Note {$fielddispclass_Note}">
+			<b>Note</b>
+		</div>
+		</td>
+		<td class="runner-cc alt">
+		<div class="fieldvalue_Note {$fielddispclass_Note}">
+			{$Note_value}&nbsp;
+		</div>
+		</td>
+	<td class="runner-cr alt"></td></tr>
+{END Note_fieldblock}
+	{BEGIN TimeStamp_fieldblock}
+	<tr class="runner-row style1 runner-b-viewfields"><td class="runner-cl"></td>
+	<td class="runner-cc runner-cc1">
+		<div class="fieldlabel_TimeStamp {$fielddispclass_TimeStamp}">
+			<b>Time Stamp</b>
+		</div>
+		</td>
+		<td class="runner-cc alt">
+		<div class="fieldvalue_TimeStamp {$fielddispclass_TimeStamp}">
+			{$TimeStamp_value}&nbsp;
+		</div>
+		</td>
+	<td class="runner-cr alt"></td></tr>
+{END TimeStamp_fieldblock}
 
 
 
@@ -164,6 +192,25 @@ Order ID: {$show_key1}
 {END container_view}
 
 
+
+{BEGIN container_details}
+<table class="runner-c runner-c-details" cellpadding="0" >
+<tr class="{$cheaderclass_details}">
+<td class="runner-cl"><img src="images/spacer.gif"></td>
+<td class="runner-cc"></td><td class="runner-cr"><img src="images/spacer.gif"></td>
+</tr>
+
+{BEGIN detail_tables}
+<tr  class="runner-row style1 runner-b-viewdetails {$brickclass_viewdetails}"><td class="runner-cl"></td><td class="runner-cc runner-brickcontents" >		{$displayDetailTable_orderdetail}
+</td><td class="runner-cr"></td></tr>{END detail_tables}
+
+
+<tr class="{$cfooterclass_details}">
+<td class="runner-cl"><img src="images/spacer.gif"></td>
+<td class="runner-cc"></td><td class="runner-cr"><img src="images/spacer.gif"></td>
+</tr>
+</table>
+{END container_details}
 
 
 				</td>

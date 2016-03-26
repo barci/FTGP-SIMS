@@ -1,0 +1,89 @@
+<div {$pageattrs}>
+
+{BEGIN container_0}
+<table class="runner-c runner-c-0" cellpadding="0" >
+<tr class="{$cheaderclass_0}">
+<td class="runner-cl"><img src="images/spacer.gif"></td>
+<td class="runner-cc"></td><td class="runner-cr"><img src="images/spacer.gif"></td>
+</tr>
+<tr class="runner-row style1">
+<td class="runner-cl"></td>
+<td class="runner-cc">
+<table border="0" cellpadding="0" class="runner-hc">
+<tr>
+
+
+<td  class="runner-cc runner-bl runner-b-masterlistheader" {$brickclass_masterlistheader}><span><b><span dir="LTR">DR Printing: [{$showKeys}]</span></b></span></td>
+
+
+<td class="runner-cc filler"></td>
+</tr>
+</table></td>
+<td class="runner-cr"></td>
+</tr>
+
+<tr class="{$cfooterclass_0}">
+<td class="runner-cl"><img src="images/spacer.gif"></td>
+<td class="runner-cc"></td><td class="runner-cr"><img src="images/spacer.gif"></td>
+</tr>
+</table>
+{END container_0}
+
+
+
+{BEGIN container_mastergrid}
+
+
+
+	<table class="runner-c runner-c-mastergrid runner-b-masterlistfields" cellpadding="0">
+		<tr class="runner-toprow style1">
+			<th class="runner-cl"><img src="images/spacer.gif"></th>
+			<th class="runner-cc ">ID</th>
+			<th class="runner-cc ">DR No</th>
+			<th class="runner-cc ">Order ID</th>
+			<th class="runner-cc ">Product</th>
+			<th class="runner-cc ">Quantity</th>
+			<th class="runner-cc ">Unit Price</th>
+			<th class="runner-cc ">Subtotal</th>
+			<th class="runner-cc ">ETA</th>
+			<th class="runner-cc ">Delivery Flag</th>
+			<th class="runner-cc runner-clast">Destination</th>
+			<th class="runner-cr"><img src="images/spacer.gif"></th>
+		</tr>
+		<tr class="runner-row style1">
+			<td class="runner-cl"><img src="images/spacer.gif"></td>
+			<td class="runner-cc ">{$ID_mastervalue}</td>
+			<td class="runner-cc ">{$DrNo_mastervalue}</td>
+			<td class="runner-cc ">{$orderID_mastervalue}</td>
+			<td class="runner-cc ">{$prodID_mastervalue}</td>
+			<td class="runner-cc ">{$qty_mastervalue}</td>
+			<td class="runner-cc ">{$USP_mastervalue}</td>
+			<td class="runner-cc ">{$subtotal_mastervalue}</td>
+			<td class="runner-cc ">{$eta_mastervalue}</td>
+			<td class="runner-cc ">{$delFlag_mastervalue}</td>
+			<td class="runner-cc runner-clast">{$Destination_mastervalue}</td>
+			<td class="runner-cr"><img src="images/spacer.gif"></td>
+		</tr>
+		<tr class="runner-bottomrow style1">
+			<td class="runner-cl"><img src="images/spacer.gif"></td>
+				<td class="runner-cc "></td>
+				<td class="runner-cc "></td>
+				<td class="runner-cc "></td>
+				<td class="runner-cc "></td>
+				<td class="runner-cc "></td>
+				<td class="runner-cc "></td>
+				<td class="runner-cc "></td>
+				<td class="runner-cc "></td>
+				<td class="runner-cc "></td>
+				<td class="runner-cc runner-clast"></td>
+			<td class="runner-cr"><img src="images/spacer.gif"></td>
+		</tr>
+	</table>
+ 
+
+
+
+
+{END container_mastergrid}
+
+</div>

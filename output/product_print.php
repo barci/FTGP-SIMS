@@ -310,6 +310,10 @@ $arr = array();
 $arr['fName'] = "ProdNo";
 $arr['viewFormat'] = $pageObject->pSet->getViewFormat("ProdNo");
 $fieldsArr[] = $arr;
+$arr = array();
+$arr['fName'] = "staffID";
+$arr['viewFormat'] = $pageObject->pSet->getViewFormat("staffID");
+$fieldsArr[] = $arr;
 $pageObject->setGoogleMapsParams($fieldsArr);
 
 $colsonpage=1;
@@ -363,7 +367,7 @@ if($colsonpage<1)
 //	ProdNo - 
 			$record["ProdNo_value"] = $pageObject->showDBValue("ProdNo", $data, $keylink);
 			$record["ProdNo_class"] = $pageObject->fieldClass("ProdNo");
-//	Pname - 
+//	Pname - Custom
 			$record["Pname_value"] = $pageObject->showDBValue("Pname", $data, $keylink);
 			$record["Pname_class"] = $pageObject->fieldClass("Pname");
 //	CatID - 
@@ -378,27 +382,30 @@ if($colsonpage<1)
 //	Uweight - 
 			$record["Uweight_value"] = $pageObject->showDBValue("Uweight", $data, $keylink);
 			$record["Uweight_class"] = $pageObject->fieldClass("Uweight");
+//	ReOrLevel - 
+			$record["ReOrLevel_value"] = $pageObject->showDBValue("ReOrLevel", $data, $keylink);
+			$record["ReOrLevel_class"] = $pageObject->fieldClass("ReOrLevel");
 //	QPerUnit - 
 			$record["QPerUnit_value"] = $pageObject->showDBValue("QPerUnit", $data, $keylink);
 			$record["QPerUnit_class"] = $pageObject->fieldClass("QPerUnit");
 //	Qty - 
 			$record["Qty_value"] = $pageObject->showDBValue("Qty", $data, $keylink);
 			$record["Qty_class"] = $pageObject->fieldClass("Qty");
-//	ReOrLevel - 
-			$record["ReOrLevel_value"] = $pageObject->showDBValue("ReOrLevel", $data, $keylink);
-			$record["ReOrLevel_class"] = $pageObject->fieldClass("ReOrLevel");
+//	Note - 
+			$record["Note_value"] = $pageObject->showDBValue("Note", $data, $keylink);
+			$record["Note_class"] = $pageObject->fieldClass("Note");
 //	Uprice - 
 			$record["Uprice_value"] = $pageObject->showDBValue("Uprice", $data, $keylink);
 			$record["Uprice_class"] = $pageObject->fieldClass("Uprice");
+//	staffID - 
+			$record["staffID_value"] = $pageObject->showDBValue("staffID", $data, $keylink);
+			$record["staffID_class"] = $pageObject->fieldClass("staffID");
 //	USP - 
 			$record["USP_value"] = $pageObject->showDBValue("USP", $data, $keylink);
 			$record["USP_class"] = $pageObject->fieldClass("USP");
 //	Discount - 
 			$record["Discount_value"] = $pageObject->showDBValue("Discount", $data, $keylink);
 			$record["Discount_class"] = $pageObject->fieldClass("Discount");
-//	Note - 
-			$record["Note_value"] = $pageObject->showDBValue("Note", $data, $keylink);
-			$record["Note_class"] = $pageObject->fieldClass("Note");
 			if($col<$colsonpage)
 				$record["endrecord_block"] = true;
 			$record["grid_recordheader"] = true;
@@ -571,6 +578,10 @@ $xt->assign("Uweight_fieldheadercolumn",true);
 $xt->assign("Uweight_fieldheader",true);
 $xt->assign("Uweight_fieldcolumn",true);
 $xt->assign("Uweight_fieldfootercolumn",true);
+$xt->assign("ReOrLevel_fieldheadercolumn",true);
+$xt->assign("ReOrLevel_fieldheader",true);
+$xt->assign("ReOrLevel_fieldcolumn",true);
+$xt->assign("ReOrLevel_fieldfootercolumn",true);
 $xt->assign("QPerUnit_fieldheadercolumn",true);
 $xt->assign("QPerUnit_fieldheader",true);
 $xt->assign("QPerUnit_fieldcolumn",true);
@@ -579,14 +590,18 @@ $xt->assign("Qty_fieldheadercolumn",true);
 $xt->assign("Qty_fieldheader",true);
 $xt->assign("Qty_fieldcolumn",true);
 $xt->assign("Qty_fieldfootercolumn",true);
-$xt->assign("ReOrLevel_fieldheadercolumn",true);
-$xt->assign("ReOrLevel_fieldheader",true);
-$xt->assign("ReOrLevel_fieldcolumn",true);
-$xt->assign("ReOrLevel_fieldfootercolumn",true);
+$xt->assign("Note_fieldheadercolumn",true);
+$xt->assign("Note_fieldheader",true);
+$xt->assign("Note_fieldcolumn",true);
+$xt->assign("Note_fieldfootercolumn",true);
 $xt->assign("Uprice_fieldheadercolumn",true);
 $xt->assign("Uprice_fieldheader",true);
 $xt->assign("Uprice_fieldcolumn",true);
 $xt->assign("Uprice_fieldfootercolumn",true);
+$xt->assign("staffID_fieldheadercolumn",true);
+$xt->assign("staffID_fieldheader",true);
+$xt->assign("staffID_fieldcolumn",true);
+$xt->assign("staffID_fieldfootercolumn",true);
 $xt->assign("USP_fieldheadercolumn",true);
 $xt->assign("USP_fieldheader",true);
 $xt->assign("USP_fieldcolumn",true);
@@ -595,10 +610,6 @@ $xt->assign("Discount_fieldheadercolumn",true);
 $xt->assign("Discount_fieldheader",true);
 $xt->assign("Discount_fieldcolumn",true);
 $xt->assign("Discount_fieldfootercolumn",true);
-$xt->assign("Note_fieldheadercolumn",true);
-$xt->assign("Note_fieldheader",true);
-$xt->assign("Note_fieldcolumn",true);
-$xt->assign("Note_fieldfootercolumn",true);
 
 	$record_header=array("data"=>array());
 	$record_footer=array("data"=>array());

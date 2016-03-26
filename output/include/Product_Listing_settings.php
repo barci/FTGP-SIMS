@@ -135,9 +135,9 @@ $tdataProduct_Listing[".strOrderBy"] = $tstrOrderBy;
 
 $tdataProduct_Listing[".orderindexes"] = array();
 
-$tdataProduct_Listing[".sqlHead"] = "SELECT product.prodid,  concat(product.pname,' - ',category.catname,' - ',product.usize) as `longname`,  product.Pname,  category.CatName,  product.Usize,  category.`Desc`";
+$tdataProduct_Listing[".sqlHead"] = "SELECT product.ProdID,  concat(product.pname, ' - ', category.catname, ' - ', product.usize) AS longname,  product.Pname,  category.CatName,  product.Usize,  category.`Desc`";
 $tdataProduct_Listing[".sqlFrom"] = "FROM category  , product";
-$tdataProduct_Listing[".sqlWhereExpr"] = "product.catid=category.catid";
+$tdataProduct_Listing[".sqlWhereExpr"] = "(product.CatID =category.catid)";
 $tdataProduct_Listing[".sqlTail"] = "";
 
 
@@ -238,7 +238,7 @@ $tdataProduct_Listing[".printFields"][] = "Desc";
 		$fdata["bExportPage"] = true; 
 	
 		$fdata["strField"] = "ProdID"; 
-		$fdata["FullName"] = "product.prodid";
+		$fdata["FullName"] = "product.ProdID";
 	
 		
 		
@@ -335,7 +335,7 @@ $tdataProduct_Listing[".printFields"][] = "Desc";
 		$fdata["bExportPage"] = true; 
 	
 		$fdata["strField"] = "longname"; 
-		$fdata["FullName"] = "concat(product.pname,' - ',category.catname,' - ',product.usize)";
+		$fdata["FullName"] = "concat(product.pname, ' - ', category.catname, ' - ', product.usize)";
 	
 		
 		
@@ -822,14 +822,14 @@ function createSqlQuery_Product_Listing()
 {
 $proto0=array();
 $proto0["m_strHead"] = "SELECT";
-$proto0["m_strFieldList"] = "product.prodid,  concat(product.pname,' - ',category.catname,' - ',product.usize) as `longname`,  product.Pname,  category.CatName,  product.Usize,  category.`Desc`";
+$proto0["m_strFieldList"] = "product.ProdID,  concat(product.pname, ' - ', category.catname, ' - ', product.usize) AS longname,  product.Pname,  category.CatName,  product.Usize,  category.`Desc`";
 $proto0["m_strFrom"] = "FROM category  , product";
-$proto0["m_strWhere"] = "product.catid=category.catid";
+$proto0["m_strWhere"] = "(product.CatID =category.catid)";
 $proto0["m_strOrderBy"] = "";
 $proto0["m_strTail"] = "";
 $proto0["cipherer"] = null;
 $proto1=array();
-$proto1["m_sql"] = "product.catid=category.catid";
+$proto1["m_sql"] = "product.CatID =category.catid";
 $proto1["m_uniontype"] = "SQLL_UNKNOWN";
 						$obj = new SQLField(array(
 	"m_strName" => "CatID",
@@ -1007,6 +1007,7 @@ $proto27["m_columns"][] = "UInOrder";
 $proto27["m_columns"][] = "ReOrLevel";
 $proto27["m_columns"][] = "Note";
 $proto27["m_columns"][] = "TimeStamp";
+$proto27["m_columns"][] = "staffID";
 $obj = new SQLTable($proto27);
 
 $proto26["m_table"] = $obj;

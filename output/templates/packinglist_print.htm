@@ -1,0 +1,292 @@
+<!doctype html>
+<html  {$html_attrs}>
+	<head>
+		<title>{$pagetitle}</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=7">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link REL="stylesheet" href="styles/default.css" type="text/css">
+		{BEGIN rtlCSS}
+		<link REL="stylesheet" href="styles/defaultRTL.css" type="text/css">
+		{END rtlCSS}
+		{BEGIN styleCSSFiles}
+		<link REL="stylesheet" href="{$stylepath}" type="text/css">
+		{END styleCSSFiles}
+		{BEGIN pageCSSFiles}
+		<link REL="stylesheet" href="{$pagestylepath}" type="text/css">
+		{END pageCSSFiles}
+		<!--[if IE]>
+			<link REL="stylesheet" href="styles/defaultIE.css" type="text/css">
+			{BEGIN IEcssFiles}
+			<link REL="stylesheet" href="{$stylepathIE}" type="text/css">
+			{END IEcssFiles}
+		<![endif]-->
+	</head>
+	
+	<body class="{$stylename}" {$bodyattrs}>
+	{BEGIN body}
+		{$header}
+		<table   cellpadding="0" class="runner-toptable">
+			<tr class="runner-header">
+				<td class="runner-top" colspan=3>
+					
+
+{BEGIN container_master}
+<table class="runner-c runner-c-master" cellpadding="0" >
+<tr class="{$cheaderclass_master}">
+<td class="runner-cl"><img src="images/spacer.gif"></td>
+<td class="runner-cc"></td><td class="runner-cr"><img src="images/spacer.gif"></td>
+</tr>
+<tr class="runner-row style1">
+<td class="runner-cl"></td>
+<td class="runner-cc">
+<table border="0" cellpadding="0" class="runner-hc">
+<tr>
+
+{BEGIN mastertable_block}
+<td  class="runner-cc runner-bl runner-b-masterinfoprint" {$brickclass_masterinfoprint}><span>{$showmasterfile}
+</span></td>
+{END mastertable_block}
+
+<td class="runner-cc filler"></td>
+</tr>
+</table></td>
+<td class="runner-cr"></td>
+</tr>
+
+<tr class="{$cfooterclass_master}">
+<td class="runner-cl"><img src="images/spacer.gif"></td>
+<td class="runner-cc"></td><td class="runner-cr"><img src="images/spacer.gif"></td>
+</tr>
+</table>
+{END container_master}
+
+
+
+
+				</td>
+			</tr>
+			<tr class="runner-body">
+				
+				<td class="runner-left {$blockclass_left}" >
+					
+				</td>	
+				
+				<td class="runner-center {$blockclass_center}">
+					
+
+{BEGIN container_grid}
+
+
+{BEGIN grid_block}
+{BEGIN page}
+<h1>Packinglist</h1>
+<span>
+{BEGIN page_number}
+Page {$pageno} of {$maxpages} 
+{END page_number}
+</span>
+
+	<div class="runner-s-grid">	
+	<table class="runner-c runner-c-grid" cellpadding="0">
+		<thead>
+		{BEGIN grid_header}
+		<tr class="runner-toprow style1">
+			<td class="runner-cl"><img src="images/spacer.gif"></td>
+			{BEGIN record_header}
+					{BEGIN ID_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN ID_fieldheader}
+	<b>ID</b>
+	{END ID_fieldheader}
+</th>
+{END ID_fieldheadercolumn}
+	{BEGIN delNo_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN delNo_fieldheader}
+	<b>Del No</b>
+	{END delNo_fieldheader}
+</th>
+{END delNo_fieldheadercolumn}
+	{BEGIN orderNo_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN orderNo_fieldheader}
+	<b>Order No</b>
+	{END orderNo_fieldheader}
+</th>
+{END orderNo_fieldheadercolumn}
+	{BEGIN delID_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN delID_fieldheader}
+	<b>Package Details</b>
+	{END delID_fieldheader}
+</th>
+{END delID_fieldheadercolumn}
+	{BEGIN qty_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN qty_fieldheader}
+	<b>Qty</b>
+	{END qty_fieldheader}
+</th>
+{END qty_fieldheadercolumn}
+	{BEGIN unit_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN unit_fieldheader}
+	<b>Unit</b>
+	{END unit_fieldheader}
+</th>
+{END unit_fieldheadercolumn}
+	{BEGIN date_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN date_fieldheader}
+	<b>Date</b>
+	{END date_fieldheader}
+</th>
+{END date_fieldheadercolumn}
+	{BEGIN notes_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN notes_fieldheader}
+	<b>Notes</b>
+	{END notes_fieldheader}
+</th>
+{END notes_fieldheadercolumn}
+	{BEGIN staffID_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN staffID_fieldheader}
+	<b>Staff ID</b>
+	{END staffID_fieldheader}
+</th>
+{END staffID_fieldheadercolumn}
+		
+			{END record_header}
+			<td class="runner-cr"><img src="images/spacer.gif"></td>
+			{BEGIN endrecordheader_block}
+			<td class="runner-cs">&nbsp;</td>
+			{END endrecordheader_block}
+		</tr>
+	{END grid_header}
+		</thead>
+		<tbody>	
+		{BEGIN grid_row}
+	<tr class="runner-row style1" {$rowattrs} {$rowstyle} {$rowstyle}>
+		<td class="runner-cl"></td>
+		{BEGIN grid_record}
+				{BEGIN ID_fieldcolumn}
+<td  class="runner-cc {$ID_class}" {$ID_style}>
+	{$ID_value}
+</td>
+{END ID_fieldcolumn}
+	{BEGIN delNo_fieldcolumn}
+<td  class="runner-cc {$delNo_class}" {$delNo_style}>
+	{$delNo_value}
+</td>
+{END delNo_fieldcolumn}
+	{BEGIN orderNo_fieldcolumn}
+<td  class="runner-cc {$orderNo_class}" {$orderNo_style}>
+	{$orderNo_value}
+</td>
+{END orderNo_fieldcolumn}
+	{BEGIN delID_fieldcolumn}
+<td  class="runner-cc {$delID_class}" {$delID_style}>
+	{$delID_value}
+</td>
+{END delID_fieldcolumn}
+	{BEGIN qty_fieldcolumn}
+<td  class="runner-cc {$qty_class}" {$qty_style}>
+	{$qty_value}
+</td>
+{END qty_fieldcolumn}
+	{BEGIN unit_fieldcolumn}
+<td  class="runner-cc {$unit_class}" {$unit_style}>
+	{$unit_value}
+</td>
+{END unit_fieldcolumn}
+	{BEGIN date_fieldcolumn}
+<td  class="runner-cc {$date_class}" {$date_style}>
+	{$date_value}
+</td>
+{END date_fieldcolumn}
+	{BEGIN notes_fieldcolumn}
+<td  class="runner-cc {$notes_class}" {$notes_style}>
+	{$notes_value}
+</td>
+{END notes_fieldcolumn}
+	{BEGIN staffID_fieldcolumn}
+<td  class="runner-cc {$staffID_class}" {$staffID_style}>
+	{$staffID_value}
+</td>
+{END staffID_fieldcolumn}
+
+		{END grid_record}
+		<td class="runner-cr"></td>
+		{BEGIN endrecord_block}
+		<td class="runner-cs">&nbsp;</td>
+		{END endrecord_block}
+	</tr>
+{END grid_row}
+										
+								<tr class="runner-bottomrow style1">
+									<td class="runner-cl"><img src="images/spacer.gif"></td>
+									{BEGIN record_footer}
+									{BEGIN ID_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END ID_fieldfootercolumn}
+{BEGIN delNo_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END delNo_fieldfootercolumn}
+{BEGIN orderNo_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END orderNo_fieldfootercolumn}
+{BEGIN delID_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END delID_fieldfootercolumn}
+{BEGIN qty_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END qty_fieldfootercolumn}
+{BEGIN unit_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END unit_fieldfootercolumn}
+{BEGIN date_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END date_fieldfootercolumn}
+{BEGIN notes_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END notes_fieldfootercolumn}
+{BEGIN staffID_fieldfootercolumn}
+<td class="runner-cc runner-clast"></td>
+{END staffID_fieldfootercolumn}
+
+									{END record_footer}
+									<td class="runner-cr"><img src="images/spacer.gif"></td>
+									{BEGIN endrecordtotals_block}
+									<td class="runner-cs"></td>
+									{END endrecordtotals_block}
+								</tr>
+
+		</tbody>
+	</table>
+</div>	
+{END page}
+
+{END grid_block}
+
+
+
+{END container_grid}
+
+
+				</td>	
+
+				<td class="runner-right {$blockclass_right}">
+					
+				</td>	
+			</tr>
+			<tr class="runner-footer">
+				<td class="runner-bottom" colspan=3>
+					<!--%%bottom%%-->
+				</td>
+			</tr>
+		</table>
+		{$footer}
+	{END body}
+	</body>
+</html>

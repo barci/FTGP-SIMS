@@ -217,20 +217,13 @@ if(@$_POST["a"]=="added")
 	$blobfields=array();
 //	processing RequestID - start
 	$inlineAddOption = true;
+	$inlineAddOption = $inlineadd!=ADD_INLINE;
 	if($inlineAddOption)
 	{
 		$control_RequestID = $pageObject->getControl("RequestID", $id);
 		$control_RequestID->readWebValue($avalues, $blobfields, "", false, $afilename_values);
 	}
 //	processing RequestID - end
-//	processing StaffID - start
-	$inlineAddOption = true;
-	if($inlineAddOption)
-	{
-		$control_StaffID = $pageObject->getControl("StaffID", $id);
-		$control_StaffID->readWebValue($avalues, $blobfields, "", false, $afilename_values);
-	}
-//	processing StaffID - end
 //	processing ProductID - start
 	$inlineAddOption = true;
 	if($inlineAddOption)
@@ -263,6 +256,15 @@ if(@$_POST["a"]=="added")
 		$control_ReceiveFlag->readWebValue($avalues, $blobfields, "", false, $afilename_values);
 	}
 //	processing ReceiveFlag - end
+//	processing StaffID - start
+	$inlineAddOption = true;
+	$inlineAddOption = $inlineadd!=ADD_INLINE;
+	if($inlineAddOption)
+	{
+		$control_StaffID = $pageObject->getControl("StaffID", $id);
+		$control_StaffID->readWebValue($avalues, $blobfields, "", false, $afilename_values);
+	}
+//	processing StaffID - end
 
 
 //	insert masterkey value if exists and if not specified
@@ -309,18 +311,12 @@ if(@$_POST["a"]=="added")
 // Give possibility to all edit controls to clean their data				
 //	processing RequestID - start
 			$inlineAddOption = true;
+			$inlineAddOption = $inlineadd!=ADD_INLINE;
 			if($inlineAddOption)
 			{
 				$control_RequestID->afterSuccessfulSave();
 			}
 //	processing RequestID - end
-//	processing StaffID - start
-			$inlineAddOption = true;
-			if($inlineAddOption)
-			{
-				$control_StaffID->afterSuccessfulSave();
-			}
-//	processing StaffID - end
 //	processing ProductID - start
 			$inlineAddOption = true;
 			if($inlineAddOption)
@@ -349,6 +345,14 @@ if(@$_POST["a"]=="added")
 				$control_ReceiveFlag->afterSuccessfulSave();
 			}
 //	processing ReceiveFlag - end
+//	processing StaffID - start
+			$inlineAddOption = true;
+			$inlineAddOption = $inlineadd!=ADD_INLINE;
+			if($inlineAddOption)
+			{
+				$control_StaffID->afterSuccessfulSave();
+			}
+//	processing StaffID - end
 
 			$afterAdd_id = '';	
 			if($eventObj->exists("AfterAdd") && $inlineadd!=ADD_MASTER){
@@ -455,6 +459,7 @@ if(array_key_exists("copyid1",$_REQUEST) || array_key_exists("editid1",$_REQUEST
 else
 {
 	$defvalues["ReceiveFlag"] = "NO";
+	$defvalues["StaffID"] = $_SESSION["StaffID"];;
 }
 
 
@@ -718,6 +723,16 @@ if(@$_POST["a"]=="added" && ($inlineadd == ADD_INLINE || $inlineadd == ADD_MASTE
 		$value = $pageObject->showDBValue("Notes", $data, $keylink);
 		$showValues["Notes"] = $value;
 		$showFields[] = "Notes";
+	}	
+//	TimeStamp
+	$display = false;
+	if($inlineadd==ADD_INLINE || $inlineadd==ADD_ONTHEFLY || $inlineadd==ADD_POPUP)
+		$display = true;
+	if($display)
+	{	
+		$value = $pageObject->showDBValue("TimeStamp", $data, $keylink);
+		$showValues["TimeStamp"] = $value;
+		$showFields[] = "TimeStamp";
 	}	
 //	ReceiveFlag
 	$display = false;

@@ -447,6 +447,16 @@
 									</th>
 									{END DelDate_fieldheadercolumn}
 
+																	{BEGIN staffID_fieldheadercolumn}
+									<th class="runner-cc ">
+									{BEGIN staffID_fieldheader}
+																				<a {$staffID_orderlinkattrs}>
+											Staff ID
+										</a>
+									{END staffID_fieldheader}
+									</th>
+									{END staffID_fieldheadercolumn}
+
 																	{BEGIN BillNo_fieldheadercolumn}
 									<th class="runner-cc runner-clast">
 									{BEGIN BillNo_fieldheader}
@@ -540,6 +550,12 @@
 	</td>
 {END DelDate_fieldcolumn}
 
+	{BEGIN staffID_fieldcolumn}
+	<td class="runner-cc  {$staffID_class}" {$staffID_style}>
+		{$staffID_value}
+	</td>
+{END staffID_fieldcolumn}
+
 	{BEGIN BillNo_fieldcolumn}
 	<td class="runner-cc runner-clast {$BillNo_class}" {$BillNo_style}>
 		{$BillNo_value}
@@ -587,6 +603,9 @@
 {BEGIN DelDate_fieldheadercolumn}
 <td class="runner-cc "></td>
 {END DelDate_fieldheadercolumn}
+{BEGIN staffID_fieldheadercolumn}
+<td class="runner-cc "></td>
+{END staffID_fieldheadercolumn}
 {BEGIN BillNo_fieldheadercolumn}
 <td class="runner-cc runner-clast"></td>
 {END BillNo_fieldheadercolumn}

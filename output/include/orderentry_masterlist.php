@@ -46,6 +46,10 @@ if($detailtable == "orderdetail")
 {
 		$where.= GetFullFieldName("OrderID", "", false)."=".$cipherer->MakeDBValue("OrderID",$keys[1-1], "", "", true);
 	$showKeys .= " "."Order ID".": ".$keys[1-1];
+		$where.=" and ";
+	$showKeys .=" , ";
+	$where.= GetFullFieldName("DelDate", "", false)."=".$cipherer->MakeDBValue("DelDate",$keys[2-1], "", "", true);
+	$showKeys .= " "."Del Date".": ".$keys[2-1];
 	$xt->assign('showKeys',$showKeys);
 }
 	if(!$where)
@@ -72,8 +76,13 @@ if($detailtable == "orderdetail")
 		return;
 	}
 	$keylink = "";
-	$keylink.="&key1=".htmlspecialchars(rawurlencode(@$data["OrderID"]));
+	$keylink.="&key1=".htmlspecialchars(rawurlencode(@$data["ID"]));
 	
+
+//	ID - 
+			$value="";
+
+					$xt->assign("ID_mastervalue", $viewControls->showDBValue("ID", $data, $keylink));
 
 //	OrderID - 
 			$value="";
@@ -90,15 +99,15 @@ if($detailtable == "orderdetail")
 
 					$xt->assign("CID_mastervalue", $viewControls->showDBValue("CID", $data, $keylink));
 
-//	ODate - Short Date
+//	DelDate - Long Date
 			$value="";
 
-					$xt->assign("ODate_mastervalue", $viewControls->showDBValue("ODate", $data, $keylink));
+					$xt->assign("DelDate_mastervalue", $viewControls->showDBValue("DelDate", $data, $keylink));
 
-//	ErrorMsg - 
+//	Note - 
 			$value="";
 
-					$xt->assign("ErrorMsg_mastervalue", $viewControls->showDBValue("ErrorMsg", $data, $keylink));
+					$xt->assign("Note_mastervalue", $viewControls->showDBValue("Note", $data, $keylink));
 
 	$viewControls->addControlsJSAndCSS();
 	$detailPageObj->viewControlsMap['mViewControlsMap'] = $viewControls->viewControlsMap;

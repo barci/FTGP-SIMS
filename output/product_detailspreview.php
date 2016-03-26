@@ -122,7 +122,7 @@ if($rowcount) {
 			$viewContainer->recId = $recordsCounter;
 		    $value = $viewContainer->showDBValue("ProdID", $data, $keylink);
 			$row["ProdID_value"] = $value;
-	//	Pname - 
+	//	Pname - Custom
 			$viewContainer->recId = $recordsCounter;
 		    $value = $viewContainer->showDBValue("Pname", $data, $keylink);
 			$row["Pname_value"] = $value;
@@ -158,7 +158,7 @@ if($rowcount) {
 			$viewContainer->recId = $recordsCounter;
 		    $value = $viewContainer->showDBValue("Discount", $data, $keylink);
 			$row["Discount_value"] = $value;
-	//	UInStock - 
+	//	UInStock - Custom
 			$viewContainer->recId = $recordsCounter;
 		    $value = $viewContainer->showDBValue("UInStock", $data, $keylink);
 			$row["UInStock_value"] = $value;
@@ -182,6 +182,10 @@ if($rowcount) {
 			$viewContainer->recId = $recordsCounter;
 		    $value = $viewContainer->showDBValue("ProdNo", $data, $keylink);
 			$row["ProdNo_value"] = $value;
+	//	staffID - 
+			$viewContainer->recId = $recordsCounter;
+		    $value = $viewContainer->showDBValue("staffID", $data, $keylink);
+			$row["staffID_value"] = $value;
 		$rowinfo[] = $row;
 		$data = $cipherer->DecryptFetchedArray($rs);
 	}

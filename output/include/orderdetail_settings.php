@@ -28,6 +28,10 @@ if(mlang_getcurrentlang()=="English")
 	$fieldToolTipsorderdetail["English"]["Total"] = "";
 	$fieldLabelsorderdetail["English"]["DelDate"] = "Delivery Date";
 	$fieldToolTipsorderdetail["English"]["DelDate"] = "";
+	$fieldLabelsorderdetail["English"]["staffID"] = "Staff ID";
+	$fieldToolTipsorderdetail["English"]["staffID"] = "";
+	$fieldLabelsorderdetail["English"]["DrNo"] = "Dr No";
+	$fieldToolTipsorderdetail["English"]["DrNo"] = "";
 	if (count($fieldToolTipsorderdetail["English"]))
 		$tdataorderdetail[".isUseToolTips"] = true;
 }
@@ -100,6 +104,7 @@ $tdataorderdetail[".allSearchFields"][] = "ProductID";
 $tdataorderdetail[".allSearchFields"][] = "OrdQuant";
 $tdataorderdetail[".allSearchFields"][] = "DelQuant";
 $tdataorderdetail[".allSearchFields"][] = "DelDate";
+$tdataorderdetail[".allSearchFields"][] = "staffID";
 
 $tdataorderdetail[".googleLikeFields"][] = "ODetailID";
 $tdataorderdetail[".googleLikeFields"][] = "OrderID";
@@ -109,6 +114,7 @@ $tdataorderdetail[".googleLikeFields"][] = "OrdQuant";
 $tdataorderdetail[".googleLikeFields"][] = "DelQuant";
 $tdataorderdetail[".googleLikeFields"][] = "Total";
 $tdataorderdetail[".googleLikeFields"][] = "DelDate";
+$tdataorderdetail[".googleLikeFields"][] = "staffID";
 
 
 $tdataorderdetail[".advSearchFields"][] = "ODetailID";
@@ -117,6 +123,7 @@ $tdataorderdetail[".advSearchFields"][] = "ProductID";
 $tdataorderdetail[".advSearchFields"][] = "OrdQuant";
 $tdataorderdetail[".advSearchFields"][] = "DelQuant";
 $tdataorderdetail[".advSearchFields"][] = "DelDate";
+$tdataorderdetail[".advSearchFields"][] = "staffID";
 
 $tdataorderdetail[".isTableType"] = "list";
 
@@ -130,14 +137,15 @@ $tdataorderdetail[".isTableType"] = "list";
 
 $tdataorderdetail[".pageSize"] = 20;
 
-$tstrOrderBy = "";
+$tstrOrderBy = "ORDER BY DelDate DESC";
 if(strlen($tstrOrderBy) && strtolower(substr($tstrOrderBy,0,8))!="order by")
 	$tstrOrderBy = "order by ".$tstrOrderBy;
 $tdataorderdetail[".strOrderBy"] = $tstrOrderBy;
 
 $tdataorderdetail[".orderindexes"] = array();
+$tdataorderdetail[".orderindexes"][] = array(8, (0 ? "ASC" : "DESC"), "DelDate");
 
-$tdataorderdetail[".sqlHead"] = "SELECT ODetailID,  OrderID,  BillNo,  ProductID,  OrdQuant,  DelQuant,  Total,  DelDate";
+$tdataorderdetail[".sqlHead"] = "SELECT ODetailID,  OrderID,  BillNo,  ProductID,  OrdQuant,  DelQuant,  Total,  DelDate,  staffID";
 $tdataorderdetail[".sqlFrom"] = "FROM orderdetail";
 $tdataorderdetail[".sqlWhereExpr"] = "";
 $tdataorderdetail[".sqlTail"] = "";
@@ -178,6 +186,7 @@ $tdataorderdetail[".listFields"][] = "ProductID";
 $tdataorderdetail[".listFields"][] = "OrdQuant";
 $tdataorderdetail[".listFields"][] = "DelQuant";
 $tdataorderdetail[".listFields"][] = "DelDate";
+$tdataorderdetail[".listFields"][] = "staffID";
 $tdataorderdetail[".listFields"][] = "BillNo";
 
 $tdataorderdetail[".viewFields"] = array();
@@ -187,30 +196,24 @@ $tdataorderdetail[".addFields"][] = "OrderID";
 $tdataorderdetail[".addFields"][] = "ProductID";
 $tdataorderdetail[".addFields"][] = "OrdQuant";
 $tdataorderdetail[".addFields"][] = "DelDate";
+$tdataorderdetail[".addFields"][] = "staffID";
 
 $tdataorderdetail[".inlineAddFields"] = array();
-$tdataorderdetail[".inlineAddFields"][] = "ODetailID";
 $tdataorderdetail[".inlineAddFields"][] = "OrderID";
 $tdataorderdetail[".inlineAddFields"][] = "ProductID";
 $tdataorderdetail[".inlineAddFields"][] = "OrdQuant";
-$tdataorderdetail[".inlineAddFields"][] = "DelQuant";
 $tdataorderdetail[".inlineAddFields"][] = "DelDate";
-$tdataorderdetail[".inlineAddFields"][] = "BillNo";
+$tdataorderdetail[".inlineAddFields"][] = "staffID";
 
 $tdataorderdetail[".editFields"] = array();
 $tdataorderdetail[".editFields"][] = "OrderID";
 $tdataorderdetail[".editFields"][] = "ProductID";
 $tdataorderdetail[".editFields"][] = "OrdQuant";
-$tdataorderdetail[".editFields"][] = "DelDate";
 
 $tdataorderdetail[".inlineEditFields"] = array();
-$tdataorderdetail[".inlineEditFields"][] = "ODetailID";
 $tdataorderdetail[".inlineEditFields"][] = "OrderID";
 $tdataorderdetail[".inlineEditFields"][] = "ProductID";
 $tdataorderdetail[".inlineEditFields"][] = "OrdQuant";
-$tdataorderdetail[".inlineEditFields"][] = "DelQuant";
-$tdataorderdetail[".inlineEditFields"][] = "DelDate";
-$tdataorderdetail[".inlineEditFields"][] = "BillNo";
 
 $tdataorderdetail[".exportFields"] = array();
 
@@ -232,11 +235,9 @@ $tdataorderdetail[".printFields"] = array();
 		$fdata["bListPage"] = true; 
 	
 		
-		$fdata["bInlineAdd"] = true; 
-	
 		
-		$fdata["bInlineEdit"] = true; 
-	
+		
+		
 		
 		$fdata["bAdvancedSearch"] = true; 
 	
@@ -428,11 +429,9 @@ $tdataorderdetail[".printFields"] = array();
 		$fdata["bListPage"] = true; 
 	
 		
-		$fdata["bInlineAdd"] = true; 
-	
 		
-		$fdata["bInlineEdit"] = true; 
-	
+		
+		
 		
 		
 		
@@ -547,7 +546,7 @@ $tdataorderdetail[".printFields"] = array();
 //  Begin View Formats
 	$fdata["ViewFormats"] = array();
 	
-	$vdata = array("ViewFormat" => "");
+	$vdata = array("ViewFormat" => "Custom");
 	
 		
 		
@@ -559,8 +558,7 @@ $tdataorderdetail[".printFields"] = array();
 		
 		
 		
-		$vdata["NeedEncode"] = true;
-	
+		
 	$fdata["ViewFormats"]["view"] = $vdata;
 //  End View Formats
 
@@ -744,11 +742,9 @@ $tdataorderdetail[".printFields"] = array();
 		$fdata["bListPage"] = true; 
 	
 		
-		$fdata["bInlineAdd"] = true; 
-	
 		
-		$fdata["bInlineEdit"] = true; 
-	
+		
+		
 		
 		$fdata["bAdvancedSearch"] = true; 
 	
@@ -935,10 +931,8 @@ $tdataorderdetail[".printFields"] = array();
 	
 		$fdata["bInlineAdd"] = true; 
 	
-		$fdata["bEditPage"] = true; 
-	
-		$fdata["bInlineEdit"] = true; 
-	
+		
+		
 		
 		$fdata["bAdvancedSearch"] = true; 
 	
@@ -956,7 +950,7 @@ $tdataorderdetail[".printFields"] = array();
 //  Begin View Formats
 	$fdata["ViewFormats"] = array();
 	
-	$vdata = array("ViewFormat" => "Short Date");
+	$vdata = array("ViewFormat" => "Long Date");
 	
 		
 		
@@ -1016,6 +1010,125 @@ $tdataorderdetail[".printFields"] = array();
 		
 		
 	$tdataorderdetail["DelDate"] = $fdata;
+//	staffID
+//	Custom field settings
+	$fdata = array();
+	$fdata["Index"] = 9;
+	$fdata["strName"] = "staffID";
+	$fdata["GoodName"] = "staffID";
+	$fdata["ownerTable"] = "orderdetail";
+	$fdata["Label"] = "Staff ID"; 
+	$fdata["FieldType"] = 200;
+	
+		
+		
+		$fdata["bListPage"] = true; 
+	
+		$fdata["bAddPage"] = true; 
+	
+		$fdata["bInlineAdd"] = true; 
+	
+		
+		
+		
+		$fdata["bAdvancedSearch"] = true; 
+	
+		
+		
+		$fdata["strField"] = "staffID"; 
+		$fdata["FullName"] = "staffID";
+	
+		
+		
+				$fdata["FieldPermissions"] = true;
+	
+				$fdata["UploadFolder"] = "files";
+		
+//  Begin View Formats
+	$fdata["ViewFormats"] = array();
+	
+	$vdata = array("ViewFormat" => "");
+	
+		
+		
+		
+			
+		
+		
+		
+		
+		
+		
+		$vdata["NeedEncode"] = true;
+	
+	$fdata["ViewFormats"]["view"] = $vdata;
+//  End View Formats
+
+//	Begin Edit Formats 	
+	$fdata["EditFormats"] = array();
+	
+	$edata = array("EditFormat" => "Lookup wizard");
+	
+		
+		
+	
+//	Begin Lookup settings
+								$edata["LookupType"] = 2;
+	$edata["freeInput"] = 0;
+	$edata["autoCompleteFieldsOnEdit"] = 0;
+	$edata["autoCompleteFields"] = array();
+				$edata["LCType"] = 1;
+			
+		
+			
+	$edata["LinkField"] = "StaffID";
+	$edata["LinkFieldType"] = 3;
+	$edata["DisplayField"] = "Name";
+	
+		
+	$edata["LookupTable"] = "staff";
+	$edata["LookupOrderBy"] = "";
+	
+		
+		
+		
+		$edata["FastType"] = true; 
+	
+		
+				
+	
+	
+	//	End Lookup Settings
+
+		
+		
+		
+		
+			$edata["acceptFileTypes"] = ".+$";
+	
+		$edata["maxNumberOfFiles"] = 1;
+	
+		
+		
+		
+		
+		
+		
+//	Begin validation
+	$edata["validateAs"] = array();
+		
+	//	End validation
+	
+		
+				
+		$fdata["EditFormats"]["edit"] = $edata;
+//	End Edit Formats
+	
+		$fdata["isSeparate"] = false;
+	
+		
+		
+	$tdataorderdetail["staffID"] = $fdata;
 
 	
 $tables_data["orderdetail"]=&$tdataorderdetail;
@@ -1038,14 +1151,16 @@ $mIndex = 1-1;
 	$masterParams["detailKeys"]= array();
 	$masterParams["dispChildCount"]= "1";
 	$masterParams["hideChild"]= "0";
-	$masterParams["dispInfo"]= "1";
+	$masterParams["dispInfo"]= "0";
 	$masterParams["previewOnList"]= 1;
-	$masterParams["previewOnAdd"]= 0;
-	$masterParams["previewOnEdit"]= 0;
-	$masterParams["previewOnView"]= 0;
+	$masterParams["previewOnAdd"]= 1;
+	$masterParams["previewOnEdit"]= 1;
+	$masterParams["previewOnView"]= 1;
 	$masterTablesData["orderdetail"][$mIndex] = $masterParams;	
 		$masterTablesData["orderdetail"][$mIndex]["masterKeys"][]="OrderID";
+		$masterTablesData["orderdetail"][$mIndex]["masterKeys"][]="DelDate";
 		$masterTablesData["orderdetail"][$mIndex]["detailKeys"][]="OrderID";
+		$masterTablesData["orderdetail"][$mIndex]["detailKeys"][]="DelDate";
 
 // -----------------end  prepare master-details data arrays ------------------------------//
 
@@ -1064,10 +1179,10 @@ function createSqlQuery_orderdetail()
 {
 $proto0=array();
 $proto0["m_strHead"] = "SELECT";
-$proto0["m_strFieldList"] = "ODetailID,  OrderID,  BillNo,  ProductID,  OrdQuant,  DelQuant,  Total,  DelDate";
+$proto0["m_strFieldList"] = "ODetailID,  OrderID,  BillNo,  ProductID,  OrdQuant,  DelQuant,  Total,  DelDate,  staffID";
 $proto0["m_strFrom"] = "FROM orderdetail";
 $proto0["m_strWhere"] = "";
-$proto0["m_strOrderBy"] = "";
+$proto0["m_strOrderBy"] = "ORDER BY DelDate DESC";
 $proto0["m_strTail"] = "";
 $proto0["cipherer"] = null;
 $proto1=array();
@@ -1191,54 +1306,78 @@ $proto19["m_alias"] = "";
 $obj = new SQLFieldListItem($proto19);
 
 $proto0["m_fieldlist"][]=$obj;
-$proto0["m_fromlist"] = array();
-												$proto21=array();
-$proto21["m_link"] = "SQLL_MAIN";
-			$proto22=array();
-$proto22["m_strName"] = "orderdetail";
-$proto22["m_columns"] = array();
-$proto22["m_columns"][] = "ODetailID";
-$proto22["m_columns"][] = "OrderID";
-$proto22["m_columns"][] = "BillNo";
-$proto22["m_columns"][] = "ProductID";
-$proto22["m_columns"][] = "UPrice";
-$proto22["m_columns"][] = "OrdQuant";
-$proto22["m_columns"][] = "DelQuant";
-$proto22["m_columns"][] = "Discount";
-$proto22["m_columns"][] = "Total";
-$proto22["m_columns"][] = "DelDate";
-$proto22["m_columns"][] = "TimeStamp";
-$obj = new SQLTable($proto22);
+						$proto21=array();
+			$obj = new SQLField(array(
+	"m_strName" => "staffID",
+	"m_strTable" => "orderdetail"
+));
 
-$proto21["m_table"] = $obj;
+$proto21["m_expr"]=$obj;
 $proto21["m_alias"] = "";
-$proto23=array();
-$proto23["m_sql"] = "";
-$proto23["m_uniontype"] = "SQLL_UNKNOWN";
+$obj = new SQLFieldListItem($proto21);
+
+$proto0["m_fieldlist"][]=$obj;
+$proto0["m_fromlist"] = array();
+												$proto23=array();
+$proto23["m_link"] = "SQLL_MAIN";
+			$proto24=array();
+$proto24["m_strName"] = "orderdetail";
+$proto24["m_columns"] = array();
+$proto24["m_columns"][] = "ODetailID";
+$proto24["m_columns"][] = "OrderID";
+$proto24["m_columns"][] = "BillNo";
+$proto24["m_columns"][] = "ProductID";
+$proto24["m_columns"][] = "UPrice";
+$proto24["m_columns"][] = "OrdQuant";
+$proto24["m_columns"][] = "DelQuant";
+$proto24["m_columns"][] = "Discount";
+$proto24["m_columns"][] = "Total";
+$proto24["m_columns"][] = "DelDate";
+$proto24["m_columns"][] = "TimeStamp";
+$proto24["m_columns"][] = "staffID";
+$obj = new SQLTable($proto24);
+
+$proto23["m_table"] = $obj;
+$proto23["m_alias"] = "";
+$proto25=array();
+$proto25["m_sql"] = "";
+$proto25["m_uniontype"] = "SQLL_UNKNOWN";
 	$obj = new SQLNonParsed(array(
 	"m_sql" => ""
 ));
 
-$proto23["m_column"]=$obj;
-$proto23["m_contained"] = array();
-$proto23["m_strCase"] = "";
-$proto23["m_havingmode"] = "0";
-$proto23["m_inBrackets"] = "0";
-$proto23["m_useAlias"] = "0";
-$obj = new SQLLogicalExpr($proto23);
+$proto25["m_column"]=$obj;
+$proto25["m_contained"] = array();
+$proto25["m_strCase"] = "";
+$proto25["m_havingmode"] = "0";
+$proto25["m_inBrackets"] = "0";
+$proto25["m_useAlias"] = "0";
+$obj = new SQLLogicalExpr($proto25);
 
-$proto21["m_joinon"] = $obj;
-$obj = new SQLFromListItem($proto21);
+$proto23["m_joinon"] = $obj;
+$obj = new SQLFromListItem($proto23);
 
 $proto0["m_fromlist"][]=$obj;
 $proto0["m_groupby"] = array();
 $proto0["m_orderby"] = array();
+												$proto27=array();
+						$obj = new SQLField(array(
+	"m_strName" => "DelDate",
+	"m_strTable" => "orderdetail"
+));
+
+$proto27["m_column"]=$obj;
+$proto27["m_bAsc"] = 0;
+$proto27["m_nColumn"] = 0;
+$obj = new SQLOrderByItem($proto27);
+
+$proto0["m_orderby"][]=$obj;					
 $obj = new SQLQuery($proto0);
 
 	return $obj;
 }
 $queryData_orderdetail = createSqlQuery_orderdetail();
-								$tdataorderdetail[".sqlquery"] = $queryData_orderdetail;
+									$tdataorderdetail[".sqlquery"] = $queryData_orderdetail;
 
 $tableEvents["orderdetail"] = new eventsBase;
 $tdataorderdetail[".hasEvents"] = false;

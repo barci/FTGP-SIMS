@@ -49,7 +49,7 @@
 
 {BEGIN grid_block}
 {BEGIN page}
-<h1>Order Entry</h1>
+<h1>Orderentry</h1>
 <span>
 {BEGIN page_number}
 Page {$pageno} of {$maxpages} 
@@ -63,41 +63,55 @@ Page {$pageno} of {$maxpages}
 		<tr class="runner-toprow style1">
 			<td class="runner-cl"><img src="images/spacer.gif"></td>
 			{BEGIN record_header}
-					{BEGIN OrderID_fieldheadercolumn}
+					{BEGIN ID_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN ID_fieldheader}
+	<b>ID</b>
+	{END ID_fieldheader}
+</th>
+{END ID_fieldheadercolumn}
+	{BEGIN OrderID_fieldheadercolumn}
 <th class="runner-cc">
 	{BEGIN OrderID_fieldheader}
 	<b>Order ID</b>
 	{END OrderID_fieldheader}
 </th>
 {END OrderID_fieldheadercolumn}
-	{BEGIN CID_fieldheadercolumn}
-<th class="runner-cc">
-	{BEGIN CID_fieldheader}
-	<b>Customer</b>
-	{END CID_fieldheader}
-</th>
-{END CID_fieldheadercolumn}
-	{BEGIN ODate_fieldheadercolumn}
-<th class="runner-cc">
-	{BEGIN ODate_fieldheader}
-	<b>Order Date</b>
-	{END ODate_fieldheader}
-</th>
-{END ODate_fieldheadercolumn}
 	{BEGIN StaffID_fieldheadercolumn}
 <th class="runner-cc">
 	{BEGIN StaffID_fieldheader}
-	<b>Staff Incharge</b>
+	<b>Staff ID</b>
 	{END StaffID_fieldheader}
 </th>
 {END StaffID_fieldheadercolumn}
-	{BEGIN ErrorMsg_fieldheadercolumn}
+	{BEGIN CID_fieldheadercolumn}
 <th class="runner-cc">
-	{BEGIN ErrorMsg_fieldheader}
-	<b>Error Msg</b>
-	{END ErrorMsg_fieldheader}
+	{BEGIN CID_fieldheader}
+	<b>CID</b>
+	{END CID_fieldheader}
 </th>
-{END ErrorMsg_fieldheadercolumn}
+{END CID_fieldheadercolumn}
+	{BEGIN DelDate_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN DelDate_fieldheader}
+	<b>Del Date</b>
+	{END DelDate_fieldheader}
+</th>
+{END DelDate_fieldheadercolumn}
+	{BEGIN Note_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN Note_fieldheader}
+	<b>Note</b>
+	{END Note_fieldheader}
+</th>
+{END Note_fieldheadercolumn}
+	{BEGIN TimeStamp_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN TimeStamp_fieldheader}
+	<b>Time Stamp</b>
+	{END TimeStamp_fieldheader}
+</th>
+{END TimeStamp_fieldheadercolumn}
 		
 			{END record_header}
 			<td class="runner-cr"><img src="images/spacer.gif"></td>
@@ -112,31 +126,41 @@ Page {$pageno} of {$maxpages}
 	<tr class="runner-row style1" {$rowattrs} {$rowstyle} {$rowstyle}>
 		<td class="runner-cl"></td>
 		{BEGIN grid_record}
-				{BEGIN OrderID_fieldcolumn}
+				{BEGIN ID_fieldcolumn}
+<td  class="runner-cc {$ID_class}" {$ID_style}>
+	{$ID_value}
+</td>
+{END ID_fieldcolumn}
+	{BEGIN OrderID_fieldcolumn}
 <td  class="runner-cc {$OrderID_class}" {$OrderID_style}>
 	{$OrderID_value}
 </td>
 {END OrderID_fieldcolumn}
-	{BEGIN CID_fieldcolumn}
-<td  class="runner-cc {$CID_class}" {$CID_style}>
-	{$CID_value}
-</td>
-{END CID_fieldcolumn}
-	{BEGIN ODate_fieldcolumn}
-<td  class="runner-cc {$ODate_class}" {$ODate_style}>
-	{$ODate_value}
-</td>
-{END ODate_fieldcolumn}
 	{BEGIN StaffID_fieldcolumn}
 <td  class="runner-cc {$StaffID_class}" {$StaffID_style}>
 	{$StaffID_value}
 </td>
 {END StaffID_fieldcolumn}
-	{BEGIN ErrorMsg_fieldcolumn}
-<td  class="runner-cc {$ErrorMsg_class}" {$ErrorMsg_style}>
-	{$ErrorMsg_value}
+	{BEGIN CID_fieldcolumn}
+<td  class="runner-cc {$CID_class}" {$CID_style}>
+	{$CID_value}
 </td>
-{END ErrorMsg_fieldcolumn}
+{END CID_fieldcolumn}
+	{BEGIN DelDate_fieldcolumn}
+<td  class="runner-cc {$DelDate_class}" {$DelDate_style}>
+	{$DelDate_value}
+</td>
+{END DelDate_fieldcolumn}
+	{BEGIN Note_fieldcolumn}
+<td  class="runner-cc {$Note_class}" {$Note_style}>
+	{$Note_value}
+</td>
+{END Note_fieldcolumn}
+	{BEGIN TimeStamp_fieldcolumn}
+<td  class="runner-cc {$TimeStamp_class}" {$TimeStamp_style}>
+	{$TimeStamp_value}
+</td>
+{END TimeStamp_fieldcolumn}
 
 		{END grid_record}
 		<td class="runner-cr"></td>
@@ -149,21 +173,27 @@ Page {$pageno} of {$maxpages}
 								<tr class="runner-bottomrow style1">
 									<td class="runner-cl"><img src="images/spacer.gif"></td>
 									{BEGIN record_footer}
-									{BEGIN OrderID_fieldfootercolumn}
+									{BEGIN ID_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END ID_fieldfootercolumn}
+{BEGIN OrderID_fieldfootercolumn}
 <td class="runner-cc "></td>
 {END OrderID_fieldfootercolumn}
-{BEGIN CID_fieldfootercolumn}
-<td class="runner-cc "></td>
-{END CID_fieldfootercolumn}
-{BEGIN ODate_fieldfootercolumn}
-<td class="runner-cc "></td>
-{END ODate_fieldfootercolumn}
 {BEGIN StaffID_fieldfootercolumn}
 <td class="runner-cc "></td>
 {END StaffID_fieldfootercolumn}
-{BEGIN ErrorMsg_fieldfootercolumn}
+{BEGIN CID_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END CID_fieldfootercolumn}
+{BEGIN DelDate_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END DelDate_fieldfootercolumn}
+{BEGIN Note_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END Note_fieldfootercolumn}
+{BEGIN TimeStamp_fieldfootercolumn}
 <td class="runner-cc runner-clast"></td>
-{END ErrorMsg_fieldfootercolumn}
+{END TimeStamp_fieldfootercolumn}
 
 									{END record_footer}
 									<td class="runner-cr"><img src="images/spacer.gif"></td>

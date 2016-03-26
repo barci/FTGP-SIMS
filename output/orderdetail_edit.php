@@ -230,19 +230,6 @@ if(@$_POST["a"] == "edited")
 	$evalues = $efilename_values = $blobfields = array();
 	
 
-//	processing ODetailID - begin
-	$condition = $inlineedit==EDIT_INLINE;//($inlineedit) inline mode
-
-	if($condition)
-	{
-		$control_ODetailID = $pageObject->getControl("ODetailID", $id);
-		$control_ODetailID->readWebValue($evalues, $blobfields, $strWhereClause, $oldValuesRead, $efilename_values);
-
-		//	update key value
-		if($control_ODetailID->getWebValue()!==false)
-			$keys["ODetailID"] = $control_ODetailID->getWebValue();
-	}
-//	processing ODetailID - end
 //	processing OrderID - begin
 	$condition = 1;
 
@@ -253,16 +240,6 @@ if(@$_POST["a"] == "edited")
 
 		}
 //	processing OrderID - end
-//	processing BillNo - begin
-	$condition = $inlineedit==EDIT_INLINE;//($inlineedit) inline mode
-
-	if($condition)
-	{
-		$control_BillNo = $pageObject->getControl("BillNo", $id);
-		$control_BillNo->readWebValue($evalues, $blobfields, $strWhereClause, $oldValuesRead, $efilename_values);
-
-		}
-//	processing BillNo - end
 //	processing ProductID - begin
 	$condition = 1;
 
@@ -283,26 +260,6 @@ if(@$_POST["a"] == "edited")
 
 		}
 //	processing OrdQuant - end
-//	processing DelQuant - begin
-	$condition = $inlineedit==EDIT_INLINE;//($inlineedit) inline mode
-
-	if($condition)
-	{
-		$control_DelQuant = $pageObject->getControl("DelQuant", $id);
-		$control_DelQuant->readWebValue($evalues, $blobfields, $strWhereClause, $oldValuesRead, $efilename_values);
-
-		}
-//	processing DelQuant - end
-//	processing DelDate - begin
-	$condition = 1;
-
-	if($condition)
-	{
-		$control_DelDate = $pageObject->getControl("DelDate", $id);
-		$control_DelDate->readWebValue($evalues, $blobfields, $strWhereClause, $oldValuesRead, $efilename_values);
-
-		}
-//	processing DelDate - end
 
 	foreach($efilename_values as $ekey=>$value)
 		$evalues[$ekey] = $value;
@@ -360,14 +317,6 @@ if(@$_POST["a"] == "edited")
 				$IsSaved = true;
 
 			// Give possibility to all edit controls to clean their data				
-			//	processing ODetailID - begin
-							$condition = $inlineedit==EDIT_INLINE;//($inlineedit) inline mode
-			
-				if($condition)
-				{
-					$control_ODetailID->afterSuccessfulSave();
-				}
-	//	processing ODetailID - end
 			//	processing OrderID - begin
 							$condition = 1;
 			
@@ -376,14 +325,6 @@ if(@$_POST["a"] == "edited")
 					$control_OrderID->afterSuccessfulSave();
 				}
 	//	processing OrderID - end
-			//	processing BillNo - begin
-							$condition = $inlineedit==EDIT_INLINE;//($inlineedit) inline mode
-			
-				if($condition)
-				{
-					$control_BillNo->afterSuccessfulSave();
-				}
-	//	processing BillNo - end
 			//	processing ProductID - begin
 							$condition = 1;
 			
@@ -400,22 +341,6 @@ if(@$_POST["a"] == "edited")
 					$control_OrdQuant->afterSuccessfulSave();
 				}
 	//	processing OrdQuant - end
-			//	processing DelQuant - begin
-							$condition = $inlineedit==EDIT_INLINE;//($inlineedit) inline mode
-			
-				if($condition)
-				{
-					$control_DelQuant->afterSuccessfulSave();
-				}
-	//	processing DelQuant - end
-			//	processing DelDate - begin
-							$condition = 1;
-			
-				if($condition)
-				{
-					$control_DelDate->afterSuccessfulSave();
-				}
-	//	processing DelDate - end
 				
 				//	after edit event
 				if($pageObject->lockingObj && $inlineedit == EDIT_INLINE)
@@ -548,13 +473,9 @@ if($globalEvents->exists("IsRecordEditable", $strTableName))
 
 if($readevalues)
 {
-	$data["ODetailID"] = $evalues["ODetailID"];
 	$data["OrderID"] = $evalues["OrderID"];
-	$data["BillNo"] = $evalues["BillNo"];
 	$data["ProductID"] = $evalues["ProductID"];
 	$data["OrdQuant"] = $evalues["OrdQuant"];
-	$data["DelQuant"] = $evalues["DelQuant"];
-	$data["DelDate"] = $evalues["DelDate"];
 }
 
 /////////////////////////////////////////////////////////////
@@ -600,14 +521,6 @@ if($inlineedit != EDIT_INLINE)
 	$xt->assign("OrdQuant_label",true);
 	if(isEnableSection508())
 		$xt->assign_section("OrdQuant_label","<label for=\"".GetInputElementId("OrdQuant", $id, PAGE_EDIT)."\">","</label>");
-		
-	if(!$pageObject->isAppearOnTabs("DelDate"))
-		$xt->assign("DelDate_fieldblock",true);
-	else
-		$xt->assign("DelDate_tabfieldblock",true);
-	$xt->assign("DelDate_label",true);
-	if(isEnableSection508())
-		$xt->assign_section("DelDate_label","<label for=\"".GetInputElementId("DelDate", $id, PAGE_EDIT)."\">","</label>");
 		
 
 	$xt->assign("show_key1", htmlspecialchars($pageObject->showDBValue("ODetailID", $data)));
@@ -707,7 +620,7 @@ if (postvalue("a")=="edited" && ($inlineedit == EDIT_INLINE || $inlineedit == ED
 	$showFields[] = "BillNo";
 		$showRawValues["BillNo"] = substr($data["BillNo"],0,100);
 
-//	ProductID - 
+//	ProductID - Custom
 	$value = $pageObject->showDBValue("ProductID", $data, $keylink);
 	$showValues["ProductID"] = $value;
 	$showFields[] = "ProductID";
@@ -731,11 +644,17 @@ if (postvalue("a")=="edited" && ($inlineedit == EDIT_INLINE || $inlineedit == ED
 	$showFields[] = "Total";
 		$showRawValues["Total"] = substr($data["Total"],0,100);
 
-//	DelDate - Short Date
+//	DelDate - Long Date
 	$value = $pageObject->showDBValue("DelDate", $data, $keylink);
 	$showValues["DelDate"] = $value;
 	$showFields[] = "DelDate";
 		$showRawValues["DelDate"] = substr($data["DelDate"],0,100);
+
+//	staffID - 
+	$value = $pageObject->showDBValue("staffID", $data, $keylink);
+	$showValues["staffID"] = $value;
+	$showFields[] = "staffID";
+		$showRawValues["staffID"] = substr($data["staffID"],0,100);
 /////////////////////////////////////////////////////////////
 //	start inline output
 /////////////////////////////////////////////////////////////
@@ -830,7 +749,7 @@ foreach($pageObject->editFields as $fName)
 				$control[$gfName]["params"]["mode"] = "edit";
 			$controls["controls"]['mode'] = "edit";
 		}
-								
+				
 	if(!$detailKeys || !in_array($fName, $detailKeys))
 		$xt->assignbyref($gfName."_editcontrol",$control[$gfName]);
 	elseif($detailKeys && in_array($fName, $detailKeys))

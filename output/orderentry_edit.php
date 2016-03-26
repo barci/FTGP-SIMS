@@ -48,10 +48,95 @@ $layout->skins["fields"] = "fields";
 
 $layout->skins["edit"] = "1";
 $layout->blocks["top"][] = "edit";
+$layout->containers["details"] = array();
+
+$layout->containers["details"][] = array("name"=>"editdetails","block"=>"detail_tables","substyle"=>1);
+
+
 $layout->skins["details"] = "empty";
 $layout->blocks["top"][] = "details";$page_layouts["orderentry_edit"] = $layout;
 
 
+
+$layout = new TLayout("list3","BoldOrange","MobileOrange");
+$layout->blocks["center"] = array();
+$layout->containers["message"] = array();
+
+$layout->containers["message"][] = array("name"=>"message","block"=>"message_block","substyle"=>1);
+
+
+$layout->skins["message"] = "2";
+$layout->blocks["center"][] = "message";
+$layout->containers["grid"] = array();
+
+$layout->containers["grid"][] = array("name"=>"grid","block"=>"grid_block","substyle"=>1);
+
+
+$layout->skins["grid"] = "grid";
+$layout->blocks["center"][] = "grid";
+$layout->containers["pagination"] = array();
+
+$layout->containers["pagination"][] = array("name"=>"pagination","block"=>"pagination_block","substyle"=>1);
+
+
+$layout->skins["pagination"] = "2";
+$layout->blocks["center"][] = "pagination";$layout->blocks["left"] = array();
+$layout->containers["left"] = array();
+
+$layout->containers["left"][] = array("name"=>"vsearch1","block"=>"searchform_block","substyle"=>2);
+
+
+$layout->containers["left"][] = array("name"=>"vsearch2","block"=>"searchform_block","substyle"=>1);
+
+
+$layout->containers["left"][] = array("name"=>"searchpanel","block"=>"searchPanel","substyle"=>1);
+
+
+$layout->containers["left"][] = array("name"=>"vdetails_found","block"=>"details_block","substyle"=>2);
+
+
+$layout->containers["left"][] = array("name"=>"vpage_of","block"=>"pages_block","substyle"=>1);
+
+
+$layout->containers["left"][] = array("name"=>"vrecsperpage","block"=>"recordspp_block","substyle"=>1);
+
+
+$layout->skins["left"] = "menu";
+$layout->blocks["left"][] = "left";$layout->blocks["top"] = array();
+$layout->skins["master"] = "empty";
+$layout->blocks["top"][] = "master";
+$layout->containers["toplinks"] = array();
+
+
+$layout->containers["toplinks"][] = array("name"=>"toplinks_advsearch","block"=>"asearch_link","substyle"=>1);
+
+
+
+
+
+$layout->containers["toplinks"][] = array("name"=>"loggedas","block"=>"security_block","substyle"=>1);
+
+
+
+$layout->skins["toplinks"] = "2";
+$layout->blocks["top"][] = "toplinks";
+$layout->containers["hmenu"] = array();
+
+$layout->containers["hmenu"][] = array("name"=>"hmenu","block"=>"menu_block","substyle"=>1);
+
+
+$layout->skins["hmenu"] = "hmenu";
+$layout->blocks["top"][] = "hmenu";
+$layout->containers["recordcontrols"] = array();
+
+$layout->containers["recordcontrols"][] = array("name"=>"recordcontrols_new","block"=>"newrecord_controls_block","substyle"=>1);
+
+
+$layout->containers["recordcontrols"][] = array("name"=>"recordcontrol","block"=>"record_controls_block","substyle"=>1);
+
+
+$layout->skins["recordcontrols"] = "1";
+$layout->blocks["top"][] = "recordcontrols";$page_layouts["orderdetail_list"] = $layout;
 
 
 if ((sizeof($_POST)==0) && (postvalue('ferror')) && (!postvalue("editid1"))){
@@ -90,7 +175,7 @@ $xt = new Xtempl();
 // assign an id
 $xt->assign("id",$id);
 
-$templatefile = ($inlineedit == EDIT_INLINE) ? "orderentry_inline_edit.htm" : "orderentry_edit.htm";
+$templatefile = "orderentry_edit.htm";
 
 //array of params for classes
 $params = array("pageType" => PAGE_EDIT,"id" => $id);
@@ -182,8 +267,8 @@ if($eventObj->exists("BeforeProcessEdit"))
 $keys = array();
 $skeys = "";
 $savedKeys = array();
-$keys["OrderID"] = urldecode(postvalue("editid1"));
-$savedKeys["OrderID"] = urldecode(postvalue("editid1"));
+$keys["ID"] = urldecode(postvalue("editid1"));
+$savedKeys["ID"] = urldecode(postvalue("editid1"));
 $skeys.= rawurlencode(postvalue("editid1"))."&";
 
 $pageObject->setKeys($keys);
@@ -198,7 +283,13 @@ if($inlineedit!=EDIT_INLINE)
 	if($pageObject->isShowDetailTables && !isMobile())
 	{
 		$ids = $id;
-			$pageObject->jsSettings['tableSettings'][$strTableName]['dpParams'] = array('tableNames'=>$dpParams['strTableNames'], 'ids'=>$dpParams['ids']);
+			$dpPermis = $pageObject->getPermissions("orderdetail");
+		if($dpPermis['search'] || $dpPermis['edit']){
+			$mKeys["orderdetail"] = $pageObject->pSet->getMasterKeysByDetailTable("orderdetail");
+			$dpParams['strTableNames'][] = "orderdetail";
+			$dpParams['ids'][] = ++$ids;
+		}
+		$pageObject->jsSettings['tableSettings'][$strTableName]['dpParams'] = array('tableNames'=>$dpParams['strTableNames'], 'ids'=>$dpParams['ids']);
 	}
 }
 /////////////////////////////////////////////////////////////
@@ -231,20 +322,17 @@ if(@$_POST["a"] == "edited")
 	
 
 //	processing OrderID - begin
-	$condition = 1;
+	$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 
 	if($condition)
 	{
 		$control_OrderID = $pageObject->getControl("OrderID", $id);
 		$control_OrderID->readWebValue($evalues, $blobfields, $strWhereClause, $oldValuesRead, $efilename_values);
 
-		//	update key value
-		if($control_OrderID->getWebValue()!==false)
-			$keys["OrderID"] = $control_OrderID->getWebValue();
-	}
+		}
 //	processing OrderID - end
 //	processing StaffID - begin
-	$condition = 1;
+	$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 
 	if($condition)
 	{
@@ -254,7 +342,7 @@ if(@$_POST["a"] == "edited")
 		}
 //	processing StaffID - end
 //	processing CID - begin
-	$condition = 1;
+	$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 
 	if($condition)
 	{
@@ -263,26 +351,26 @@ if(@$_POST["a"] == "edited")
 
 		}
 //	processing CID - end
-//	processing ODate - begin
-	$condition = 1;
+//	processing DelDate - begin
+	$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 
 	if($condition)
 	{
-		$control_ODate = $pageObject->getControl("ODate", $id);
-		$control_ODate->readWebValue($evalues, $blobfields, $strWhereClause, $oldValuesRead, $efilename_values);
+		$control_DelDate = $pageObject->getControl("DelDate", $id);
+		$control_DelDate->readWebValue($evalues, $blobfields, $strWhereClause, $oldValuesRead, $efilename_values);
 
 		}
-//	processing ODate - end
-//	processing ErrorMsg - begin
-	$condition = 1;
+//	processing DelDate - end
+//	processing Note - begin
+	$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 
 	if($condition)
 	{
-		$control_ErrorMsg = $pageObject->getControl("ErrorMsg", $id);
-		$control_ErrorMsg->readWebValue($evalues, $blobfields, $strWhereClause, $oldValuesRead, $efilename_values);
+		$control_Note = $pageObject->getControl("Note", $id);
+		$control_Note->readWebValue($evalues, $blobfields, $strWhereClause, $oldValuesRead, $efilename_values);
 
 		}
-//	processing ErrorMsg - end
+//	processing Note - end
 
 	foreach($efilename_values as $ekey=>$value)
 		$evalues[$ekey] = $value;
@@ -341,7 +429,7 @@ if(@$_POST["a"] == "edited")
 
 			// Give possibility to all edit controls to clean their data				
 			//	processing OrderID - begin
-							$condition = 1;
+							$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 			
 				if($condition)
 				{
@@ -349,7 +437,7 @@ if(@$_POST["a"] == "edited")
 				}
 	//	processing OrderID - end
 			//	processing StaffID - begin
-							$condition = 1;
+							$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 			
 				if($condition)
 				{
@@ -357,29 +445,29 @@ if(@$_POST["a"] == "edited")
 				}
 	//	processing StaffID - end
 			//	processing CID - begin
-							$condition = 1;
+							$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 			
 				if($condition)
 				{
 					$control_CID->afterSuccessfulSave();
 				}
 	//	processing CID - end
-			//	processing ODate - begin
-							$condition = 1;
+			//	processing DelDate - begin
+							$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 			
 				if($condition)
 				{
-					$control_ODate->afterSuccessfulSave();
+					$control_DelDate->afterSuccessfulSave();
 				}
-	//	processing ODate - end
-			//	processing ErrorMsg - begin
-							$condition = 1;
+	//	processing DelDate - end
+			//	processing Note - begin
+							$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 			
 				if($condition)
 				{
-					$control_ErrorMsg->afterSuccessfulSave();
+					$control_Note->afterSuccessfulSave();
 				}
-	//	processing ErrorMsg - end
+	//	processing Note - end
 				
 				//	after edit event
 				if($pageObject->lockingObj && $inlineedit == EDIT_INLINE)
@@ -464,7 +552,7 @@ if ($IsSaved && no_output_done() && $inlineedit == EDIT_SIMPLE)
 	$_SESSION["message_edit"] = ($message ? $message : "");
 	// key get query
 	$keyGetQ = "";
-		$keyGetQ.="editid1=".rawurldecode($keys["OrderID"])."&";
+		$keyGetQ.="editid1=".rawurldecode($keys["ID"])."&";
 	// cut last &
 	$keyGetQ = substr($keyGetQ, 0, strlen($keyGetQ)-1);	
 	// redirect
@@ -515,8 +603,8 @@ if($readevalues)
 	$data["OrderID"] = $evalues["OrderID"];
 	$data["StaffID"] = $evalues["StaffID"];
 	$data["CID"] = $evalues["CID"];
-	$data["ODate"] = $evalues["ODate"];
-	$data["ErrorMsg"] = $evalues["ErrorMsg"];
+	$data["DelDate"] = $evalues["DelDate"];
+	$data["Note"] = $evalues["Note"];
 }
 
 /////////////////////////////////////////////////////////////
@@ -563,24 +651,24 @@ if($inlineedit != EDIT_INLINE)
 	if(isEnableSection508())
 		$xt->assign_section("CID_label","<label for=\"".GetInputElementId("CID", $id, PAGE_EDIT)."\">","</label>");
 		
-	if(!$pageObject->isAppearOnTabs("ODate"))
-		$xt->assign("ODate_fieldblock",true);
+	if(!$pageObject->isAppearOnTabs("DelDate"))
+		$xt->assign("DelDate_fieldblock",true);
 	else
-		$xt->assign("ODate_tabfieldblock",true);
-	$xt->assign("ODate_label",true);
+		$xt->assign("DelDate_tabfieldblock",true);
+	$xt->assign("DelDate_label",true);
 	if(isEnableSection508())
-		$xt->assign_section("ODate_label","<label for=\"".GetInputElementId("ODate", $id, PAGE_EDIT)."\">","</label>");
+		$xt->assign_section("DelDate_label","<label for=\"".GetInputElementId("DelDate", $id, PAGE_EDIT)."\">","</label>");
 		
-	if(!$pageObject->isAppearOnTabs("ErrorMsg"))
-		$xt->assign("ErrorMsg_fieldblock",true);
+	if(!$pageObject->isAppearOnTabs("Note"))
+		$xt->assign("Note_fieldblock",true);
 	else
-		$xt->assign("ErrorMsg_tabfieldblock",true);
-	$xt->assign("ErrorMsg_label",true);
+		$xt->assign("Note_tabfieldblock",true);
+	$xt->assign("Note_label",true);
 	if(isEnableSection508())
-		$xt->assign_section("ErrorMsg_label","<label for=\"".GetInputElementId("ErrorMsg", $id, PAGE_EDIT)."\">","</label>");
+		$xt->assign_section("Note_label","<label for=\"".GetInputElementId("Note", $id, PAGE_EDIT)."\">","</label>");
 		
 
-	$xt->assign("show_key1", htmlspecialchars($pageObject->showDBValue("OrderID", $data)));
+	$xt->assign("show_key1", htmlspecialchars($pageObject->showDBValue("ID", $data)));
 	//$xt->assign('editForm',true);
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Begin Next Prev button
@@ -641,96 +729,6 @@ if(!strlen($message))
 //process readonly and auto-update fields
 /////////////////////////////////////////////////////////////
 
-/////////////////////////////////////////////////////////////
-//	return new data to the List page or report an error
-/////////////////////////////////////////////////////////////
-if (postvalue("a")=="edited" && ($inlineedit == EDIT_INLINE || $inlineedit == EDIT_POPUP))
-{
-	if(!$data)
-	{
-		$data = $evalues;
-		$HaveData = false;
-	}
-	//Preparation   view values
-
-//	detail tables
-	$showDetailKeys["orderdetail"]["masterkey1"] = $data["OrderID"];		
-
-	$keylink = "";
-	$keylink.= "&key1=".htmlspecialchars(rawurlencode(@$data["OrderID"]));
-
-
-//	OrderID - 
-	$value = $pageObject->showDBValue("OrderID", $data, $keylink);
-	$showValues["OrderID"] = $value;
-	$showFields[] = "OrderID";
-		$showRawValues["OrderID"] = substr($data["OrderID"],0,100);
-
-//	StaffID - 
-	$value = $pageObject->showDBValue("StaffID", $data, $keylink);
-	$showValues["StaffID"] = $value;
-	$showFields[] = "StaffID";
-		$showRawValues["StaffID"] = substr($data["StaffID"],0,100);
-
-//	CID - 
-	$value = $pageObject->showDBValue("CID", $data, $keylink);
-	$showValues["CID"] = $value;
-	$showFields[] = "CID";
-		$showRawValues["CID"] = substr($data["CID"],0,100);
-
-//	ODate - Short Date
-	$value = $pageObject->showDBValue("ODate", $data, $keylink);
-	$showValues["ODate"] = $value;
-	$showFields[] = "ODate";
-		$showRawValues["ODate"] = substr($data["ODate"],0,100);
-
-//	ErrorMsg - 
-	$value = $pageObject->showDBValue("ErrorMsg", $data, $keylink);
-	$showValues["ErrorMsg"] = $value;
-	$showFields[] = "ErrorMsg";
-		$showRawValues["ErrorMsg"] = substr($data["ErrorMsg"],0,100);
-/////////////////////////////////////////////////////////////
-//	start inline output
-/////////////////////////////////////////////////////////////
-	
-	if($IsSaved)
-	{
-		if($pageObject->lockingObj)
-			$pageObject->lockingObj->UnlockRecord($strTableName,$keys,"");
-		
-		$returnJSON['success'] = true;
-		$returnJSON['keys'] = $pageObject->jsKeys;
-		$returnJSON['keyFields'] = $pageObject->keyFields;
-		$returnJSON['vals'] = $showValues;
-		$returnJSON['fields'] = $showFields;
-		$returnJSON['rawVals'] = $showRawValues;
-		$returnJSON['detKeys'] = $showDetailKeys;
-		$returnJSON['userMess'] = $usermessage;
-		$returnJSON['hrefs'] = $pageObject->buildDetailGridLinks($showDetailKeys);
-		
-		if($inlineedit==EDIT_POPUP && isset($_SESSION[$strTableName."_count_captcha"]) || $_SESSION[$strTableName."_count_captcha"]>0 || $_SESSION[$strTableName."_count_captcha"]<5)
-			$returnJSON['hideCaptcha'] = true;
-			
-		if($globalEvents->exists("IsRecordEditable", $strTableName))
-		{
-			if(!$globalEvents->IsRecordEditable($showRawValues, true, $strTableName))
-				$returnJSON['nonEditable'] = true;
-		}
-	}
-	else
-	{
-		$returnJSON['success'] = false;
-		$returnJSON['message'] = $message;
-		
-		if($pageObject->lockingObj)
-			$returnJSON['lockMessage'] = $system_message;
-		
-		if($inlineedit == EDIT_POPUP && !$pageObject->isCaptchaOk)
-			$returnJSON['captcha'] = false;
-	}
-	echo "<textarea>".htmlspecialchars(my_json_encode($returnJSON))."</textarea>";
-	exit();
-} 
 /////////////////////////////////////////////////////////////
 //	prepare Edit Controls
 /////////////////////////////////////////////////////////////
@@ -961,6 +959,7 @@ if($inlineedit == EDIT_POPUP){
 
 $xt->assign("style_block",true);
 
+$pageObject->xt->assign("legend", true);
 
 $viewlink = "";
 $viewkeys = array();

@@ -1,8 +1,3 @@
-[17-Mar-2016 14:00:16] PHP Parse error:  syntax error, unexpected ';', expecting T_FUNCTION in C:\Users\rpbar\PHPRunnerProjects\FTGP-SIMS\output\include\stockrequest_events.php on line 95
-[17-Mar-2016 14:10:27] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in C:\Users\rpbar\PHPRunnerProjects\FTGP-SIMS\output\include\stockrequest_events.php on line 52
-[17-Mar-2016 14:12:46] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in C:\Users\rpbar\PHPRunnerProjects\FTGP-SIMS\output\include\stockrequest_events.php on line 52
-[17-Mar-2016 16:31:04] PHP Fatal error:  Call to a member function gSQLWhere() on a non-object in C:\Users\rpbar\PHPRunnerProjects\FTGP-SIMS\output\include\stockrequest_variables.php on line 18
-[17-Mar-2016 16:33:01] PHP Fatal error:  Call to a member function gSQLWhere() on a non-object in C:\Users\rpbar\PHPRunnerProjects\FTGP-SIMS\output\include\stockreceiving_variables.php on line 18
-[17-Mar-2016 16:41:33] PHP Fatal error:  Call to a member function gSQLWhere() on a non-object in C:\Users\rpbar\PHPRunnerProjects\FTGP-SIMS\output\include\stockrequest_variables.php on line 18
-[17-Mar-2016 16:41:39] PHP Fatal error:  Call to a member function gSQLWhere() on a non-object in C:\Users\rpbar\PHPRunnerProjects\FTGP-SIMS\output\include\Stocks_Received_variables.php on line 18
-[17-Mar-2016 16:41:42] PHP Fatal error:  Call to a member function gSQLWhere() on a non-object in C:\Users\rpbar\PHPRunnerProjects\FTGP-SIMS\output\include\stockrequest_variables.php on line 18
+[26-Mar-2016 16:16:07] PHP Parse error:  syntax error, unexpected T_IF in C:\Users\rpbar\PHPRunnerProjects\FTGP-SIMS\output\include\phpfunctions.php on line 654
+[26-Mar-2016 16:16:10] PHP Parse error:  syntax error, unexpected T_IF in C:\Users\rpbar\PHPRunnerProjects\FTGP-SIMS\output\include\phpfunctions.php on line 654
+[26-Mar-2016 17:50:41] PHP Parse error:  syntax error, unexpected T_BOOLEAN_AND in C:\Users\rpbar\PHPRunnerProjects\FTGP-SIMS\output\include\delivery_events.php on line 203

@@ -127,14 +127,25 @@
             Weight </A>{END Uweight_fieldheader}</P></TH>
           {END Uweight_fieldheadercolumn}{BEGIN UInStock_fieldheadercolumn}<TH class="runner-cc "><P align=center>{BEGIN UInStock_fieldheader}<A {$UInStock_orderlinkattrs}>Units 
             In Stock </A>{END UInStock_fieldheader}</P></TH>
-          {END UInStock_fieldheadercolumn}{BEGIN QPerUnit_fieldheadercolumn}<TH class="runner-cc "><P align=center>{BEGIN QPerUnit_fieldheader}<A {$QPerUnit_orderlinkattrs}>Quantity per Unit </A>{END QPerUnit_fieldheader}</P></TH>
-          {END QPerUnit_fieldheadercolumn}{BEGIN Qty_fieldheadercolumn}<TH class="runner-cc "><P align=center>{BEGIN Qty_fieldheader}<A {$Qty_orderlinkattrs}>Available 
-            Quantity (pcs) </A>{END Qty_fieldheader}</P></TH>
-          {END Qty_fieldheadercolumn}{BEGIN ReOrLevel_fieldheadercolumn}<TH class="runner-cc "><P align=center>{BEGIN ReOrLevel_fieldheader}<A {$ReOrLevel_orderlinkattrs}>Re-Order Level </A>{END ReOrLevel_fieldheader}</P></TH>
-          {END ReOrLevel_fieldheadercolumn}{BEGIN UInOrder_fieldheadercolumn}<TH class="runner-cc "><P align=center>{BEGIN UInOrder_fieldheader}<A {$UInOrder_orderlinkattrs}>Units 
+          {END UInStock_fieldheadercolumn}{BEGIN UInOrder_fieldheadercolumn}<TH class="runner-cc "><P align=center>{BEGIN UInOrder_fieldheader}<A {$UInOrder_orderlinkattrs}>Units 
             In Order </A>{END UInOrder_fieldheader}</P></TH>
-          {END UInOrder_fieldheadercolumn}{BEGIN Note_fieldheadercolumn}<TH class="runner-cc runner-clast">{BEGIN Note_fieldheader}<A {$Note_orderlinkattrs}>Note </A>{END Note_fieldheader}</TH>
-          {END Note_fieldheadercolumn}<TH class=runner-cr><IMG src="images/spacer.gif"></TH>
+          {END UInOrder_fieldheadercolumn}{BEGIN ReOrLevel_fieldheadercolumn}<TH class="runner-cc "><P align=center>{BEGIN ReOrLevel_fieldheader}<A {$ReOrLevel_orderlinkattrs}>Re-Order Level </A>{END ReOrLevel_fieldheader}</P></TH>
+          {END ReOrLevel_fieldheadercolumn}{BEGIN QPerUnit_fieldheadercolumn}<TH class="runner-cc "><P align=center>{BEGIN QPerUnit_fieldheader}<A {$QPerUnit_orderlinkattrs}>Quantity per Unit </A>{END QPerUnit_fieldheader}</P></TH>
+          {END QPerUnit_fieldheadercolumn}
+
+																	{BEGIN Qty_fieldheadercolumn}<TH class="runner-cc "><P align=center>{BEGIN Qty_fieldheader}<A {$Qty_orderlinkattrs}>Available 
+            Quantity (pcs) </A>{END Qty_fieldheader}</P></TH>
+          {END Qty_fieldheadercolumn}{BEGIN Note_fieldheadercolumn}<th class="runner-cc ">{BEGIN Note_fieldheader}<A {$Note_orderlinkattrs}>Note </A>{END Note_fieldheader}</th>
+          {END Note_fieldheadercolumn}{BEGIN staffID_fieldheadercolumn}<th class="runner-cc runner-clast">{BEGIN staffID_fieldheader}<a {$staffID_orderlinkattrs}>
+											Staff ID
+										</a>
+									{END staffID_fieldheader}
+									</th>
+									{END staffID_fieldheadercolumn}
+
+
+									
+									<TH class=runner-cr><IMG src="images/spacer.gif"></TH>
           {BEGIN endrecordheader_block}<TH class=runner-cs></TH>{END endrecordheader_block}{END record_header}</TR>{END grid_header}</THEAD>
         {BEGIN grid_row}<TR class="runner-row style1 {$rowclass}" {$rowstyle} {$rowattrs}>{BEGIN grid_record}<TD class=runner-cl {$rowstyle}></TD>
           {BEGIN listIcons_column}<TD class="runner-cc runner-bc runner-icons" iEditCont="all" {$rowstyle}>{BEGIN inlineedit_column}{BEGIN inlineedit_link}<A title="Inline Edit" class=runner-button-img {$inlineeditlink_attrs}><IMG class=runner-cicon alt="Inline Edit" src="images/icon_inline_edit_new.gif"></A> {END inlineedit_link}{END inlineedit_column}</TD>
@@ -162,12 +173,19 @@
 
 	{BEGIN Uweight_fieldcolumn}<TD class="runner-cc  {$Uweight_class}" {$Uweight_style}><P>{$Uweight_value}</P></TD>
           {END Uweight_fieldcolumn}{BEGIN UInStock_fieldcolumn}<TD class="runner-cc  {$UInStock_class}" {$UInStock_style}><P align=center>{$UInStock_value}</P></TD>
-          {END UInStock_fieldcolumn}{BEGIN QPerUnit_fieldcolumn}<TD class="runner-cc  {$QPerUnit_class}" {$QPerUnit_style}><P align=center>{$QPerUnit_value}</P></TD>
-          {END QPerUnit_fieldcolumn}{BEGIN Qty_fieldcolumn}<TD class="runner-cc  {$Qty_class}" {$Qty_style}><P align=center>{$Qty_value}</P></TD>
-          {END Qty_fieldcolumn}{BEGIN ReOrLevel_fieldcolumn}<TD class="runner-cc  {$ReOrLevel_class}" {$ReOrLevel_style}><P align=center>{$ReOrLevel_value}</P></TD>
-          {END ReOrLevel_fieldcolumn}{BEGIN UInOrder_fieldcolumn}<TD class="runner-cc  {$UInOrder_class}" {$UInOrder_style}><P align=center>{$UInOrder_value}</P></TD>
-          {END UInOrder_fieldcolumn}{BEGIN Note_fieldcolumn}<TD class="runner-cc runner-clast {$Note_class}" {$Note_style}>{$Note_value}</TD>
-          {END Note_fieldcolumn}<TD class=runner-cr {$rowstyle}></TD>
+          {END UInStock_fieldcolumn}{BEGIN UInOrder_fieldcolumn}<TD class="runner-cc  {$UInOrder_class}" {$UInOrder_style}><P align=center>{$UInOrder_value}</P></TD>
+          {END UInOrder_fieldcolumn}{BEGIN ReOrLevel_fieldcolumn}<TD class="runner-cc  {$ReOrLevel_class}" {$ReOrLevel_style}><P align=center>{$ReOrLevel_value}</P></TD>
+          {END ReOrLevel_fieldcolumn}{BEGIN QPerUnit_fieldcolumn}<TD class="runner-cc  {$QPerUnit_class}" {$QPerUnit_style}><P align=center>{$QPerUnit_value}</P></TD>
+          {END QPerUnit_fieldcolumn}
+
+	{BEGIN Qty_fieldcolumn}<TD class="runner-cc  {$Qty_class}" {$Qty_style}><P align=center>{$Qty_value}</P></TD>
+          {END Qty_fieldcolumn}{BEGIN Note_fieldcolumn}<td class="runner-cc  {$Note_class}" {$Note_style}>{$Note_value}</td>
+          {END Note_fieldcolumn}{BEGIN staffID_fieldcolumn}<td class="runner-cc runner-clast {$staffID_class}" {$staffID_style}>{$staffID_value}
+	</td>
+{END staffID_fieldcolumn}
+
+
+																		<TD class=runner-cr {$rowstyle}></TD>
           {BEGIN endrecord_block}<TD class=runner-cs {$endrecordblock_attrs}></TD>{END endrecord_block}{END grid_record}</TR>
         {END grid_row}{BEGIN grid_footer}<TR class="runner-bottomrow style1{$gridFooter_class}">{BEGIN record_footer}<TD class=runner-cl><IMG src="images/spacer.gif"></TD>
           {BEGIN listIcons_column}<TD class=runner-cc></TD>
@@ -185,12 +203,16 @@
           {END SuppID_fieldheadercolumn}
 {BEGIN Uweight_fieldheadercolumn}<TD class="runner-cc "></TD>
           {END Uweight_fieldheadercolumn}{BEGIN UInStock_fieldheadercolumn}<TD class="runner-cc "></TD>
-          {END UInStock_fieldheadercolumn}{BEGIN QPerUnit_fieldheadercolumn}<TD class="runner-cc "></TD>
-          {END QPerUnit_fieldheadercolumn}{BEGIN Qty_fieldheadercolumn}<TD class="runner-cc "></TD>
-          {END Qty_fieldheadercolumn}{BEGIN ReOrLevel_fieldheadercolumn}<TD class="runner-cc "></TD>
-          {END ReOrLevel_fieldheadercolumn}{BEGIN UInOrder_fieldheadercolumn}<TD class="runner-cc "></TD>
-          {END UInOrder_fieldheadercolumn}{BEGIN Note_fieldheadercolumn}<TD class="runner-cc runner-clast"></TD>
-          {END Note_fieldheadercolumn}<TD class=runner-cr><IMG src="images/spacer.gif"></TD>
+          {END UInStock_fieldheadercolumn}{BEGIN UInOrder_fieldheadercolumn}<TD class="runner-cc "></TD>
+          {END UInOrder_fieldheadercolumn}{BEGIN ReOrLevel_fieldheadercolumn}<TD class="runner-cc "></TD>
+          {END ReOrLevel_fieldheadercolumn}{BEGIN QPerUnit_fieldheadercolumn}<TD class="runner-cc "></TD>
+          {END QPerUnit_fieldheadercolumn}
+{BEGIN Qty_fieldheadercolumn}<TD class="runner-cc "></TD>
+          {END Qty_fieldheadercolumn}{BEGIN Note_fieldheadercolumn}<td class="runner-cc "></td>
+          {END Note_fieldheadercolumn}{BEGIN staffID_fieldheadercolumn}<td class="runner-cc runner-clast"></td>
+{END staffID_fieldheadercolumn}
+
+									<TD class=runner-cr><IMG src="images/spacer.gif"></TD>
           {BEGIN endrecordfooter_block}<TD class=runner-cs></TD>{END endrecordfooter_block}{END record_footer}</TR>{END grid_footer}</TABLE>{END grid_block}{END container_grid}
       {BEGIN container_pagination}<TABLE class="runner-c runner-c-pagination" cellPadding=0><TR class="{$cheaderclass_pagination}"><TD class=runner-cl><IMG src="images/spacer.gif"></TD>
           <TD class=runner-cc></TD>

@@ -93,14 +93,7 @@ Page {$pageno} of {$maxpages}
 		<tr class="runner-toprow style1">
 			<td class="runner-cl"><img src="images/spacer.gif"></td>
 			{BEGIN record_header}
-					{BEGIN ID_fieldheadercolumn}
-<th class="runner-cc">
-	{BEGIN ID_fieldheader}
-	<b>ID</b>
-	{END ID_fieldheader}
-</th>
-{END ID_fieldheadercolumn}
-	{BEGIN DrNo_fieldheadercolumn}
+					{BEGIN DrNo_fieldheadercolumn}
 <th class="runner-cc">
 	{BEGIN DrNo_fieldheader}
 	<b>DR No</b>
@@ -124,7 +117,7 @@ Page {$pageno} of {$maxpages}
 	{BEGIN qty_fieldheadercolumn}
 <th class="runner-cc">
 	{BEGIN qty_fieldheader}
-	<b>Qantity</b>
+	<b>Quantity</b>
 	{END qty_fieldheader}
 </th>
 {END qty_fieldheadercolumn}
@@ -135,6 +128,13 @@ Page {$pageno} of {$maxpages}
 	{END eta_fieldheader}
 </th>
 {END eta_fieldheadercolumn}
+	{BEGIN staffID_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN staffID_fieldheader}
+	<b>Staff ID</b>
+	{END staffID_fieldheader}
+</th>
+{END staffID_fieldheadercolumn}
 	{BEGIN delFlag_fieldheadercolumn}
 <th class="runner-cc">
 	{BEGIN delFlag_fieldheader}
@@ -156,12 +156,7 @@ Page {$pageno} of {$maxpages}
 	<tr class="runner-row style1" {$rowattrs} {$rowstyle} {$rowstyle}>
 		<td class="runner-cl"></td>
 		{BEGIN grid_record}
-				{BEGIN ID_fieldcolumn}
-<td  class="runner-cc {$ID_class}" {$ID_style}>
-	{$ID_value}
-</td>
-{END ID_fieldcolumn}
-	{BEGIN DrNo_fieldcolumn}
+				{BEGIN DrNo_fieldcolumn}
 <td  class="runner-cc {$DrNo_class}" {$DrNo_style}>
 	{$DrNo_value}
 </td>
@@ -186,6 +181,11 @@ Page {$pageno} of {$maxpages}
 	{$eta_value}
 </td>
 {END eta_fieldcolumn}
+	{BEGIN staffID_fieldcolumn}
+<td  class="runner-cc {$staffID_class}" {$staffID_style}>
+	{$staffID_value}
+</td>
+{END staffID_fieldcolumn}
 	{BEGIN delFlag_fieldcolumn}
 <td  class="runner-cc {$delFlag_class}" {$delFlag_style}>
 	{$delFlag_value}
@@ -203,10 +203,7 @@ Page {$pageno} of {$maxpages}
 								<tr class="runner-bottomrow style1">
 									<td class="runner-cl"><img src="images/spacer.gif"></td>
 									{BEGIN record_footer}
-									{BEGIN ID_fieldfootercolumn}
-<td class="runner-cc "></td>
-{END ID_fieldfootercolumn}
-{BEGIN DrNo_fieldfootercolumn}
+									{BEGIN DrNo_fieldfootercolumn}
 <td class="runner-cc "></td>
 {END DrNo_fieldfootercolumn}
 {BEGIN orderID_fieldfootercolumn}
@@ -221,6 +218,9 @@ Page {$pageno} of {$maxpages}
 {BEGIN eta_fieldfootercolumn}
 <td class="runner-cc "></td>
 {END eta_fieldfootercolumn}
+{BEGIN staffID_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END staffID_fieldfootercolumn}
 {BEGIN delFlag_fieldfootercolumn}
 <td class="runner-cc runner-clast"></td>
 {END delFlag_fieldfootercolumn}

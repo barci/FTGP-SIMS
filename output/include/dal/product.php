@@ -16,6 +16,7 @@ $dalTableproduct["UInOrder"] = array("type"=>3,"varname"=>"UInOrder");
 $dalTableproduct["ReOrLevel"] = array("type"=>3,"varname"=>"ReOrLevel");
 $dalTableproduct["Note"] = array("type"=>200,"varname"=>"Note");
 $dalTableproduct["TimeStamp"] = array("type"=>135,"varname"=>"TimeStamp");
+$dalTableproduct["staffID"] = array("type"=>200,"varname"=>"staffID");
 	$dalTableproduct["ProdID"]["key"]=true;
 $dal_info["product"]=&$dalTableproduct;
 

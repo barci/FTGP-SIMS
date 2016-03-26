@@ -1,0 +1,14 @@
+[Sat Mar 26 16:02:59 2016] [notice] Apache/2.2.17 (Win32) PHP/5.3.6RC3-dev configured -- resuming normal operations
+[Sat Mar 26 16:02:59 2016] [notice] Server built: Oct 18 2010 19:45:39
+[Sat Mar 26 16:02:59 2016] [notice] Parent: Created child process 11772
+[Sat Mar 26 16:02:59 2016] [notice] Child 11772: Child process is running
+[Sat Mar 26 16:02:59 2016] [notice] Child 11772: Acquired the start mutex.
+[Sat Mar 26 16:02:59 2016] [notice] Child 11772: Starting 64 worker threads.
+[Sat Mar 26 16:02:59 2016] [notice] Child 11772: Starting thread to listen on port 8085.
+[Sat Mar 26 16:03:11 2016] [error] [client 127.0.0.1] File does not exist: C:/Users/rpbar/PHPRunnerProjects/FTGP-SIMS/output/favicon.ico, referer: http://localhost:8085/login.php
+[Sat Mar 26 23:57:21 2016] [notice] Parent: Received shutdown signal -- Shutting down the server.
+[Sat Mar 26 23:57:21 2016] [notice] Child 11772: Exit event signaled. Child process is ending.
+[Sat Mar 26 23:57:22 2016] [notice] Child 11772: Released the start mutex
+[Sat Mar 26 23:57:23 2016] [notice] Child 11772: All worker threads have exited.
+[Sat Mar 26 23:57:23 2016] [notice] Child 11772: Child process is exiting
+[Sat Mar 26 23:57:23 2016] [notice] Parent: Child process exited successfully.

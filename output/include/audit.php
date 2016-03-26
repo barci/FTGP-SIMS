@@ -341,10 +341,6 @@ class AuditTrailTable
 		{
 			return false;
 		}
-		if($table=="orderentry")
-		{
-			return false;
-		}
 		if($table=="delivery")
 		{
 			return false;
@@ -362,6 +358,22 @@ class AuditTrailTable
 			return false;
 		}
 		if($table=="Stocks Received")
+		{
+			return false;
+		}
+		if($table=="DR Printing")
+		{
+			return false;
+		}
+		if($table=="packinglist")
+		{
+			return false;
+		}
+		if($table=="Delivery List View")
+		{
+			return false;
+		}
+		if($table=="orderentry")
 		{
 			return false;
 		}
@@ -689,10 +701,6 @@ class AuditTrailFile
 		{
 			return false;
 		}
-		if($table=="orderentry")
-		{
-			return false;
-		}
 		if($table=="delivery")
 		{
 			return false;
@@ -710,6 +718,22 @@ class AuditTrailFile
 			return false;
 		}
 		if($table=="Stocks Received")
+		{
+			return false;
+		}
+		if($table=="DR Printing")
+		{
+			return false;
+		}
+		if($table=="packinglist")
+		{
+			return false;
+		}
+		if($table=="Delivery List View")
+		{
+			return false;
+		}
+		if($table=="orderentry")
 		{
 			return false;
 		}

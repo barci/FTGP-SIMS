@@ -63,14 +63,7 @@ Page {$pageno} of {$maxpages}
 		<tr class="runner-toprow style1">
 			<td class="runner-cl"><img src="images/spacer.gif"></td>
 			{BEGIN record_header}
-					{BEGIN ODetailID_fieldheadercolumn}
-<th class="runner-cc">
-	{BEGIN ODetailID_fieldheader}
-	<b>ID</b>
-	{END ODetailID_fieldheader}
-</th>
-{END ODetailID_fieldheadercolumn}
-	{BEGIN OrderID_fieldheadercolumn}
+					{BEGIN OrderID_fieldheadercolumn}
 <th class="runner-cc">
 	{BEGIN OrderID_fieldheader}
 	<b>Order ID</b>
@@ -98,13 +91,6 @@ Page {$pageno} of {$maxpages}
 	{END DelQuant_fieldheader}
 </th>
 {END DelQuant_fieldheadercolumn}
-	{BEGIN Total_fieldheadercolumn}
-<th class="runner-cc">
-	{BEGIN Total_fieldheader}
-	<b>Total</b>
-	{END Total_fieldheader}
-</th>
-{END Total_fieldheadercolumn}
 	{BEGIN DelDate_fieldheadercolumn}
 <th class="runner-cc">
 	{BEGIN DelDate_fieldheader}
@@ -112,13 +98,6 @@ Page {$pageno} of {$maxpages}
 	{END DelDate_fieldheader}
 </th>
 {END DelDate_fieldheadercolumn}
-	{BEGIN BillNo_fieldheadercolumn}
-<th class="runner-cc">
-	{BEGIN BillNo_fieldheader}
-	<b>Bill No</b>
-	{END BillNo_fieldheader}
-</th>
-{END BillNo_fieldheadercolumn}
 		
 			{END record_header}
 			<td class="runner-cr"><img src="images/spacer.gif"></td>
@@ -133,12 +112,7 @@ Page {$pageno} of {$maxpages}
 	<tr class="runner-row style1" {$rowattrs} {$rowstyle} {$rowstyle}>
 		<td class="runner-cl"></td>
 		{BEGIN grid_record}
-				{BEGIN ODetailID_fieldcolumn}
-<td  class="runner-cc {$ODetailID_class}" {$ODetailID_style}>
-	{$ODetailID_value}
-</td>
-{END ODetailID_fieldcolumn}
-	{BEGIN OrderID_fieldcolumn}
+				{BEGIN OrderID_fieldcolumn}
 <td  class="runner-cc {$OrderID_class}" {$OrderID_style}>
 	{$OrderID_value}
 </td>
@@ -158,21 +132,11 @@ Page {$pageno} of {$maxpages}
 	{$DelQuant_value}
 </td>
 {END DelQuant_fieldcolumn}
-	{BEGIN Total_fieldcolumn}
-<td  class="runner-cc {$Total_class}" {$Total_style}>
-	{$Total_value}
-</td>
-{END Total_fieldcolumn}
 	{BEGIN DelDate_fieldcolumn}
 <td  class="runner-cc {$DelDate_class}" {$DelDate_style}>
 	{$DelDate_value}
 </td>
 {END DelDate_fieldcolumn}
-	{BEGIN BillNo_fieldcolumn}
-<td  class="runner-cc {$BillNo_class}" {$BillNo_style}>
-	{$BillNo_value}
-</td>
-{END BillNo_fieldcolumn}
 
 		{END grid_record}
 		<td class="runner-cr"></td>
@@ -185,10 +149,7 @@ Page {$pageno} of {$maxpages}
 								<tr class="runner-bottomrow style1">
 									<td class="runner-cl"><img src="images/spacer.gif"></td>
 									{BEGIN record_footer}
-									{BEGIN ODetailID_fieldfootercolumn}
-<td class="runner-cc "></td>
-{END ODetailID_fieldfootercolumn}
-{BEGIN OrderID_fieldfootercolumn}
+									{BEGIN OrderID_fieldfootercolumn}
 <td class="runner-cc "></td>
 {END OrderID_fieldfootercolumn}
 {BEGIN ProductID_fieldfootercolumn}
@@ -200,15 +161,9 @@ Page {$pageno} of {$maxpages}
 {BEGIN DelQuant_fieldfootercolumn}
 <td class="runner-cc "></td>
 {END DelQuant_fieldfootercolumn}
-{BEGIN Total_fieldfootercolumn}
-<td class="runner-cc "></td>
-{END Total_fieldfootercolumn}
 {BEGIN DelDate_fieldfootercolumn}
-<td class="runner-cc "></td>
-{END DelDate_fieldfootercolumn}
-{BEGIN BillNo_fieldfootercolumn}
 <td class="runner-cc runner-clast"></td>
-{END BillNo_fieldfootercolumn}
+{END DelDate_fieldfootercolumn}
 
 									{END record_footer}
 									<td class="runner-cr"><img src="images/spacer.gif"></td>

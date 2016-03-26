@@ -142,6 +142,13 @@ Page {$pageno} of {$maxpages}
 	{END Uweight_fieldheader}
 </th>
 {END Uweight_fieldheadercolumn}
+	{BEGIN ReOrLevel_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN ReOrLevel_fieldheader}
+	<b>Re-Order Level</b>
+	{END ReOrLevel_fieldheader}
+</th>
+{END ReOrLevel_fieldheadercolumn}
 	{BEGIN QPerUnit_fieldheadercolumn}
 <th class="runner-cc">
 	{BEGIN QPerUnit_fieldheader}
@@ -156,13 +163,13 @@ Page {$pageno} of {$maxpages}
 	{END Qty_fieldheader}
 </th>
 {END Qty_fieldheadercolumn}
-	{BEGIN ReOrLevel_fieldheadercolumn}
+	{BEGIN Note_fieldheadercolumn}
 <th class="runner-cc">
-	{BEGIN ReOrLevel_fieldheader}
-	<b>Re-Order Level</b>
-	{END ReOrLevel_fieldheader}
+	{BEGIN Note_fieldheader}
+	<b>Note</b>
+	{END Note_fieldheader}
 </th>
-{END ReOrLevel_fieldheadercolumn}
+{END Note_fieldheadercolumn}
 	{BEGIN Uprice_fieldheadercolumn}
 <th class="runner-cc">
 	{BEGIN Uprice_fieldheader}
@@ -170,6 +177,13 @@ Page {$pageno} of {$maxpages}
 	{END Uprice_fieldheader}
 </th>
 {END Uprice_fieldheadercolumn}
+	{BEGIN staffID_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN staffID_fieldheader}
+	<b>Staff ID</b>
+	{END staffID_fieldheader}
+</th>
+{END staffID_fieldheadercolumn}
 	{BEGIN USP_fieldheadercolumn}
 <th class="runner-cc">
 	{BEGIN USP_fieldheader}
@@ -184,13 +198,6 @@ Page {$pageno} of {$maxpages}
 	{END Discount_fieldheader}
 </th>
 {END Discount_fieldheadercolumn}
-	{BEGIN Note_fieldheadercolumn}
-<th class="runner-cc">
-	{BEGIN Note_fieldheader}
-	<b>Note</b>
-	{END Note_fieldheader}
-</th>
-{END Note_fieldheadercolumn}
 		
 			{END record_header}
 			<td class="runner-cr"><img src="images/spacer.gif"></td>
@@ -240,6 +247,11 @@ Page {$pageno} of {$maxpages}
 	{$Uweight_value}
 </td>
 {END Uweight_fieldcolumn}
+	{BEGIN ReOrLevel_fieldcolumn}
+<td  class="runner-cc {$ReOrLevel_class}" {$ReOrLevel_style}>
+	{$ReOrLevel_value}
+</td>
+{END ReOrLevel_fieldcolumn}
 	{BEGIN QPerUnit_fieldcolumn}
 <td  class="runner-cc {$QPerUnit_class}" {$QPerUnit_style}>
 	{$QPerUnit_value}
@@ -250,16 +262,21 @@ Page {$pageno} of {$maxpages}
 	{$Qty_value}
 </td>
 {END Qty_fieldcolumn}
-	{BEGIN ReOrLevel_fieldcolumn}
-<td  class="runner-cc {$ReOrLevel_class}" {$ReOrLevel_style}>
-	{$ReOrLevel_value}
+	{BEGIN Note_fieldcolumn}
+<td  class="runner-cc {$Note_class}" {$Note_style}>
+	{$Note_value}
 </td>
-{END ReOrLevel_fieldcolumn}
+{END Note_fieldcolumn}
 	{BEGIN Uprice_fieldcolumn}
 <td  class="runner-cc {$Uprice_class}" {$Uprice_style}>
 	{$Uprice_value}
 </td>
 {END Uprice_fieldcolumn}
+	{BEGIN staffID_fieldcolumn}
+<td  class="runner-cc {$staffID_class}" {$staffID_style}>
+	{$staffID_value}
+</td>
+{END staffID_fieldcolumn}
 	{BEGIN USP_fieldcolumn}
 <td  class="runner-cc {$USP_class}" {$USP_style}>
 	{$USP_value}
@@ -270,11 +287,6 @@ Page {$pageno} of {$maxpages}
 	{$Discount_value}
 </td>
 {END Discount_fieldcolumn}
-	{BEGIN Note_fieldcolumn}
-<td  class="runner-cc {$Note_class}" {$Note_style}>
-	{$Note_value}
-</td>
-{END Note_fieldcolumn}
 
 		{END grid_record}
 		<td class="runner-cr"></td>
@@ -308,27 +320,30 @@ Page {$pageno} of {$maxpages}
 {BEGIN Uweight_fieldfootercolumn}
 <td class="runner-cc "></td>
 {END Uweight_fieldfootercolumn}
+{BEGIN ReOrLevel_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END ReOrLevel_fieldfootercolumn}
 {BEGIN QPerUnit_fieldfootercolumn}
 <td class="runner-cc "></td>
 {END QPerUnit_fieldfootercolumn}
 {BEGIN Qty_fieldfootercolumn}
 <td class="runner-cc "></td>
 {END Qty_fieldfootercolumn}
-{BEGIN ReOrLevel_fieldfootercolumn}
+{BEGIN Note_fieldfootercolumn}
 <td class="runner-cc "></td>
-{END ReOrLevel_fieldfootercolumn}
+{END Note_fieldfootercolumn}
 {BEGIN Uprice_fieldfootercolumn}
 <td class="runner-cc "></td>
 {END Uprice_fieldfootercolumn}
+{BEGIN staffID_fieldfootercolumn}
+<td class="runner-cc "></td>
+{END staffID_fieldfootercolumn}
 {BEGIN USP_fieldfootercolumn}
 <td class="runner-cc "></td>
 {END USP_fieldfootercolumn}
 {BEGIN Discount_fieldfootercolumn}
-<td class="runner-cc "></td>
-{END Discount_fieldfootercolumn}
-{BEGIN Note_fieldfootercolumn}
 <td class="runner-cc runner-clast"></td>
-{END Note_fieldfootercolumn}
+{END Discount_fieldfootercolumn}
 
 									{END record_footer}
 									<td class="runner-cr"><img src="images/spacer.gif"></td>

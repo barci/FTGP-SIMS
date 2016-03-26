@@ -56,7 +56,7 @@
 	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
 	<td class="runner-cc runner-cc1">
 		<div class="fieldlabel_DrNo {$fielddispclass_DrNo}">
-			{BEGIN DrNo_label}Dr No{END DrNo_label}
+			{BEGIN DrNo_label}DR No{END DrNo_label}
 		</div>
 	</td>
 	<td class="runner-cc alt runner-fixedcell">
@@ -84,7 +84,7 @@
 	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
 	<td class="runner-cc runner-cc1">
 		<div class="fieldlabel_prodID {$fielddispclass_prodID}">
-			{BEGIN prodID_label}Prod ID{END prodID_label}
+			{BEGIN prodID_label}Product{END prodID_label}
 		</div>
 	</td>
 	<td class="runner-cc alt runner-fixedcell">
@@ -98,7 +98,7 @@
 	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
 	<td class="runner-cc runner-cc1">
 		<div class="fieldlabel_qty {$fielddispclass_qty}">
-			{BEGIN qty_label}Qty{END qty_label}
+			{BEGIN qty_label}Qantity{END qty_label}
 		</div>
 	</td>
 	<td class="runner-cc alt runner-fixedcell">
@@ -112,7 +112,7 @@
 	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
 	<td class="runner-cc runner-cc1">
 		<div class="fieldlabel_eta {$fielddispclass_eta}">
-			{BEGIN eta_label}Eta{END eta_label}
+			{BEGIN eta_label}ETA{END eta_label}
 		</div>
 	</td>
 	<td class="runner-cc alt runner-fixedcell">
@@ -122,20 +122,34 @@
 	</td>
 	<td class="runner-cr alt"></td></tr>
 {END eta_fieldblock}
-	{BEGIN acceptFlag_fieldblock}
+	{BEGIN staffID_fieldblock}
 	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
 	<td class="runner-cc runner-cc1">
-		<div class="fieldlabel_acceptFlag {$fielddispclass_acceptFlag}">
-			{BEGIN acceptFlag_label}Accept Flag{END acceptFlag_label}
+		<div class="fieldlabel_staffID {$fielddispclass_staffID}">
+			{BEGIN staffID_label}Staff ID{END staffID_label}
 		</div>
 	</td>
 	<td class="runner-cc alt runner-fixedcell">
-		<div class="fieldcontrol_acceptFlag {$fielddispclass_acceptFlag}">
-			{$acceptFlag_editcontrol}&nbsp;
+		<div class="fieldcontrol_staffID {$fielddispclass_staffID}">
+			{$staffID_editcontrol}&nbsp;
 		</div>
 	</td>
 	<td class="runner-cr alt"></td></tr>
-{END acceptFlag_fieldblock}
+{END staffID_fieldblock}
+	{BEGIN delFlag_fieldblock}
+	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
+	<td class="runner-cc runner-cc1">
+		<div class="fieldlabel_delFlag {$fielddispclass_delFlag}">
+			{BEGIN delFlag_label}Delivery Flag{END delFlag_label}
+		</div>
+	</td>
+	<td class="runner-cc alt runner-fixedcell">
+		<div class="fieldcontrol_delFlag {$fielddispclass_delFlag}">
+			{$delFlag_editcontrol}&nbsp;
+		</div>
+	</td>
+	<td class="runner-cr alt"></td></tr>
+{END delFlag_fieldblock}
 
 
 

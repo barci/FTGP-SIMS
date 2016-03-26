@@ -24,21 +24,24 @@
 	
 	<!-- choose controls div -->
 	<div class="runner-panel controlChooseMenu" {$controlChooseMenuDiv_attrs}>
+		{BEGIN addSearch_ID}
+			<a href="#" id="addSearchControl_ID" class="addSearchControl" {$addSearchControl_ID_attrs}>ID</a><br>
+		{END addSearch_ID}
 		{BEGIN addSearch_OrderID}
 			<a href="#" id="addSearchControl_OrderID" class="addSearchControl" {$addSearchControl_OrderID_attrs}>Order ID</a><br>
 		{END addSearch_OrderID}
 		{BEGIN addSearch_CID}
-			<a href="#" id="addSearchControl_CID" class="addSearchControl" {$addSearchControl_CID_attrs}>Customer</a><br>
+			<a href="#" id="addSearchControl_CID" class="addSearchControl" {$addSearchControl_CID_attrs}>CID</a><br>
 		{END addSearch_CID}
-		{BEGIN addSearch_ODate}
-			<a href="#" id="addSearchControl_ODate" class="addSearchControl" {$addSearchControl_ODate_attrs}>Order Date</a><br>
-		{END addSearch_ODate}
+		{BEGIN addSearch_DelDate}
+			<a href="#" id="addSearchControl_DelDate" class="addSearchControl" {$addSearchControl_DelDate_attrs}>Del Date</a><br>
+		{END addSearch_DelDate}
+		{BEGIN addSearch_Note}
+			<a href="#" id="addSearchControl_Note" class="addSearchControl" {$addSearchControl_Note_attrs}>Note</a><br>
+		{END addSearch_Note}
 		{BEGIN addSearch_StaffID}
-			<a href="#" id="addSearchControl_StaffID" class="addSearchControl" {$addSearchControl_StaffID_attrs}>Staff Incharge</a><br>
+			<a href="#" id="addSearchControl_StaffID" class="addSearchControl" {$addSearchControl_StaffID_attrs}>Staff ID</a><br>
 		{END addSearch_StaffID}
-		{BEGIN addSearch_ErrorMsg}
-			<a href="#" id="addSearchControl_ErrorMsg" class="addSearchControl" {$addSearchControl_ErrorMsg_attrs}>Error Msg</a><br>
-		{END addSearch_ErrorMsg}
 	</div>
 	
 	<table class="controlsBlock">

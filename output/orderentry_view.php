@@ -42,10 +42,101 @@ $layout->skins["fields"] = "fields";
 
 $layout->skins["view"] = "1";
 $layout->blocks["top"][] = "view";
+$layout->containers["details"] = array();
+
+$layout->containers["details"][] = array("name"=>"viewdetails","block"=>"detail_tables","substyle"=>1);
+
+
 $layout->skins["details"] = "empty";
 $layout->blocks["top"][] = "details";$page_layouts["orderentry_view"] = $layout;
 
 
+
+$layout = new TLayout("list3","BoldOrange","MobileOrange");
+$layout->blocks["center"] = array();
+$layout->containers["message"] = array();
+
+$layout->containers["message"][] = array("name"=>"message","block"=>"message_block","substyle"=>1);
+
+
+$layout->skins["message"] = "2";
+$layout->blocks["center"][] = "message";
+$layout->containers["grid"] = array();
+
+$layout->containers["grid"][] = array("name"=>"grid","block"=>"grid_block","substyle"=>1);
+
+
+$layout->skins["grid"] = "grid";
+$layout->blocks["center"][] = "grid";
+$layout->containers["pagination"] = array();
+
+$layout->containers["pagination"][] = array("name"=>"pagination","block"=>"pagination_block","substyle"=>1);
+
+
+$layout->skins["pagination"] = "2";
+$layout->blocks["center"][] = "pagination";$layout->blocks["left"] = array();
+$layout->containers["left"] = array();
+
+$layout->containers["left"][] = array("name"=>"vsearch1","block"=>"searchform_block","substyle"=>2);
+
+
+$layout->containers["left"][] = array("name"=>"vsearch2","block"=>"searchform_block","substyle"=>1);
+
+
+$layout->containers["left"][] = array("name"=>"searchpanel","block"=>"searchPanel","substyle"=>1);
+
+
+$layout->containers["left"][] = array("name"=>"vdetails_found","block"=>"details_block","substyle"=>2);
+
+
+$layout->containers["left"][] = array("name"=>"vpage_of","block"=>"pages_block","substyle"=>1);
+
+
+$layout->containers["left"][] = array("name"=>"vrecsperpage","block"=>"recordspp_block","substyle"=>1);
+
+
+$layout->skins["left"] = "menu";
+$layout->blocks["left"][] = "left";$layout->blocks["top"] = array();
+$layout->skins["master"] = "empty";
+$layout->blocks["top"][] = "master";
+$layout->containers["toplinks"] = array();
+
+$layout->containers["toplinks"][] = array("name"=>"toplinks_print","block"=>"prints_block","substyle"=>1);
+
+
+$layout->containers["toplinks"][] = array("name"=>"toplinks_advsearch","block"=>"asearch_link","substyle"=>1);
+
+
+$layout->containers["toplinks"][] = array("name"=>"toplinks_import","block"=>"import_link","substyle"=>1);
+
+
+$layout->containers["toplinks"][] = array("name"=>"toplinks_export","block"=>"export_link","substyle"=>1);
+
+
+
+$layout->containers["toplinks"][] = array("name"=>"loggedas","block"=>"security_block","substyle"=>1);
+
+
+
+$layout->skins["toplinks"] = "2";
+$layout->blocks["top"][] = "toplinks";
+$layout->containers["hmenu"] = array();
+
+$layout->containers["hmenu"][] = array("name"=>"hmenu","block"=>"menu_block","substyle"=>1);
+
+
+$layout->skins["hmenu"] = "hmenu";
+$layout->blocks["top"][] = "hmenu";
+$layout->containers["recordcontrols"] = array();
+
+$layout->containers["recordcontrols"][] = array("name"=>"recordcontrols_new","block"=>"newrecord_controls_block","substyle"=>1);
+
+
+$layout->containers["recordcontrols"][] = array("name"=>"recordcontrol","block"=>"record_controls_block","substyle"=>1);
+
+
+$layout->skins["recordcontrols"] = "1";
+$layout->blocks["top"][] = "recordcontrols";$page_layouts["orderdetail_list"] = $layout;
 
 
 //$cipherer = new RunnerCipherer($strTableName);
@@ -108,6 +199,12 @@ $dpParams = array();
 if($pageObject->isShowDetailTables && !isMobile())
 {
 	$ids = $id;
+	$dpPermis = $pageObject->getPermissions("orderdetail");
+	if ($dpPermis['search']){
+		$mKeys["orderdetail"] = $pageObject->pSet->getMasterKeysByDetailTable("orderdetail");
+		$dpParams['strTableNames'][] = "orderdetail";
+		$dpParams['ids'][] = ++$ids;
+	}
 	$pageObject->jsSettings['tableSettings'][$strTableName]['dpParams'] = array();
 }
 
@@ -127,24 +224,32 @@ $out = "";
 $first = true;
 $fieldsArr = array();
 $arr = array();
+$arr['fName'] = "ID";
+$arr['viewFormat'] = $pageObject->pSet->getViewFormat("ID");
+$fieldsArr[] = $arr;
+$arr = array();
 $arr['fName'] = "OrderID";
 $arr['viewFormat'] = $pageObject->pSet->getViewFormat("OrderID");
-$fieldsArr[] = $arr;
-$arr = array();
-$arr['fName'] = "CID";
-$arr['viewFormat'] = $pageObject->pSet->getViewFormat("CID");
-$fieldsArr[] = $arr;
-$arr = array();
-$arr['fName'] = "ODate";
-$arr['viewFormat'] = $pageObject->pSet->getViewFormat("ODate");
 $fieldsArr[] = $arr;
 $arr = array();
 $arr['fName'] = "StaffID";
 $arr['viewFormat'] = $pageObject->pSet->getViewFormat("StaffID");
 $fieldsArr[] = $arr;
 $arr = array();
-$arr['fName'] = "ErrorMsg";
-$arr['viewFormat'] = $pageObject->pSet->getViewFormat("ErrorMsg");
+$arr['fName'] = "CID";
+$arr['viewFormat'] = $pageObject->pSet->getViewFormat("CID");
+$fieldsArr[] = $arr;
+$arr = array();
+$arr['fName'] = "DelDate";
+$arr['viewFormat'] = $pageObject->pSet->getViewFormat("DelDate");
+$fieldsArr[] = $arr;
+$arr = array();
+$arr['fName'] = "Note";
+$arr['viewFormat'] = $pageObject->pSet->getViewFormat("Note");
+$fieldsArr[] = $arr;
+$arr = array();
+$arr['fName'] = "TimeStamp";
+$arr['viewFormat'] = $pageObject->pSet->getViewFormat("TimeStamp");
 $fieldsArr[] = $arr;
 
 $mainTableOwnerID = $pageObject->pSet->getTableOwnerIdField();
@@ -154,11 +259,22 @@ $pageObject->setGoogleMapsParams($fieldsArr);
 
 while($data)
 {
-	$xt->assign("show_key1", htmlspecialchars($pageObject->showDBValue("OrderID", $data)));
+	$xt->assign("show_key1", htmlspecialchars($pageObject->showDBValue("ID", $data)));
 
 	$keylink="";
-	$keylink.="&key1=".htmlspecialchars(rawurlencode(@$data["OrderID"]));
+	$keylink.="&key1=".htmlspecialchars(rawurlencode(@$data["ID"]));
 
+////////////////////////////////////////////
+//ID - 
+	
+	$value = $pageObject->showDBValue("ID", $data, $keylink);
+	if($mainTableOwnerID=="ID")
+		$ownerIdValue=$value;
+	$xt->assign("ID_value",$value);
+	if(!$pageObject->isAppearOnTabs("ID"))
+		$xt->assign("ID_fieldblock",true);
+	else
+		$xt->assign("ID_tabfieldblock",true);
 ////////////////////////////////////////////
 //OrderID - 
 	
@@ -171,28 +287,6 @@ while($data)
 	else
 		$xt->assign("OrderID_tabfieldblock",true);
 ////////////////////////////////////////////
-//CID - 
-	
-	$value = $pageObject->showDBValue("CID", $data, $keylink);
-	if($mainTableOwnerID=="CID")
-		$ownerIdValue=$value;
-	$xt->assign("CID_value",$value);
-	if(!$pageObject->isAppearOnTabs("CID"))
-		$xt->assign("CID_fieldblock",true);
-	else
-		$xt->assign("CID_tabfieldblock",true);
-////////////////////////////////////////////
-//ODate - Short Date
-	
-	$value = $pageObject->showDBValue("ODate", $data, $keylink);
-	if($mainTableOwnerID=="ODate")
-		$ownerIdValue=$value;
-	$xt->assign("ODate_value",$value);
-	if(!$pageObject->isAppearOnTabs("ODate"))
-		$xt->assign("ODate_fieldblock",true);
-	else
-		$xt->assign("ODate_tabfieldblock",true);
-////////////////////////////////////////////
 //StaffID - 
 	
 	$value = $pageObject->showDBValue("StaffID", $data, $keylink);
@@ -204,16 +298,49 @@ while($data)
 	else
 		$xt->assign("StaffID_tabfieldblock",true);
 ////////////////////////////////////////////
-//ErrorMsg - 
+//CID - 
 	
-	$value = $pageObject->showDBValue("ErrorMsg", $data, $keylink);
-	if($mainTableOwnerID=="ErrorMsg")
+	$value = $pageObject->showDBValue("CID", $data, $keylink);
+	if($mainTableOwnerID=="CID")
 		$ownerIdValue=$value;
-	$xt->assign("ErrorMsg_value",$value);
-	if(!$pageObject->isAppearOnTabs("ErrorMsg"))
-		$xt->assign("ErrorMsg_fieldblock",true);
+	$xt->assign("CID_value",$value);
+	if(!$pageObject->isAppearOnTabs("CID"))
+		$xt->assign("CID_fieldblock",true);
 	else
-		$xt->assign("ErrorMsg_tabfieldblock",true);
+		$xt->assign("CID_tabfieldblock",true);
+////////////////////////////////////////////
+//DelDate - Short Date
+	
+	$value = $pageObject->showDBValue("DelDate", $data, $keylink);
+	if($mainTableOwnerID=="DelDate")
+		$ownerIdValue=$value;
+	$xt->assign("DelDate_value",$value);
+	if(!$pageObject->isAppearOnTabs("DelDate"))
+		$xt->assign("DelDate_fieldblock",true);
+	else
+		$xt->assign("DelDate_tabfieldblock",true);
+////////////////////////////////////////////
+//Note - 
+	
+	$value = $pageObject->showDBValue("Note", $data, $keylink);
+	if($mainTableOwnerID=="Note")
+		$ownerIdValue=$value;
+	$xt->assign("Note_value",$value);
+	if(!$pageObject->isAppearOnTabs("Note"))
+		$xt->assign("Note_fieldblock",true);
+	else
+		$xt->assign("Note_tabfieldblock",true);
+////////////////////////////////////////////
+//TimeStamp - Short Date
+	
+	$value = $pageObject->showDBValue("TimeStamp", $data, $keylink);
+	if($mainTableOwnerID=="TimeStamp")
+		$ownerIdValue=$value;
+	$xt->assign("TimeStamp_value",$value);
+	if(!$pageObject->isAppearOnTabs("TimeStamp"))
+		$xt->assign("TimeStamp_fieldblock",true);
+	else
+		$xt->assign("TimeStamp_tabfieldblock",true);
 
 /////////////////////////////////////////////////////////////
 if($pageObject->isShowDetailTables && !isMobile())

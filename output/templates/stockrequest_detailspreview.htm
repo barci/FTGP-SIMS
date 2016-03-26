@@ -40,11 +40,12 @@
 		<th class="runner-cl"><img src="images/spacer.gif"></th>
 		<th class="runner-cc ">ID</th>
 		<th class="runner-cc ">Request ID</th>
-		<th class="runner-cc ">Staff</th>
 		<th class="runner-cc ">Product</th>
 		<th class="runner-cc ">Qty</th>
+		<th class="runner-cc ">Time Stamp</th>
 		<th class="runner-cc ">Notes</th>
-		<th class="runner-cc runner-clast">Receive Flag</th>
+		<th class="runner-cc ">Receive Flag</th>
+		<th class="runner-cc runner-clast">Staff</th>
 		<th class="runner-cr"><img src="images/spacer.gif"></th>
 	</tr>
 	{BEGIN details_row}
@@ -52,16 +53,18 @@
 		<td class="runner-cl"><img src="images/spacer.gif"></td>
 		<td class="runner-cc ">{$ID_value}</td>
 		<td class="runner-cc ">{$RequestID_value}</td>
-		<td class="runner-cc ">{$StaffID_value}</td>
 		<td class="runner-cc ">{$ProductID_value}</td>
 		<td class="runner-cc ">{$Qty_value}</td>
+		<td class="runner-cc ">{$TimeStamp_value}</td>
 		<td class="runner-cc ">{$Notes_value}</td>
-		<td class="runner-cc runner-clast">{$ReceiveFlag_value}</td>
+		<td class="runner-cc ">{$ReceiveFlag_value}</td>
+		<td class="runner-cc runner-clast">{$StaffID_value}</td>
 		<td class="runner-cr"><img src="images/spacer.gif"></td>
 	</tr>
 	{END details_row}
 	<tr class="runner-bottomrow style1">
 		<td class="runner-cl"><img src="images/spacer.gif"></td>
+			<td class="runner-cc "></td>
 			<td class="runner-cc "></td>
 			<td class="runner-cc "></td>
 			<td class="runner-cc "></td>

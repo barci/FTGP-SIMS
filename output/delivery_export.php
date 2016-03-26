@@ -354,6 +354,7 @@ function ExportToXML($cipherer)
 			$values["prodID"] = $pageObject->showDBValue("prodID", $row);
 			$values["qty"] = $pageObject->showDBValue("qty", $row);
 			$values["eta"] = $pageObject->showDBValue("eta", $row);
+			$values["staffID"] = $pageObject->showDBValue("staffID", $row);
 			$values["delFlag"] = $pageObject->showDBValue("delFlag", $row);
 		
 		$eventRes = true;
@@ -416,6 +417,9 @@ function ExportToCSV($cipherer)
 	$outstr.= "\"eta\"";
 	if($outstr!="")
 		$outstr.=",";
+	$outstr.= "\"staffID\"";
+	if($outstr!="")
+		$outstr.=",";
 	$outstr.= "\"delFlag\"";
 	echo $outstr;
 	echo "\r\n";
@@ -432,6 +436,7 @@ function ExportToCSV($cipherer)
 			$values["prodID"] = $pageObject->getViewControl("prodID")->showDBValue($row, "");
 			$values["qty"] = $pageObject->getViewControl("qty")->showDBValue($row, "");
 			$values["eta"] = $pageObject->getViewControl("eta")->showDBValue($row, "");
+			$values["staffID"] = $pageObject->getViewControl("staffID")->showDBValue($row, "");
 			$values["delFlag"] = $pageObject->getViewControl("delFlag")->showDBValue($row, "");
 
 		$eventRes = true;
@@ -460,6 +465,9 @@ function ExportToCSV($cipherer)
 			if($outstr!="")
 				$outstr.=",";
 			$outstr.='"'.str_replace('"', '""', $values["eta"]).'"';
+			if($outstr!="")
+				$outstr.=",";
+			$outstr.='"'.str_replace('"', '""', $values["staffID"]).'"';
 			if($outstr!="")
 				$outstr.=",";
 			$outstr.='"'.str_replace('"', '""', $values["delFlag"]).'"';
@@ -497,6 +505,7 @@ function WriteTableData($cipherer)
 		echo '<td style="width: 100" x:str>'.PrepareForExcel("Product").'</td>';	
 		echo '<td style="width: 100" x:str>'.PrepareForExcel("Qantity").'</td>';	
 		echo '<td style="width: 100" x:str>'.PrepareForExcel("ETA").'</td>';	
+		echo '<td style="width: 100" x:str>'.PrepareForExcel("Staff ID").'</td>';	
 		echo '<td style="width: 100" x:str>'.PrepareForExcel("Delivery Flag").'</td>';	
 	}
 	else
@@ -507,6 +516,7 @@ function WriteTableData($cipherer)
 		echo "<td>"."Product"."</td>";
 		echo "<td>"."Qantity"."</td>";
 		echo "<td>"."ETA"."</td>";
+		echo "<td>"."Staff ID"."</td>";
 		echo "<td>"."Delivery Flag"."</td>";
 	}
 	echo "</tr>";
@@ -526,6 +536,7 @@ function WriteTableData($cipherer)
 					$values["prodID"] = $pageObject->getViewControl("prodID")->showDBValue($row, "");
 					$values["qty"] = $pageObject->getViewControl("qty")->showDBValue($row, "");
 					$values["eta"] = $pageObject->getViewControl("eta")->showDBValue($row, "");
+					$values["staffID"] = $pageObject->getViewControl("staffID")->showDBValue($row, "");
 					$values["delFlag"] = $pageObject->getViewControl("delFlag")->showDBValue($row, "");
 		
 		$eventRes = true;
@@ -586,6 +597,18 @@ function WriteTableData($cipherer)
 						echo PrepareForExcel($values["eta"]);
 					else
 						echo $values["eta"];
+			echo '</td>';
+							if($_REQUEST["type"]=="excel")
+					echo '<td x:str>';
+				else
+					echo '<td>';
+			
+				
+								if($_REQUEST["type"]=="excel")
+					echo PrepareForExcel($values["staffID"]);
+				else
+					echo $values["staffID"];//echo htmlspecialchars($values["staffID"]); commented for bug #6823
+					
 			echo '</td>';
 							if($_REQUEST["type"]=="excel")
 					echo '<td x:str>';

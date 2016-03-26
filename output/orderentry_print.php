@@ -83,7 +83,7 @@ if (@$_REQUEST["a"]!="")
 		foreach(@$_REQUEST["mdelete"] as $ind)
 		{
 			$keys=array();
-			$keys["OrderID"]=refine($_REQUEST["mdelete1"][mdeleteIndex($ind)]);
+			$keys["ID"]=refine($_REQUEST["mdelete1"][mdeleteIndex($ind)]);
 			$selected_recs[]=$keys;
 		}
 	}
@@ -95,7 +95,7 @@ if (@$_REQUEST["a"]!="")
 			if(count($arr)<1)
 				continue;
 			$keys=array();
-			$keys["OrderID"]=urldecode($arr[0]);
+			$keys["ID"]=urldecode($arr[0]);
 			$selected_recs[]=$keys;
 		}
 	}
@@ -250,6 +250,10 @@ else
 
 $fieldsArr = array();
 $arr = array();
+$arr['fName'] = "ID";
+$arr['viewFormat'] = $pageObject->pSet->getViewFormat("ID");
+$fieldsArr[] = $arr;
+$arr = array();
 $arr['fName'] = "OrderID";
 $arr['viewFormat'] = $pageObject->pSet->getViewFormat("OrderID");
 $fieldsArr[] = $arr;
@@ -262,12 +266,16 @@ $arr['fName'] = "CID";
 $arr['viewFormat'] = $pageObject->pSet->getViewFormat("CID");
 $fieldsArr[] = $arr;
 $arr = array();
-$arr['fName'] = "ODate";
-$arr['viewFormat'] = $pageObject->pSet->getViewFormat("ODate");
+$arr['fName'] = "DelDate";
+$arr['viewFormat'] = $pageObject->pSet->getViewFormat("DelDate");
 $fieldsArr[] = $arr;
 $arr = array();
-$arr['fName'] = "ErrorMsg";
-$arr['viewFormat'] = $pageObject->pSet->getViewFormat("ErrorMsg");
+$arr['fName'] = "Note";
+$arr['viewFormat'] = $pageObject->pSet->getViewFormat("Note");
+$fieldsArr[] = $arr;
+$arr = array();
+$arr['fName'] = "TimeStamp";
+$arr['viewFormat'] = $pageObject->pSet->getViewFormat("TimeStamp");
 $fieldsArr[] = $arr;
 $pageObject->setGoogleMapsParams($fieldsArr);
 
@@ -314,23 +322,29 @@ if($colsonpage<1)
 			$recno++;
 			$records++;
 			$keylink="";
-			$keylink.="&key1=".htmlspecialchars(rawurlencode(@$data["OrderID"]));
+			$keylink.="&key1=".htmlspecialchars(rawurlencode(@$data["ID"]));
 
+//	ID - 
+			$record["ID_value"] = $pageObject->showDBValue("ID", $data, $keylink);
+			$record["ID_class"] = $pageObject->fieldClass("ID");
 //	OrderID - 
 			$record["OrderID_value"] = $pageObject->showDBValue("OrderID", $data, $keylink);
 			$record["OrderID_class"] = $pageObject->fieldClass("OrderID");
-//	CID - 
-			$record["CID_value"] = $pageObject->showDBValue("CID", $data, $keylink);
-			$record["CID_class"] = $pageObject->fieldClass("CID");
-//	ODate - Short Date
-			$record["ODate_value"] = $pageObject->showDBValue("ODate", $data, $keylink);
-			$record["ODate_class"] = $pageObject->fieldClass("ODate");
 //	StaffID - 
 			$record["StaffID_value"] = $pageObject->showDBValue("StaffID", $data, $keylink);
 			$record["StaffID_class"] = $pageObject->fieldClass("StaffID");
-//	ErrorMsg - 
-			$record["ErrorMsg_value"] = $pageObject->showDBValue("ErrorMsg", $data, $keylink);
-			$record["ErrorMsg_class"] = $pageObject->fieldClass("ErrorMsg");
+//	CID - 
+			$record["CID_value"] = $pageObject->showDBValue("CID", $data, $keylink);
+			$record["CID_class"] = $pageObject->fieldClass("CID");
+//	DelDate - Short Date
+			$record["DelDate_value"] = $pageObject->showDBValue("DelDate", $data, $keylink);
+			$record["DelDate_class"] = $pageObject->fieldClass("DelDate");
+//	Note - 
+			$record["Note_value"] = $pageObject->showDBValue("Note", $data, $keylink);
+			$record["Note_class"] = $pageObject->fieldClass("Note");
+//	TimeStamp - Short Date
+			$record["TimeStamp_value"] = $pageObject->showDBValue("TimeStamp", $data, $keylink);
+			$record["TimeStamp_class"] = $pageObject->fieldClass("TimeStamp");
 			if($col<$colsonpage)
 				$record["endrecord_block"] = true;
 			$record["grid_recordheader"] = true;
@@ -434,26 +448,34 @@ if ($pageObject->pSet->isUsebuttonHandlers() || $isPdfView || $hasEvents)
 $xt->assignbyref("body",$pageObject->body);
 $xt->assign("grid_block",true);
 
+$xt->assign("ID_fieldheadercolumn",true);
+$xt->assign("ID_fieldheader",true);
+$xt->assign("ID_fieldcolumn",true);
+$xt->assign("ID_fieldfootercolumn",true);
 $xt->assign("OrderID_fieldheadercolumn",true);
 $xt->assign("OrderID_fieldheader",true);
 $xt->assign("OrderID_fieldcolumn",true);
 $xt->assign("OrderID_fieldfootercolumn",true);
-$xt->assign("CID_fieldheadercolumn",true);
-$xt->assign("CID_fieldheader",true);
-$xt->assign("CID_fieldcolumn",true);
-$xt->assign("CID_fieldfootercolumn",true);
-$xt->assign("ODate_fieldheadercolumn",true);
-$xt->assign("ODate_fieldheader",true);
-$xt->assign("ODate_fieldcolumn",true);
-$xt->assign("ODate_fieldfootercolumn",true);
 $xt->assign("StaffID_fieldheadercolumn",true);
 $xt->assign("StaffID_fieldheader",true);
 $xt->assign("StaffID_fieldcolumn",true);
 $xt->assign("StaffID_fieldfootercolumn",true);
-$xt->assign("ErrorMsg_fieldheadercolumn",true);
-$xt->assign("ErrorMsg_fieldheader",true);
-$xt->assign("ErrorMsg_fieldcolumn",true);
-$xt->assign("ErrorMsg_fieldfootercolumn",true);
+$xt->assign("CID_fieldheadercolumn",true);
+$xt->assign("CID_fieldheader",true);
+$xt->assign("CID_fieldcolumn",true);
+$xt->assign("CID_fieldfootercolumn",true);
+$xt->assign("DelDate_fieldheadercolumn",true);
+$xt->assign("DelDate_fieldheader",true);
+$xt->assign("DelDate_fieldcolumn",true);
+$xt->assign("DelDate_fieldfootercolumn",true);
+$xt->assign("Note_fieldheadercolumn",true);
+$xt->assign("Note_fieldheader",true);
+$xt->assign("Note_fieldcolumn",true);
+$xt->assign("Note_fieldfootercolumn",true);
+$xt->assign("TimeStamp_fieldheadercolumn",true);
+$xt->assign("TimeStamp_fieldheader",true);
+$xt->assign("TimeStamp_fieldcolumn",true);
+$xt->assign("TimeStamp_fieldfootercolumn",true);
 
 	$record_header=array("data"=>array());
 	$record_footer=array("data"=>array());

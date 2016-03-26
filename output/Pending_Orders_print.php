@@ -250,16 +250,8 @@ else
 
 $fieldsArr = array();
 $arr = array();
-$arr['fName'] = "ODetailID";
-$arr['viewFormat'] = $pageObject->pSet->getViewFormat("ODetailID");
-$fieldsArr[] = $arr;
-$arr = array();
 $arr['fName'] = "OrderID";
 $arr['viewFormat'] = $pageObject->pSet->getViewFormat("OrderID");
-$fieldsArr[] = $arr;
-$arr = array();
-$arr['fName'] = "BillNo";
-$arr['viewFormat'] = $pageObject->pSet->getViewFormat("BillNo");
 $fieldsArr[] = $arr;
 $arr = array();
 $arr['fName'] = "ProductID";
@@ -272,10 +264,6 @@ $fieldsArr[] = $arr;
 $arr = array();
 $arr['fName'] = "DelQuant";
 $arr['viewFormat'] = $pageObject->pSet->getViewFormat("DelQuant");
-$fieldsArr[] = $arr;
-$arr = array();
-$arr['fName'] = "Total";
-$arr['viewFormat'] = $pageObject->pSet->getViewFormat("Total");
 $fieldsArr[] = $arr;
 $arr = array();
 $arr['fName'] = "DelDate";
@@ -328,9 +316,6 @@ if($colsonpage<1)
 			$keylink="";
 			$keylink.="&key1=".htmlspecialchars(rawurlencode(@$data["ODetailID"]));
 
-//	ODetailID - 
-			$record["ODetailID_value"] = $pageObject->showDBValue("ODetailID", $data, $keylink);
-			$record["ODetailID_class"] = $pageObject->fieldClass("ODetailID");
 //	OrderID - 
 			$record["OrderID_value"] = $pageObject->showDBValue("OrderID", $data, $keylink);
 			$record["OrderID_class"] = $pageObject->fieldClass("OrderID");
@@ -343,15 +328,9 @@ if($colsonpage<1)
 //	DelQuant - 
 			$record["DelQuant_value"] = $pageObject->showDBValue("DelQuant", $data, $keylink);
 			$record["DelQuant_class"] = $pageObject->fieldClass("DelQuant");
-//	Total - Number
-			$record["Total_value"] = $pageObject->showDBValue("Total", $data, $keylink);
-			$record["Total_class"] = $pageObject->fieldClass("Total");
-//	DelDate - Short Date
+//	DelDate - Long Date
 			$record["DelDate_value"] = $pageObject->showDBValue("DelDate", $data, $keylink);
 			$record["DelDate_class"] = $pageObject->fieldClass("DelDate");
-//	BillNo - 
-			$record["BillNo_value"] = $pageObject->showDBValue("BillNo", $data, $keylink);
-			$record["BillNo_class"] = $pageObject->fieldClass("BillNo");
 			if($col<$colsonpage)
 				$record["endrecord_block"] = true;
 			$record["grid_recordheader"] = true;
@@ -455,10 +434,6 @@ if ($pageObject->pSet->isUsebuttonHandlers() || $isPdfView || $hasEvents)
 $xt->assignbyref("body",$pageObject->body);
 $xt->assign("grid_block",true);
 
-$xt->assign("ODetailID_fieldheadercolumn",true);
-$xt->assign("ODetailID_fieldheader",true);
-$xt->assign("ODetailID_fieldcolumn",true);
-$xt->assign("ODetailID_fieldfootercolumn",true);
 $xt->assign("OrderID_fieldheadercolumn",true);
 $xt->assign("OrderID_fieldheader",true);
 $xt->assign("OrderID_fieldcolumn",true);
@@ -475,18 +450,10 @@ $xt->assign("DelQuant_fieldheadercolumn",true);
 $xt->assign("DelQuant_fieldheader",true);
 $xt->assign("DelQuant_fieldcolumn",true);
 $xt->assign("DelQuant_fieldfootercolumn",true);
-$xt->assign("Total_fieldheadercolumn",true);
-$xt->assign("Total_fieldheader",true);
-$xt->assign("Total_fieldcolumn",true);
-$xt->assign("Total_fieldfootercolumn",true);
 $xt->assign("DelDate_fieldheadercolumn",true);
 $xt->assign("DelDate_fieldheader",true);
 $xt->assign("DelDate_fieldcolumn",true);
 $xt->assign("DelDate_fieldfootercolumn",true);
-$xt->assign("BillNo_fieldheadercolumn",true);
-$xt->assign("BillNo_fieldheader",true);
-$xt->assign("BillNo_fieldcolumn",true);
-$xt->assign("BillNo_fieldfootercolumn",true);
 
 	$record_header=array("data"=>array());
 	$record_footer=array("data"=>array());

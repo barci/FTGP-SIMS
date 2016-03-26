@@ -620,6 +620,66 @@ function CustomExpression($value, $data, $field, $ptype, $table="")
 	global $strTableName;
 	if(!$table)
 		$table = $strTableName;
+				if($table=="product" && $field=="Pname")
+	{
+		$stock=$data["UInStock"];
+$reorder=$data["ReOrLevel"];
+if ($stock<$reorder){
+	$value="<font color=red>$value</font>";
+};
+		return $value;
+	}	
+				if($table=="product" && $field=="UInStock")
+	{
+		$stock=$data["UInStock"];
+$reorder=$data["ReOrLevel"];
+if ($stock<$reorder){
+	$value="<font color=red>($value)</font>";
+};
+		return $value;
+	}	
+				if($table=="orderdetail" && $field=="ProductID")
+	{
+		$order=$data["OrdQuant"];
+$delivered=$data["DelQuant"];
+if ($order>$delivered)
+		$value="<font color=red>$value</font>";
+else
+		$value="<font color=green>$value</font>";;
+		return $value;
+	}	
+				if($table=="delivery" && $field=="DrNo")
+	{
+		if($data["delFlag"]=='NO') $value="<b>$value</b>";;
+		return $value;
+	}	
+				if($table=="delivery" && $field=="prodID")
+	{
+		if($data["delFlag"]=='NO') $value="<b>$value</b>";;
+		return $value;
+	}	
+				if($table=="delivery" && $field=="delFlag")
+	{
+		if($data["delFlag"]=='YES') $value="<font color=green><b>$value</b></font>";
+if($data["delFlag"]=='NO') $value="<font color=red><b>$value</b></font>";;
+		return $value;
+	}	
+				if($table=="DR Printing" && $field=="DrNo")
+	{
+		//$drno=$data["DrNo"];
+//$dest=$data["Destination"];
+//$value="<a href=DR_Printing_print.php?drno=$drno&dest='$dest' target=$drno>$value</a>";
+$_SESSION["drno"]=$data["DrNo"];
+$_SESSION["orno"]=$data["orderID"];
+$_SESSION["dest"]=$data["Destination"];
+$_SESSION["eta"]=$data["eta"];;
+		return $value;
+	}	
+				if($table=="DR Printing" && $field=="USP")
+	{
+		;
+		return $value;
+	}	
 	return $value;
 }
 
@@ -647,17 +707,57 @@ function GetDefaultValue($field, $ptype, $table="")
 	global $strTableName;
 	if(!$table)
 		$table=$strTableName;
+				if($table=="product" && $field=="staffID") 
+	{
+		return $_SESSION["StaffID"];;
+	}
+				if($table=="customer" && $field=="StaffID") 
+	{
+		return $_SESSION["StaffID"];;
+	}
+				if($table=="orderdetail" && $field=="staffID") 
+	{
+		return $_SESSION["StaffID"];;
+	}
 				if($table=="delivery" && $field=="delFlag") 
 	{
 		return NO;
+	}
+				if($table=="delivery" && $field=="staffID") 
+	{
+		return $_SESSION["StaffID"];;
+	}
+				if($table=="stockrequest" && $field=="StaffID") 
+	{
+		return $_SESSION["StaffID"];;
 	}
 				if($table=="stockrequest" && $field=="ReceiveFlag") 
 	{
 		return "NO";
 	}
+				if($table=="Stocks Received" && $field=="StaffID") 
+	{
+		return $_SESSION["StaffID"];;
+	}
 				if($table=="Stocks Received" && $field=="ReceiveFlag") 
 	{
 		return "NO";
+	}
+				if($table=="DR Printing" && $field=="delFlag") 
+	{
+		return NO;
+	}
+				if($table=="packinglist" && $field=="unit") 
+	{
+		return PCS;
+	}
+				if($table=="packinglist" && $field=="staffID") 
+	{
+		return $_SESSION["StaffID"];;
+	}
+				if($table=="orderentry" && $field=="StaffID") 
+	{
+		return $_SESSION["StaffID"];;
 	}
 	return "";
 }

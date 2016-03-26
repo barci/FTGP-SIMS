@@ -143,7 +143,7 @@ elseif(postvalue("mode") == "lookup")
 	$mode=LIST_LOOKUP;
 	//determine which field should be used to select values
 			$params["lookupSelectField"] = "ODetailID";
-						}
+							}
 elseif(postvalue("mode")=="listdetails")
 {
 	
@@ -180,37 +180,6 @@ while(isset($_REQUEST["masterkey".$i]))
 $pageObject = ListPage::createListPage($strTableName, $options);
 
 
-$layout = new TLayout("masterlist","BoldOrange","MobileOrange");
-$layout->blocks["bare"] = array();
-$layout->containers["0"] = array();
-
-$layout->containers["0"][] = array("name"=>"masterlistheader","block"=>"","substyle"=>1);
-
-
-$layout->skins["0"] = "empty";
-$layout->blocks["bare"][] = "0";
-$layout->containers["mastergrid"] = array();
-
-$layout->containers["mastergrid"][] = array("name"=>"masterlistfields","block"=>"","substyle"=>1);
-
-
-$layout->skins["mastergrid"] = "grid";
-$layout->blocks["bare"][] = "mastergrid";$page_layouts["orderentry_masterlist"] = $layout;
-
-$layout = GetPageLayout("orderentry", 'masterlist');
-if($layout)
-{
-	$rtl = $xt->getReadingOrder() == 'RTL' ? 'RTL' : '';
-	$xt->cssFiles[] = array("stylepath" => "styles/".$layout->style.'/style'.$rtl.".css"
-		, "pagestylepath" => "pagestyles/".$layout->name.$rtl.".css");
-	$xt->IEcssFiles[] = array("stylepathIE" => "styles/".$layout->style.'/styleIE'.".css");
-}
-include_once getabspath('classes/controls/ViewControlsContainer.php');
-$viewControls = new ViewControlsContainer(new ProjectSettings("orderentry", PAGE_LIST), PAGE_LIST);
-$viewControls->addControlsJSAndCSS();
-$pageObject->includes_js = array_merge($pageObject->includes_js, $viewControls->includes_js);
-$pageObject->includes_jsreq = array_merge($pageObject->includes_jsreq, $viewControls->includes_jsreq);
-$pageObject->includes_css = array_merge($pageObject->includes_css, $viewControls->includes_css);
 
 if (!$noBlobReplace){
 	$gQuery->ReplaceFieldsWithDummies($pageObject->pSet->getBinaryFieldsIndices());

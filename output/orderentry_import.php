@@ -27,7 +27,7 @@ if(CheckPermissionsEvent($strTableName, 'I') && !CheckSecurity(@$_SESSION["_".$s
 $cipherer = new RunnerCipherer($strTableName);
 
 // keys array
-$keys[]=AddFieldWrappers("OrderID");
+$keys[]=AddFieldWrappers("ID");
 $keys_present=1;
 
 $total_records=0;
@@ -182,7 +182,9 @@ function ImportFromExcel($uploadfile)
 		}
 	}
 
-							
+		if(in_array("ID",$fields))
+		$autoinc=true;
+								
 	$ret=getImportExcelData($data,$fields);
 	
 		
@@ -222,7 +224,9 @@ function ImportFromCSV($uploadfile)
 		}
 	}
 	$autoinc = false;
-						
+		if(in_array("ID",$fields))
+		$autoinc=true;
+							
 		
 	
 	

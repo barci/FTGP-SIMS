@@ -230,26 +230,6 @@ if(@$_POST["a"] == "edited")
 	$evalues = $efilename_values = $blobfields = array();
 	
 
-//	processing RequestID - begin
-	$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
-
-	if($condition)
-	{
-		$control_RequestID = $pageObject->getControl("RequestID", $id);
-		$control_RequestID->readWebValue($evalues, $blobfields, $strWhereClause, $oldValuesRead, $efilename_values);
-
-		}
-//	processing RequestID - end
-//	processing StaffID - begin
-	$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
-
-	if($condition)
-	{
-		$control_StaffID = $pageObject->getControl("StaffID", $id);
-		$control_StaffID->readWebValue($evalues, $blobfields, $strWhereClause, $oldValuesRead, $efilename_values);
-
-		}
-//	processing StaffID - end
 //	processing ProductID - begin
 	$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 
@@ -347,22 +327,6 @@ if(@$_POST["a"] == "edited")
 				$IsSaved = true;
 
 			// Give possibility to all edit controls to clean their data				
-			//	processing RequestID - begin
-							$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
-			
-				if($condition)
-				{
-					$control_RequestID->afterSuccessfulSave();
-				}
-	//	processing RequestID - end
-			//	processing StaffID - begin
-							$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
-			
-				if($condition)
-				{
-					$control_StaffID->afterSuccessfulSave();
-				}
-	//	processing StaffID - end
 			//	processing ProductID - begin
 							$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 			
@@ -527,8 +491,6 @@ if($globalEvents->exists("IsRecordEditable", $strTableName))
 
 if($readevalues)
 {
-	$data["RequestID"] = $evalues["RequestID"];
-	$data["StaffID"] = $evalues["StaffID"];
 	$data["ProductID"] = $evalues["ProductID"];
 	$data["Qty"] = $evalues["Qty"];
 	$data["Notes"] = $evalues["Notes"];
@@ -555,22 +517,6 @@ if($inlineedit != EDIT_INLINE)
 		$pageObject->body["begin"].= $includes;
 	}	
 
-	if(!$pageObject->isAppearOnTabs("RequestID"))
-		$xt->assign("RequestID_fieldblock",true);
-	else
-		$xt->assign("RequestID_tabfieldblock",true);
-	$xt->assign("RequestID_label",true);
-	if(isEnableSection508())
-		$xt->assign_section("RequestID_label","<label for=\"".GetInputElementId("RequestID", $id, PAGE_EDIT)."\">","</label>");
-		
-	if(!$pageObject->isAppearOnTabs("StaffID"))
-		$xt->assign("StaffID_fieldblock",true);
-	else
-		$xt->assign("StaffID_tabfieldblock",true);
-	$xt->assign("StaffID_label",true);
-	if(isEnableSection508())
-		$xt->assign_section("StaffID_label","<label for=\"".GetInputElementId("StaffID", $id, PAGE_EDIT)."\">","</label>");
-		
 	if(!$pageObject->isAppearOnTabs("ProductID"))
 		$xt->assign("ProductID_fieldblock",true);
 	else
@@ -717,7 +663,7 @@ foreach($pageObject->editFields as $fName)
 				$control[$gfName]["params"]["mode"] = "edit";
 			$controls["controls"]['mode'] = "edit";
 		}
-							
+					
 	if(!$detailKeys || !in_array($fName, $detailKeys))
 		$xt->assignbyref($gfName."_editcontrol",$control[$gfName]);
 	elseif($detailKeys && in_array($fName, $detailKeys))

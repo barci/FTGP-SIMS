@@ -65,9 +65,94 @@ $layout->skins["fields"] = "fields";
 
 $layout->skins["add"] = "1";
 $layout->blocks["top"][] = "add";
+$layout->containers["details"] = array();
+
+$layout->containers["details"][] = array("name"=>"adddetails","block"=>"detail_tables","substyle"=>1);
+
+
 $layout->skins["details"] = "empty";
 $layout->blocks["top"][] = "details";$page_layouts["orderentry_add"] = $layout;
 
+
+$layout = new TLayout("list3","BoldOrange","MobileOrange");
+$layout->blocks["center"] = array();
+$layout->containers["message"] = array();
+
+$layout->containers["message"][] = array("name"=>"message","block"=>"message_block","substyle"=>1);
+
+
+$layout->skins["message"] = "2";
+$layout->blocks["center"][] = "message";
+$layout->containers["grid"] = array();
+
+$layout->containers["grid"][] = array("name"=>"grid","block"=>"grid_block","substyle"=>1);
+
+
+$layout->skins["grid"] = "grid";
+$layout->blocks["center"][] = "grid";
+$layout->containers["pagination"] = array();
+
+$layout->containers["pagination"][] = array("name"=>"pagination","block"=>"pagination_block","substyle"=>1);
+
+
+$layout->skins["pagination"] = "2";
+$layout->blocks["center"][] = "pagination";$layout->blocks["left"] = array();
+$layout->containers["left"] = array();
+
+$layout->containers["left"][] = array("name"=>"vsearch1","block"=>"searchform_block","substyle"=>2);
+
+
+$layout->containers["left"][] = array("name"=>"vsearch2","block"=>"searchform_block","substyle"=>1);
+
+
+$layout->containers["left"][] = array("name"=>"searchpanel","block"=>"searchPanel","substyle"=>1);
+
+
+$layout->containers["left"][] = array("name"=>"vdetails_found","block"=>"details_block","substyle"=>2);
+
+
+$layout->containers["left"][] = array("name"=>"vpage_of","block"=>"pages_block","substyle"=>1);
+
+
+$layout->containers["left"][] = array("name"=>"vrecsperpage","block"=>"recordspp_block","substyle"=>1);
+
+
+$layout->skins["left"] = "menu";
+$layout->blocks["left"][] = "left";$layout->blocks["top"] = array();
+$layout->skins["master"] = "empty";
+$layout->blocks["top"][] = "master";
+$layout->containers["toplinks"] = array();
+
+
+$layout->containers["toplinks"][] = array("name"=>"toplinks_advsearch","block"=>"asearch_link","substyle"=>1);
+
+
+
+
+
+$layout->containers["toplinks"][] = array("name"=>"loggedas","block"=>"security_block","substyle"=>1);
+
+
+
+$layout->skins["toplinks"] = "2";
+$layout->blocks["top"][] = "toplinks";
+$layout->containers["hmenu"] = array();
+
+$layout->containers["hmenu"][] = array("name"=>"hmenu","block"=>"menu_block","substyle"=>1);
+
+
+$layout->skins["hmenu"] = "hmenu";
+$layout->blocks["top"][] = "hmenu";
+$layout->containers["recordcontrols"] = array();
+
+$layout->containers["recordcontrols"][] = array("name"=>"recordcontrols_new","block"=>"newrecord_controls_block","substyle"=>1);
+
+
+$layout->containers["recordcontrols"][] = array("name"=>"recordcontrol","block"=>"record_controls_block","substyle"=>1);
+
+
+$layout->skins["recordcontrols"] = "1";
+$layout->blocks["top"][] = "recordcontrols";$page_layouts["orderdetail_list"] = $layout;
 
 
 $filename = "";
@@ -195,7 +280,14 @@ if($inlineadd==ADD_SIMPLE || $inlineadd==ADD_MASTER || $inlineadd==ADD_POPUP)
 	{
 		$ids = $id;
 		$countDetailsIsShow = 0;
-			$pageObject->jsSettings['tableSettings'][$strTableName]['isShowDetails'] = $countDetailsIsShow > 0 ? true : false;
+			$dpPermis = $pageObject->getPermissions("orderdetail");
+		if ($dpPermis['add']){
+			$countDetailsIsShow ++;
+			$mKeys["orderdetail"] = $pageObject->pSet->getMasterKeysByDetailTable("orderdetail");
+			$dpParams['strTableNames'][] = "orderdetail";
+			$dpParams['ids'][] = ++$ids;
+		}
+		$pageObject->jsSettings['tableSettings'][$strTableName]['isShowDetails'] = $countDetailsIsShow > 0 ? true : false;
 		$pageObject->jsSettings['tableSettings'][$strTableName]['dpParams'] = array('tableNames'=>$dpParams['strTableNames'], 'ids'=>$dpParams['ids']);
 	}
 }
@@ -217,6 +309,7 @@ if(@$_POST["a"]=="added")
 	$blobfields=array();
 //	processing OrderID - start
 	$inlineAddOption = true;
+	$inlineAddOption = $inlineadd!=ADD_INLINE;
 	if($inlineAddOption)
 	{
 		$control_OrderID = $pageObject->getControl("OrderID", $id);
@@ -225,36 +318,40 @@ if(@$_POST["a"]=="added")
 //	processing OrderID - end
 //	processing CID - start
 	$inlineAddOption = true;
+	$inlineAddOption = $inlineadd!=ADD_INLINE;
 	if($inlineAddOption)
 	{
 		$control_CID = $pageObject->getControl("CID", $id);
 		$control_CID->readWebValue($avalues, $blobfields, "", false, $afilename_values);
 	}
 //	processing CID - end
-//	processing ODate - start
+//	processing DelDate - start
 	$inlineAddOption = true;
+	$inlineAddOption = $inlineadd!=ADD_INLINE;
 	if($inlineAddOption)
 	{
-		$control_ODate = $pageObject->getControl("ODate", $id);
-		$control_ODate->readWebValue($avalues, $blobfields, "", false, $afilename_values);
+		$control_DelDate = $pageObject->getControl("DelDate", $id);
+		$control_DelDate->readWebValue($avalues, $blobfields, "", false, $afilename_values);
 	}
-//	processing ODate - end
+//	processing DelDate - end
+//	processing Note - start
+	$inlineAddOption = true;
+	$inlineAddOption = $inlineadd!=ADD_INLINE;
+	if($inlineAddOption)
+	{
+		$control_Note = $pageObject->getControl("Note", $id);
+		$control_Note->readWebValue($avalues, $blobfields, "", false, $afilename_values);
+	}
+//	processing Note - end
 //	processing StaffID - start
 	$inlineAddOption = true;
+	$inlineAddOption = $inlineadd!=ADD_INLINE;
 	if($inlineAddOption)
 	{
 		$control_StaffID = $pageObject->getControl("StaffID", $id);
 		$control_StaffID->readWebValue($avalues, $blobfields, "", false, $afilename_values);
 	}
 //	processing StaffID - end
-//	processing ErrorMsg - start
-	$inlineAddOption = true;
-	if($inlineAddOption)
-	{
-		$control_ErrorMsg = $pageObject->getControl("ErrorMsg", $id);
-		$control_ErrorMsg->readWebValue($avalues, $blobfields, "", false, $afilename_values);
-	}
-//	processing ErrorMsg - end
 
 
 
@@ -290,6 +387,7 @@ if(@$_POST["a"]=="added")
 // Give possibility to all edit controls to clean their data				
 //	processing OrderID - start
 			$inlineAddOption = true;
+			$inlineAddOption = $inlineadd!=ADD_INLINE;
 			if($inlineAddOption)
 			{
 				$control_OrderID->afterSuccessfulSave();
@@ -297,32 +395,36 @@ if(@$_POST["a"]=="added")
 //	processing OrderID - end
 //	processing CID - start
 			$inlineAddOption = true;
+			$inlineAddOption = $inlineadd!=ADD_INLINE;
 			if($inlineAddOption)
 			{
 				$control_CID->afterSuccessfulSave();
 			}
 //	processing CID - end
-//	processing ODate - start
+//	processing DelDate - start
 			$inlineAddOption = true;
+			$inlineAddOption = $inlineadd!=ADD_INLINE;
 			if($inlineAddOption)
 			{
-				$control_ODate->afterSuccessfulSave();
+				$control_DelDate->afterSuccessfulSave();
 			}
-//	processing ODate - end
+//	processing DelDate - end
+//	processing Note - start
+			$inlineAddOption = true;
+			$inlineAddOption = $inlineadd!=ADD_INLINE;
+			if($inlineAddOption)
+			{
+				$control_Note->afterSuccessfulSave();
+			}
+//	processing Note - end
 //	processing StaffID - start
 			$inlineAddOption = true;
+			$inlineAddOption = $inlineadd!=ADD_INLINE;
 			if($inlineAddOption)
 			{
 				$control_StaffID->afterSuccessfulSave();
 			}
 //	processing StaffID - end
-//	processing ErrorMsg - start
-			$inlineAddOption = true;
-			if($inlineAddOption)
-			{
-				$control_ErrorMsg->afterSuccessfulSave();
-			}
-//	processing ErrorMsg - end
 
 			$afterAdd_id = '';	
 			if($eventObj->exists("AfterAdd") && $inlineadd!=ADD_MASTER){
@@ -406,11 +508,11 @@ if(array_key_exists("copyid1",$_REQUEST) || array_key_exists("editid1",$_REQUEST
 	$copykeys=array();
 	if(array_key_exists("copyid1",$_REQUEST))
 	{
-		$copykeys["OrderID"]=postvalue("copyid1");
+		$copykeys["ID"]=postvalue("copyid1");
 	}
 	else
 	{
-		$copykeys["OrderID"]=postvalue("editid1");
+		$copykeys["ID"]=postvalue("editid1");
 	}
 	$strWhere=KeyWhere($copykeys);
 	$strSQL = $gQuery->gSQLWhere($strWhere);
@@ -421,13 +523,14 @@ if(array_key_exists("copyid1",$_REQUEST) || array_key_exists("editid1",$_REQUEST
 	if(!$defvalues)
 		$defvalues=array();
 //	clear key fields
-	$defvalues["OrderID"]="";
+	$defvalues["ID"]="";
 //call CopyOnLoad event
 	if($eventObj->exists("CopyOnLoad"))
 		$eventObj->CopyOnLoad($defvalues,$strWhere, $pageObject);
 }
 else
 {
+	$defvalues["StaffID"] = $_SESSION["StaffID"];;
 }
 
 
@@ -437,8 +540,8 @@ if($readavalues)
 	$defvalues["OrderID"]=@$avalues["OrderID"];
 	$defvalues["StaffID"]=@$avalues["StaffID"];
 	$defvalues["CID"]=@$avalues["CID"];
-	$defvalues["ODate"]=@$avalues["ODate"];
-	$defvalues["ErrorMsg"]=@$avalues["ErrorMsg"];
+	$defvalues["DelDate"]=@$avalues["DelDate"];
+	$defvalues["Note"]=@$avalues["Note"];
 }
 
 if($eventObj->exists("ProcessValuesAdd"))
@@ -482,21 +585,21 @@ if($inlineadd!=ADD_INLINE)
 	if(isEnableSection508())
 		$xt->assign_section("CID_label","<label for=\"".GetInputElementId("CID", $id, PAGE_ADD)."\">","</label>");
 	
-	if(!$pageObject->isAppearOnTabs("ODate"))
-		$xt->assign("ODate_fieldblock",true);
+	if(!$pageObject->isAppearOnTabs("DelDate"))
+		$xt->assign("DelDate_fieldblock",true);
 	else
-		$xt->assign("ODate_tabfieldblock",true);
-	$xt->assign("ODate_label",true);
+		$xt->assign("DelDate_tabfieldblock",true);
+	$xt->assign("DelDate_label",true);
 	if(isEnableSection508())
-		$xt->assign_section("ODate_label","<label for=\"".GetInputElementId("ODate", $id, PAGE_ADD)."\">","</label>");
+		$xt->assign_section("DelDate_label","<label for=\"".GetInputElementId("DelDate", $id, PAGE_ADD)."\">","</label>");
 	
-	if(!$pageObject->isAppearOnTabs("ErrorMsg"))
-		$xt->assign("ErrorMsg_fieldblock",true);
+	if(!$pageObject->isAppearOnTabs("Note"))
+		$xt->assign("Note_fieldblock",true);
 	else
-		$xt->assign("ErrorMsg_tabfieldblock",true);
-	$xt->assign("ErrorMsg_label",true);
+		$xt->assign("Note_tabfieldblock",true);
+	$xt->assign("Note_label",true);
 	if(isEnableSection508())
-		$xt->assign_section("ErrorMsg_label","<label for=\"".GetInputElementId("ErrorMsg", $id, PAGE_ADD)."\">","</label>");
+		$xt->assign_section("Note_label","<label for=\"".GetInputElementId("Note", $id, PAGE_ADD)."\">","</label>");
 	
 	
 	
@@ -598,11 +701,22 @@ if(@$_POST["a"]=="added" && ($inlineadd == ADD_INLINE || $inlineadd == ADD_MASTE
 	}
 	//check if correct values added
 	$showDetailKeys["orderdetail"]["masterkey1"] = $data["OrderID"];	
+	$showDetailKeys["orderdetail"]["masterkey2"] = $data["DelDate"];	
 
 	$keylink="";
-	$keylink.="&key1=".htmlspecialchars(rawurlencode(@$data["OrderID"]));
+	$keylink.="&key1=".htmlspecialchars(rawurlencode(@$data["ID"]));
 	
 ////////////////////////////////////////////
+//	ID
+	$display = false;
+	if($inlineadd==ADD_INLINE || $inlineadd==ADD_ONTHEFLY || $inlineadd==ADD_POPUP)
+		$display = true;
+	if($display)
+	{	
+		$value = $pageObject->showDBValue("ID", $data, $keylink);
+		$showValues["ID"] = $value;
+		$showFields[] = "ID";
+	}	
 //	OrderID
 	$display = false;
 	if($inlineadd==ADD_MASTER)
@@ -639,7 +753,7 @@ if(@$_POST["a"]=="added" && ($inlineadd == ADD_INLINE || $inlineadd == ADD_MASTE
 		$showValues["CID"] = $value;
 		$showFields[] = "CID";
 	}	
-//	ODate
+//	DelDate
 	$display = false;
 	if($inlineadd==ADD_MASTER)
 		$display = true;
@@ -647,11 +761,11 @@ if(@$_POST["a"]=="added" && ($inlineadd == ADD_INLINE || $inlineadd == ADD_MASTE
 		$display = true;
 	if($display)
 	{	
-		$value = $pageObject->showDBValue("ODate", $data, $keylink);
-		$showValues["ODate"] = $value;
-		$showFields[] = "ODate";
+		$value = $pageObject->showDBValue("DelDate", $data, $keylink);
+		$showValues["DelDate"] = $value;
+		$showFields[] = "DelDate";
 	}	
-//	ErrorMsg
+//	Note
 	$display = false;
 	if($inlineadd==ADD_MASTER)
 		$display = true;
@@ -659,15 +773,17 @@ if(@$_POST["a"]=="added" && ($inlineadd == ADD_INLINE || $inlineadd == ADD_MASTE
 		$display = true;
 	if($display)
 	{	
-		$value = $pageObject->showDBValue("ErrorMsg", $data, $keylink);
-		$showValues["ErrorMsg"] = $value;
-		$showFields[] = "ErrorMsg";
+		$value = $pageObject->showDBValue("Note", $data, $keylink);
+		$showValues["Note"] = $value;
+		$showFields[] = "Note";
 	}	
+		$showRawValues["ID"] = substr($data["ID"],0,100);
 		$showRawValues["OrderID"] = substr($data["OrderID"],0,100);
 		$showRawValues["StaffID"] = substr($data["StaffID"],0,100);
 		$showRawValues["CID"] = substr($data["CID"],0,100);
-		$showRawValues["ODate"] = substr($data["ODate"],0,100);
-		$showRawValues["ErrorMsg"] = substr($data["ErrorMsg"],0,100);
+		$showRawValues["DelDate"] = substr($data["DelDate"],0,100);
+		$showRawValues["Note"] = substr($data["Note"],0,100);
+		$showRawValues["TimeStamp"] = substr($data["TimeStamp"],0,100);
 	
 	// for custom expression for display field
 	if ($dispFieldAlias)
@@ -1002,6 +1118,7 @@ if($inlineadd==ADD_ONTHEFLY || $inlineadd==ADD_MASTER || $inlineadd==ADD_POPUP)
 }	
 
 $xt->assign("style_block",true);
+$pageObject->xt->assign("legend", true);
 
 if($eventObj->exists("BeforeShowAdd"))
 	$eventObj->BeforeShowAdd($xt, $templatefile, $pageObject);

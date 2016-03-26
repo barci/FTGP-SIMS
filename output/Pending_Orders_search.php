@@ -129,55 +129,6 @@ if ($mode==SEARCH_SIMPLE)
 	
 	// search fields data
 	
-	if($pageObject->pSet->getLookupTable("ODetailID"))
-		$pageObject->settingsMap["globalSettings"]['shortTNames'][$pageObject->pSet->getLookupTable("ODetailID")] = GetTableURL($pageObject->pSet->getLookupTable("ODetailID"));
-	
-	$pageObject->fillFieldToolTips("ODetailID");	
-	
-	$srchFields = $pageObject->searchClauseObj->getSearchCtrlParams("ODetailID");
-	$firstFieldParams = array();
-	if (count($srchFields))
-	{
-		$firstFieldParams = $srchFields[0];
-	}
-	else
-	{
-		$firstFieldParams['fName'] = "ODetailID";
-		$firstFieldParams['eType'] = '';
-		$firstFieldParams['value1'] = '';
-		$firstFieldParams['opt'] = '';
-		$firstFieldParams['value2'] = '';
-		$firstFieldParams['not'] = false;
-	}
-	// create control	
-	$ctrlBlockArr = $searchControlBuilder->buildSearchCtrlBlockArr($id, $firstFieldParams['fName'], 0, $firstFieldParams['opt'], $firstFieldParams['not'], false, $firstFieldParams['value1'], $firstFieldParams['value2']);	
-		
-	if(isEnableSection508())
-		$xt->assign_section("ODetailID_label","<label for=\"".GetInputElementId("ODetailID", $id, PAGE_SEARCH)."\">","</label>");
-	else 
-		$xt->assign("ODetailID_label", true);
-	
-	$xt->assign("ODetailID_fieldblock", true);
-	$xt->assignbyref("ODetailID_editcontrol", $ctrlBlockArr['searchcontrol']);
-	$xt->assign("ODetailID_notbox", $ctrlBlockArr['notbox']);
-	// create second control, if need it
-	$xt->assignbyref("ODetailID_editcontrol1", $ctrlBlockArr['searchcontrol1']);
-	// create search type select
-	$xt->assign("searchtype_ODetailID", $ctrlBlockArr['searchtype']);
-	$isFieldNeedSecCtrl = $searchControlBuilder->isNeedSecondCtrl("ODetailID");
-	$ctrlInd = 0;
-	if ($isFieldNeedSecCtrl)
-	{
-		$pageObject->controlsMap["search"]["searchBlocks"][] = array('fName'=>"ODetailID", 'recId'=>$id, 'ctrlsMap'=>array(0=>$ctrlInd, 1=>($ctrlInd+1)));
-		$ctrlInd+=2;
-	}
-	else
-	{
-		$pageObject->controlsMap["search"]["searchBlocks"][] = array('fName'=>"ODetailID", 'recId'=>$id, 'ctrlsMap'=>array(0=>$ctrlInd));			
-		$ctrlInd++;
-	}
-	// search fields data
-	
 	if($pageObject->pSet->getLookupTable("OrderID"))
 		$pageObject->settingsMap["globalSettings"]['shortTNames'][$pageObject->pSet->getLookupTable("OrderID")] = GetTableURL($pageObject->pSet->getLookupTable("OrderID"));
 	
@@ -468,55 +419,6 @@ if ($mode==SEARCH_SIMPLE)
 	else
 	{
 		$pageObject->controlsMap["search"]["searchBlocks"][] = array('fName'=>"DelDate", 'recId'=>$id, 'ctrlsMap'=>array(0=>$ctrlInd));			
-		$ctrlInd++;
-	}
-	// search fields data
-	
-	if($pageObject->pSet->getLookupTable("BillNo"))
-		$pageObject->settingsMap["globalSettings"]['shortTNames'][$pageObject->pSet->getLookupTable("BillNo")] = GetTableURL($pageObject->pSet->getLookupTable("BillNo"));
-	
-	$pageObject->fillFieldToolTips("BillNo");	
-	
-	$srchFields = $pageObject->searchClauseObj->getSearchCtrlParams("BillNo");
-	$firstFieldParams = array();
-	if (count($srchFields))
-	{
-		$firstFieldParams = $srchFields[0];
-	}
-	else
-	{
-		$firstFieldParams['fName'] = "BillNo";
-		$firstFieldParams['eType'] = '';
-		$firstFieldParams['value1'] = '';
-		$firstFieldParams['opt'] = '';
-		$firstFieldParams['value2'] = '';
-		$firstFieldParams['not'] = false;
-	}
-	// create control	
-	$ctrlBlockArr = $searchControlBuilder->buildSearchCtrlBlockArr($id, $firstFieldParams['fName'], 0, $firstFieldParams['opt'], $firstFieldParams['not'], false, $firstFieldParams['value1'], $firstFieldParams['value2']);	
-		
-	if(isEnableSection508())
-		$xt->assign_section("BillNo_label","<label for=\"".GetInputElementId("BillNo", $id, PAGE_SEARCH)."\">","</label>");
-	else 
-		$xt->assign("BillNo_label", true);
-	
-	$xt->assign("BillNo_fieldblock", true);
-	$xt->assignbyref("BillNo_editcontrol", $ctrlBlockArr['searchcontrol']);
-	$xt->assign("BillNo_notbox", $ctrlBlockArr['notbox']);
-	// create second control, if need it
-	$xt->assignbyref("BillNo_editcontrol1", $ctrlBlockArr['searchcontrol1']);
-	// create search type select
-	$xt->assign("searchtype_BillNo", $ctrlBlockArr['searchtype']);
-	$isFieldNeedSecCtrl = $searchControlBuilder->isNeedSecondCtrl("BillNo");
-	$ctrlInd = 0;
-	if ($isFieldNeedSecCtrl)
-	{
-		$pageObject->controlsMap["search"]["searchBlocks"][] = array('fName'=>"BillNo", 'recId'=>$id, 'ctrlsMap'=>array(0=>$ctrlInd, 1=>($ctrlInd+1)));
-		$ctrlInd+=2;
-	}
-	else
-	{
-		$pageObject->controlsMap["search"]["searchBlocks"][] = array('fName'=>"BillNo", 'recId'=>$id, 'ctrlsMap'=>array(0=>$ctrlInd));			
 		$ctrlInd++;
 	}
 	

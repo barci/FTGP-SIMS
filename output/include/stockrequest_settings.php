@@ -96,12 +96,12 @@ $tdatastockrequest[".isUseTimeForSearch"] = false;
 $tdatastockrequest[".allSearchFields"] = array();
 
 $tdatastockrequest[".allSearchFields"][] = "RequestID";
-$tdatastockrequest[".allSearchFields"][] = "StaffID";
 $tdatastockrequest[".allSearchFields"][] = "ProductID";
 $tdatastockrequest[".allSearchFields"][] = "Qty";
-$tdatastockrequest[".allSearchFields"][] = "Notes";
 $tdatastockrequest[".allSearchFields"][] = "TimeStamp";
+$tdatastockrequest[".allSearchFields"][] = "Notes";
 $tdatastockrequest[".allSearchFields"][] = "ReceiveFlag";
+$tdatastockrequest[".allSearchFields"][] = "StaffID";
 
 $tdatastockrequest[".googleLikeFields"][] = "ID";
 $tdatastockrequest[".googleLikeFields"][] = "RequestID";
@@ -114,12 +114,12 @@ $tdatastockrequest[".googleLikeFields"][] = "ReceiveFlag";
 
 
 $tdatastockrequest[".advSearchFields"][] = "RequestID";
-$tdatastockrequest[".advSearchFields"][] = "StaffID";
 $tdatastockrequest[".advSearchFields"][] = "ProductID";
 $tdatastockrequest[".advSearchFields"][] = "Qty";
-$tdatastockrequest[".advSearchFields"][] = "Notes";
 $tdatastockrequest[".advSearchFields"][] = "TimeStamp";
+$tdatastockrequest[".advSearchFields"][] = "Notes";
 $tdatastockrequest[".advSearchFields"][] = "ReceiveFlag";
+$tdatastockrequest[".advSearchFields"][] = "StaffID";
 
 $tdatastockrequest[".isTableType"] = "list";
 
@@ -177,33 +177,30 @@ $tdatastockrequest[".Keys"] = $tableKeysstockrequest;
 $tdatastockrequest[".listFields"] = array();
 $tdatastockrequest[".listFields"][] = "ID";
 $tdatastockrequest[".listFields"][] = "RequestID";
-$tdatastockrequest[".listFields"][] = "StaffID";
 $tdatastockrequest[".listFields"][] = "ProductID";
 $tdatastockrequest[".listFields"][] = "Qty";
+$tdatastockrequest[".listFields"][] = "TimeStamp";
 $tdatastockrequest[".listFields"][] = "Notes";
 $tdatastockrequest[".listFields"][] = "ReceiveFlag";
+$tdatastockrequest[".listFields"][] = "StaffID";
 
 $tdatastockrequest[".viewFields"] = array();
 
 $tdatastockrequest[".addFields"] = array();
 $tdatastockrequest[".addFields"][] = "RequestID";
-$tdatastockrequest[".addFields"][] = "StaffID";
 $tdatastockrequest[".addFields"][] = "ProductID";
 $tdatastockrequest[".addFields"][] = "Qty";
 $tdatastockrequest[".addFields"][] = "Notes";
 $tdatastockrequest[".addFields"][] = "ReceiveFlag";
+$tdatastockrequest[".addFields"][] = "StaffID";
 
 $tdatastockrequest[".inlineAddFields"] = array();
-$tdatastockrequest[".inlineAddFields"][] = "RequestID";
-$tdatastockrequest[".inlineAddFields"][] = "StaffID";
 $tdatastockrequest[".inlineAddFields"][] = "ProductID";
 $tdatastockrequest[".inlineAddFields"][] = "Qty";
 $tdatastockrequest[".inlineAddFields"][] = "Notes";
 $tdatastockrequest[".inlineAddFields"][] = "ReceiveFlag";
 
 $tdatastockrequest[".editFields"] = array();
-$tdatastockrequest[".editFields"][] = "RequestID";
-$tdatastockrequest[".editFields"][] = "StaffID";
 $tdatastockrequest[".editFields"][] = "ProductID";
 $tdatastockrequest[".editFields"][] = "Qty";
 $tdatastockrequest[".editFields"][] = "Notes";
@@ -216,11 +213,11 @@ $tdatastockrequest[".exportFields"] = array();
 $tdatastockrequest[".printFields"] = array();
 $tdatastockrequest[".printFields"][] = "ID";
 $tdatastockrequest[".printFields"][] = "RequestID";
-$tdatastockrequest[".printFields"][] = "StaffID";
 $tdatastockrequest[".printFields"][] = "ProductID";
 $tdatastockrequest[".printFields"][] = "Qty";
 $tdatastockrequest[".printFields"][] = "Notes";
 $tdatastockrequest[".printFields"][] = "ReceiveFlag";
+$tdatastockrequest[".printFields"][] = "StaffID";
 
 //	ID
 //	Custom field settings
@@ -335,10 +332,8 @@ $tdatastockrequest[".printFields"][] = "ReceiveFlag";
 	
 		$fdata["bAddPage"] = true; 
 	
-		$fdata["bInlineAdd"] = true; 
-	
-		$fdata["bEditPage"] = true; 
-	
+		
+		
 		
 		
 		$fdata["bAdvancedSearch"] = true; 
@@ -378,15 +373,42 @@ $tdatastockrequest[".printFields"][] = "ReceiveFlag";
 //	Begin Edit Formats 	
 	$fdata["EditFormats"] = array();
 	
-	$edata = array("EditFormat" => "Text field");
+	$edata = array("EditFormat" => "Lookup wizard");
 	
 		
 		
 	
 //	Begin Lookup settings
+								$edata["LookupType"] = 2;
+	$edata["freeInput"] = 1;
+	$edata["autoCompleteFieldsOnEdit"] = 0;
+	$edata["autoCompleteFields"] = array();
+				$edata["LCType"] = 1;
+			
+		
+			$edata["LookupUnique"] = true;
+	
+	$edata["LinkField"] = "RequestID";
+	$edata["LinkFieldType"] = 200;
+	$edata["DisplayField"] = "RequestID";
+	
+		
+	$edata["LookupTable"] = "stockrequest";
+	$edata["LookupOrderBy"] = "RequestID";
+	
+		
+		
+		
+		$edata["FastType"] = true; 
+	
+		
+				
+	
+	
 	//	End Lookup Settings
 
-		
+		$edata["IsRequired"] = true; 
+	
 		
 		
 		
@@ -398,13 +420,12 @@ $tdatastockrequest[".printFields"][] = "ReceiveFlag";
 		
 		
 		
-		$edata["EditParams"] = "";
-			$edata["EditParams"].= " maxlength=10";
-	
+		
 		
 //	Begin validation
 	$edata["validateAs"] = array();
-		
+						$edata["validateAs"]["basicValidate"][] = "IsRequired";
+	
 	//	End validation
 	
 		
@@ -433,10 +454,8 @@ $tdatastockrequest[".printFields"][] = "ReceiveFlag";
 	
 		$fdata["bAddPage"] = true; 
 	
-		$fdata["bInlineAdd"] = true; 
-	
-		$fdata["bEditPage"] = true; 
-	
+		
+		
 		
 		
 		$fdata["bAdvancedSearch"] = true; 
@@ -873,7 +892,8 @@ $tdatastockrequest[".printFields"][] = "ReceiveFlag";
 	
 		
 		
-		
+		$fdata["bListPage"] = true; 
+	
 		
 		
 		
@@ -895,7 +915,7 @@ $tdatastockrequest[".printFields"][] = "ReceiveFlag";
 //  Begin View Formats
 	$fdata["ViewFormats"] = array();
 	
-	$vdata = array("ViewFormat" => "Short Date");
+	$vdata = array("ViewFormat" => "Long Date");
 	
 		
 		

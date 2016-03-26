@@ -34,7 +34,7 @@
 <table class="runner-c runner-c-add" cellpadding="0" align=center>
 
 
-<tr class="runner-toprow style2 header"><td class="runner-cl"><img src="images/spacer.gif"></td><td class="runner-cc" ><div  class="runner-b-addheader {$brickclass_addheader}">Product, Add new record</div></td><td class="runner-cr"><img src="images/spacer.gif"></td></tr>
+<tr class="runner-toprow style2 header"><td class="runner-cl"><img src="images/spacer.gif"></td><td class="runner-cc" ><div  class="runner-b-addheader {$brickclass_addheader}">Product Inventory, Add new record</div></td><td class="runner-cr"><img src="images/spacer.gif"></td></tr>
 
 
 {BEGIN message_block}
@@ -52,6 +52,20 @@
 </tr>
 
 
+	{BEGIN ProdNo_fieldblock}
+	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
+	<td class="runner-cc runner-cc1">
+		<div class="fieldlabel_ProdNo {$fielddispclass_ProdNo}">
+			{BEGIN ProdNo_label}Product Number{END ProdNo_label}
+		</div>
+	</td>
+	<td class="runner-cc alt runner-fixedcell">
+		<div class="fieldcontrol_ProdNo {$fielddispclass_ProdNo}">
+			{$ProdNo_editcontrol}&nbsp;
+		</div>
+	</td>
+	<td class="runner-cr alt"></td></tr>
+{END ProdNo_fieldblock}
 	{BEGIN Pname_fieldblock}
 	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
 	<td class="runner-cc runner-cc1">
@@ -80,76 +94,6 @@
 	</td>
 	<td class="runner-cr alt"></td></tr>
 {END CatID_fieldblock}
-	{BEGIN SuppID_fieldblock}
-	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
-	<td class="runner-cc runner-cc1">
-		<div class="fieldlabel_SuppID {$fielddispclass_SuppID}">
-			{BEGIN SuppID_label}Supplier{END SuppID_label}
-		</div>
-	</td>
-	<td class="runner-cc alt runner-fixedcell">
-		<div class="fieldcontrol_SuppID {$fielddispclass_SuppID}">
-			{$SuppID_editcontrol}&nbsp;
-		</div>
-	</td>
-	<td class="runner-cr alt"></td></tr>
-{END SuppID_fieldblock}
-	{BEGIN QPerUnit_fieldblock}
-	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
-	<td class="runner-cc runner-cc1">
-		<div class="fieldlabel_QPerUnit {$fielddispclass_QPerUnit}">
-			{BEGIN QPerUnit_label}Quantity per Unit{END QPerUnit_label}
-		</div>
-	</td>
-	<td class="runner-cc alt runner-fixedcell">
-		<div class="fieldcontrol_QPerUnit {$fielddispclass_QPerUnit}">
-			{$QPerUnit_editcontrol}&nbsp;
-		</div>
-	</td>
-	<td class="runner-cr alt"></td></tr>
-{END QPerUnit_fieldblock}
-	{BEGIN Uprice_fieldblock}
-	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
-	<td class="runner-cc runner-cc1">
-		<div class="fieldlabel_Uprice {$fielddispclass_Uprice}">
-			{BEGIN Uprice_label}Unit Price{END Uprice_label}
-		</div>
-	</td>
-	<td class="runner-cc alt runner-fixedcell">
-		<div class="fieldcontrol_Uprice {$fielddispclass_Uprice}">
-			{$Uprice_editcontrol}&nbsp;
-		</div>
-	</td>
-	<td class="runner-cr alt"></td></tr>
-{END Uprice_fieldblock}
-	{BEGIN USP_fieldblock}
-	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
-	<td class="runner-cc runner-cc1">
-		<div class="fieldlabel_USP {$fielddispclass_USP}">
-			{BEGIN USP_label}Unit Selling Price{END USP_label}
-		</div>
-	</td>
-	<td class="runner-cc alt runner-fixedcell">
-		<div class="fieldcontrol_USP {$fielddispclass_USP}">
-			{$USP_editcontrol}&nbsp;
-		</div>
-	</td>
-	<td class="runner-cr alt"></td></tr>
-{END USP_fieldblock}
-	{BEGIN Uweight_fieldblock}
-	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
-	<td class="runner-cc runner-cc1">
-		<div class="fieldlabel_Uweight {$fielddispclass_Uweight}">
-			{BEGIN Uweight_label}Unit Weight{END Uweight_label}
-		</div>
-	</td>
-	<td class="runner-cc alt runner-fixedcell">
-		<div class="fieldcontrol_Uweight {$fielddispclass_Uweight}">
-			{$Uweight_editcontrol}&nbsp;
-		</div>
-	</td>
-	<td class="runner-cr alt"></td></tr>
-{END Uweight_fieldblock}
 	{BEGIN Usize_fieldblock}
 	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
 	<td class="runner-cc runner-cc1">
@@ -164,48 +108,48 @@
 	</td>
 	<td class="runner-cr alt"></td></tr>
 {END Usize_fieldblock}
-	{BEGIN Discount_fieldblock}
+	{BEGIN SuppID_fieldblock}
 	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
 	<td class="runner-cc runner-cc1">
-		<div class="fieldlabel_Discount {$fielddispclass_Discount}">
-			{BEGIN Discount_label}Discount{END Discount_label}
+		<div class="fieldlabel_SuppID {$fielddispclass_SuppID}">
+			{BEGIN SuppID_label}Supplier{END SuppID_label}
 		</div>
 	</td>
 	<td class="runner-cc alt runner-fixedcell">
-		<div class="fieldcontrol_Discount {$fielddispclass_Discount}">
-			{$Discount_editcontrol}&nbsp;
+		<div class="fieldcontrol_SuppID {$fielddispclass_SuppID}">
+			{$SuppID_editcontrol}&nbsp;
 		</div>
 	</td>
 	<td class="runner-cr alt"></td></tr>
-{END Discount_fieldblock}
-	{BEGIN UlnStock_fieldblock}
+{END SuppID_fieldblock}
+	{BEGIN Uweight_fieldblock}
 	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
 	<td class="runner-cc runner-cc1">
-		<div class="fieldlabel_UlnStock {$fielddispclass_UlnStock}">
-			{BEGIN UlnStock_label}Units in Stock{END UlnStock_label}
+		<div class="fieldlabel_Uweight {$fielddispclass_Uweight}">
+			{BEGIN Uweight_label}Unit Weight{END Uweight_label}
 		</div>
 	</td>
 	<td class="runner-cc alt runner-fixedcell">
-		<div class="fieldcontrol_UlnStock {$fielddispclass_UlnStock}">
-			{$UlnStock_editcontrol}&nbsp;
+		<div class="fieldcontrol_Uweight {$fielddispclass_Uweight}">
+			{$Uweight_editcontrol}&nbsp;
 		</div>
 	</td>
 	<td class="runner-cr alt"></td></tr>
-{END UlnStock_fieldblock}
-	{BEGIN UlnOrder_fieldblock}
+{END Uweight_fieldblock}
+	{BEGIN UInStock_fieldblock}
 	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
 	<td class="runner-cc runner-cc1">
-		<div class="fieldlabel_UlnOrder {$fielddispclass_UlnOrder}">
-			{BEGIN UlnOrder_label}Units in Order{END UlnOrder_label}
+		<div class="fieldlabel_UInStock {$fielddispclass_UInStock}">
+			{BEGIN UInStock_label}Units In Stock{END UInStock_label}
 		</div>
 	</td>
 	<td class="runner-cc alt runner-fixedcell">
-		<div class="fieldcontrol_UlnOrder {$fielddispclass_UlnOrder}">
-			{$UlnOrder_editcontrol}&nbsp;
+		<div class="fieldcontrol_UInStock {$fielddispclass_UInStock}">
+			{$UInStock_editcontrol}&nbsp;
 		</div>
 	</td>
 	<td class="runner-cr alt"></td></tr>
-{END UlnOrder_fieldblock}
+{END UInStock_fieldblock}
 	{BEGIN ReOrLevel_fieldblock}
 	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
 	<td class="runner-cc runner-cc1">
@@ -220,6 +164,34 @@
 	</td>
 	<td class="runner-cr alt"></td></tr>
 {END ReOrLevel_fieldblock}
+	{BEGIN QPerUnit_fieldblock}
+	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
+	<td class="runner-cc runner-cc1">
+		<div class="fieldlabel_QPerUnit {$fielddispclass_QPerUnit}">
+			{BEGIN QPerUnit_label}Quantity per Unit{END QPerUnit_label}
+		</div>
+	</td>
+	<td class="runner-cc alt runner-fixedcell">
+		<div class="fieldcontrol_QPerUnit {$fielddispclass_QPerUnit}">
+			{$QPerUnit_editcontrol}&nbsp;
+		</div>
+	</td>
+	<td class="runner-cr alt"></td></tr>
+{END QPerUnit_fieldblock}
+	{BEGIN Qty_fieldblock}
+	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
+	<td class="runner-cc runner-cc1">
+		<div class="fieldlabel_Qty {$fielddispclass_Qty}">
+			{BEGIN Qty_label}Available Quantity (pcs){END Qty_label}
+		</div>
+	</td>
+	<td class="runner-cc alt runner-fixedcell">
+		<div class="fieldcontrol_Qty {$fielddispclass_Qty}">
+			{$Qty_editcontrol}&nbsp;
+		</div>
+	</td>
+	<td class="runner-cr alt"></td></tr>
+{END Qty_fieldblock}
 	{BEGIN Note_fieldblock}
 	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
 	<td class="runner-cc runner-cc1">
@@ -234,6 +206,20 @@
 	</td>
 	<td class="runner-cr alt"></td></tr>
 {END Note_fieldblock}
+	{BEGIN staffID_fieldblock}
+	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
+	<td class="runner-cc runner-cc1">
+		<div class="fieldlabel_staffID {$fielddispclass_staffID}">
+			{BEGIN staffID_label}Staff ID{END staffID_label}
+		</div>
+	</td>
+	<td class="runner-cc alt runner-fixedcell">
+		<div class="fieldcontrol_staffID {$fielddispclass_staffID}">
+			{$staffID_editcontrol}&nbsp;
+		</div>
+	</td>
+	<td class="runner-cr alt"></td></tr>
+{END staffID_fieldblock}
 
 
 
@@ -293,6 +279,25 @@
 {END container_add}
 
 
+
+{BEGIN container_details}
+<table class="runner-c runner-c-details" cellpadding="0" >
+<tr class="{$cheaderclass_details}">
+<td class="runner-cl"><img src="images/spacer.gif"></td>
+<td class="runner-cc"></td><td class="runner-cr"><img src="images/spacer.gif"></td>
+</tr>
+
+{BEGIN detail_tables}
+<tr  class="runner-row style1 runner-b-adddetails {$brickclass_adddetails}"><td class="runner-cl"></td><td class="runner-cc runner-brickcontents" >		{$displayDetailTable_stockrequest}
+</td><td class="runner-cr"></td></tr>{END detail_tables}
+
+
+<tr class="{$cfooterclass_details}">
+<td class="runner-cl"><img src="images/spacer.gif"></td>
+<td class="runner-cc"></td><td class="runner-cr"><img src="images/spacer.gif"></td>
+</tr>
+</table>
+{END container_details}
 
 
 				</td>

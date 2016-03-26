@@ -362,22 +362,6 @@ if(@$_POST["a"]=="added")
 		$control_Uweight->readWebValue($avalues, $blobfields, "", false, $afilename_values);
 	}
 //	processing Uweight - end
-//	processing QPerUnit - start
-	$inlineAddOption = true;
-	if($inlineAddOption)
-	{
-		$control_QPerUnit = $pageObject->getControl("QPerUnit", $id);
-		$control_QPerUnit->readWebValue($avalues, $blobfields, "", false, $afilename_values);
-	}
-//	processing QPerUnit - end
-//	processing ReOrLevel - start
-	$inlineAddOption = true;
-	if($inlineAddOption)
-	{
-		$control_ReOrLevel = $pageObject->getControl("ReOrLevel", $id);
-		$control_ReOrLevel->readWebValue($avalues, $blobfields, "", false, $afilename_values);
-	}
-//	processing ReOrLevel - end
 //	processing UInStock - start
 	$inlineAddOption = true;
 	if($inlineAddOption)
@@ -386,6 +370,22 @@ if(@$_POST["a"]=="added")
 		$control_UInStock->readWebValue($avalues, $blobfields, "", false, $afilename_values);
 	}
 //	processing UInStock - end
+//	processing ReOrLevel - start
+	$inlineAddOption = true;
+	if($inlineAddOption)
+	{
+		$control_ReOrLevel = $pageObject->getControl("ReOrLevel", $id);
+		$control_ReOrLevel->readWebValue($avalues, $blobfields, "", false, $afilename_values);
+	}
+//	processing ReOrLevel - end
+//	processing QPerUnit - start
+	$inlineAddOption = true;
+	if($inlineAddOption)
+	{
+		$control_QPerUnit = $pageObject->getControl("QPerUnit", $id);
+		$control_QPerUnit->readWebValue($avalues, $blobfields, "", false, $afilename_values);
+	}
+//	processing QPerUnit - end
 //	processing Qty - start
 	$inlineAddOption = true;
 	if($inlineAddOption)
@@ -402,6 +402,14 @@ if(@$_POST["a"]=="added")
 		$control_Note->readWebValue($avalues, $blobfields, "", false, $afilename_values);
 	}
 //	processing Note - end
+//	processing staffID - start
+	$inlineAddOption = true;
+	if($inlineAddOption)
+	{
+		$control_staffID = $pageObject->getControl("staffID", $id);
+		$control_staffID->readWebValue($avalues, $blobfields, "", false, $afilename_values);
+	}
+//	processing staffID - end
 
 
 //	insert masterkey value if exists and if not specified
@@ -488,20 +496,6 @@ if(@$_POST["a"]=="added")
 				$control_Uweight->afterSuccessfulSave();
 			}
 //	processing Uweight - end
-//	processing QPerUnit - start
-			$inlineAddOption = true;
-			if($inlineAddOption)
-			{
-				$control_QPerUnit->afterSuccessfulSave();
-			}
-//	processing QPerUnit - end
-//	processing ReOrLevel - start
-			$inlineAddOption = true;
-			if($inlineAddOption)
-			{
-				$control_ReOrLevel->afterSuccessfulSave();
-			}
-//	processing ReOrLevel - end
 //	processing UInStock - start
 			$inlineAddOption = true;
 			if($inlineAddOption)
@@ -509,6 +503,20 @@ if(@$_POST["a"]=="added")
 				$control_UInStock->afterSuccessfulSave();
 			}
 //	processing UInStock - end
+//	processing ReOrLevel - start
+			$inlineAddOption = true;
+			if($inlineAddOption)
+			{
+				$control_ReOrLevel->afterSuccessfulSave();
+			}
+//	processing ReOrLevel - end
+//	processing QPerUnit - start
+			$inlineAddOption = true;
+			if($inlineAddOption)
+			{
+				$control_QPerUnit->afterSuccessfulSave();
+			}
+//	processing QPerUnit - end
 //	processing Qty - start
 			$inlineAddOption = true;
 			if($inlineAddOption)
@@ -523,6 +531,13 @@ if(@$_POST["a"]=="added")
 				$control_Note->afterSuccessfulSave();
 			}
 //	processing Note - end
+//	processing staffID - start
+			$inlineAddOption = true;
+			if($inlineAddOption)
+			{
+				$control_staffID->afterSuccessfulSave();
+			}
+//	processing staffID - end
 
 			$afterAdd_id = '';	
 			if($eventObj->exists("AfterAdd") && $inlineadd!=ADD_MASTER){
@@ -628,6 +643,7 @@ if(array_key_exists("copyid1",$_REQUEST) || array_key_exists("editid1",$_REQUEST
 }
 else
 {
+	$defvalues["staffID"] = $_SESSION["StaffID"];;
 }
 
 
@@ -656,6 +672,7 @@ if($readavalues)
 	$defvalues["ReOrLevel"]=@$avalues["ReOrLevel"];
 	$defvalues["Note"]=@$avalues["Note"];
 	$defvalues["ProdNo"]=@$avalues["ProdNo"];
+	$defvalues["staffID"]=@$avalues["staffID"];
 }
 
 if($eventObj->exists("ProcessValuesAdd"))
@@ -762,6 +779,14 @@ if($inlineadd!=ADD_INLINE)
 	$xt->assign("ProdNo_label",true);
 	if(isEnableSection508())
 		$xt->assign_section("ProdNo_label","<label for=\"".GetInputElementId("ProdNo", $id, PAGE_ADD)."\">","</label>");
+	
+	if(!$pageObject->isAppearOnTabs("staffID"))
+		$xt->assign("staffID_fieldblock",true);
+	else
+		$xt->assign("staffID_tabfieldblock",true);
+	$xt->assign("staffID_label",true);
+	if(isEnableSection508())
+		$xt->assign_section("staffID_label","<label for=\"".GetInputElementId("staffID", $id, PAGE_ADD)."\">","</label>");
 	
 	
 	
@@ -1020,6 +1045,18 @@ if(@$_POST["a"]=="added" && ($inlineadd == ADD_INLINE || $inlineadd == ADD_MASTE
 		$showValues["ProdNo"] = $value;
 		$showFields[] = "ProdNo";
 	}	
+//	staffID
+	$display = false;
+	if($inlineadd==ADD_MASTER)
+		$display = true;
+	if($inlineadd==ADD_INLINE || $inlineadd==ADD_ONTHEFLY || $inlineadd==ADD_POPUP)
+		$display = true;
+	if($display)
+	{	
+		$value = $pageObject->showDBValue("staffID", $data, $keylink);
+		$showValues["staffID"] = $value;
+		$showFields[] = "staffID";
+	}	
 		$showRawValues["ProdID"] = substr($data["ProdID"],0,100);
 		$showRawValues["Pname"] = substr($data["Pname"],0,100);
 		$showRawValues["CatID"] = substr($data["CatID"],0,100);
@@ -1036,6 +1073,7 @@ if(@$_POST["a"]=="added" && ($inlineadd == ADD_INLINE || $inlineadd == ADD_MASTE
 		$showRawValues["ReOrLevel"] = substr($data["ReOrLevel"],0,100);
 		$showRawValues["Note"] = substr($data["Note"],0,100);
 		$showRawValues["ProdNo"] = substr($data["ProdNo"],0,100);
+		$showRawValues["staffID"] = substr($data["staffID"],0,100);
 	
 	// for custom expression for display field
 	if ($dispFieldAlias)

@@ -178,55 +178,6 @@ if ($mode==SEARCH_SIMPLE)
 	}
 	// search fields data
 	
-	if($pageObject->pSet->getLookupTable("StaffID"))
-		$pageObject->settingsMap["globalSettings"]['shortTNames'][$pageObject->pSet->getLookupTable("StaffID")] = GetTableURL($pageObject->pSet->getLookupTable("StaffID"));
-	
-	$pageObject->fillFieldToolTips("StaffID");	
-	
-	$srchFields = $pageObject->searchClauseObj->getSearchCtrlParams("StaffID");
-	$firstFieldParams = array();
-	if (count($srchFields))
-	{
-		$firstFieldParams = $srchFields[0];
-	}
-	else
-	{
-		$firstFieldParams['fName'] = "StaffID";
-		$firstFieldParams['eType'] = '';
-		$firstFieldParams['value1'] = '';
-		$firstFieldParams['opt'] = '';
-		$firstFieldParams['value2'] = '';
-		$firstFieldParams['not'] = false;
-	}
-	// create control	
-	$ctrlBlockArr = $searchControlBuilder->buildSearchCtrlBlockArr($id, $firstFieldParams['fName'], 0, $firstFieldParams['opt'], $firstFieldParams['not'], false, $firstFieldParams['value1'], $firstFieldParams['value2']);	
-		
-	if(isEnableSection508())
-		$xt->assign_section("StaffID_label","<label for=\"".GetInputElementId("StaffID", $id, PAGE_SEARCH)."\">","</label>");
-	else 
-		$xt->assign("StaffID_label", true);
-	
-	$xt->assign("StaffID_fieldblock", true);
-	$xt->assignbyref("StaffID_editcontrol", $ctrlBlockArr['searchcontrol']);
-	$xt->assign("StaffID_notbox", $ctrlBlockArr['notbox']);
-	// create second control, if need it
-	$xt->assignbyref("StaffID_editcontrol1", $ctrlBlockArr['searchcontrol1']);
-	// create search type select
-	$xt->assign("searchtype_StaffID", $ctrlBlockArr['searchtype']);
-	$isFieldNeedSecCtrl = $searchControlBuilder->isNeedSecondCtrl("StaffID");
-	$ctrlInd = 0;
-	if ($isFieldNeedSecCtrl)
-	{
-		$pageObject->controlsMap["search"]["searchBlocks"][] = array('fName'=>"StaffID", 'recId'=>$id, 'ctrlsMap'=>array(0=>$ctrlInd, 1=>($ctrlInd+1)));
-		$ctrlInd+=2;
-	}
-	else
-	{
-		$pageObject->controlsMap["search"]["searchBlocks"][] = array('fName'=>"StaffID", 'recId'=>$id, 'ctrlsMap'=>array(0=>$ctrlInd));			
-		$ctrlInd++;
-	}
-	// search fields data
-	
 	if($pageObject->pSet->getLookupTable("ProductID"))
 		$pageObject->settingsMap["globalSettings"]['shortTNames'][$pageObject->pSet->getLookupTable("ProductID")] = GetTableURL($pageObject->pSet->getLookupTable("ProductID"));
 	
@@ -325,55 +276,6 @@ if ($mode==SEARCH_SIMPLE)
 	}
 	// search fields data
 	
-	if($pageObject->pSet->getLookupTable("Notes"))
-		$pageObject->settingsMap["globalSettings"]['shortTNames'][$pageObject->pSet->getLookupTable("Notes")] = GetTableURL($pageObject->pSet->getLookupTable("Notes"));
-	
-	$pageObject->fillFieldToolTips("Notes");	
-	
-	$srchFields = $pageObject->searchClauseObj->getSearchCtrlParams("Notes");
-	$firstFieldParams = array();
-	if (count($srchFields))
-	{
-		$firstFieldParams = $srchFields[0];
-	}
-	else
-	{
-		$firstFieldParams['fName'] = "Notes";
-		$firstFieldParams['eType'] = '';
-		$firstFieldParams['value1'] = '';
-		$firstFieldParams['opt'] = '';
-		$firstFieldParams['value2'] = '';
-		$firstFieldParams['not'] = false;
-	}
-	// create control	
-	$ctrlBlockArr = $searchControlBuilder->buildSearchCtrlBlockArr($id, $firstFieldParams['fName'], 0, $firstFieldParams['opt'], $firstFieldParams['not'], false, $firstFieldParams['value1'], $firstFieldParams['value2']);	
-		
-	if(isEnableSection508())
-		$xt->assign_section("Notes_label","<label for=\"".GetInputElementId("Notes", $id, PAGE_SEARCH)."\">","</label>");
-	else 
-		$xt->assign("Notes_label", true);
-	
-	$xt->assign("Notes_fieldblock", true);
-	$xt->assignbyref("Notes_editcontrol", $ctrlBlockArr['searchcontrol']);
-	$xt->assign("Notes_notbox", $ctrlBlockArr['notbox']);
-	// create second control, if need it
-	$xt->assignbyref("Notes_editcontrol1", $ctrlBlockArr['searchcontrol1']);
-	// create search type select
-	$xt->assign("searchtype_Notes", $ctrlBlockArr['searchtype']);
-	$isFieldNeedSecCtrl = $searchControlBuilder->isNeedSecondCtrl("Notes");
-	$ctrlInd = 0;
-	if ($isFieldNeedSecCtrl)
-	{
-		$pageObject->controlsMap["search"]["searchBlocks"][] = array('fName'=>"Notes", 'recId'=>$id, 'ctrlsMap'=>array(0=>$ctrlInd, 1=>($ctrlInd+1)));
-		$ctrlInd+=2;
-	}
-	else
-	{
-		$pageObject->controlsMap["search"]["searchBlocks"][] = array('fName'=>"Notes", 'recId'=>$id, 'ctrlsMap'=>array(0=>$ctrlInd));			
-		$ctrlInd++;
-	}
-	// search fields data
-	
 	if($pageObject->pSet->getLookupTable("TimeStamp"))
 		$pageObject->settingsMap["globalSettings"]['shortTNames'][$pageObject->pSet->getLookupTable("TimeStamp")] = GetTableURL($pageObject->pSet->getLookupTable("TimeStamp"));
 	
@@ -423,6 +325,55 @@ if ($mode==SEARCH_SIMPLE)
 	}
 	// search fields data
 	
+	if($pageObject->pSet->getLookupTable("Notes"))
+		$pageObject->settingsMap["globalSettings"]['shortTNames'][$pageObject->pSet->getLookupTable("Notes")] = GetTableURL($pageObject->pSet->getLookupTable("Notes"));
+	
+	$pageObject->fillFieldToolTips("Notes");	
+	
+	$srchFields = $pageObject->searchClauseObj->getSearchCtrlParams("Notes");
+	$firstFieldParams = array();
+	if (count($srchFields))
+	{
+		$firstFieldParams = $srchFields[0];
+	}
+	else
+	{
+		$firstFieldParams['fName'] = "Notes";
+		$firstFieldParams['eType'] = '';
+		$firstFieldParams['value1'] = '';
+		$firstFieldParams['opt'] = '';
+		$firstFieldParams['value2'] = '';
+		$firstFieldParams['not'] = false;
+	}
+	// create control	
+	$ctrlBlockArr = $searchControlBuilder->buildSearchCtrlBlockArr($id, $firstFieldParams['fName'], 0, $firstFieldParams['opt'], $firstFieldParams['not'], false, $firstFieldParams['value1'], $firstFieldParams['value2']);	
+		
+	if(isEnableSection508())
+		$xt->assign_section("Notes_label","<label for=\"".GetInputElementId("Notes", $id, PAGE_SEARCH)."\">","</label>");
+	else 
+		$xt->assign("Notes_label", true);
+	
+	$xt->assign("Notes_fieldblock", true);
+	$xt->assignbyref("Notes_editcontrol", $ctrlBlockArr['searchcontrol']);
+	$xt->assign("Notes_notbox", $ctrlBlockArr['notbox']);
+	// create second control, if need it
+	$xt->assignbyref("Notes_editcontrol1", $ctrlBlockArr['searchcontrol1']);
+	// create search type select
+	$xt->assign("searchtype_Notes", $ctrlBlockArr['searchtype']);
+	$isFieldNeedSecCtrl = $searchControlBuilder->isNeedSecondCtrl("Notes");
+	$ctrlInd = 0;
+	if ($isFieldNeedSecCtrl)
+	{
+		$pageObject->controlsMap["search"]["searchBlocks"][] = array('fName'=>"Notes", 'recId'=>$id, 'ctrlsMap'=>array(0=>$ctrlInd, 1=>($ctrlInd+1)));
+		$ctrlInd+=2;
+	}
+	else
+	{
+		$pageObject->controlsMap["search"]["searchBlocks"][] = array('fName'=>"Notes", 'recId'=>$id, 'ctrlsMap'=>array(0=>$ctrlInd));			
+		$ctrlInd++;
+	}
+	// search fields data
+	
 	if($pageObject->pSet->getLookupTable("ReceiveFlag"))
 		$pageObject->settingsMap["globalSettings"]['shortTNames'][$pageObject->pSet->getLookupTable("ReceiveFlag")] = GetTableURL($pageObject->pSet->getLookupTable("ReceiveFlag"));
 	
@@ -468,6 +419,55 @@ if ($mode==SEARCH_SIMPLE)
 	else
 	{
 		$pageObject->controlsMap["search"]["searchBlocks"][] = array('fName'=>"ReceiveFlag", 'recId'=>$id, 'ctrlsMap'=>array(0=>$ctrlInd));			
+		$ctrlInd++;
+	}
+	// search fields data
+	
+	if($pageObject->pSet->getLookupTable("StaffID"))
+		$pageObject->settingsMap["globalSettings"]['shortTNames'][$pageObject->pSet->getLookupTable("StaffID")] = GetTableURL($pageObject->pSet->getLookupTable("StaffID"));
+	
+	$pageObject->fillFieldToolTips("StaffID");	
+	
+	$srchFields = $pageObject->searchClauseObj->getSearchCtrlParams("StaffID");
+	$firstFieldParams = array();
+	if (count($srchFields))
+	{
+		$firstFieldParams = $srchFields[0];
+	}
+	else
+	{
+		$firstFieldParams['fName'] = "StaffID";
+		$firstFieldParams['eType'] = '';
+		$firstFieldParams['value1'] = '';
+		$firstFieldParams['opt'] = '';
+		$firstFieldParams['value2'] = '';
+		$firstFieldParams['not'] = false;
+	}
+	// create control	
+	$ctrlBlockArr = $searchControlBuilder->buildSearchCtrlBlockArr($id, $firstFieldParams['fName'], 0, $firstFieldParams['opt'], $firstFieldParams['not'], false, $firstFieldParams['value1'], $firstFieldParams['value2']);	
+		
+	if(isEnableSection508())
+		$xt->assign_section("StaffID_label","<label for=\"".GetInputElementId("StaffID", $id, PAGE_SEARCH)."\">","</label>");
+	else 
+		$xt->assign("StaffID_label", true);
+	
+	$xt->assign("StaffID_fieldblock", true);
+	$xt->assignbyref("StaffID_editcontrol", $ctrlBlockArr['searchcontrol']);
+	$xt->assign("StaffID_notbox", $ctrlBlockArr['notbox']);
+	// create second control, if need it
+	$xt->assignbyref("StaffID_editcontrol1", $ctrlBlockArr['searchcontrol1']);
+	// create search type select
+	$xt->assign("searchtype_StaffID", $ctrlBlockArr['searchtype']);
+	$isFieldNeedSecCtrl = $searchControlBuilder->isNeedSecondCtrl("StaffID");
+	$ctrlInd = 0;
+	if ($isFieldNeedSecCtrl)
+	{
+		$pageObject->controlsMap["search"]["searchBlocks"][] = array('fName'=>"StaffID", 'recId'=>$id, 'ctrlsMap'=>array(0=>$ctrlInd, 1=>($ctrlInd+1)));
+		$ctrlInd+=2;
+	}
+	else
+	{
+		$pageObject->controlsMap["search"]["searchBlocks"][] = array('fName'=>"StaffID", 'recId'=>$id, 'ctrlsMap'=>array(0=>$ctrlInd));			
 		$ctrlInd++;
 	}
 	

@@ -488,6 +488,7 @@ if(array_key_exists("copyid1",$_REQUEST) || array_key_exists("editid1",$_REQUEST
 }
 else
 {
+	$defvalues["StaffID"] = $_SESSION["StaffID"];;
 }
 
 

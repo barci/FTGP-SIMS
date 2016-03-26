@@ -34,7 +34,7 @@
 <table class="runner-c runner-c-add" cellpadding="0" align=center>
 
 
-<tr class="runner-toprow style2 header"><td class="runner-cl"><img src="images/spacer.gif"></td><td class="runner-cc" ><div  class="runner-b-addheader {$brickclass_addheader}">Order Entry, Add new record</div></td><td class="runner-cr"><img src="images/spacer.gif"></td></tr>
+<tr class="runner-toprow style2 header"><td class="runner-cl"><img src="images/spacer.gif"></td><td class="runner-cc" ><div  class="runner-b-addheader {$brickclass_addheader}">Orderentry, Add new record</div></td><td class="runner-cr"><img src="images/spacer.gif"></td></tr>
 
 
 {BEGIN message_block}
@@ -70,7 +70,7 @@
 	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
 	<td class="runner-cc runner-cc1">
 		<div class="fieldlabel_CID {$fielddispclass_CID}">
-			{BEGIN CID_label}Customer{END CID_label}
+			{BEGIN CID_label}CID{END CID_label}
 		</div>
 	</td>
 	<td class="runner-cc alt runner-fixedcell">
@@ -80,25 +80,39 @@
 	</td>
 	<td class="runner-cr alt"></td></tr>
 {END CID_fieldblock}
-	{BEGIN ODate_fieldblock}
+	{BEGIN DelDate_fieldblock}
 	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
 	<td class="runner-cc runner-cc1">
-		<div class="fieldlabel_ODate {$fielddispclass_ODate}">
-			{BEGIN ODate_label}Order Date{END ODate_label}
+		<div class="fieldlabel_DelDate {$fielddispclass_DelDate}">
+			{BEGIN DelDate_label}Del Date{END DelDate_label}
 		</div>
 	</td>
 	<td class="runner-cc alt runner-fixedcell">
-		<div class="fieldcontrol_ODate {$fielddispclass_ODate}">
-			{$ODate_editcontrol}&nbsp;
+		<div class="fieldcontrol_DelDate {$fielddispclass_DelDate}">
+			{$DelDate_editcontrol}&nbsp;
 		</div>
 	</td>
 	<td class="runner-cr alt"></td></tr>
-{END ODate_fieldblock}
+{END DelDate_fieldblock}
+	{BEGIN Note_fieldblock}
+	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
+	<td class="runner-cc runner-cc1">
+		<div class="fieldlabel_Note {$fielddispclass_Note}">
+			{BEGIN Note_label}Note{END Note_label}
+		</div>
+	</td>
+	<td class="runner-cc alt runner-fixedcell">
+		<div class="fieldcontrol_Note {$fielddispclass_Note}">
+			{$Note_editcontrol}&nbsp;
+		</div>
+	</td>
+	<td class="runner-cr alt"></td></tr>
+{END Note_fieldblock}
 	{BEGIN StaffID_fieldblock}
 	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
 	<td class="runner-cc runner-cc1">
 		<div class="fieldlabel_StaffID {$fielddispclass_StaffID}">
-			{BEGIN StaffID_label}Staff Incharge{END StaffID_label}
+			{BEGIN StaffID_label}Staff ID{END StaffID_label}
 		</div>
 	</td>
 	<td class="runner-cc alt runner-fixedcell">
@@ -108,20 +122,6 @@
 	</td>
 	<td class="runner-cr alt"></td></tr>
 {END StaffID_fieldblock}
-	{BEGIN ErrorMsg_fieldblock}
-	<tr class="runner-row style1 runner-b-addfields"><td class="runner-cl"></td>
-	<td class="runner-cc runner-cc1">
-		<div class="fieldlabel_ErrorMsg {$fielddispclass_ErrorMsg}">
-			{BEGIN ErrorMsg_label}Error Msg{END ErrorMsg_label}
-		</div>
-	</td>
-	<td class="runner-cc alt runner-fixedcell">
-		<div class="fieldcontrol_ErrorMsg {$fielddispclass_ErrorMsg}">
-			{$ErrorMsg_editcontrol}&nbsp;
-		</div>
-	</td>
-	<td class="runner-cr alt"></td></tr>
-{END ErrorMsg_fieldblock}
 
 
 
@@ -181,6 +181,25 @@
 {END container_add}
 
 
+
+{BEGIN container_details}
+<table class="runner-c runner-c-details" cellpadding="0" >
+<tr class="{$cheaderclass_details}">
+<td class="runner-cl"><img src="images/spacer.gif"></td>
+<td class="runner-cc"></td><td class="runner-cr"><img src="images/spacer.gif"></td>
+</tr>
+
+{BEGIN detail_tables}
+<tr  class="runner-row style1 runner-b-adddetails {$brickclass_adddetails}"><td class="runner-cl"></td><td class="runner-cc runner-brickcontents" >		{$displayDetailTable_orderdetail}
+</td><td class="runner-cr"></td></tr>{END detail_tables}
+
+
+<tr class="{$cfooterclass_details}">
+<td class="runner-cl"><img src="images/spacer.gif"></td>
+<td class="runner-cc"></td><td class="runner-cr"><img src="images/spacer.gif"></td>
+</tr>
+</table>
+{END container_details}
 
 
 				</td>

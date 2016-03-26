@@ -96,7 +96,7 @@ if (@$_REQUEST["a"]!="")
 		foreach(@$_REQUEST["mdelete"] as $ind)
 		{
 			$keys=array();
-			$keys["OrderID"] = refine($_REQUEST["mdelete1"][mdeleteIndex($ind)]);
+			$keys["ID"] = refine($_REQUEST["mdelete1"][mdeleteIndex($ind)]);
 			$selected_recs[] = $keys;
 		}
 	}
@@ -108,7 +108,7 @@ if (@$_REQUEST["a"]!="")
 			if(count($arr)<1)
 				continue;
 			$keys = array();
-			$keys["OrderID"] = urldecode($arr[0]);
+			$keys["ID"] = urldecode($arr[0]);
 			$selected_recs[] = $keys;
 		}
 	}
@@ -348,11 +348,13 @@ function ExportToXML($cipherer)
 	while((!$nPageSize || $i<$nPageSize) && $row)
 	{
 		$values = array();
+			$values["ID"] = $pageObject->showDBValue("ID", $row);
 			$values["OrderID"] = $pageObject->showDBValue("OrderID", $row);
-			$values["CID"] = $pageObject->showDBValue("CID", $row);
-			$values["ODate"] = $pageObject->showDBValue("ODate", $row);
 			$values["StaffID"] = $pageObject->showDBValue("StaffID", $row);
-			$values["ErrorMsg"] = $pageObject->showDBValue("ErrorMsg", $row);
+			$values["CID"] = $pageObject->showDBValue("CID", $row);
+			$values["DelDate"] = $pageObject->showDBValue("DelDate", $row);
+			$values["Note"] = $pageObject->showDBValue("Note", $row);
+			$values["TimeStamp"] = $pageObject->showDBValue("TimeStamp", $row);
 		
 		$eventRes = true;
 		if ($eventObj->exists('BeforeOut'))
@@ -396,19 +398,25 @@ function ExportToCSV($cipherer)
 	$outstr = "";
 	if($outstr!="")
 		$outstr.=",";
+	$outstr.= "\"ID\"";
+	if($outstr!="")
+		$outstr.=",";
 	$outstr.= "\"OrderID\"";
-	if($outstr!="")
-		$outstr.=",";
-	$outstr.= "\"CID\"";
-	if($outstr!="")
-		$outstr.=",";
-	$outstr.= "\"ODate\"";
 	if($outstr!="")
 		$outstr.=",";
 	$outstr.= "\"StaffID\"";
 	if($outstr!="")
 		$outstr.=",";
-	$outstr.= "\"ErrorMsg\"";
+	$outstr.= "\"CID\"";
+	if($outstr!="")
+		$outstr.=",";
+	$outstr.= "\"DelDate\"";
+	if($outstr!="")
+		$outstr.=",";
+	$outstr.= "\"Note\"";
+	if($outstr!="")
+		$outstr.=",";
+	$outstr.= "\"TimeStamp\"";
 	echo $outstr;
 	echo "\r\n";
 
@@ -418,11 +426,13 @@ function ExportToCSV($cipherer)
 	while((!$nPageSize || $iNumberOfRows < $nPageSize) && $row)
 	{
 		$values = array();
+			$values["ID"] = $pageObject->getViewControl("ID")->showDBValue($row, "");
 			$values["OrderID"] = $pageObject->getViewControl("OrderID")->showDBValue($row, "");
-			$values["CID"] = $pageObject->getViewControl("CID")->showDBValue($row, "");
-			$values["ODate"] = $pageObject->getViewControl("ODate")->showDBValue($row, "");
 			$values["StaffID"] = $pageObject->getViewControl("StaffID")->showDBValue($row, "");
-			$values["ErrorMsg"] = $pageObject->getViewControl("ErrorMsg")->showDBValue($row, "");
+			$values["CID"] = $pageObject->getViewControl("CID")->showDBValue($row, "");
+			$values["DelDate"] = $pageObject->getViewControl("DelDate")->showDBValue($row, "");
+			$values["Note"] = $pageObject->getViewControl("Note")->showDBValue($row, "");
+			$values["TimeStamp"] = $pageObject->getViewControl("TimeStamp")->showDBValue($row, "");
 
 		$eventRes = true;
 		if ($eventObj->exists('BeforeOut'))
@@ -434,19 +444,25 @@ function ExportToCSV($cipherer)
 			$outstr="";
 			if($outstr!="")
 				$outstr.=",";
+			$outstr.='"'.str_replace('"', '""', $values["ID"]).'"';
+			if($outstr!="")
+				$outstr.=",";
 			$outstr.='"'.str_replace('"', '""', $values["OrderID"]).'"';
-			if($outstr!="")
-				$outstr.=",";
-			$outstr.='"'.str_replace('"', '""', $values["CID"]).'"';
-			if($outstr!="")
-				$outstr.=",";
-			$outstr.='"'.str_replace('"', '""', $values["ODate"]).'"';
 			if($outstr!="")
 				$outstr.=",";
 			$outstr.='"'.str_replace('"', '""', $values["StaffID"]).'"';
 			if($outstr!="")
 				$outstr.=",";
-			$outstr.='"'.str_replace('"', '""', $values["ErrorMsg"]).'"';
+			$outstr.='"'.str_replace('"', '""', $values["CID"]).'"';
+			if($outstr!="")
+				$outstr.=",";
+			$outstr.='"'.str_replace('"', '""', $values["DelDate"]).'"';
+			if($outstr!="")
+				$outstr.=",";
+			$outstr.='"'.str_replace('"', '""', $values["Note"]).'"';
+			if($outstr!="")
+				$outstr.=",";
+			$outstr.='"'.str_replace('"', '""', $values["TimeStamp"]).'"';
 			echo $outstr;
 		}
 		
@@ -475,19 +491,23 @@ function WriteTableData($cipherer)
 	echo "<tr>";
 	if($_REQUEST["type"]=="excel")
 	{
+		echo '<td style="width: 100" x:str>'.PrepareForExcel("ID").'</td>';	
 		echo '<td style="width: 100" x:str>'.PrepareForExcel("Order ID").'</td>';	
-		echo '<td style="width: 100" x:str>'.PrepareForExcel("Customer").'</td>';	
-		echo '<td style="width: 100" x:str>'.PrepareForExcel("Order Date").'</td>';	
-		echo '<td style="width: 100" x:str>'.PrepareForExcel("Staff Incharge").'</td>';	
-		echo '<td style="width: 100" x:str>'.PrepareForExcel("Error Msg").'</td>';	
+		echo '<td style="width: 100" x:str>'.PrepareForExcel("Staff ID").'</td>';	
+		echo '<td style="width: 100" x:str>'.PrepareForExcel("CID").'</td>';	
+		echo '<td style="width: 100" x:str>'.PrepareForExcel("Del Date").'</td>';	
+		echo '<td style="width: 100" x:str>'.PrepareForExcel("Note").'</td>';	
+		echo '<td style="width: 100" x:str>'.PrepareForExcel("Time Stamp").'</td>';	
 	}
 	else
 	{
+		echo "<td>"."ID"."</td>";
 		echo "<td>"."Order ID"."</td>";
-		echo "<td>"."Customer"."</td>";
-		echo "<td>"."Order Date"."</td>";
-		echo "<td>"."Staff Incharge"."</td>";
-		echo "<td>"."Error Msg"."</td>";
+		echo "<td>"."Staff ID"."</td>";
+		echo "<td>"."CID"."</td>";
+		echo "<td>"."Del Date"."</td>";
+		echo "<td>"."Note"."</td>";
+		echo "<td>"."Time Stamp"."</td>";
 	}
 	echo "</tr>";
 	
@@ -500,11 +520,13 @@ function WriteTableData($cipherer)
 		
 		$values = array();
 	
+					$values["ID"] = $pageObject->getViewControl("ID")->showDBValue($row, "");
 					$values["OrderID"] = $pageObject->getViewControl("OrderID")->showDBValue($row, "");
-					$values["CID"] = $pageObject->getViewControl("CID")->showDBValue($row, "");
-					$values["ODate"] = $pageObject->getViewControl("ODate")->showDBValue($row, "");
 					$values["StaffID"] = $pageObject->getViewControl("StaffID")->showDBValue($row, "");
-					$values["ErrorMsg"] = $pageObject->getViewControl("ErrorMsg")->showDBValue($row, "");
+					$values["CID"] = $pageObject->getViewControl("CID")->showDBValue($row, "");
+					$values["DelDate"] = $pageObject->getViewControl("DelDate")->showDBValue($row, "");
+					$values["Note"] = $pageObject->getViewControl("Note")->showDBValue($row, "");
+					$values["TimeStamp"] = $pageObject->getViewControl("TimeStamp")->showDBValue($row, "");
 		
 		$eventRes = true;
 		if ($eventObj->exists('BeforeOut'))
@@ -516,6 +538,10 @@ function WriteTableData($cipherer)
 			$iNumberOfRows++;
 			echo "<tr>";
 		
+							echo '<td>';
+			
+									echo $values["ID"];
+			echo '</td>';
 							if($_REQUEST["type"]=="excel")
 					echo '<td x:str>';
 				else
@@ -531,31 +557,27 @@ function WriteTableData($cipherer)
 				else
 					echo '<td>';
 			
-				
-								if($_REQUEST["type"]=="excel")
-					echo PrepareForExcel($values["CID"]);
+									if($_REQUEST["type"]=="excel")
+						echo PrepareForExcel($values["StaffID"]);
+					else
+						echo $values["StaffID"];
+			echo '</td>';
+							if($_REQUEST["type"]=="excel")
+					echo '<td x:str>';
 				else
-					echo $values["CID"];//echo htmlspecialchars($values["CID"]); commented for bug #6823
-					
+					echo '<td>';
+			
+									if($_REQUEST["type"]=="excel")
+						echo PrepareForExcel($values["CID"]);
+					else
+						echo $values["CID"];
 			echo '</td>';
 							echo '<td>';
 			
 									if($_REQUEST["type"]=="excel")
-						echo PrepareForExcel($values["ODate"]);
+						echo PrepareForExcel($values["DelDate"]);
 					else
-						echo $values["ODate"];
-			echo '</td>';
-							if($_REQUEST["type"]=="excel")
-					echo '<td x:str>';
-				else
-					echo '<td>';
-			
-				
-								if($_REQUEST["type"]=="excel")
-					echo PrepareForExcel($values["StaffID"]);
-				else
-					echo $values["StaffID"];//echo htmlspecialchars($values["StaffID"]); commented for bug #6823
-					
+						echo $values["DelDate"];
 			echo '</td>';
 							if($_REQUEST["type"]=="excel")
 					echo '<td x:str>';
@@ -563,9 +585,16 @@ function WriteTableData($cipherer)
 					echo '<td>';
 			
 									if($_REQUEST["type"]=="excel")
-						echo PrepareForExcel($values["ErrorMsg"]);
+						echo PrepareForExcel($values["Note"]);
 					else
-						echo $values["ErrorMsg"];
+						echo $values["Note"];
+			echo '</td>';
+							echo '<td>';
+			
+									if($_REQUEST["type"]=="excel")
+						echo PrepareForExcel($values["TimeStamp"]);
+					else
+						echo $values["TimeStamp"];
 			echo '</td>';
 			echo "</tr>";
 		}

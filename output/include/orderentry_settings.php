@@ -12,16 +12,20 @@ if(mlang_getcurrentlang()=="English")
 {
 	$fieldLabelsorderentry["English"] = array();
 	$fieldToolTipsorderentry["English"] = array();
+	$fieldLabelsorderentry["English"]["ID"] = "ID";
+	$fieldToolTipsorderentry["English"]["ID"] = "";
 	$fieldLabelsorderentry["English"]["OrderID"] = "Order ID";
 	$fieldToolTipsorderentry["English"]["OrderID"] = "";
-	$fieldLabelsorderentry["English"]["StaffID"] = "Staff Incharge";
+	$fieldLabelsorderentry["English"]["StaffID"] = "Staff ID";
 	$fieldToolTipsorderentry["English"]["StaffID"] = "";
-	$fieldLabelsorderentry["English"]["CID"] = "Customer";
+	$fieldLabelsorderentry["English"]["CID"] = "CID";
 	$fieldToolTipsorderentry["English"]["CID"] = "";
-	$fieldLabelsorderentry["English"]["ODate"] = "Order Date";
-	$fieldToolTipsorderentry["English"]["ODate"] = "";
-	$fieldLabelsorderentry["English"]["ErrorMsg"] = "Error Msg";
-	$fieldToolTipsorderentry["English"]["ErrorMsg"] = "";
+	$fieldLabelsorderentry["English"]["DelDate"] = "Del Date";
+	$fieldToolTipsorderentry["English"]["DelDate"] = "";
+	$fieldLabelsorderentry["English"]["Note"] = "Note";
+	$fieldToolTipsorderentry["English"]["Note"] = "";
+	$fieldLabelsorderentry["English"]["TimeStamp"] = "Time Stamp";
+	$fieldToolTipsorderentry["English"]["TimeStamp"] = "";
 	if (count($fieldToolTipsorderentry["English"]))
 		$tdataorderentry[".isUseToolTips"] = true;
 }
@@ -59,13 +63,8 @@ $tdataorderentry[".listAjax"] = false;
 
 $tdataorderentry[".listIcons"] = true;
 $tdataorderentry[".edit"] = true;
-$tdataorderentry[".inlineEdit"] = true;
-$tdataorderentry[".inlineAdd"] = true;
-$tdataorderentry[".view"] = true;
 
-$tdataorderentry[".exportTo"] = true;
 
-$tdataorderentry[".printFriendly"] = true;
 
 $tdataorderentry[".delete"] = true;
 
@@ -93,24 +92,28 @@ $tdataorderentry[".useDetailsPreview"] = true;
 
 $tdataorderentry[".allSearchFields"] = array();
 
+$tdataorderentry[".allSearchFields"][] = "ID";
 $tdataorderentry[".allSearchFields"][] = "OrderID";
 $tdataorderentry[".allSearchFields"][] = "CID";
-$tdataorderentry[".allSearchFields"][] = "ODate";
+$tdataorderentry[".allSearchFields"][] = "DelDate";
+$tdataorderentry[".allSearchFields"][] = "Note";
 $tdataorderentry[".allSearchFields"][] = "StaffID";
-$tdataorderentry[".allSearchFields"][] = "ErrorMsg";
 
+$tdataorderentry[".googleLikeFields"][] = "ID";
 $tdataorderentry[".googleLikeFields"][] = "OrderID";
 $tdataorderentry[".googleLikeFields"][] = "StaffID";
 $tdataorderentry[".googleLikeFields"][] = "CID";
-$tdataorderentry[".googleLikeFields"][] = "ODate";
-$tdataorderentry[".googleLikeFields"][] = "ErrorMsg";
+$tdataorderentry[".googleLikeFields"][] = "DelDate";
+$tdataorderentry[".googleLikeFields"][] = "Note";
+$tdataorderentry[".googleLikeFields"][] = "TimeStamp";
 
 
+$tdataorderentry[".advSearchFields"][] = "ID";
 $tdataorderentry[".advSearchFields"][] = "OrderID";
 $tdataorderentry[".advSearchFields"][] = "CID";
-$tdataorderentry[".advSearchFields"][] = "ODate";
+$tdataorderentry[".advSearchFields"][] = "DelDate";
+$tdataorderentry[".advSearchFields"][] = "Note";
 $tdataorderentry[".advSearchFields"][] = "StaffID";
-$tdataorderentry[".advSearchFields"][] = "ErrorMsg";
 
 $tdataorderentry[".isTableType"] = "list";
 
@@ -124,14 +127,15 @@ $tdataorderentry[".isTableType"] = "list";
 
 $tdataorderentry[".pageSize"] = 20;
 
-$tstrOrderBy = "";
+$tstrOrderBy = "ORDER BY DelDate DESC";
 if(strlen($tstrOrderBy) && strtolower(substr($tstrOrderBy,0,8))!="order by")
 	$tstrOrderBy = "order by ".$tstrOrderBy;
 $tdataorderentry[".strOrderBy"] = $tstrOrderBy;
 
 $tdataorderentry[".orderindexes"] = array();
+$tdataorderentry[".orderindexes"][] = array(5, (0 ? "ASC" : "DESC"), "DelDate");
 
-$tdataorderentry[".sqlHead"] = "SELECT OrderID,  StaffID,  CID,  ODate,  ErrorMsg";
+$tdataorderentry[".sqlHead"] = "SELECT ID,  OrderID,  StaffID,  CID,  DelDate,  Note,  `TimeStamp`";
 $tdataorderentry[".sqlFrom"] = "FROM orderentry";
 $tdataorderentry[".sqlWhereExpr"] = "";
 $tdataorderentry[".sqlTail"] = "";
@@ -162,97 +166,67 @@ $arrGPP[] = -1;
 $tdataorderentry[".arrGroupsPerPage"] = $arrGPP;
 
 $tableKeysorderentry = array();
-$tableKeysorderentry[] = "OrderID";
+$tableKeysorderentry[] = "ID";
 $tdataorderentry[".Keys"] = $tableKeysorderentry;
 
 $tdataorderentry[".listFields"] = array();
+$tdataorderentry[".listFields"][] = "ID";
 $tdataorderentry[".listFields"][] = "OrderID";
 $tdataorderentry[".listFields"][] = "CID";
-$tdataorderentry[".listFields"][] = "ODate";
+$tdataorderentry[".listFields"][] = "DelDate";
+$tdataorderentry[".listFields"][] = "Note";
 $tdataorderentry[".listFields"][] = "StaffID";
-$tdataorderentry[".listFields"][] = "ErrorMsg";
 
 $tdataorderentry[".viewFields"] = array();
-$tdataorderentry[".viewFields"][] = "OrderID";
-$tdataorderentry[".viewFields"][] = "CID";
-$tdataorderentry[".viewFields"][] = "ODate";
-$tdataorderentry[".viewFields"][] = "StaffID";
-$tdataorderentry[".viewFields"][] = "ErrorMsg";
 
 $tdataorderentry[".addFields"] = array();
 $tdataorderentry[".addFields"][] = "OrderID";
 $tdataorderentry[".addFields"][] = "CID";
-$tdataorderentry[".addFields"][] = "ODate";
+$tdataorderentry[".addFields"][] = "DelDate";
+$tdataorderentry[".addFields"][] = "Note";
 $tdataorderentry[".addFields"][] = "StaffID";
-$tdataorderentry[".addFields"][] = "ErrorMsg";
 
 $tdataorderentry[".inlineAddFields"] = array();
-$tdataorderentry[".inlineAddFields"][] = "OrderID";
-$tdataorderentry[".inlineAddFields"][] = "CID";
-$tdataorderentry[".inlineAddFields"][] = "ODate";
-$tdataorderentry[".inlineAddFields"][] = "StaffID";
-$tdataorderentry[".inlineAddFields"][] = "ErrorMsg";
 
 $tdataorderentry[".editFields"] = array();
 $tdataorderentry[".editFields"][] = "OrderID";
 $tdataorderentry[".editFields"][] = "CID";
-$tdataorderentry[".editFields"][] = "ODate";
+$tdataorderentry[".editFields"][] = "DelDate";
+$tdataorderentry[".editFields"][] = "Note";
 $tdataorderentry[".editFields"][] = "StaffID";
-$tdataorderentry[".editFields"][] = "ErrorMsg";
 
 $tdataorderentry[".inlineEditFields"] = array();
-$tdataorderentry[".inlineEditFields"][] = "OrderID";
-$tdataorderentry[".inlineEditFields"][] = "CID";
-$tdataorderentry[".inlineEditFields"][] = "ODate";
-$tdataorderentry[".inlineEditFields"][] = "StaffID";
-$tdataorderentry[".inlineEditFields"][] = "ErrorMsg";
 
 $tdataorderentry[".exportFields"] = array();
-$tdataorderentry[".exportFields"][] = "OrderID";
-$tdataorderentry[".exportFields"][] = "CID";
-$tdataorderentry[".exportFields"][] = "ODate";
-$tdataorderentry[".exportFields"][] = "StaffID";
-$tdataorderentry[".exportFields"][] = "ErrorMsg";
 
 $tdataorderentry[".printFields"] = array();
-$tdataorderentry[".printFields"][] = "OrderID";
-$tdataorderentry[".printFields"][] = "CID";
-$tdataorderentry[".printFields"][] = "ODate";
-$tdataorderentry[".printFields"][] = "StaffID";
-$tdataorderentry[".printFields"][] = "ErrorMsg";
 
-//	OrderID
+//	ID
 //	Custom field settings
 	$fdata = array();
 	$fdata["Index"] = 1;
-	$fdata["strName"] = "OrderID";
-	$fdata["GoodName"] = "OrderID";
+	$fdata["strName"] = "ID";
+	$fdata["GoodName"] = "ID";
 	$fdata["ownerTable"] = "orderentry";
-	$fdata["Label"] = "Order ID"; 
-	$fdata["FieldType"] = 200;
+	$fdata["Label"] = "ID"; 
+	$fdata["FieldType"] = 3;
 	
-		
+		$fdata["AutoInc"] = true;
+	
 		
 		$fdata["bListPage"] = true; 
 	
-		$fdata["bAddPage"] = true; 
-	
-		$fdata["bInlineAdd"] = true; 
-	
-		$fdata["bEditPage"] = true; 
-	
-		$fdata["bInlineEdit"] = true; 
-	
-		$fdata["bViewPage"] = true; 
-	
+		
+		
+		
+		
+		
 		$fdata["bAdvancedSearch"] = true; 
 	
-		$fdata["bPrinterPage"] = true; 
-	
-		$fdata["bExportPage"] = true; 
-	
-		$fdata["strField"] = "OrderID"; 
-		$fdata["FullName"] = "OrderID";
+		
+		
+		$fdata["strField"] = "ID"; 
+		$fdata["FullName"] = "ID";
 	
 		
 		
@@ -291,7 +265,8 @@ $tdataorderentry[".printFields"][] = "ErrorMsg";
 //	Begin Lookup settings
 	//	End Lookup Settings
 
-		
+		$edata["IsRequired"] = true; 
+	
 		
 		
 		
@@ -304,12 +279,135 @@ $tdataorderentry[".printFields"][] = "ErrorMsg";
 		
 		
 		$edata["EditParams"] = "";
-			$edata["EditParams"].= " maxlength=20";
-	
+			
 		
 //	Begin validation
 	$edata["validateAs"] = array();
+				$edata["validateAs"]["basicValidate"][] = getJsValidatorName("Number");	
+						$edata["validateAs"]["basicValidate"][] = "IsRequired";
+	
+	//	End validation
+	
 		
+				
+		$fdata["EditFormats"]["edit"] = $edata;
+//	End Edit Formats
+	
+		$fdata["isSeparate"] = false;
+	
+		
+		
+	$tdataorderentry["ID"] = $fdata;
+//	OrderID
+//	Custom field settings
+	$fdata = array();
+	$fdata["Index"] = 2;
+	$fdata["strName"] = "OrderID";
+	$fdata["GoodName"] = "OrderID";
+	$fdata["ownerTable"] = "orderentry";
+	$fdata["Label"] = "Order ID"; 
+	$fdata["FieldType"] = 200;
+	
+		
+		
+		$fdata["bListPage"] = true; 
+	
+		$fdata["bAddPage"] = true; 
+	
+		
+		$fdata["bEditPage"] = true; 
+	
+		
+		
+		$fdata["bAdvancedSearch"] = true; 
+	
+		
+		
+		$fdata["strField"] = "OrderID"; 
+		$fdata["FullName"] = "OrderID";
+	
+		
+		
+				$fdata["FieldPermissions"] = true;
+	
+				$fdata["UploadFolder"] = "files";
+		
+//  Begin View Formats
+	$fdata["ViewFormats"] = array();
+	
+	$vdata = array("ViewFormat" => "");
+	
+		
+		
+		
+			
+		
+		
+		
+		
+		
+		
+		$vdata["NeedEncode"] = true;
+	
+	$fdata["ViewFormats"]["view"] = $vdata;
+//  End View Formats
+
+//	Begin Edit Formats 	
+	$fdata["EditFormats"] = array();
+	
+	$edata = array("EditFormat" => "Lookup wizard");
+	
+		
+		
+	
+//	Begin Lookup settings
+								$edata["LookupType"] = 2;
+	$edata["freeInput"] = 1;
+	$edata["autoCompleteFieldsOnEdit"] = 0;
+	$edata["autoCompleteFields"] = array();
+				$edata["LCType"] = 1;
+			
+		
+			$edata["LookupUnique"] = true;
+	
+	$edata["LinkField"] = "OrderID";
+	$edata["LinkFieldType"] = 200;
+	$edata["DisplayField"] = "OrderID";
+	
+		
+	$edata["LookupTable"] = "orderentry";
+	$edata["LookupOrderBy"] = "";
+	
+		
+		
+		
+		$edata["FastType"] = true; 
+	
+		
+				
+	
+	
+	//	End Lookup Settings
+
+		$edata["IsRequired"] = true; 
+	
+		
+		
+		
+			$edata["acceptFileTypes"] = ".+$";
+	
+		$edata["maxNumberOfFiles"] = 1;
+	
+		
+		
+		
+		
+		
+		
+//	Begin validation
+	$edata["validateAs"] = array();
+						$edata["validateAs"]["basicValidate"][] = "IsRequired";
+	
 	//	End validation
 	
 		
@@ -325,11 +423,11 @@ $tdataorderentry[".printFields"][] = "ErrorMsg";
 //	StaffID
 //	Custom field settings
 	$fdata = array();
-	$fdata["Index"] = 2;
+	$fdata["Index"] = 3;
 	$fdata["strName"] = "StaffID";
 	$fdata["GoodName"] = "StaffID";
 	$fdata["ownerTable"] = "orderentry";
-	$fdata["Label"] = "Staff Incharge"; 
+	$fdata["Label"] = "Staff ID"; 
 	$fdata["FieldType"] = 200;
 	
 		
@@ -338,20 +436,15 @@ $tdataorderentry[".printFields"][] = "ErrorMsg";
 	
 		$fdata["bAddPage"] = true; 
 	
-		$fdata["bInlineAdd"] = true; 
-	
+		
 		$fdata["bEditPage"] = true; 
 	
-		$fdata["bInlineEdit"] = true; 
-	
-		$fdata["bViewPage"] = true; 
-	
+		
+		
 		$fdata["bAdvancedSearch"] = true; 
 	
-		$fdata["bPrinterPage"] = true; 
-	
-		$fdata["bExportPage"] = true; 
-	
+		
+		
 		$fdata["strField"] = "StaffID"; 
 		$fdata["FullName"] = "StaffID";
 	
@@ -449,11 +542,11 @@ $tdataorderentry[".printFields"][] = "ErrorMsg";
 //	CID
 //	Custom field settings
 	$fdata = array();
-	$fdata["Index"] = 3;
+	$fdata["Index"] = 4;
 	$fdata["strName"] = "CID";
 	$fdata["GoodName"] = "CID";
 	$fdata["ownerTable"] = "orderentry";
-	$fdata["Label"] = "Customer"; 
+	$fdata["Label"] = "CID"; 
 	$fdata["FieldType"] = 200;
 	
 		
@@ -462,20 +555,15 @@ $tdataorderentry[".printFields"][] = "ErrorMsg";
 	
 		$fdata["bAddPage"] = true; 
 	
-		$fdata["bInlineAdd"] = true; 
-	
+		
 		$fdata["bEditPage"] = true; 
 	
-		$fdata["bInlineEdit"] = true; 
-	
-		$fdata["bViewPage"] = true; 
-	
+		
+		
 		$fdata["bAdvancedSearch"] = true; 
 	
-		$fdata["bPrinterPage"] = true; 
-	
-		$fdata["bExportPage"] = true; 
-	
+		
+		
 		$fdata["strField"] = "CID"; 
 		$fdata["FullName"] = "CID";
 	
@@ -541,7 +629,8 @@ $tdataorderentry[".printFields"][] = "ErrorMsg";
 	
 	//	End Lookup Settings
 
-		
+		$edata["IsRequired"] = true; 
+	
 		
 		
 		
@@ -557,7 +646,8 @@ $tdataorderentry[".printFields"][] = "ErrorMsg";
 		
 //	Begin validation
 	$edata["validateAs"] = array();
-		
+						$edata["validateAs"]["basicValidate"][] = "IsRequired";
+	
 	//	End validation
 	
 		
@@ -570,14 +660,14 @@ $tdataorderentry[".printFields"][] = "ErrorMsg";
 		
 		
 	$tdataorderentry["CID"] = $fdata;
-//	ODate
+//	DelDate
 //	Custom field settings
 	$fdata = array();
-	$fdata["Index"] = 4;
-	$fdata["strName"] = "ODate";
-	$fdata["GoodName"] = "ODate";
+	$fdata["Index"] = 5;
+	$fdata["strName"] = "DelDate";
+	$fdata["GoodName"] = "DelDate";
 	$fdata["ownerTable"] = "orderentry";
-	$fdata["Label"] = "Order Date"; 
+	$fdata["Label"] = "Del Date"; 
 	$fdata["FieldType"] = 135;
 	
 		
@@ -586,22 +676,17 @@ $tdataorderentry[".printFields"][] = "ErrorMsg";
 	
 		$fdata["bAddPage"] = true; 
 	
-		$fdata["bInlineAdd"] = true; 
-	
+		
 		$fdata["bEditPage"] = true; 
 	
-		$fdata["bInlineEdit"] = true; 
-	
-		$fdata["bViewPage"] = true; 
-	
+		
+		
 		$fdata["bAdvancedSearch"] = true; 
 	
-		$fdata["bPrinterPage"] = true; 
-	
-		$fdata["bExportPage"] = true; 
-	
-		$fdata["strField"] = "ODate"; 
-		$fdata["FullName"] = "ODate";
+		
+		
+		$fdata["strField"] = "DelDate"; 
+		$fdata["FullName"] = "DelDate";
 	
 		
 		
@@ -612,7 +697,7 @@ $tdataorderentry[".printFields"][] = "ErrorMsg";
 //  Begin View Formats
 	$fdata["ViewFormats"] = array();
 	
-	$vdata = array("ViewFormat" => "Short Date");
+	$vdata = array("ViewFormat" => "Long Date");
 	
 		
 		
@@ -671,15 +756,15 @@ $tdataorderentry[".printFields"][] = "ErrorMsg";
 	
 		
 		
-	$tdataorderentry["ODate"] = $fdata;
-//	ErrorMsg
+	$tdataorderentry["DelDate"] = $fdata;
+//	Note
 //	Custom field settings
 	$fdata = array();
-	$fdata["Index"] = 5;
-	$fdata["strName"] = "ErrorMsg";
-	$fdata["GoodName"] = "ErrorMsg";
+	$fdata["Index"] = 6;
+	$fdata["strName"] = "Note";
+	$fdata["GoodName"] = "Note";
 	$fdata["ownerTable"] = "orderentry";
-	$fdata["Label"] = "Error Msg"; 
+	$fdata["Label"] = "Note"; 
 	$fdata["FieldType"] = 200;
 	
 		
@@ -688,22 +773,17 @@ $tdataorderentry[".printFields"][] = "ErrorMsg";
 	
 		$fdata["bAddPage"] = true; 
 	
-		$fdata["bInlineAdd"] = true; 
-	
+		
 		$fdata["bEditPage"] = true; 
 	
-		$fdata["bInlineEdit"] = true; 
-	
-		$fdata["bViewPage"] = true; 
-	
+		
+		
 		$fdata["bAdvancedSearch"] = true; 
 	
-		$fdata["bPrinterPage"] = true; 
-	
-		$fdata["bExportPage"] = true; 
-	
-		$fdata["strField"] = "ErrorMsg"; 
-		$fdata["FullName"] = "ErrorMsg";
+		
+		
+		$fdata["strField"] = "Note"; 
+		$fdata["FullName"] = "Note";
 	
 		
 		
@@ -734,7 +814,7 @@ $tdataorderentry[".printFields"][] = "ErrorMsg";
 //	Begin Edit Formats 	
 	$fdata["EditFormats"] = array();
 	
-	$edata = array("EditFormat" => "Text field");
+	$edata = array("EditFormat" => "Text area");
 	
 		
 		
@@ -753,10 +833,10 @@ $tdataorderentry[".printFields"][] = "ErrorMsg";
 		
 		
 		
-		
-		$edata["EditParams"] = "";
-			$edata["EditParams"].= " maxlength=100";
+				$edata["nRows"] = 100;
+			$edata["nCols"] = 200;
 	
+		
 		
 //	Begin validation
 	$edata["validateAs"] = array();
@@ -772,7 +852,101 @@ $tdataorderentry[".printFields"][] = "ErrorMsg";
 	
 		
 		
-	$tdataorderentry["ErrorMsg"] = $fdata;
+	$tdataorderentry["Note"] = $fdata;
+//	TimeStamp
+//	Custom field settings
+	$fdata = array();
+	$fdata["Index"] = 7;
+	$fdata["strName"] = "TimeStamp";
+	$fdata["GoodName"] = "TimeStamp";
+	$fdata["ownerTable"] = "orderentry";
+	$fdata["Label"] = "Time Stamp"; 
+	$fdata["FieldType"] = 135;
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		$fdata["strField"] = "TimeStamp"; 
+		$fdata["FullName"] = "`TimeStamp`";
+	
+		
+		
+				
+				$fdata["UploadFolder"] = "files";
+		
+//  Begin View Formats
+	$fdata["ViewFormats"] = array();
+	
+	$vdata = array("ViewFormat" => "Short Date");
+	
+		
+		
+		
+			
+		
+		
+		
+		
+		
+		
+		$vdata["NeedEncode"] = true;
+	
+	$fdata["ViewFormats"]["view"] = $vdata;
+//  End View Formats
+
+//	Begin Edit Formats 	
+	$fdata["EditFormats"] = array();
+	
+	$edata = array("EditFormat" => "Date");
+	
+		
+		
+	
+//	Begin Lookup settings
+	//	End Lookup Settings
+
+		$edata["IsRequired"] = true; 
+	
+		
+		
+		
+			$edata["acceptFileTypes"] = ".+$";
+	
+		$edata["maxNumberOfFiles"] = 1;
+	
+		
+		
+		$edata["DateEditType"] = 13; 
+	$edata["InitialYearFactor"] = 100; 
+	$edata["LastYearFactor"] = 10; 
+	
+		
+		
+		
+//	Begin validation
+	$edata["validateAs"] = array();
+						$edata["validateAs"]["basicValidate"][] = "IsRequired";
+	
+	//	End validation
+	
+		
+				
+		$fdata["EditFormats"]["edit"] = $edata;
+//	End Edit Formats
+	
+		$fdata["isSeparate"] = false;
+	
+		
+		
+	$tdataorderentry["TimeStamp"] = $fdata;
 
 	
 $tables_data["orderentry"]=&$tdataorderentry;
@@ -792,15 +966,17 @@ $dIndex = 1-1;
 	$detailsParam["dispChildCount"]= "1";
 	$detailsParam["hideChild"]="0";
 	$detailsParam["previewOnList"]= 1;
-	$detailsParam["previewOnAdd"]= 0;
-	$detailsParam["previewOnEdit"]= 0;
-	$detailsParam["previewOnView"]= 0;
+	$detailsParam["previewOnAdd"]= 1;
+	$detailsParam["previewOnEdit"]= 1;
+	$detailsParam["previewOnView"]= 1;
 		
 	$detailsTablesData["orderentry"][$dIndex] = $detailsParam;
 	
 		
 		$detailsTablesData["orderentry"][$dIndex]["masterKeys"][]="OrderID";
+		$detailsTablesData["orderentry"][$dIndex]["masterKeys"][]="DelDate";
 		$detailsTablesData["orderentry"][$dIndex]["detailKeys"][]="OrderID";
+		$detailsTablesData["orderentry"][$dIndex]["detailKeys"][]="DelDate";
 
 	
 // tables which are master tables for current table (detail)
@@ -823,10 +999,10 @@ function createSqlQuery_orderentry()
 {
 $proto0=array();
 $proto0["m_strHead"] = "SELECT";
-$proto0["m_strFieldList"] = "OrderID,  StaffID,  CID,  ODate,  ErrorMsg";
+$proto0["m_strFieldList"] = "ID,  OrderID,  StaffID,  CID,  DelDate,  Note,  `TimeStamp`";
 $proto0["m_strFrom"] = "FROM orderentry";
 $proto0["m_strWhere"] = "";
-$proto0["m_strOrderBy"] = "";
+$proto0["m_strOrderBy"] = "ORDER BY DelDate DESC";
 $proto0["m_strTail"] = "";
 $proto0["cipherer"] = null;
 $proto1=array();
@@ -864,7 +1040,7 @@ $proto0["m_having"] = $obj;
 $proto0["m_fieldlist"] = array();
 						$proto5=array();
 			$obj = new SQLField(array(
-	"m_strName" => "OrderID",
+	"m_strName" => "ID",
 	"m_strTable" => "orderentry"
 ));
 
@@ -875,7 +1051,7 @@ $obj = new SQLFieldListItem($proto5);
 $proto0["m_fieldlist"][]=$obj;
 						$proto7=array();
 			$obj = new SQLField(array(
-	"m_strName" => "StaffID",
+	"m_strName" => "OrderID",
 	"m_strTable" => "orderentry"
 ));
 
@@ -886,7 +1062,7 @@ $obj = new SQLFieldListItem($proto7);
 $proto0["m_fieldlist"][]=$obj;
 						$proto9=array();
 			$obj = new SQLField(array(
-	"m_strName" => "CID",
+	"m_strName" => "StaffID",
 	"m_strTable" => "orderentry"
 ));
 
@@ -897,7 +1073,7 @@ $obj = new SQLFieldListItem($proto9);
 $proto0["m_fieldlist"][]=$obj;
 						$proto11=array();
 			$obj = new SQLField(array(
-	"m_strName" => "ODate",
+	"m_strName" => "CID",
 	"m_strTable" => "orderentry"
 ));
 
@@ -908,7 +1084,7 @@ $obj = new SQLFieldListItem($proto11);
 $proto0["m_fieldlist"][]=$obj;
 						$proto13=array();
 			$obj = new SQLField(array(
-	"m_strName" => "ErrorMsg",
+	"m_strName" => "DelDate",
 	"m_strTable" => "orderentry"
 ));
 
@@ -917,49 +1093,84 @@ $proto13["m_alias"] = "";
 $obj = new SQLFieldListItem($proto13);
 
 $proto0["m_fieldlist"][]=$obj;
-$proto0["m_fromlist"] = array();
-												$proto15=array();
-$proto15["m_link"] = "SQLL_MAIN";
-			$proto16=array();
-$proto16["m_strName"] = "orderentry";
-$proto16["m_columns"] = array();
-$proto16["m_columns"][] = "OrderID";
-$proto16["m_columns"][] = "StaffID";
-$proto16["m_columns"][] = "CID";
-$proto16["m_columns"][] = "ODate";
-$proto16["m_columns"][] = "ErrorMsg";
-$proto16["m_columns"][] = "TimeStamp";
-$obj = new SQLTable($proto16);
+						$proto15=array();
+			$obj = new SQLField(array(
+	"m_strName" => "Note",
+	"m_strTable" => "orderentry"
+));
 
-$proto15["m_table"] = $obj;
+$proto15["m_expr"]=$obj;
 $proto15["m_alias"] = "";
-$proto17=array();
-$proto17["m_sql"] = "";
-$proto17["m_uniontype"] = "SQLL_UNKNOWN";
+$obj = new SQLFieldListItem($proto15);
+
+$proto0["m_fieldlist"][]=$obj;
+						$proto17=array();
+			$obj = new SQLField(array(
+	"m_strName" => "TimeStamp",
+	"m_strTable" => "orderentry"
+));
+
+$proto17["m_expr"]=$obj;
+$proto17["m_alias"] = "";
+$obj = new SQLFieldListItem($proto17);
+
+$proto0["m_fieldlist"][]=$obj;
+$proto0["m_fromlist"] = array();
+												$proto19=array();
+$proto19["m_link"] = "SQLL_MAIN";
+			$proto20=array();
+$proto20["m_strName"] = "orderentry";
+$proto20["m_columns"] = array();
+$proto20["m_columns"][] = "ID";
+$proto20["m_columns"][] = "OrderID";
+$proto20["m_columns"][] = "StaffID";
+$proto20["m_columns"][] = "CID";
+$proto20["m_columns"][] = "DelDate";
+$proto20["m_columns"][] = "Note";
+$proto20["m_columns"][] = "TimeStamp";
+$obj = new SQLTable($proto20);
+
+$proto19["m_table"] = $obj;
+$proto19["m_alias"] = "";
+$proto21=array();
+$proto21["m_sql"] = "";
+$proto21["m_uniontype"] = "SQLL_UNKNOWN";
 	$obj = new SQLNonParsed(array(
 	"m_sql" => ""
 ));
 
-$proto17["m_column"]=$obj;
-$proto17["m_contained"] = array();
-$proto17["m_strCase"] = "";
-$proto17["m_havingmode"] = "0";
-$proto17["m_inBrackets"] = "0";
-$proto17["m_useAlias"] = "0";
-$obj = new SQLLogicalExpr($proto17);
+$proto21["m_column"]=$obj;
+$proto21["m_contained"] = array();
+$proto21["m_strCase"] = "";
+$proto21["m_havingmode"] = "0";
+$proto21["m_inBrackets"] = "0";
+$proto21["m_useAlias"] = "0";
+$obj = new SQLLogicalExpr($proto21);
 
-$proto15["m_joinon"] = $obj;
-$obj = new SQLFromListItem($proto15);
+$proto19["m_joinon"] = $obj;
+$obj = new SQLFromListItem($proto19);
 
 $proto0["m_fromlist"][]=$obj;
 $proto0["m_groupby"] = array();
 $proto0["m_orderby"] = array();
+												$proto23=array();
+						$obj = new SQLField(array(
+	"m_strName" => "DelDate",
+	"m_strTable" => "orderentry"
+));
+
+$proto23["m_column"]=$obj;
+$proto23["m_bAsc"] = 0;
+$proto23["m_nColumn"] = 0;
+$obj = new SQLOrderByItem($proto23);
+
+$proto0["m_orderby"][]=$obj;					
 $obj = new SQLQuery($proto0);
 
 	return $obj;
 }
 $queryData_orderentry = createSqlQuery_orderentry();
-					$tdataorderentry[".sqlquery"] = $queryData_orderentry;
+							$tdataorderentry[".sqlquery"] = $queryData_orderentry;
 
 $tableEvents["orderentry"] = new eventsBase;
 $tdataorderentry[".hasEvents"] = false;

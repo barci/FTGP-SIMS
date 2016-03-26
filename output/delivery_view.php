@@ -151,6 +151,10 @@ $arr['fName'] = "eta";
 $arr['viewFormat'] = $pageObject->pSet->getViewFormat("eta");
 $fieldsArr[] = $arr;
 $arr = array();
+$arr['fName'] = "staffID";
+$arr['viewFormat'] = $pageObject->pSet->getViewFormat("staffID");
+$fieldsArr[] = $arr;
+$arr = array();
 $arr['fName'] = "delFlag";
 $arr['viewFormat'] = $pageObject->pSet->getViewFormat("delFlag");
 $fieldsArr[] = $arr;
@@ -233,6 +237,17 @@ while($data)
 		$xt->assign("eta_fieldblock",true);
 	else
 		$xt->assign("eta_tabfieldblock",true);
+////////////////////////////////////////////
+//staffID - 
+	
+	$value = $pageObject->showDBValue("staffID", $data, $keylink);
+	if($mainTableOwnerID=="staffID")
+		$ownerIdValue=$value;
+	$xt->assign("staffID_value",$value);
+	if(!$pageObject->isAppearOnTabs("staffID"))
+		$xt->assign("staffID_fieldblock",true);
+	else
+		$xt->assign("staffID_tabfieldblock",true);
 ////////////////////////////////////////////
 //delFlag - 
 	

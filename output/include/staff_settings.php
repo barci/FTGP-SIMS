@@ -38,6 +38,8 @@ if(mlang_getcurrentlang()=="English")
 	$fieldToolTipsstaff["English"][""] = "";
 	$fieldLabelsstaff["English"][""] = "";
 	$fieldToolTipsstaff["English"][""] = "";
+	$fieldLabelsstaff["English"]["staffID"] = "Staff ID";
+	$fieldToolTipsstaff["English"]["staffID"] = "";
 	if (count($fieldToolTipsstaff["English"]))
 		$tdatastaff[".isUseToolTips"] = true;
 }

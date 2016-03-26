@@ -80,7 +80,7 @@ if($detailtable == "stockrequest")
 
 					$xt->assign("ProdID_mastervalue", $viewControls->showDBValue("ProdID", $data, $keylink));
 
-//	Pname - 
+//	Pname - Custom
 			$value="";
 
 					$xt->assign("Pname_mastervalue", $viewControls->showDBValue("Pname", $data, $keylink));
@@ -125,7 +125,7 @@ if($detailtable == "stockrequest")
 
 					$xt->assign("Discount_mastervalue", $viewControls->showDBValue("Discount", $data, $keylink));
 
-//	UInStock - 
+//	UInStock - Custom
 			$value="";
 
 					$xt->assign("UInStock_mastervalue", $viewControls->showDBValue("UInStock", $data, $keylink));
@@ -154,6 +154,11 @@ if($detailtable == "stockrequest")
 			$value="";
 
 					$xt->assign("ProdNo_mastervalue", $viewControls->showDBValue("ProdNo", $data, $keylink));
+
+//	staffID - 
+			$value="";
+
+					$xt->assign("staffID_mastervalue", $viewControls->showDBValue("staffID", $data, $keylink));
 
 	$viewControls->addControlsJSAndCSS();
 	$detailPageObj->viewControlsMap['mViewControlsMap'] = $viewControls->viewControlsMap;

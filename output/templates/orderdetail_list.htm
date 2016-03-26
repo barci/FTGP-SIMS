@@ -148,7 +148,14 @@
             Quantity </A>{END OrdQuant_fieldheader}</P></TH>
           {END OrdQuant_fieldheadercolumn}{BEGIN DelQuant_fieldheadercolumn}<TH class="runner-cc "><P align=center>{BEGIN DelQuant_fieldheader}<A {$DelQuant_orderlinkattrs}>Delivered Quantity </A>{END DelQuant_fieldheader}</P></TH>
           {END DelQuant_fieldheadercolumn}{BEGIN DelDate_fieldheadercolumn}<TH class="runner-cc ">{BEGIN DelDate_fieldheader}<A {$DelDate_orderlinkattrs}>Delivery Date </A>{END DelDate_fieldheader}</TH>
-          {END DelDate_fieldheadercolumn}{BEGIN BillNo_fieldheadercolumn}<TH class="runner-cc runner-clast"><P align=center>{BEGIN BillNo_fieldheader}<A {$BillNo_orderlinkattrs}>Bill No 
+          {END DelDate_fieldheadercolumn}{BEGIN staffID_fieldheadercolumn}<th class="runner-cc ">{BEGIN staffID_fieldheader}<a {$staffID_orderlinkattrs}>
+											Staff ID
+										</a>
+									{END staffID_fieldheader}
+									</th>
+									{END staffID_fieldheadercolumn}
+
+																	{BEGIN BillNo_fieldheadercolumn}<TH class="runner-cc runner-clast"><P align=center>{BEGIN BillNo_fieldheader}<A {$BillNo_orderlinkattrs}>Bill No 
             </A>{END BillNo_fieldheader}</P></TH>
           {END BillNo_fieldheadercolumn}<TH class=runner-cr><IMG src="images/spacer.gif"></TH>
           {BEGIN endrecordheader_block}<TH class=runner-cs></TH>{END endrecordheader_block}{END record_header}</TR>{END grid_header}</THEAD>
@@ -175,7 +182,11 @@
           {END ProductID_fieldcolumn}{BEGIN OrdQuant_fieldcolumn}<TD class="runner-cc  {$OrdQuant_class}" {$OrdQuant_style}><P align=center>{$OrdQuant_value}</P></TD>
           {END OrdQuant_fieldcolumn}{BEGIN DelQuant_fieldcolumn}<TD class="runner-cc  {$DelQuant_class}" {$DelQuant_style}><P align=center>{$DelQuant_value}</P></TD>
           {END DelQuant_fieldcolumn}{BEGIN DelDate_fieldcolumn}<TD class="runner-cc  {$DelDate_class}" {$DelDate_style}>{$DelDate_value}</TD>
-          {END DelDate_fieldcolumn}{BEGIN BillNo_fieldcolumn}<TD class="runner-cc runner-clast {$BillNo_class}" {$BillNo_style}><P align=center>{$BillNo_value}</P></TD>
+          {END DelDate_fieldcolumn}{BEGIN staffID_fieldcolumn}<td class="runner-cc  {$staffID_class}" {$staffID_style}>{$staffID_value}
+	</td>
+{END staffID_fieldcolumn}
+
+	{BEGIN BillNo_fieldcolumn}<TD class="runner-cc runner-clast {$BillNo_class}" {$BillNo_style}><P align=center>{$BillNo_value}</P></TD>
           {END BillNo_fieldcolumn}<TD class=runner-cr {$rowstyle}></TD>
           {BEGIN endrecord_block}<TD class=runner-cs {$endrecordblock_attrs}></TD>{END endrecord_block}{END grid_record}</TR>
         {END grid_row}{BEGIN grid_footer}<TR class="runner-bottomrow style1{$gridFooter_class}">{BEGIN record_footer}<TD class=runner-cl><IMG src="images/spacer.gif"></TD>
@@ -190,7 +201,9 @@
           {END ProductID_fieldheadercolumn}{BEGIN OrdQuant_fieldheadercolumn}<TD class="runner-cc "></TD>
           {END OrdQuant_fieldheadercolumn}{BEGIN DelQuant_fieldheadercolumn}<TD class="runner-cc "></TD>
           {END DelQuant_fieldheadercolumn}{BEGIN DelDate_fieldheadercolumn}<TD class="runner-cc "></TD>
-          {END DelDate_fieldheadercolumn}{BEGIN BillNo_fieldheadercolumn}<TD class="runner-cc runner-clast"></TD>
+          {END DelDate_fieldheadercolumn}{BEGIN staffID_fieldheadercolumn}<td class="runner-cc "></td>
+{END staffID_fieldheadercolumn}
+{BEGIN BillNo_fieldheadercolumn}<TD class="runner-cc runner-clast"></TD>
           {END BillNo_fieldheadercolumn}<TD class=runner-cr><IMG src="images/spacer.gif"></TD>
           {BEGIN endrecordfooter_block}<TD class=runner-cs></TD>{END endrecordfooter_block}{END record_footer}</TR>{END grid_footer}</TABLE>{END grid_block}{END container_grid}
       {BEGIN container_pagination}<TABLE class="runner-c runner-c-pagination" cellPadding=0><TR class="{$cheaderclass_pagination}"><TD class=runner-cl><IMG src="images/spacer.gif"></TD>

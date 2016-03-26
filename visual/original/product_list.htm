@@ -500,6 +500,26 @@
 									</th>
 									{END UInStock_fieldheadercolumn}
 
+																	{BEGIN UInOrder_fieldheadercolumn}
+									<th class="runner-cc ">
+									{BEGIN UInOrder_fieldheader}
+																				<a {$UInOrder_orderlinkattrs}>
+											Units In Order
+										</a>
+									{END UInOrder_fieldheader}
+									</th>
+									{END UInOrder_fieldheadercolumn}
+
+																	{BEGIN ReOrLevel_fieldheadercolumn}
+									<th class="runner-cc ">
+									{BEGIN ReOrLevel_fieldheader}
+																				<a {$ReOrLevel_orderlinkattrs}>
+											Re-Order Level
+										</a>
+									{END ReOrLevel_fieldheader}
+									</th>
+									{END ReOrLevel_fieldheadercolumn}
+
 																	{BEGIN QPerUnit_fieldheadercolumn}
 									<th class="runner-cc ">
 									{BEGIN QPerUnit_fieldheader}
@@ -520,28 +540,8 @@
 									</th>
 									{END Qty_fieldheadercolumn}
 
-																	{BEGIN ReOrLevel_fieldheadercolumn}
-									<th class="runner-cc ">
-									{BEGIN ReOrLevel_fieldheader}
-																				<a {$ReOrLevel_orderlinkattrs}>
-											Re-Order Level
-										</a>
-									{END ReOrLevel_fieldheader}
-									</th>
-									{END ReOrLevel_fieldheadercolumn}
-
-																	{BEGIN UInOrder_fieldheadercolumn}
-									<th class="runner-cc ">
-									{BEGIN UInOrder_fieldheader}
-																				<a {$UInOrder_orderlinkattrs}>
-											Units In Order
-										</a>
-									{END UInOrder_fieldheader}
-									</th>
-									{END UInOrder_fieldheadercolumn}
-
 																	{BEGIN Note_fieldheadercolumn}
-									<th class="runner-cc runner-clast">
+									<th class="runner-cc ">
 									{BEGIN Note_fieldheader}
 																				<a {$Note_orderlinkattrs}>
 											Note
@@ -549,6 +549,16 @@
 									{END Note_fieldheader}
 									</th>
 									{END Note_fieldheadercolumn}
+
+																	{BEGIN staffID_fieldheadercolumn}
+									<th class="runner-cc runner-clast">
+									{BEGIN staffID_fieldheader}
+																				<a {$staffID_orderlinkattrs}>
+											Staff ID
+										</a>
+									{END staffID_fieldheader}
+									</th>
+									{END staffID_fieldheadercolumn}
 
 
 									
@@ -653,6 +663,18 @@
 	</td>
 {END UInStock_fieldcolumn}
 
+	{BEGIN UInOrder_fieldcolumn}
+	<td class="runner-cc  {$UInOrder_class}" {$UInOrder_style}>
+		{$UInOrder_value}
+	</td>
+{END UInOrder_fieldcolumn}
+
+	{BEGIN ReOrLevel_fieldcolumn}
+	<td class="runner-cc  {$ReOrLevel_class}" {$ReOrLevel_style}>
+		{$ReOrLevel_value}
+	</td>
+{END ReOrLevel_fieldcolumn}
+
 	{BEGIN QPerUnit_fieldcolumn}
 	<td class="runner-cc  {$QPerUnit_class}" {$QPerUnit_style}>
 		{$QPerUnit_value}
@@ -665,23 +687,17 @@
 	</td>
 {END Qty_fieldcolumn}
 
-	{BEGIN ReOrLevel_fieldcolumn}
-	<td class="runner-cc  {$ReOrLevel_class}" {$ReOrLevel_style}>
-		{$ReOrLevel_value}
-	</td>
-{END ReOrLevel_fieldcolumn}
-
-	{BEGIN UInOrder_fieldcolumn}
-	<td class="runner-cc  {$UInOrder_class}" {$UInOrder_style}>
-		{$UInOrder_value}
-	</td>
-{END UInOrder_fieldcolumn}
-
 	{BEGIN Note_fieldcolumn}
-	<td class="runner-cc runner-clast {$Note_class}" {$Note_style}>
+	<td class="runner-cc  {$Note_class}" {$Note_style}>
 		{$Note_value}
 	</td>
 {END Note_fieldcolumn}
+
+	{BEGIN staffID_fieldcolumn}
+	<td class="runner-cc runner-clast {$staffID_class}" {$staffID_style}>
+		{$staffID_value}
+	</td>
+{END staffID_fieldcolumn}
 
 
 																		<td class="runner-cr" {$rowstyle}></td>
@@ -733,21 +749,24 @@
 {BEGIN UInStock_fieldheadercolumn}
 <td class="runner-cc "></td>
 {END UInStock_fieldheadercolumn}
+{BEGIN UInOrder_fieldheadercolumn}
+<td class="runner-cc "></td>
+{END UInOrder_fieldheadercolumn}
+{BEGIN ReOrLevel_fieldheadercolumn}
+<td class="runner-cc "></td>
+{END ReOrLevel_fieldheadercolumn}
 {BEGIN QPerUnit_fieldheadercolumn}
 <td class="runner-cc "></td>
 {END QPerUnit_fieldheadercolumn}
 {BEGIN Qty_fieldheadercolumn}
 <td class="runner-cc "></td>
 {END Qty_fieldheadercolumn}
-{BEGIN ReOrLevel_fieldheadercolumn}
-<td class="runner-cc "></td>
-{END ReOrLevel_fieldheadercolumn}
-{BEGIN UInOrder_fieldheadercolumn}
-<td class="runner-cc "></td>
-{END UInOrder_fieldheadercolumn}
 {BEGIN Note_fieldheadercolumn}
-<td class="runner-cc runner-clast"></td>
+<td class="runner-cc "></td>
 {END Note_fieldheadercolumn}
+{BEGIN staffID_fieldheadercolumn}
+<td class="runner-cc runner-clast"></td>
+{END staffID_fieldheadercolumn}
 
 									<td class="runner-cr"><img src="images/spacer.gif"></td>
 									

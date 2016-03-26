@@ -34,7 +34,7 @@
 <table class="runner-c runner-c-search" cellpadding="0" align=center>
 
 
-<tr class="runner-toprow style2 header"><td class="runner-cl"><img src="images/spacer.gif"></td><td class="runner-cc" ><div  class="runner-b-srchheader {$brickclass_srchheader}">Order Entry - Advanced search
+<tr class="runner-toprow style2 header"><td class="runner-cl"><img src="images/spacer.gif"></td><td class="runner-cc" ><div  class="runner-b-srchheader {$brickclass_srchheader}">Orderentry - Advanced search
 {$CrossElem}</div></td><td class="runner-cr"><img src="images/spacer.gif"></td></tr>
 
 
@@ -59,6 +59,36 @@
 	<td class="runner-cc">NOT</td>
 	<td class="runner-cc" colspan=3>&nbsp; </td>
 <td class="runner-cr"></td></tr>
+	{BEGIN ID_fieldblock}		
+	<tr class="runner-row style1 runner-b-srchfields"><td class="runner-cl"></td>
+		<td class="runner-cc runner-cc1">
+			<div class="fieldlabel_ID {$fielddispclass_ID}">
+				ID
+			</div>
+		</td>
+	</td>
+	<td class="runner-cc alt">
+		<div class="fieldoption_ID {$fielddispclass_ID}">
+			<input type="checkbox" {$ID_notbox}>
+		</div>
+	</td>
+	<td class="runner-cc alt">
+		<div class="fieldoption_ID {$fielddispclass_ID}">
+			{$searchtype_ID}
+		</div>
+	</td>
+	<td class="runner-cc alt">
+		<div class="fieldcontrol_ID {$fielddispclass_ID}">
+			{$ID_editcontrol}&nbsp;
+		</div>
+	</td>
+	<td class="runner-cc alt">
+		<div class="fieldcontrol_ID {$fielddispclass_ID}">
+			{$ID_editcontrol1}&nbsp;
+		</div>
+	</td>
+	<td class="runner-cr alt"></td></tr>
+{END ID_fieldblock}
 	{BEGIN OrderID_fieldblock}		
 	<tr class="runner-row style1 runner-b-srchfields"><td class="runner-cl"></td>
 		<td class="runner-cc runner-cc1">
@@ -93,7 +123,7 @@
 	<tr class="runner-row style1 runner-b-srchfields"><td class="runner-cl"></td>
 		<td class="runner-cc runner-cc1">
 			<div class="fieldlabel_CID {$fielddispclass_CID}">
-				Customer
+				CID
 			</div>
 		</td>
 	</td>
@@ -119,41 +149,71 @@
 	</td>
 	<td class="runner-cr alt"></td></tr>
 {END CID_fieldblock}
-	{BEGIN ODate_fieldblock}		
+	{BEGIN DelDate_fieldblock}		
 	<tr class="runner-row style1 runner-b-srchfields"><td class="runner-cl"></td>
 		<td class="runner-cc runner-cc1">
-			<div class="fieldlabel_ODate {$fielddispclass_ODate}">
-				Order Date
+			<div class="fieldlabel_DelDate {$fielddispclass_DelDate}">
+				Del Date
 			</div>
 		</td>
 	</td>
 	<td class="runner-cc alt">
-		<div class="fieldoption_ODate {$fielddispclass_ODate}">
-			<input type="checkbox" {$ODate_notbox}>
+		<div class="fieldoption_DelDate {$fielddispclass_DelDate}">
+			<input type="checkbox" {$DelDate_notbox}>
 		</div>
 	</td>
 	<td class="runner-cc alt">
-		<div class="fieldoption_ODate {$fielddispclass_ODate}">
-			{$searchtype_ODate}
+		<div class="fieldoption_DelDate {$fielddispclass_DelDate}">
+			{$searchtype_DelDate}
 		</div>
 	</td>
 	<td class="runner-cc alt">
-		<div class="fieldcontrol_ODate {$fielddispclass_ODate}">
-			{$ODate_editcontrol}&nbsp;
+		<div class="fieldcontrol_DelDate {$fielddispclass_DelDate}">
+			{$DelDate_editcontrol}&nbsp;
 		</div>
 	</td>
 	<td class="runner-cc alt">
-		<div class="fieldcontrol_ODate {$fielddispclass_ODate}">
-			{$ODate_editcontrol1}&nbsp;
+		<div class="fieldcontrol_DelDate {$fielddispclass_DelDate}">
+			{$DelDate_editcontrol1}&nbsp;
 		</div>
 	</td>
 	<td class="runner-cr alt"></td></tr>
-{END ODate_fieldblock}
+{END DelDate_fieldblock}
+	{BEGIN Note_fieldblock}		
+	<tr class="runner-row style1 runner-b-srchfields"><td class="runner-cl"></td>
+		<td class="runner-cc runner-cc1">
+			<div class="fieldlabel_Note {$fielddispclass_Note}">
+				Note
+			</div>
+		</td>
+	</td>
+	<td class="runner-cc alt">
+		<div class="fieldoption_Note {$fielddispclass_Note}">
+			<input type="checkbox" {$Note_notbox}>
+		</div>
+	</td>
+	<td class="runner-cc alt">
+		<div class="fieldoption_Note {$fielddispclass_Note}">
+			{$searchtype_Note}
+		</div>
+	</td>
+	<td class="runner-cc alt">
+		<div class="fieldcontrol_Note {$fielddispclass_Note}">
+			{$Note_editcontrol}&nbsp;
+		</div>
+	</td>
+	<td class="runner-cc alt">
+		<div class="fieldcontrol_Note {$fielddispclass_Note}">
+			{$Note_editcontrol1}&nbsp;
+		</div>
+	</td>
+	<td class="runner-cr alt"></td></tr>
+{END Note_fieldblock}
 	{BEGIN StaffID_fieldblock}		
 	<tr class="runner-row style1 runner-b-srchfields"><td class="runner-cl"></td>
 		<td class="runner-cc runner-cc1">
 			<div class="fieldlabel_StaffID {$fielddispclass_StaffID}">
-				Staff Incharge
+				Staff ID
 			</div>
 		</td>
 	</td>
@@ -179,36 +239,6 @@
 	</td>
 	<td class="runner-cr alt"></td></tr>
 {END StaffID_fieldblock}
-	{BEGIN ErrorMsg_fieldblock}		
-	<tr class="runner-row style1 runner-b-srchfields"><td class="runner-cl"></td>
-		<td class="runner-cc runner-cc1">
-			<div class="fieldlabel_ErrorMsg {$fielddispclass_ErrorMsg}">
-				Error Msg
-			</div>
-		</td>
-	</td>
-	<td class="runner-cc alt">
-		<div class="fieldoption_ErrorMsg {$fielddispclass_ErrorMsg}">
-			<input type="checkbox" {$ErrorMsg_notbox}>
-		</div>
-	</td>
-	<td class="runner-cc alt">
-		<div class="fieldoption_ErrorMsg {$fielddispclass_ErrorMsg}">
-			{$searchtype_ErrorMsg}
-		</div>
-	</td>
-	<td class="runner-cc alt">
-		<div class="fieldcontrol_ErrorMsg {$fielddispclass_ErrorMsg}">
-			{$ErrorMsg_editcontrol}&nbsp;
-		</div>
-	</td>
-	<td class="runner-cc alt">
-		<div class="fieldcontrol_ErrorMsg {$fielddispclass_ErrorMsg}">
-			{$ErrorMsg_editcontrol1}&nbsp;
-		</div>
-	</td>
-	<td class="runner-cr alt"></td></tr>
-{END ErrorMsg_fieldblock}
 
 
 

@@ -255,10 +255,6 @@ else
 
 $fieldsArr = array();
 $arr = array();
-$arr['fName'] = "ID";
-$arr['viewFormat'] = $pageObject->pSet->getViewFormat("ID");
-$fieldsArr[] = $arr;
-$arr = array();
 $arr['fName'] = "DrNo";
 $arr['viewFormat'] = $pageObject->pSet->getViewFormat("DrNo");
 $fieldsArr[] = $arr;
@@ -281,6 +277,10 @@ $fieldsArr[] = $arr;
 $arr = array();
 $arr['fName'] = "delFlag";
 $arr['viewFormat'] = $pageObject->pSet->getViewFormat("delFlag");
+$fieldsArr[] = $arr;
+$arr = array();
+$arr['fName'] = "staffID";
+$arr['viewFormat'] = $pageObject->pSet->getViewFormat("staffID");
 $fieldsArr[] = $arr;
 $pageObject->setGoogleMapsParams($fieldsArr);
 
@@ -329,25 +329,25 @@ if($colsonpage<1)
 			$keylink="";
 			$keylink.="&key1=".htmlspecialchars(rawurlencode(@$data["ID"]));
 
-//	ID - 
-			$record["ID_value"] = $pageObject->showDBValue("ID", $data, $keylink);
-			$record["ID_class"] = $pageObject->fieldClass("ID");
-//	DrNo - 
+//	DrNo - Custom
 			$record["DrNo_value"] = $pageObject->showDBValue("DrNo", $data, $keylink);
 			$record["DrNo_class"] = $pageObject->fieldClass("DrNo");
 //	orderID - 
 			$record["orderID_value"] = $pageObject->showDBValue("orderID", $data, $keylink);
 			$record["orderID_class"] = $pageObject->fieldClass("orderID");
-//	prodID - 
+//	prodID - Custom
 			$record["prodID_value"] = $pageObject->showDBValue("prodID", $data, $keylink);
 			$record["prodID_class"] = $pageObject->fieldClass("prodID");
 //	qty - 
 			$record["qty_value"] = $pageObject->showDBValue("qty", $data, $keylink);
 			$record["qty_class"] = $pageObject->fieldClass("qty");
-//	eta - Short Date
+//	eta - Long Date
 			$record["eta_value"] = $pageObject->showDBValue("eta", $data, $keylink);
 			$record["eta_class"] = $pageObject->fieldClass("eta");
-//	delFlag - 
+//	staffID - 
+			$record["staffID_value"] = $pageObject->showDBValue("staffID", $data, $keylink);
+			$record["staffID_class"] = $pageObject->fieldClass("staffID");
+//	delFlag - Custom
 			$record["delFlag_value"] = $pageObject->showDBValue("delFlag", $data, $keylink);
 			$record["delFlag_class"] = $pageObject->fieldClass("delFlag");
 			if($col<$colsonpage)
@@ -495,10 +495,6 @@ if ($pageObject->pSet->isUsebuttonHandlers() || $isPdfView || $hasEvents)
 $xt->assignbyref("body",$pageObject->body);
 $xt->assign("grid_block",true);
 
-$xt->assign("ID_fieldheadercolumn",true);
-$xt->assign("ID_fieldheader",true);
-$xt->assign("ID_fieldcolumn",true);
-$xt->assign("ID_fieldfootercolumn",true);
 $xt->assign("DrNo_fieldheadercolumn",true);
 $xt->assign("DrNo_fieldheader",true);
 $xt->assign("DrNo_fieldcolumn",true);
@@ -519,6 +515,10 @@ $xt->assign("eta_fieldheadercolumn",true);
 $xt->assign("eta_fieldheader",true);
 $xt->assign("eta_fieldcolumn",true);
 $xt->assign("eta_fieldfootercolumn",true);
+$xt->assign("staffID_fieldheadercolumn",true);
+$xt->assign("staffID_fieldheader",true);
+$xt->assign("staffID_fieldcolumn",true);
+$xt->assign("staffID_fieldfootercolumn",true);
 $xt->assign("delFlag_fieldheadercolumn",true);
 $xt->assign("delFlag_fieldheader",true);
 $xt->assign("delFlag_fieldcolumn",true);

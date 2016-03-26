@@ -164,7 +164,7 @@ $tdatasupplier[".strOrderBy"] = $tstrOrderBy;
 
 $tdatasupplier[".orderindexes"] = array();
 
-$tdatasupplier[".sqlHead"] = "SELECT SupplierID,   ComName,   ConFName,   ConLName,   ConTitle,   Address,   Phone,   Fax,   Email,   PayMeth,   DisType";
+$tdatasupplier[".sqlHead"] = "SELECT SupplierID,  ComName,  ConFName,  ConLName,  ConTitle,  Address,  Phone,  Fax,  Email,  PayMeth,  DisType";
 $tdatasupplier[".sqlFrom"] = "FROM supplier";
 $tdatasupplier[".sqlWhereExpr"] = "";
 $tdatasupplier[".sqlTail"] = "";
@@ -1424,7 +1424,7 @@ function createSqlQuery_supplier()
 {
 $proto0=array();
 $proto0["m_strHead"] = "SELECT";
-$proto0["m_strFieldList"] = "SupplierID,   ComName,   ConFName,   ConLName,   ConTitle,   Address,   Phone,   Fax,   Email,   PayMeth,   DisType";
+$proto0["m_strFieldList"] = "SupplierID,  ComName,  ConFName,  ConLName,  ConTitle,  Address,  Phone,  Fax,  Email,  PayMeth,  DisType";
 $proto0["m_strFrom"] = "FROM supplier";
 $proto0["m_strWhere"] = "";
 $proto0["m_strOrderBy"] = "";

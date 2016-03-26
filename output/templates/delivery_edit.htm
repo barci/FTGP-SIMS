@@ -50,36 +50,8 @@ ID: {$show_key1}
 <table class="runner-c runner-c-fields" cellpadding="0" >
 
 
-	{BEGIN DrNo_fieldblock}
-	<tr class="runner-toprow header style1 runner-b-editfields"><td class="runner-cl"><img src="images/spacer.gif"></td>
-		<td class="runner-cc runner-cc1">
-			<div class="fieldlabel_DrNo {$fielddispclass_DrNo}">
-				{BEGIN DrNo_label}DR No{END DrNo_label}
-			</div>
-		</td>
-		<td class="runner-cc alt runner-fixedcell">
-			<div class="fieldcontrol_DrNo {$fielddispclass_DrNo}">
-				{$DrNo_editcontrol}&nbsp;
-			</div>
-		</td>
-	<td class="runner-cr alt"><img src="images/spacer.gif"></td></tr>
-{END DrNo_fieldblock}
-	{BEGIN orderID_fieldblock}
-	<tr class="runner-row style1 runner-b-editfields"><td class="runner-cl"></td>
-		<td class="runner-cc runner-cc1">
-			<div class="fieldlabel_orderID {$fielddispclass_orderID}">
-				{BEGIN orderID_label}Order ID{END orderID_label}
-			</div>
-		</td>
-		<td class="runner-cc alt runner-fixedcell">
-			<div class="fieldcontrol_orderID {$fielddispclass_orderID}">
-				{$orderID_editcontrol}&nbsp;
-			</div>
-		</td>
-	<td class="runner-cr alt"></td></tr>
-{END orderID_fieldblock}
 	{BEGIN prodID_fieldblock}
-	<tr class="runner-row style1 runner-b-editfields"><td class="runner-cl"></td>
+	<tr class="runner-toprow header style1 runner-b-editfields"><td class="runner-cl"><img src="images/spacer.gif"></td>
 		<td class="runner-cc runner-cc1">
 			<div class="fieldlabel_prodID {$fielddispclass_prodID}">
 				{BEGIN prodID_label}Product{END prodID_label}
@@ -90,13 +62,13 @@ ID: {$show_key1}
 				{$prodID_editcontrol}&nbsp;
 			</div>
 		</td>
-	<td class="runner-cr alt"></td></tr>
+	<td class="runner-cr alt"><img src="images/spacer.gif"></td></tr>
 {END prodID_fieldblock}
 	{BEGIN qty_fieldblock}
 	<tr class="runner-row style1 runner-b-editfields"><td class="runner-cl"></td>
 		<td class="runner-cc runner-cc1">
 			<div class="fieldlabel_qty {$fielddispclass_qty}">
-				{BEGIN qty_label}Qantity{END qty_label}
+				{BEGIN qty_label}Quantity{END qty_label}
 			</div>
 		</td>
 		<td class="runner-cc alt runner-fixedcell">
@@ -106,20 +78,6 @@ ID: {$show_key1}
 		</td>
 	<td class="runner-cr alt"></td></tr>
 {END qty_fieldblock}
-	{BEGIN eta_fieldblock}
-	<tr class="runner-row style1 runner-b-editfields"><td class="runner-cl"></td>
-		<td class="runner-cc runner-cc1">
-			<div class="fieldlabel_eta {$fielddispclass_eta}">
-				{BEGIN eta_label}ETA{END eta_label}
-			</div>
-		</td>
-		<td class="runner-cc alt runner-fixedcell">
-			<div class="fieldcontrol_eta {$fielddispclass_eta}">
-				{$eta_editcontrol}&nbsp;
-			</div>
-		</td>
-	<td class="runner-cr alt"></td></tr>
-{END eta_fieldblock}
 	{BEGIN delFlag_fieldblock}
 	<tr class="runner-row style1 runner-b-editfields"><td class="runner-cl"></td>
 		<td class="runner-cc runner-cc1">

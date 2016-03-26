@@ -68,6 +68,7 @@ $tdataPending_Orders[".listIcons"] = true;
 
 $tdataPending_Orders[".printFriendly"] = true;
 
+$tdataPending_Orders[".delete"] = true;
 
 $tdataPending_Orders[".showSimpleSearchOptions"] = false;
 
@@ -93,14 +94,12 @@ $tdataPending_Orders[".useDetailsPreview"] = true;
 
 $tdataPending_Orders[".allSearchFields"] = array();
 
-$tdataPending_Orders[".allSearchFields"][] = "ODetailID";
 $tdataPending_Orders[".allSearchFields"][] = "OrderID";
 $tdataPending_Orders[".allSearchFields"][] = "ProductID";
 $tdataPending_Orders[".allSearchFields"][] = "OrdQuant";
 $tdataPending_Orders[".allSearchFields"][] = "DelQuant";
 $tdataPending_Orders[".allSearchFields"][] = "Total";
 $tdataPending_Orders[".allSearchFields"][] = "DelDate";
-$tdataPending_Orders[".allSearchFields"][] = "BillNo";
 
 $tdataPending_Orders[".googleLikeFields"][] = "ODetailID";
 $tdataPending_Orders[".googleLikeFields"][] = "OrderID";
@@ -112,14 +111,12 @@ $tdataPending_Orders[".googleLikeFields"][] = "Total";
 $tdataPending_Orders[".googleLikeFields"][] = "DelDate";
 
 
-$tdataPending_Orders[".advSearchFields"][] = "ODetailID";
 $tdataPending_Orders[".advSearchFields"][] = "OrderID";
 $tdataPending_Orders[".advSearchFields"][] = "ProductID";
 $tdataPending_Orders[".advSearchFields"][] = "OrdQuant";
 $tdataPending_Orders[".advSearchFields"][] = "DelQuant";
 $tdataPending_Orders[".advSearchFields"][] = "Total";
 $tdataPending_Orders[".advSearchFields"][] = "DelDate";
-$tdataPending_Orders[".advSearchFields"][] = "BillNo";
 
 $tdataPending_Orders[".isTableType"] = "list";
 
@@ -133,16 +130,17 @@ $tdataPending_Orders[".isTableType"] = "list";
 
 $tdataPending_Orders[".pageSize"] = 20;
 
-$tstrOrderBy = "";
+$tstrOrderBy = "ORDER BY DelDate ASC";
 if(strlen($tstrOrderBy) && strtolower(substr($tstrOrderBy,0,8))!="order by")
 	$tstrOrderBy = "order by ".$tstrOrderBy;
 $tdataPending_Orders[".strOrderBy"] = $tstrOrderBy;
 
 $tdataPending_Orders[".orderindexes"] = array();
+$tdataPending_Orders[".orderindexes"][] = array(8, (1 ? "ASC" : "DESC"), "DelDate");
 
 $tdataPending_Orders[".sqlHead"] = "SELECT ODetailID,  OrderID,  BillNo,  ProductID,  OrdQuant,  DelQuant,  Total,  DelDate";
 $tdataPending_Orders[".sqlFrom"] = "FROM orderdetail";
-$tdataPending_Orders[".sqlWhereExpr"] = "OrdQuant > DelQuant";
+$tdataPending_Orders[".sqlWhereExpr"] = "(OrdQuant > DelQuant)";
 $tdataPending_Orders[".sqlTail"] = "";
 
 
@@ -175,52 +173,30 @@ $tableKeysPending_Orders[] = "ODetailID";
 $tdataPending_Orders[".Keys"] = $tableKeysPending_Orders;
 
 $tdataPending_Orders[".listFields"] = array();
-$tdataPending_Orders[".listFields"][] = "ODetailID";
 $tdataPending_Orders[".listFields"][] = "OrderID";
 $tdataPending_Orders[".listFields"][] = "ProductID";
 $tdataPending_Orders[".listFields"][] = "OrdQuant";
 $tdataPending_Orders[".listFields"][] = "DelQuant";
-$tdataPending_Orders[".listFields"][] = "Total";
 $tdataPending_Orders[".listFields"][] = "DelDate";
-$tdataPending_Orders[".listFields"][] = "BillNo";
 
 $tdataPending_Orders[".viewFields"] = array();
 
 $tdataPending_Orders[".addFields"] = array();
-$tdataPending_Orders[".addFields"][] = "OrderID";
-$tdataPending_Orders[".addFields"][] = "ProductID";
-$tdataPending_Orders[".addFields"][] = "OrdQuant";
-$tdataPending_Orders[".addFields"][] = "DelDate";
 
 $tdataPending_Orders[".inlineAddFields"] = array();
-$tdataPending_Orders[".inlineAddFields"][] = "OrderID";
-$tdataPending_Orders[".inlineAddFields"][] = "ProductID";
-$tdataPending_Orders[".inlineAddFields"][] = "OrdQuant";
-$tdataPending_Orders[".inlineAddFields"][] = "DelDate";
 
 $tdataPending_Orders[".editFields"] = array();
-$tdataPending_Orders[".editFields"][] = "OrderID";
-$tdataPending_Orders[".editFields"][] = "ProductID";
-$tdataPending_Orders[".editFields"][] = "OrdQuant";
-$tdataPending_Orders[".editFields"][] = "DelDate";
 
 $tdataPending_Orders[".inlineEditFields"] = array();
-$tdataPending_Orders[".inlineEditFields"][] = "OrderID";
-$tdataPending_Orders[".inlineEditFields"][] = "ProductID";
-$tdataPending_Orders[".inlineEditFields"][] = "OrdQuant";
-$tdataPending_Orders[".inlineEditFields"][] = "DelDate";
 
 $tdataPending_Orders[".exportFields"] = array();
 
 $tdataPending_Orders[".printFields"] = array();
-$tdataPending_Orders[".printFields"][] = "ODetailID";
 $tdataPending_Orders[".printFields"][] = "OrderID";
 $tdataPending_Orders[".printFields"][] = "ProductID";
 $tdataPending_Orders[".printFields"][] = "OrdQuant";
 $tdataPending_Orders[".printFields"][] = "DelQuant";
-$tdataPending_Orders[".printFields"][] = "Total";
 $tdataPending_Orders[".printFields"][] = "DelDate";
-$tdataPending_Orders[".printFields"][] = "BillNo";
 
 //	ODetailID
 //	Custom field settings
@@ -235,25 +211,21 @@ $tdataPending_Orders[".printFields"][] = "BillNo";
 		$fdata["AutoInc"] = true;
 	
 		
-		$fdata["bListPage"] = true; 
-	
 		
 		
 		
 		
 		
-		$fdata["bAdvancedSearch"] = true; 
-	
-		$fdata["bPrinterPage"] = true; 
-	
+		
+		
+		
 		
 		$fdata["strField"] = "ODetailID"; 
 		$fdata["FullName"] = "ODetailID";
 	
 		
 		
-				$fdata["FieldPermissions"] = true;
-	
+				
 				$fdata["UploadFolder"] = "files";
 		
 //  Begin View Formats
@@ -334,14 +306,10 @@ $tdataPending_Orders[".printFields"][] = "BillNo";
 		
 		$fdata["bListPage"] = true; 
 	
-		$fdata["bAddPage"] = true; 
-	
-		$fdata["bInlineAdd"] = true; 
-	
-		$fdata["bEditPage"] = true; 
-	
-		$fdata["bInlineEdit"] = true; 
-	
+		
+		
+		
+		
 		
 		$fdata["bAdvancedSearch"] = true; 
 	
@@ -431,25 +399,21 @@ $tdataPending_Orders[".printFields"][] = "BillNo";
 	
 		
 		
-		$fdata["bListPage"] = true; 
-	
 		
 		
 		
 		
 		
-		$fdata["bAdvancedSearch"] = true; 
-	
-		$fdata["bPrinterPage"] = true; 
-	
+		
+		
+		
 		
 		$fdata["strField"] = "BillNo"; 
 		$fdata["FullName"] = "BillNo";
 	
 		
 		
-				$fdata["FieldPermissions"] = true;
-	
+				
 				$fdata["UploadFolder"] = "files";
 		
 //  Begin View Formats
@@ -528,14 +492,10 @@ $tdataPending_Orders[".printFields"][] = "BillNo";
 		
 		$fdata["bListPage"] = true; 
 	
-		$fdata["bAddPage"] = true; 
-	
-		$fdata["bInlineAdd"] = true; 
-	
-		$fdata["bEditPage"] = true; 
-	
-		$fdata["bInlineEdit"] = true; 
-	
+		
+		
+		
+		
 		
 		$fdata["bAdvancedSearch"] = true; 
 	
@@ -650,14 +610,10 @@ $tdataPending_Orders[".printFields"][] = "BillNo";
 		
 		$fdata["bListPage"] = true; 
 	
-		$fdata["bAddPage"] = true; 
-	
-		$fdata["bInlineAdd"] = true; 
-	
-		$fdata["bEditPage"] = true; 
-	
-		$fdata["bInlineEdit"] = true; 
-	
+		
+		
+		
+		
 		
 		$fdata["bAdvancedSearch"] = true; 
 	
@@ -844,8 +800,7 @@ $tdataPending_Orders[".printFields"][] = "BillNo";
 	
 		
 		
-		$fdata["bListPage"] = true; 
-	
+		
 		
 		
 		
@@ -853,8 +808,7 @@ $tdataPending_Orders[".printFields"][] = "BillNo";
 		
 		$fdata["bAdvancedSearch"] = true; 
 	
-		$fdata["bPrinterPage"] = true; 
-	
+		
 		
 		$fdata["strField"] = "Total"; 
 		$fdata["FullName"] = "Total";
@@ -942,14 +896,10 @@ $tdataPending_Orders[".printFields"][] = "BillNo";
 		
 		$fdata["bListPage"] = true; 
 	
-		$fdata["bAddPage"] = true; 
-	
-		$fdata["bInlineAdd"] = true; 
-	
-		$fdata["bEditPage"] = true; 
-	
-		$fdata["bInlineEdit"] = true; 
-	
+		
+		
+		
+		
 		
 		$fdata["bAdvancedSearch"] = true; 
 	
@@ -968,7 +918,7 @@ $tdataPending_Orders[".printFields"][] = "BillNo";
 //  Begin View Formats
 	$fdata["ViewFormats"] = array();
 	
-	$vdata = array("ViewFormat" => "Short Date");
+	$vdata = array("ViewFormat" => "Long Date");
 	
 		
 		
@@ -1082,8 +1032,8 @@ $proto0=array();
 $proto0["m_strHead"] = "SELECT";
 $proto0["m_strFieldList"] = "ODetailID,  OrderID,  BillNo,  ProductID,  OrdQuant,  DelQuant,  Total,  DelDate";
 $proto0["m_strFrom"] = "FROM orderdetail";
-$proto0["m_strWhere"] = "OrdQuant > DelQuant";
-$proto0["m_strOrderBy"] = "";
+$proto0["m_strWhere"] = "(OrdQuant > DelQuant)";
+$proto0["m_strOrderBy"] = "ORDER BY DelDate ASC";
 $proto0["m_strTail"] = "";
 $proto0["cipherer"] = null;
 $proto1=array();
@@ -1225,6 +1175,7 @@ $proto22["m_columns"][] = "Discount";
 $proto22["m_columns"][] = "Total";
 $proto22["m_columns"][] = "DelDate";
 $proto22["m_columns"][] = "TimeStamp";
+$proto22["m_columns"][] = "staffID";
 $obj = new SQLTable($proto22);
 
 $proto21["m_table"] = $obj;
@@ -1250,6 +1201,18 @@ $obj = new SQLFromListItem($proto21);
 $proto0["m_fromlist"][]=$obj;
 $proto0["m_groupby"] = array();
 $proto0["m_orderby"] = array();
+												$proto25=array();
+						$obj = new SQLField(array(
+	"m_strName" => "DelDate",
+	"m_strTable" => "orderdetail"
+));
+
+$proto25["m_column"]=$obj;
+$proto25["m_bAsc"] = 1;
+$proto25["m_nColumn"] = 0;
+$obj = new SQLOrderByItem($proto25);
+
+$proto0["m_orderby"][]=$obj;					
 $obj = new SQLQuery($proto0);
 
 	return $obj;

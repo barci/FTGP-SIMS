@@ -423,6 +423,55 @@ if ($mode==SEARCH_SIMPLE)
 	}
 	// search fields data
 	
+	if($pageObject->pSet->getLookupTable("ReOrLevel"))
+		$pageObject->settingsMap["globalSettings"]['shortTNames'][$pageObject->pSet->getLookupTable("ReOrLevel")] = GetTableURL($pageObject->pSet->getLookupTable("ReOrLevel"));
+	
+	$pageObject->fillFieldToolTips("ReOrLevel");	
+	
+	$srchFields = $pageObject->searchClauseObj->getSearchCtrlParams("ReOrLevel");
+	$firstFieldParams = array();
+	if (count($srchFields))
+	{
+		$firstFieldParams = $srchFields[0];
+	}
+	else
+	{
+		$firstFieldParams['fName'] = "ReOrLevel";
+		$firstFieldParams['eType'] = '';
+		$firstFieldParams['value1'] = '';
+		$firstFieldParams['opt'] = '';
+		$firstFieldParams['value2'] = '';
+		$firstFieldParams['not'] = false;
+	}
+	// create control	
+	$ctrlBlockArr = $searchControlBuilder->buildSearchCtrlBlockArr($id, $firstFieldParams['fName'], 0, $firstFieldParams['opt'], $firstFieldParams['not'], false, $firstFieldParams['value1'], $firstFieldParams['value2']);	
+		
+	if(isEnableSection508())
+		$xt->assign_section("ReOrLevel_label","<label for=\"".GetInputElementId("ReOrLevel", $id, PAGE_SEARCH)."\">","</label>");
+	else 
+		$xt->assign("ReOrLevel_label", true);
+	
+	$xt->assign("ReOrLevel_fieldblock", true);
+	$xt->assignbyref("ReOrLevel_editcontrol", $ctrlBlockArr['searchcontrol']);
+	$xt->assign("ReOrLevel_notbox", $ctrlBlockArr['notbox']);
+	// create second control, if need it
+	$xt->assignbyref("ReOrLevel_editcontrol1", $ctrlBlockArr['searchcontrol1']);
+	// create search type select
+	$xt->assign("searchtype_ReOrLevel", $ctrlBlockArr['searchtype']);
+	$isFieldNeedSecCtrl = $searchControlBuilder->isNeedSecondCtrl("ReOrLevel");
+	$ctrlInd = 0;
+	if ($isFieldNeedSecCtrl)
+	{
+		$pageObject->controlsMap["search"]["searchBlocks"][] = array('fName'=>"ReOrLevel", 'recId'=>$id, 'ctrlsMap'=>array(0=>$ctrlInd, 1=>($ctrlInd+1)));
+		$ctrlInd+=2;
+	}
+	else
+	{
+		$pageObject->controlsMap["search"]["searchBlocks"][] = array('fName'=>"ReOrLevel", 'recId'=>$id, 'ctrlsMap'=>array(0=>$ctrlInd));			
+		$ctrlInd++;
+	}
+	// search fields data
+	
 	if($pageObject->pSet->getLookupTable("QPerUnit"))
 		$pageObject->settingsMap["globalSettings"]['shortTNames'][$pageObject->pSet->getLookupTable("QPerUnit")] = GetTableURL($pageObject->pSet->getLookupTable("QPerUnit"));
 	
@@ -521,55 +570,6 @@ if ($mode==SEARCH_SIMPLE)
 	}
 	// search fields data
 	
-	if($pageObject->pSet->getLookupTable("ReOrLevel"))
-		$pageObject->settingsMap["globalSettings"]['shortTNames'][$pageObject->pSet->getLookupTable("ReOrLevel")] = GetTableURL($pageObject->pSet->getLookupTable("ReOrLevel"));
-	
-	$pageObject->fillFieldToolTips("ReOrLevel");	
-	
-	$srchFields = $pageObject->searchClauseObj->getSearchCtrlParams("ReOrLevel");
-	$firstFieldParams = array();
-	if (count($srchFields))
-	{
-		$firstFieldParams = $srchFields[0];
-	}
-	else
-	{
-		$firstFieldParams['fName'] = "ReOrLevel";
-		$firstFieldParams['eType'] = '';
-		$firstFieldParams['value1'] = '';
-		$firstFieldParams['opt'] = '';
-		$firstFieldParams['value2'] = '';
-		$firstFieldParams['not'] = false;
-	}
-	// create control	
-	$ctrlBlockArr = $searchControlBuilder->buildSearchCtrlBlockArr($id, $firstFieldParams['fName'], 0, $firstFieldParams['opt'], $firstFieldParams['not'], false, $firstFieldParams['value1'], $firstFieldParams['value2']);	
-		
-	if(isEnableSection508())
-		$xt->assign_section("ReOrLevel_label","<label for=\"".GetInputElementId("ReOrLevel", $id, PAGE_SEARCH)."\">","</label>");
-	else 
-		$xt->assign("ReOrLevel_label", true);
-	
-	$xt->assign("ReOrLevel_fieldblock", true);
-	$xt->assignbyref("ReOrLevel_editcontrol", $ctrlBlockArr['searchcontrol']);
-	$xt->assign("ReOrLevel_notbox", $ctrlBlockArr['notbox']);
-	// create second control, if need it
-	$xt->assignbyref("ReOrLevel_editcontrol1", $ctrlBlockArr['searchcontrol1']);
-	// create search type select
-	$xt->assign("searchtype_ReOrLevel", $ctrlBlockArr['searchtype']);
-	$isFieldNeedSecCtrl = $searchControlBuilder->isNeedSecondCtrl("ReOrLevel");
-	$ctrlInd = 0;
-	if ($isFieldNeedSecCtrl)
-	{
-		$pageObject->controlsMap["search"]["searchBlocks"][] = array('fName'=>"ReOrLevel", 'recId'=>$id, 'ctrlsMap'=>array(0=>$ctrlInd, 1=>($ctrlInd+1)));
-		$ctrlInd+=2;
-	}
-	else
-	{
-		$pageObject->controlsMap["search"]["searchBlocks"][] = array('fName'=>"ReOrLevel", 'recId'=>$id, 'ctrlsMap'=>array(0=>$ctrlInd));			
-		$ctrlInd++;
-	}
-	// search fields data
-	
 	if($pageObject->pSet->getLookupTable("Uprice"))
 		$pageObject->settingsMap["globalSettings"]['shortTNames'][$pageObject->pSet->getLookupTable("Uprice")] = GetTableURL($pageObject->pSet->getLookupTable("Uprice"));
 	
@@ -615,6 +615,55 @@ if ($mode==SEARCH_SIMPLE)
 	else
 	{
 		$pageObject->controlsMap["search"]["searchBlocks"][] = array('fName'=>"Uprice", 'recId'=>$id, 'ctrlsMap'=>array(0=>$ctrlInd));			
+		$ctrlInd++;
+	}
+	// search fields data
+	
+	if($pageObject->pSet->getLookupTable("Note"))
+		$pageObject->settingsMap["globalSettings"]['shortTNames'][$pageObject->pSet->getLookupTable("Note")] = GetTableURL($pageObject->pSet->getLookupTable("Note"));
+	
+	$pageObject->fillFieldToolTips("Note");	
+	
+	$srchFields = $pageObject->searchClauseObj->getSearchCtrlParams("Note");
+	$firstFieldParams = array();
+	if (count($srchFields))
+	{
+		$firstFieldParams = $srchFields[0];
+	}
+	else
+	{
+		$firstFieldParams['fName'] = "Note";
+		$firstFieldParams['eType'] = '';
+		$firstFieldParams['value1'] = '';
+		$firstFieldParams['opt'] = '';
+		$firstFieldParams['value2'] = '';
+		$firstFieldParams['not'] = false;
+	}
+	// create control	
+	$ctrlBlockArr = $searchControlBuilder->buildSearchCtrlBlockArr($id, $firstFieldParams['fName'], 0, $firstFieldParams['opt'], $firstFieldParams['not'], false, $firstFieldParams['value1'], $firstFieldParams['value2']);	
+		
+	if(isEnableSection508())
+		$xt->assign_section("Note_label","<label for=\"".GetInputElementId("Note", $id, PAGE_SEARCH)."\">","</label>");
+	else 
+		$xt->assign("Note_label", true);
+	
+	$xt->assign("Note_fieldblock", true);
+	$xt->assignbyref("Note_editcontrol", $ctrlBlockArr['searchcontrol']);
+	$xt->assign("Note_notbox", $ctrlBlockArr['notbox']);
+	// create second control, if need it
+	$xt->assignbyref("Note_editcontrol1", $ctrlBlockArr['searchcontrol1']);
+	// create search type select
+	$xt->assign("searchtype_Note", $ctrlBlockArr['searchtype']);
+	$isFieldNeedSecCtrl = $searchControlBuilder->isNeedSecondCtrl("Note");
+	$ctrlInd = 0;
+	if ($isFieldNeedSecCtrl)
+	{
+		$pageObject->controlsMap["search"]["searchBlocks"][] = array('fName'=>"Note", 'recId'=>$id, 'ctrlsMap'=>array(0=>$ctrlInd, 1=>($ctrlInd+1)));
+		$ctrlInd+=2;
+	}
+	else
+	{
+		$pageObject->controlsMap["search"]["searchBlocks"][] = array('fName'=>"Note", 'recId'=>$id, 'ctrlsMap'=>array(0=>$ctrlInd));			
 		$ctrlInd++;
 	}
 	// search fields data
@@ -668,6 +717,55 @@ if ($mode==SEARCH_SIMPLE)
 	}
 	// search fields data
 	
+	if($pageObject->pSet->getLookupTable("staffID"))
+		$pageObject->settingsMap["globalSettings"]['shortTNames'][$pageObject->pSet->getLookupTable("staffID")] = GetTableURL($pageObject->pSet->getLookupTable("staffID"));
+	
+	$pageObject->fillFieldToolTips("staffID");	
+	
+	$srchFields = $pageObject->searchClauseObj->getSearchCtrlParams("staffID");
+	$firstFieldParams = array();
+	if (count($srchFields))
+	{
+		$firstFieldParams = $srchFields[0];
+	}
+	else
+	{
+		$firstFieldParams['fName'] = "staffID";
+		$firstFieldParams['eType'] = '';
+		$firstFieldParams['value1'] = '';
+		$firstFieldParams['opt'] = '';
+		$firstFieldParams['value2'] = '';
+		$firstFieldParams['not'] = false;
+	}
+	// create control	
+	$ctrlBlockArr = $searchControlBuilder->buildSearchCtrlBlockArr($id, $firstFieldParams['fName'], 0, $firstFieldParams['opt'], $firstFieldParams['not'], false, $firstFieldParams['value1'], $firstFieldParams['value2']);	
+		
+	if(isEnableSection508())
+		$xt->assign_section("staffID_label","<label for=\"".GetInputElementId("staffID", $id, PAGE_SEARCH)."\">","</label>");
+	else 
+		$xt->assign("staffID_label", true);
+	
+	$xt->assign("staffID_fieldblock", true);
+	$xt->assignbyref("staffID_editcontrol", $ctrlBlockArr['searchcontrol']);
+	$xt->assign("staffID_notbox", $ctrlBlockArr['notbox']);
+	// create second control, if need it
+	$xt->assignbyref("staffID_editcontrol1", $ctrlBlockArr['searchcontrol1']);
+	// create search type select
+	$xt->assign("searchtype_staffID", $ctrlBlockArr['searchtype']);
+	$isFieldNeedSecCtrl = $searchControlBuilder->isNeedSecondCtrl("staffID");
+	$ctrlInd = 0;
+	if ($isFieldNeedSecCtrl)
+	{
+		$pageObject->controlsMap["search"]["searchBlocks"][] = array('fName'=>"staffID", 'recId'=>$id, 'ctrlsMap'=>array(0=>$ctrlInd, 1=>($ctrlInd+1)));
+		$ctrlInd+=2;
+	}
+	else
+	{
+		$pageObject->controlsMap["search"]["searchBlocks"][] = array('fName'=>"staffID", 'recId'=>$id, 'ctrlsMap'=>array(0=>$ctrlInd));			
+		$ctrlInd++;
+	}
+	// search fields data
+	
 	if($pageObject->pSet->getLookupTable("Discount"))
 		$pageObject->settingsMap["globalSettings"]['shortTNames'][$pageObject->pSet->getLookupTable("Discount")] = GetTableURL($pageObject->pSet->getLookupTable("Discount"));
 	
@@ -713,55 +811,6 @@ if ($mode==SEARCH_SIMPLE)
 	else
 	{
 		$pageObject->controlsMap["search"]["searchBlocks"][] = array('fName'=>"Discount", 'recId'=>$id, 'ctrlsMap'=>array(0=>$ctrlInd));			
-		$ctrlInd++;
-	}
-	// search fields data
-	
-	if($pageObject->pSet->getLookupTable("Note"))
-		$pageObject->settingsMap["globalSettings"]['shortTNames'][$pageObject->pSet->getLookupTable("Note")] = GetTableURL($pageObject->pSet->getLookupTable("Note"));
-	
-	$pageObject->fillFieldToolTips("Note");	
-	
-	$srchFields = $pageObject->searchClauseObj->getSearchCtrlParams("Note");
-	$firstFieldParams = array();
-	if (count($srchFields))
-	{
-		$firstFieldParams = $srchFields[0];
-	}
-	else
-	{
-		$firstFieldParams['fName'] = "Note";
-		$firstFieldParams['eType'] = '';
-		$firstFieldParams['value1'] = '';
-		$firstFieldParams['opt'] = '';
-		$firstFieldParams['value2'] = '';
-		$firstFieldParams['not'] = false;
-	}
-	// create control	
-	$ctrlBlockArr = $searchControlBuilder->buildSearchCtrlBlockArr($id, $firstFieldParams['fName'], 0, $firstFieldParams['opt'], $firstFieldParams['not'], false, $firstFieldParams['value1'], $firstFieldParams['value2']);	
-		
-	if(isEnableSection508())
-		$xt->assign_section("Note_label","<label for=\"".GetInputElementId("Note", $id, PAGE_SEARCH)."\">","</label>");
-	else 
-		$xt->assign("Note_label", true);
-	
-	$xt->assign("Note_fieldblock", true);
-	$xt->assignbyref("Note_editcontrol", $ctrlBlockArr['searchcontrol']);
-	$xt->assign("Note_notbox", $ctrlBlockArr['notbox']);
-	// create second control, if need it
-	$xt->assignbyref("Note_editcontrol1", $ctrlBlockArr['searchcontrol1']);
-	// create search type select
-	$xt->assign("searchtype_Note", $ctrlBlockArr['searchtype']);
-	$isFieldNeedSecCtrl = $searchControlBuilder->isNeedSecondCtrl("Note");
-	$ctrlInd = 0;
-	if ($isFieldNeedSecCtrl)
-	{
-		$pageObject->controlsMap["search"]["searchBlocks"][] = array('fName'=>"Note", 'recId'=>$id, 'ctrlsMap'=>array(0=>$ctrlInd, 1=>($ctrlInd+1)));
-		$ctrlInd+=2;
-	}
-	else
-	{
-		$pageObject->controlsMap["search"]["searchBlocks"][] = array('fName'=>"Note", 'recId'=>$id, 'ctrlsMap'=>array(0=>$ctrlInd));			
 		$ctrlInd++;
 	}
 	

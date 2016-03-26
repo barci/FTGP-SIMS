@@ -204,8 +204,6 @@ function checkTableName($shortTName, $type=false)
 		return true;
 	if ("orderdetail" == $shortTName && ($type===false || ($type!==false && $type == 0)))
 		return true;
-	if ("orderentry" == $shortTName && ($type===false || ($type!==false && $type == 0)))
-		return true;
 	if ("delivery" == $shortTName && ($type===false || ($type!==false && $type == 0)))
 		return true;
 	if ("Product_Listing" == $shortTName && ($type===false || ($type!==false && $type == 1)))
@@ -215,6 +213,14 @@ function checkTableName($shortTName, $type=false)
 	if ("Pending_Orders" == $shortTName && ($type===false || ($type!==false && $type == 1)))
 		return true;
 	if ("Stocks_Received" == $shortTName && ($type===false || ($type!==false && $type == 1)))
+		return true;
+	if ("DR_Printing" == $shortTName && ($type===false || ($type!==false && $type == 1)))
+		return true;
+	if ("packinglist" == $shortTName && ($type===false || ($type!==false && $type == 0)))
+		return true;
+	if ("Delivery_List_View" == $shortTName && ($type===false || ($type!==false && $type == 1)))
+		return true;
+	if ("orderentry" == $shortTName && ($type===false || ($type!==false && $type == 0)))
 		return true;
 	return false;
 }
@@ -289,11 +295,6 @@ function GetTablesList($pdfMode = false)
 	{
 		$arr[]="orderdetail";
 	}
-	$strPerm = GetUserPermissions("orderentry");
-	if(strpos($strPerm, "P")!==false || ($pdfMode && strpos($strPerm, "S")!==false))
-	{
-		$arr[]="orderentry";
-	}
 	$strPerm = GetUserPermissions("delivery");
 	if(strpos($strPerm, "P")!==false || ($pdfMode && strpos($strPerm, "S")!==false))
 	{
@@ -318,6 +319,26 @@ function GetTablesList($pdfMode = false)
 	if(strpos($strPerm, "P")!==false || ($pdfMode && strpos($strPerm, "S")!==false))
 	{
 		$arr[]="Stocks Received";
+	}
+	$strPerm = GetUserPermissions("DR Printing");
+	if(strpos($strPerm, "P")!==false || ($pdfMode && strpos($strPerm, "S")!==false))
+	{
+		$arr[]="DR Printing";
+	}
+	$strPerm = GetUserPermissions("packinglist");
+	if(strpos($strPerm, "P")!==false || ($pdfMode && strpos($strPerm, "S")!==false))
+	{
+		$arr[]="packinglist";
+	}
+	$strPerm = GetUserPermissions("Delivery List View");
+	if(strpos($strPerm, "P")!==false || ($pdfMode && strpos($strPerm, "S")!==false))
+	{
+		$arr[]="Delivery List View";
+	}
+	$strPerm = GetUserPermissions("orderentry");
+	if(strpos($strPerm, "P")!==false || ($pdfMode && strpos($strPerm, "S")!==false))
+	{
+		$arr[]="orderentry";
 	}
 	return $arr;
 }
@@ -1456,19 +1477,19 @@ function GetUserPermissionsStatic($table="")
 		$table=$strTableName;
 
 	$sUserGroup=@$_SESSION["GroupID"];
-	if($table=="supplier" && $sUserGroup=="Warehouse")
+	if($table=="supplier" && $sUserGroup=="Admin")
 	{
-			return "AES";
+			return "AEDSPI";
 	}
 	if($table=="supplier" && $sUserGroup=="Sales")
 	{
 			return "";
 	}
-	if($table=="supplier" && $sUserGroup=="Admin")
-	{
-			return "AEDSPI";
-	}
 	if($table=="supplier" && $sUserGroup=="Purchasing")
+	{
+			return "AES";
+	}
+	if($table=="supplier" && $sUserGroup=="Warehouse")
 	{
 			return "AES";
 	}
@@ -1477,61 +1498,61 @@ function GetUserPermissionsStatic($table="")
 	{
 	return "AEDSPI";
 	}
-	if($table=="category" && $sUserGroup=="Warehouse")
+	if($table=="category" && $sUserGroup=="Admin")
 	{
-			return "AES";
+			return "AEDSPI";
 	}
 	if($table=="category" && $sUserGroup=="Sales")
 	{
 			return "";
 	}
-	if($table=="category" && $sUserGroup=="Admin")
-	{
-			return "AEDSPI";
-	}
 	if($table=="category" && $sUserGroup=="Purchasing")
 	{
 			return "";
+	}
+	if($table=="category" && $sUserGroup=="Warehouse")
+	{
+			return "AES";
 	}
 //	default permissions	
 	if($table=="category")
 	{
 	return "AEDSPI";
 	}
-	if($table=="product" && $sUserGroup=="Warehouse")
+	if($table=="product" && $sUserGroup=="Admin")
 	{
-			return "AES";
+			return "AEDSPI";
 	}
 	if($table=="product" && $sUserGroup=="Sales")
 	{
 			return "S";
 	}
-	if($table=="product" && $sUserGroup=="Admin")
-	{
-			return "AEDSPI";
-	}
 	if($table=="product" && $sUserGroup=="Purchasing")
 	{
 			return "S";
+	}
+	if($table=="product" && $sUserGroup=="Warehouse")
+	{
+			return "AES";
 	}
 //	default permissions	
 	if($table=="product")
 	{
 	return "AEDSPI";
 	}
-	if($table=="customer" && $sUserGroup=="Warehouse")
+	if($table=="customer" && $sUserGroup=="Admin")
 	{
-			return "";
+			return "AEDSPI";
 	}
 	if($table=="customer" && $sUserGroup=="Sales")
 	{
 			return "AES";
 	}
-	if($table=="customer" && $sUserGroup=="Admin")
-	{
-			return "AEDSPI";
-	}
 	if($table=="customer" && $sUserGroup=="Purchasing")
+	{
+			return "";
+	}
+	if($table=="customer" && $sUserGroup=="Warehouse")
 	{
 			return "";
 	}
@@ -1540,19 +1561,19 @@ function GetUserPermissionsStatic($table="")
 	{
 	return "AEDSPI";
 	}
-	if($table=="role" && $sUserGroup=="Warehouse")
+	if($table=="role" && $sUserGroup=="Admin")
 	{
-			return "";
+			return "AEDSPI";
 	}
 	if($table=="role" && $sUserGroup=="Sales")
 	{
 			return "";
 	}
-	if($table=="role" && $sUserGroup=="Admin")
-	{
-			return "AEDSPI";
-	}
 	if($table=="role" && $sUserGroup=="Purchasing")
+	{
+			return "";
+	}
+	if($table=="role" && $sUserGroup=="Warehouse")
 	{
 			return "";
 	}
@@ -1561,19 +1582,19 @@ function GetUserPermissionsStatic($table="")
 	{
 	return "AEDSPI";
 	}
-	if($table=="staff" && $sUserGroup=="Warehouse")
+	if($table=="staff" && $sUserGroup=="Admin")
 	{
-			return "";
+			return "AEDSPI";
 	}
 	if($table=="staff" && $sUserGroup=="Sales")
 	{
 			return "";
 	}
-	if($table=="staff" && $sUserGroup=="Admin")
-	{
-			return "AEDSPI";
-	}
 	if($table=="staff" && $sUserGroup=="Purchasing")
+	{
+			return "";
+	}
+	if($table=="staff" && $sUserGroup=="Warehouse")
 	{
 			return "";
 	}
@@ -1582,40 +1603,40 @@ function GetUserPermissionsStatic($table="")
 	{
 	return "AEDSPI";
 	}
-	if($table=="Product-Order List" && $sUserGroup=="Warehouse")
+	if($table=="Product-Order List" && $sUserGroup=="Admin")
 	{
-			return "AES";
+			return "AEDSPI";
 	}
 	if($table=="Product-Order List" && $sUserGroup=="Sales")
 	{
 			return "";
 	}
-	if($table=="Product-Order List" && $sUserGroup=="Admin")
-	{
-			return "AEDSPI";
-	}
 	if($table=="Product-Order List" && $sUserGroup=="Purchasing")
 	{
 			return "";
+	}
+	if($table=="Product-Order List" && $sUserGroup=="Warehouse")
+	{
+			return "AES";
 	}
 //	default permissions	
 	if($table=="Product-Order List")
 	{
 	return "AEDSPI";
 	}
-	if($table=="orderdetail" && $sUserGroup=="Warehouse")
+	if($table=="orderdetail" && $sUserGroup=="Admin")
 	{
-			return "";
+			return "AEDSPI";
 	}
 	if($table=="orderdetail" && $sUserGroup=="Sales")
 	{
 			return "AES";
 	}
-	if($table=="orderdetail" && $sUserGroup=="Admin")
-	{
-			return "AEDSPI";
-	}
 	if($table=="orderdetail" && $sUserGroup=="Purchasing")
+	{
+			return "";
+	}
+	if($table=="orderdetail" && $sUserGroup=="Warehouse")
 	{
 			return "";
 	}
@@ -1624,82 +1645,61 @@ function GetUserPermissionsStatic($table="")
 	{
 	return "AEDSPI";
 	}
-	if($table=="orderentry" && $sUserGroup=="Warehouse")
-	{
-			return "";
-	}
-	if($table=="orderentry" && $sUserGroup=="Sales")
-	{
-			return "AES";
-	}
-	if($table=="orderentry" && $sUserGroup=="Admin")
+	if($table=="delivery" && $sUserGroup=="Admin")
 	{
 			return "AEDSPI";
-	}
-	if($table=="orderentry" && $sUserGroup=="Purchasing")
-	{
-			return "";
-	}
-//	default permissions	
-	if($table=="orderentry")
-	{
-	return "AEDSPI";
-	}
-	if($table=="delivery" && $sUserGroup=="Warehouse")
-	{
-			return "AES";
 	}
 	if($table=="delivery" && $sUserGroup=="Sales")
 	{
 			return "";
 	}
-	if($table=="delivery" && $sUserGroup=="Admin")
-	{
-			return "AEDSPI";
-	}
 	if($table=="delivery" && $sUserGroup=="Purchasing")
 	{
 			return "";
+	}
+	if($table=="delivery" && $sUserGroup=="Warehouse")
+	{
+			return "AES";
 	}
 //	default permissions	
 	if($table=="delivery")
 	{
 	return "AEDSPI";
 	}
-	if($table=="Product Listing" && $sUserGroup=="Warehouse")
+	if($table=="Product Listing" && $sUserGroup=="Admin")
 	{
-			return "AES";
+			return "AEDSPI";
 	}
 	if($table=="Product Listing" && $sUserGroup=="Sales")
 	{
 			return "";
 	}
-	if($table=="Product Listing" && $sUserGroup=="Admin")
-	{
-			return "AEDSPI";
-	}
 	if($table=="Product Listing" && $sUserGroup=="Purchasing")
 	{
 			return "";
+	}
+	if($table=="Product Listing" && $sUserGroup=="Warehouse")
+	{
+			return "AES";
 	}
 //	default permissions	
 	if($table=="Product Listing")
 	{
 	return "AEDSPI";
 	}
-	if($table=="stockrequest" && $sUserGroup=="Warehouse")
+	if($table=="stockrequest" && $sUserGroup=="Admin")
 	{
-			return "AES";
+			return "AEDSPI";
 	}
 	if($table=="stockrequest" && $sUserGroup=="Sales")
 	{
 			return "";
 	}
-	if($table=="stockrequest" && $sUserGroup=="Admin")
-	{
-			return "AEDSPI";
-	}
 	if($table=="stockrequest" && $sUserGroup=="Purchasing")
+	{
+			return "AES";
+	}
+	if($table=="stockrequest" && $sUserGroup=="Warehouse")
 	{
 			return "AES";
 	}
@@ -1708,47 +1708,131 @@ function GetUserPermissionsStatic($table="")
 	{
 	return "AEDSPI";
 	}
-	if($table=="Pending Orders" && $sUserGroup=="Warehouse")
+	if($table=="Pending Orders" && $sUserGroup=="Admin")
 	{
-			return "AES";
+			return "AEDSPI";
 	}
 	if($table=="Pending Orders" && $sUserGroup=="Sales")
 	{
 			return "S";
 	}
-	if($table=="Pending Orders" && $sUserGroup=="Admin")
-	{
-			return "AEDSPI";
-	}
 	if($table=="Pending Orders" && $sUserGroup=="Purchasing")
 	{
 			return "";
+	}
+	if($table=="Pending Orders" && $sUserGroup=="Warehouse")
+	{
+			return "AES";
 	}
 //	default permissions	
 	if($table=="Pending Orders")
 	{
 	return "AEDSPI";
 	}
-	if($table=="Stocks Received" && $sUserGroup=="Warehouse")
+	if($table=="Stocks Received" && $sUserGroup=="Admin")
 	{
-			return "AES";
+			return "AEDSPI";
 	}
 	if($table=="Stocks Received" && $sUserGroup=="Sales")
 	{
 			return "";
 	}
-	if($table=="Stocks Received" && $sUserGroup=="Admin")
-	{
-			return "AEDSPI";
-	}
 	if($table=="Stocks Received" && $sUserGroup=="Purchasing")
 	{
 			return "S";
+	}
+	if($table=="Stocks Received" && $sUserGroup=="Warehouse")
+	{
+			return "AES";
 	}
 //	default permissions	
 	if($table=="Stocks Received")
 	{
 	return "AEDSPI";
+	}
+	if($table=="DR Printing" && $sUserGroup=="Admin")
+	{
+			return "AEDSPI";
+	}
+	if($table=="DR Printing" && $sUserGroup=="Sales")
+	{
+			return "S";
+	}
+	if($table=="DR Printing" && $sUserGroup=="Purchasing")
+	{
+			return "";
+	}
+	if($table=="DR Printing" && $sUserGroup=="Warehouse")
+	{
+			return "AEDS";
+	}
+//	default permissions	
+	if($table=="DR Printing")
+	{
+	return "";
+	}
+	if($table=="packinglist" && $sUserGroup=="Admin")
+	{
+			return "AEDSPI";
+	}
+	if($table=="packinglist" && $sUserGroup=="Sales")
+	{
+			return "S";
+	}
+	if($table=="packinglist" && $sUserGroup=="Purchasing")
+	{
+			return "";
+	}
+	if($table=="packinglist" && $sUserGroup=="Warehouse")
+	{
+			return "AES";
+	}
+//	default permissions	
+	if($table=="packinglist")
+	{
+	return "";
+	}
+	if($table=="Delivery List View" && $sUserGroup=="Admin")
+	{
+			return "";
+	}
+	if($table=="Delivery List View" && $sUserGroup=="Sales")
+	{
+			return "S";
+	}
+	if($table=="Delivery List View" && $sUserGroup=="Purchasing")
+	{
+			return "";
+	}
+	if($table=="Delivery List View" && $sUserGroup=="Warehouse")
+	{
+			return "";
+	}
+//	default permissions	
+	if($table=="Delivery List View")
+	{
+	return "";
+	}
+	if($table=="orderentry" && $sUserGroup=="Admin")
+	{
+			return "AEDSPI";
+	}
+	if($table=="orderentry" && $sUserGroup=="Sales")
+	{
+			return "AE";
+	}
+	if($table=="orderentry" && $sUserGroup=="Purchasing")
+	{
+			return "";
+	}
+	if($table=="orderentry" && $sUserGroup=="Warehouse")
+	{
+			return "";
+	}
+//	default permissions	
+	if($table=="orderentry")
+	{
+	return "";
 	}
 }
 
@@ -1839,6 +1923,7 @@ function SetAuthSessionData($pUsername, &$data, $fromFacebook, $password)
 			$_SESSION["OwnerID"] = $data["StaffID"];
 		$_SESSION["_supplier_OwnerID"] = $data["StaffID"];
 			$_SESSION["_staff_OwnerID"] = $data["StaffID"];
+			$_SESSION["_orderdetail_OwnerID"] = $data["StaffID"];
 	if($globalEvents->exists("AfterSuccessfulLogin"))
 	{
 		$globalEvents->AfterSuccessfulLogin($pUsername != "Guest" ? $pUsername : "", $password, $data);

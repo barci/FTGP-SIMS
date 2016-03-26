@@ -90,7 +90,7 @@ $xt = new Xtempl();
 // assign an id
 $xt->assign("id",$id);
 
-$templatefile = ($inlineedit == EDIT_INLINE) ? "delivery_inline_edit.htm" : "delivery_edit.htm";
+$templatefile = "delivery_edit.htm";
 
 //array of params for classes
 $params = array("pageType" => PAGE_EDIT,"id" => $id);
@@ -230,28 +230,8 @@ if(@$_POST["a"] == "edited")
 	$evalues = $efilename_values = $blobfields = array();
 	
 
-//	processing DrNo - begin
-	$condition = 1;
-
-	if($condition)
-	{
-		$control_DrNo = $pageObject->getControl("DrNo", $id);
-		$control_DrNo->readWebValue($evalues, $blobfields, $strWhereClause, $oldValuesRead, $efilename_values);
-
-		}
-//	processing DrNo - end
-//	processing orderID - begin
-	$condition = 1;
-
-	if($condition)
-	{
-		$control_orderID = $pageObject->getControl("orderID", $id);
-		$control_orderID->readWebValue($evalues, $blobfields, $strWhereClause, $oldValuesRead, $efilename_values);
-
-		}
-//	processing orderID - end
 //	processing prodID - begin
-	$condition = 1;
+	$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 
 	if($condition)
 	{
@@ -261,7 +241,7 @@ if(@$_POST["a"] == "edited")
 		}
 //	processing prodID - end
 //	processing qty - begin
-	$condition = 1;
+	$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 
 	if($condition)
 	{
@@ -270,18 +250,8 @@ if(@$_POST["a"] == "edited")
 
 		}
 //	processing qty - end
-//	processing eta - begin
-	$condition = 1;
-
-	if($condition)
-	{
-		$control_eta = $pageObject->getControl("eta", $id);
-		$control_eta->readWebValue($evalues, $blobfields, $strWhereClause, $oldValuesRead, $efilename_values);
-
-		}
-//	processing eta - end
 //	processing delFlag - begin
-	$condition = 1;
+	$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 
 	if($condition)
 	{
@@ -347,24 +317,8 @@ if(@$_POST["a"] == "edited")
 				$IsSaved = true;
 
 			// Give possibility to all edit controls to clean their data				
-			//	processing DrNo - begin
-							$condition = 1;
-			
-				if($condition)
-				{
-					$control_DrNo->afterSuccessfulSave();
-				}
-	//	processing DrNo - end
-			//	processing orderID - begin
-							$condition = 1;
-			
-				if($condition)
-				{
-					$control_orderID->afterSuccessfulSave();
-				}
-	//	processing orderID - end
 			//	processing prodID - begin
-							$condition = 1;
+							$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 			
 				if($condition)
 				{
@@ -372,23 +326,15 @@ if(@$_POST["a"] == "edited")
 				}
 	//	processing prodID - end
 			//	processing qty - begin
-							$condition = 1;
+							$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 			
 				if($condition)
 				{
 					$control_qty->afterSuccessfulSave();
 				}
 	//	processing qty - end
-			//	processing eta - begin
-							$condition = 1;
-			
-				if($condition)
-				{
-					$control_eta->afterSuccessfulSave();
-				}
-	//	processing eta - end
 			//	processing delFlag - begin
-							$condition = 1;
+							$condition = $inlineedit!=EDIT_INLINE;//(!$inlineedit) edit simple mode
 			
 				if($condition)
 				{
@@ -527,11 +473,8 @@ if($globalEvents->exists("IsRecordEditable", $strTableName))
 
 if($readevalues)
 {
-	$data["DrNo"] = $evalues["DrNo"];
-	$data["orderID"] = $evalues["orderID"];
 	$data["prodID"] = $evalues["prodID"];
 	$data["qty"] = $evalues["qty"];
-	$data["eta"] = $evalues["eta"];
 	$data["delFlag"] = $evalues["delFlag"];
 }
 
@@ -555,22 +498,6 @@ if($inlineedit != EDIT_INLINE)
 		$pageObject->body["begin"].= $includes;
 	}	
 
-	if(!$pageObject->isAppearOnTabs("DrNo"))
-		$xt->assign("DrNo_fieldblock",true);
-	else
-		$xt->assign("DrNo_tabfieldblock",true);
-	$xt->assign("DrNo_label",true);
-	if(isEnableSection508())
-		$xt->assign_section("DrNo_label","<label for=\"".GetInputElementId("DrNo", $id, PAGE_EDIT)."\">","</label>");
-		
-	if(!$pageObject->isAppearOnTabs("orderID"))
-		$xt->assign("orderID_fieldblock",true);
-	else
-		$xt->assign("orderID_tabfieldblock",true);
-	$xt->assign("orderID_label",true);
-	if(isEnableSection508())
-		$xt->assign_section("orderID_label","<label for=\"".GetInputElementId("orderID", $id, PAGE_EDIT)."\">","</label>");
-		
 	if(!$pageObject->isAppearOnTabs("prodID"))
 		$xt->assign("prodID_fieldblock",true);
 	else
@@ -586,14 +513,6 @@ if($inlineedit != EDIT_INLINE)
 	$xt->assign("qty_label",true);
 	if(isEnableSection508())
 		$xt->assign_section("qty_label","<label for=\"".GetInputElementId("qty", $id, PAGE_EDIT)."\">","</label>");
-		
-	if(!$pageObject->isAppearOnTabs("eta"))
-		$xt->assign("eta_fieldblock",true);
-	else
-		$xt->assign("eta_tabfieldblock",true);
-	$xt->assign("eta_label",true);
-	if(isEnableSection508())
-		$xt->assign_section("eta_label","<label for=\"".GetInputElementId("eta", $id, PAGE_EDIT)."\">","</label>");
 		
 	if(!$pageObject->isAppearOnTabs("delFlag"))
 		$xt->assign("delFlag_fieldblock",true);
@@ -666,107 +585,6 @@ if(!strlen($message))
 /////////////////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////////////
-//	return new data to the List page or report an error
-/////////////////////////////////////////////////////////////
-if (postvalue("a")=="edited" && ($inlineedit == EDIT_INLINE || $inlineedit == EDIT_POPUP))
-{
-	if(!$data)
-	{
-		$data = $evalues;
-		$HaveData = false;
-	}
-	//Preparation   view values
-
-//	detail tables
-
-	$keylink = "";
-	$keylink.= "&key1=".htmlspecialchars(rawurlencode(@$data["ID"]));
-
-
-//	ID - 
-	$value = $pageObject->showDBValue("ID", $data, $keylink);
-	$showValues["ID"] = $value;
-	$showFields[] = "ID";
-		$showRawValues["ID"] = substr($data["ID"],0,100);
-
-//	DrNo - 
-	$value = $pageObject->showDBValue("DrNo", $data, $keylink);
-	$showValues["DrNo"] = $value;
-	$showFields[] = "DrNo";
-		$showRawValues["DrNo"] = substr($data["DrNo"],0,100);
-
-//	orderID - 
-	$value = $pageObject->showDBValue("orderID", $data, $keylink);
-	$showValues["orderID"] = $value;
-	$showFields[] = "orderID";
-		$showRawValues["orderID"] = substr($data["orderID"],0,100);
-
-//	prodID - 
-	$value = $pageObject->showDBValue("prodID", $data, $keylink);
-	$showValues["prodID"] = $value;
-	$showFields[] = "prodID";
-		$showRawValues["prodID"] = substr($data["prodID"],0,100);
-
-//	qty - 
-	$value = $pageObject->showDBValue("qty", $data, $keylink);
-	$showValues["qty"] = $value;
-	$showFields[] = "qty";
-		$showRawValues["qty"] = substr($data["qty"],0,100);
-
-//	eta - Short Date
-	$value = $pageObject->showDBValue("eta", $data, $keylink);
-	$showValues["eta"] = $value;
-	$showFields[] = "eta";
-		$showRawValues["eta"] = substr($data["eta"],0,100);
-
-//	delFlag - 
-	$value = $pageObject->showDBValue("delFlag", $data, $keylink);
-	$showValues["delFlag"] = $value;
-	$showFields[] = "delFlag";
-		$showRawValues["delFlag"] = substr($data["delFlag"],0,100);
-/////////////////////////////////////////////////////////////
-//	start inline output
-/////////////////////////////////////////////////////////////
-	
-	if($IsSaved)
-	{
-		if($pageObject->lockingObj)
-			$pageObject->lockingObj->UnlockRecord($strTableName,$keys,"");
-		
-		$returnJSON['success'] = true;
-		$returnJSON['keys'] = $pageObject->jsKeys;
-		$returnJSON['keyFields'] = $pageObject->keyFields;
-		$returnJSON['vals'] = $showValues;
-		$returnJSON['fields'] = $showFields;
-		$returnJSON['rawVals'] = $showRawValues;
-		$returnJSON['detKeys'] = $showDetailKeys;
-		$returnJSON['userMess'] = $usermessage;
-		$returnJSON['hrefs'] = $pageObject->buildDetailGridLinks($showDetailKeys);
-		
-		if($inlineedit==EDIT_POPUP && isset($_SESSION[$strTableName."_count_captcha"]) || $_SESSION[$strTableName."_count_captcha"]>0 || $_SESSION[$strTableName."_count_captcha"]<5)
-			$returnJSON['hideCaptcha'] = true;
-			
-		if($globalEvents->exists("IsRecordEditable", $strTableName))
-		{
-			if(!$globalEvents->IsRecordEditable($showRawValues, true, $strTableName))
-				$returnJSON['nonEditable'] = true;
-		}
-	}
-	else
-	{
-		$returnJSON['success'] = false;
-		$returnJSON['message'] = $message;
-		
-		if($pageObject->lockingObj)
-			$returnJSON['lockMessage'] = $system_message;
-		
-		if($inlineedit == EDIT_POPUP && !$pageObject->isCaptchaOk)
-			$returnJSON['captcha'] = false;
-	}
-	echo "<textarea>".htmlspecialchars(my_json_encode($returnJSON))."</textarea>";
-	exit();
-} 
-/////////////////////////////////////////////////////////////
 //	prepare Edit Controls
 /////////////////////////////////////////////////////////////
 //	validation stuff
@@ -818,7 +636,7 @@ foreach($pageObject->editFields as $fName)
 				$control[$gfName]["params"]["mode"] = "edit";
 			$controls["controls"]['mode'] = "edit";
 		}
-							
+				
 	if(!$detailKeys || !in_array($fName, $detailKeys))
 		$xt->assignbyref($gfName."_editcontrol",$control[$gfName]);
 	elseif($detailKeys && in_array($fName, $detailKeys))

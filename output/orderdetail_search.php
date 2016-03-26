@@ -421,6 +421,55 @@ if ($mode==SEARCH_SIMPLE)
 		$pageObject->controlsMap["search"]["searchBlocks"][] = array('fName'=>"DelDate", 'recId'=>$id, 'ctrlsMap'=>array(0=>$ctrlInd));			
 		$ctrlInd++;
 	}
+	// search fields data
+	
+	if($pageObject->pSet->getLookupTable("staffID"))
+		$pageObject->settingsMap["globalSettings"]['shortTNames'][$pageObject->pSet->getLookupTable("staffID")] = GetTableURL($pageObject->pSet->getLookupTable("staffID"));
+	
+	$pageObject->fillFieldToolTips("staffID");	
+	
+	$srchFields = $pageObject->searchClauseObj->getSearchCtrlParams("staffID");
+	$firstFieldParams = array();
+	if (count($srchFields))
+	{
+		$firstFieldParams = $srchFields[0];
+	}
+	else
+	{
+		$firstFieldParams['fName'] = "staffID";
+		$firstFieldParams['eType'] = '';
+		$firstFieldParams['value1'] = '';
+		$firstFieldParams['opt'] = '';
+		$firstFieldParams['value2'] = '';
+		$firstFieldParams['not'] = false;
+	}
+	// create control	
+	$ctrlBlockArr = $searchControlBuilder->buildSearchCtrlBlockArr($id, $firstFieldParams['fName'], 0, $firstFieldParams['opt'], $firstFieldParams['not'], false, $firstFieldParams['value1'], $firstFieldParams['value2']);	
+		
+	if(isEnableSection508())
+		$xt->assign_section("staffID_label","<label for=\"".GetInputElementId("staffID", $id, PAGE_SEARCH)."\">","</label>");
+	else 
+		$xt->assign("staffID_label", true);
+	
+	$xt->assign("staffID_fieldblock", true);
+	$xt->assignbyref("staffID_editcontrol", $ctrlBlockArr['searchcontrol']);
+	$xt->assign("staffID_notbox", $ctrlBlockArr['notbox']);
+	// create second control, if need it
+	$xt->assignbyref("staffID_editcontrol1", $ctrlBlockArr['searchcontrol1']);
+	// create search type select
+	$xt->assign("searchtype_staffID", $ctrlBlockArr['searchtype']);
+	$isFieldNeedSecCtrl = $searchControlBuilder->isNeedSecondCtrl("staffID");
+	$ctrlInd = 0;
+	if ($isFieldNeedSecCtrl)
+	{
+		$pageObject->controlsMap["search"]["searchBlocks"][] = array('fName'=>"staffID", 'recId'=>$id, 'ctrlsMap'=>array(0=>$ctrlInd, 1=>($ctrlInd+1)));
+		$ctrlInd+=2;
+	}
+	else
+	{
+		$pageObject->controlsMap["search"]["searchBlocks"][] = array('fName'=>"staffID", 'recId'=>$id, 'ctrlsMap'=>array(0=>$ctrlInd));			
+		$ctrlInd++;
+	}
 	
 	//--------------------------------------------------------
 	

@@ -1550,8 +1550,6 @@ function GetTableURL($table = "")
 		return "Product_Order_List";
 	if("orderdetail" == $table) 
 		return "orderdetail";
-	if("orderentry" == $table) 
-		return "orderentry";
 	if("delivery" == $table) 
 		return "delivery";
 	if("Product Listing" == $table) 
@@ -1562,6 +1560,14 @@ function GetTableURL($table = "")
 		return "Pending_Orders";
 	if("Stocks Received" == $table) 
 		return "Stocks_Received";
+	if("DR Printing" == $table) 
+		return "DR_Printing";
+	if("packinglist" == $table) 
+		return "packinglist";
+	if("Delivery List View" == $table) 
+		return "Delivery_List_View";
+	if("orderentry" == $table) 
+		return "orderentry";
 }
 
 //	return strTableName by short table name
@@ -1586,8 +1592,6 @@ function GetTableByShort($shortTName = "")
 		return "Product-Order List";
 	if("orderdetail" == $shortTName) 
 		return "orderdetail";
-	if("orderentry" == $shortTName) 
-		return "orderentry";
 	if("delivery" == $shortTName) 
 		return "delivery";
 	if("Product_Listing" == $shortTName) 
@@ -1598,6 +1602,14 @@ function GetTableByShort($shortTName = "")
 		return "Pending Orders";
 	if("Stocks_Received" == $shortTName) 
 		return "Stocks Received";
+	if("DR_Printing" == $shortTName) 
+		return "DR Printing";
+	if("packinglist" == $shortTName) 
+		return "packinglist";
+	if("Delivery_List_View" == $shortTName) 
+		return "Delivery List View";
+	if("orderentry" == $shortTName) 
+		return "orderentry";
 }
 
 //	A

@@ -13,7 +13,7 @@
 <tr>
 
 
-<td  class="runner-cc runner-bl runner-b-masterlistheader" {$brickclass_masterlistheader}><span><b><span dir="LTR">Order Entry: [{$showKeys}]</span></b></span></td>
+<td  class="runner-cc runner-bl runner-b-masterlistheader" {$brickclass_masterlistheader}><span><b><span dir="LTR">Orderentry: [{$showKeys}]</span></b></span></td>
 
 
 <td class="runner-cc filler"></td>
@@ -38,24 +38,27 @@
 	<table class="runner-c runner-c-mastergrid runner-b-masterlistfields" cellpadding="0">
 		<tr class="runner-toprow style1">
 			<th class="runner-cl"><img src="images/spacer.gif"></th>
+			<th class="runner-cc ">ID</th>
 			<th class="runner-cc ">Order ID</th>
-			<th class="runner-cc ">Customer</th>
-			<th class="runner-cc ">Order Date</th>
-			<th class="runner-cc ">Staff Incharge</th>
-			<th class="runner-cc runner-clast">Error Msg</th>
+			<th class="runner-cc ">CID</th>
+			<th class="runner-cc ">Del Date</th>
+			<th class="runner-cc ">Note</th>
+			<th class="runner-cc runner-clast">Staff ID</th>
 			<th class="runner-cr"><img src="images/spacer.gif"></th>
 		</tr>
 		<tr class="runner-row style1">
 			<td class="runner-cl"><img src="images/spacer.gif"></td>
+			<td class="runner-cc ">{$ID_mastervalue}</td>
 			<td class="runner-cc ">{$OrderID_mastervalue}</td>
 			<td class="runner-cc ">{$CID_mastervalue}</td>
-			<td class="runner-cc ">{$ODate_mastervalue}</td>
-			<td class="runner-cc ">{$StaffID_mastervalue}</td>
-			<td class="runner-cc runner-clast">{$ErrorMsg_mastervalue}</td>
+			<td class="runner-cc ">{$DelDate_mastervalue}</td>
+			<td class="runner-cc ">{$Note_mastervalue}</td>
+			<td class="runner-cc runner-clast">{$StaffID_mastervalue}</td>
 			<td class="runner-cr"><img src="images/spacer.gif"></td>
 		</tr>
 		<tr class="runner-bottomrow style1">
 			<td class="runner-cl"><img src="images/spacer.gif"></td>
+				<td class="runner-cc "></td>
 				<td class="runner-cc "></td>
 				<td class="runner-cc "></td>
 				<td class="runner-cc "></td>

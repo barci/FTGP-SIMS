@@ -78,6 +78,8 @@ if($mastertable == "orderentry")
 {
 	$where = "";
 		$where .= GetFullFieldName("OrderID", $strTableName, false)."=".make_db_value("OrderID",$_SESSION[$strTableName."_masterkey1"]);
+		$where.=" and ";
+	$where .= GetFullFieldName("DelDate", $strTableName, false)."=".make_db_value("DelDate",$_SESSION[$strTableName."_masterkey2"]);
 }
 
 $str = SecuritySQL("Search");
@@ -130,7 +132,7 @@ if($rowcount) {
 			$viewContainer->recId = $recordsCounter;
 		    $value = $viewContainer->showDBValue("BillNo", $data, $keylink);
 			$row["BillNo_value"] = $value;
-	//	ProductID - 
+	//	ProductID - Custom
 			$viewContainer->recId = $recordsCounter;
 		    $value = $viewContainer->showDBValue("ProductID", $data, $keylink);
 			$row["ProductID_value"] = $value;
@@ -142,10 +144,14 @@ if($rowcount) {
 			$viewContainer->recId = $recordsCounter;
 		    $value = $viewContainer->showDBValue("DelQuant", $data, $keylink);
 			$row["DelQuant_value"] = $value;
-	//	DelDate - Short Date
+	//	DelDate - Long Date
 			$viewContainer->recId = $recordsCounter;
 		    $value = $viewContainer->showDBValue("DelDate", $data, $keylink);
 			$row["DelDate_value"] = $value;
+	//	staffID - 
+			$viewContainer->recId = $recordsCounter;
+		    $value = $viewContainer->showDBValue("staffID", $data, $keylink);
+			$row["staffID_value"] = $value;
 		$rowinfo[] = $row;
 		$data = $cipherer->DecryptFetchedArray($rs);
 	}

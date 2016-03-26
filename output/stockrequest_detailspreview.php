@@ -142,6 +142,10 @@ if($rowcount) {
 			$viewContainer->recId = $recordsCounter;
 		    $value = $viewContainer->showDBValue("Notes", $data, $keylink);
 			$row["Notes_value"] = $value;
+	//	TimeStamp - Long Date
+			$viewContainer->recId = $recordsCounter;
+		    $value = $viewContainer->showDBValue("TimeStamp", $data, $keylink);
+			$row["TimeStamp_value"] = $value;
 	//	ReceiveFlag - 
 			$viewContainer->recId = $recordsCounter;
 		    $value = $viewContainer->showDBValue("ReceiveFlag", $data, $keylink);

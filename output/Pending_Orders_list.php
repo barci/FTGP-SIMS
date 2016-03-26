@@ -138,8 +138,8 @@ elseif(postvalue("mode") == "lookup")
 	include("classes/searchpanellookup.php");
 	$mode=LIST_LOOKUP;
 	//determine which field should be used to select values
-			$params["lookupSelectField"] = "ODetailID";
-							}
+			$params["lookupSelectField"] = "OrderID";
+				}
 elseif(postvalue("mode")=="listdetails")
 {
 	

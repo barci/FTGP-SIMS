@@ -46,7 +46,14 @@
           <TD class=runner-cc></TD>
           <TD class=runner-cr><IMG src="images/spacer.gif"></TD></TR>
         <TR class="runner-row style1"><TD class=runner-cl></TD>
-          <TD class=runner-cc><TABLE class=runner-hc cellPadding=0 border=0><TR>{BEGIN record_controls_block}<TD class="runner-cc runner-bl runner-b-recordcontrol" {$brickclass_recordcontrol}><SPAN>{BEGIN printselected_link}<SPAN class=runner-btnframe {$printselectedlink_span}><SPAN class=runner-btnleft></SPAN><SPAN class=runner-btnright></SPAN><A class=runner-button href="#" {$printselectedlink_attrs}>Print 
+          <TD class=runner-cc><TABLE class=runner-hc cellPadding=0 border=0><TR>{BEGIN record_controls_block}<TD class="runner-cc runner-bl runner-b-recordcontrol" {$brickclass_recordcontrol}><SPAN>{BEGIN deleteselected_link}<span class="runner-btnframe" {$deleteselectedlink_span}><span class="runner-btnleft"></span>
+		<span class="runner-btnright"></span>
+		<a href="#" class="runner-button" {$deleteselectedlink_attrs}>Delete selected</a>
+		</span>
+	{END deleteselected_link}
+
+	
+		{BEGIN printselected_link}<SPAN class=runner-btnframe {$printselectedlink_span}><SPAN class=runner-btnleft></SPAN><SPAN class=runner-btnright></SPAN><A class=runner-button href="#" {$printselectedlink_attrs}>Print 
                   selected</A> </SPAN>{END printselected_link}</SPAN></TD>
                 {END record_controls_block}<TD class="runner-cc filler"></TD></TR></TABLE></TD>
           <TD class=runner-cr></TD></TR>
@@ -97,19 +104,14 @@
             {$checkboxheader_attrs}></TH>
           {END checkbox_column}{BEGIN Pending_Orders_dtable_column}<th class="runner-cc">&nbsp;</th>
 									{END Pending_Orders_dtable_column}
-																										{BEGIN ODetailID_fieldheadercolumn}<TH class="runner-cc ">{BEGIN ODetailID_fieldheader}<A {$ODetailID_orderlinkattrs}>ID </A>{END ODetailID_fieldheader}</TH>
-          {END ODetailID_fieldheadercolumn}{BEGIN OrderID_fieldheadercolumn}<TH class="runner-cc ">{BEGIN OrderID_fieldheader}<A {$OrderID_orderlinkattrs}>Order ID </A>{END OrderID_fieldheader}</TH>
+																										{BEGIN OrderID_fieldheadercolumn}<TH class="runner-cc ">{BEGIN OrderID_fieldheader}<A {$OrderID_orderlinkattrs}>Order ID </A>{END OrderID_fieldheader}</TH>
           {END OrderID_fieldheadercolumn}{BEGIN ProductID_fieldheadercolumn}<TH class="runner-cc "><P align=left>{BEGIN ProductID_fieldheader}<A {$ProductID_orderlinkattrs}>Product 
             </A>{END ProductID_fieldheader}</P></TH>
           {END ProductID_fieldheadercolumn}{BEGIN OrdQuant_fieldheadercolumn}<TH class="runner-cc "><P align=center>{BEGIN OrdQuant_fieldheader}<A {$OrdQuant_orderlinkattrs}>Order 
             Quantity </A>{END OrdQuant_fieldheader}</P></TH>
           {END OrdQuant_fieldheadercolumn}{BEGIN DelQuant_fieldheadercolumn}<TH class="runner-cc "><P align=center>{BEGIN DelQuant_fieldheader}<A {$DelQuant_orderlinkattrs}>Delivered Quantity </A>{END DelQuant_fieldheader}</P></TH>
-          {END DelQuant_fieldheadercolumn}{BEGIN Total_fieldheadercolumn}<TH class="runner-cc "><P align=center>{BEGIN Total_fieldheader}<A {$Total_orderlinkattrs}>Total 
-            </A>{END Total_fieldheader}</P></TH>
-          {END Total_fieldheadercolumn}{BEGIN DelDate_fieldheadercolumn}<TH class="runner-cc ">{BEGIN DelDate_fieldheader}<A {$DelDate_orderlinkattrs}>Delivery Date </A>{END DelDate_fieldheader}</TH>
-          {END DelDate_fieldheadercolumn}{BEGIN BillNo_fieldheadercolumn}<TH class="runner-cc runner-clast"><P align=center>{BEGIN BillNo_fieldheader}<A {$BillNo_orderlinkattrs}>Bill No 
-            </A>{END BillNo_fieldheader}</P></TH>
-          {END BillNo_fieldheadercolumn}<TH class=runner-cr><IMG src="images/spacer.gif"></TH>
+          {END DelQuant_fieldheadercolumn}{BEGIN DelDate_fieldheadercolumn}<th class="runner-cc runner-clast">{BEGIN DelDate_fieldheader}<A {$DelDate_orderlinkattrs}>Delivery Date </A>{END DelDate_fieldheader}</th>
+          {END DelDate_fieldheadercolumn}<TH class=runner-cr><IMG src="images/spacer.gif"></TH>
           {BEGIN endrecordheader_block}<TH class=runner-cs></TH>{END endrecordheader_block}{END record_header}</TR>{END grid_header}</THEAD>
         {BEGIN grid_row}<TR class="runner-row style1 {$rowclass}" {$rowstyle} {$rowattrs}>{BEGIN grid_record}<TD class=runner-cl {$rowstyle}></TD>
           {BEGIN listIcons_column}<TD class="runner-cc runner-bc runner-icons" iEditCont="all" {$rowstyle}></TD>
@@ -124,15 +126,12 @@
 																		</td>
 									{END Pending_Orders_dtable_column}
 
-										{BEGIN ODetailID_fieldcolumn}<TD class="runner-cc  {$ODetailID_class}" {$ODetailID_style}>{$ODetailID_value}</TD>
-          {END ODetailID_fieldcolumn}{BEGIN OrderID_fieldcolumn}<TD class="runner-cc  {$OrderID_class}" {$OrderID_style}>{$OrderID_value}</TD>
+										{BEGIN OrderID_fieldcolumn}<TD class="runner-cc  {$OrderID_class}" {$OrderID_style}>{$OrderID_value}</TD>
           {END OrderID_fieldcolumn}{BEGIN ProductID_fieldcolumn}<TD class="runner-cc  {$ProductID_class}" {$ProductID_style}>{$ProductID_value}</TD>
           {END ProductID_fieldcolumn}{BEGIN OrdQuant_fieldcolumn}<TD class="runner-cc  {$OrdQuant_class}" {$OrdQuant_style}><P align=center>{$OrdQuant_value}</P></TD>
           {END OrdQuant_fieldcolumn}{BEGIN DelQuant_fieldcolumn}<TD class="runner-cc  {$DelQuant_class}" {$DelQuant_style}><P align=center>{$DelQuant_value}</P></TD>
-          {END DelQuant_fieldcolumn}{BEGIN Total_fieldcolumn}<TD class="runner-cc  {$Total_class}" {$Total_style}><P align=center>{$Total_value}</P></TD>
-          {END Total_fieldcolumn}{BEGIN DelDate_fieldcolumn}<TD class="runner-cc  {$DelDate_class}" {$DelDate_style}>{$DelDate_value}</TD>
-          {END DelDate_fieldcolumn}{BEGIN BillNo_fieldcolumn}<TD class="runner-cc runner-clast {$BillNo_class}" {$BillNo_style}><P align=center>{$BillNo_value}</P></TD>
-          {END BillNo_fieldcolumn}<TD class=runner-cr {$rowstyle}></TD>
+          {END DelQuant_fieldcolumn}{BEGIN DelDate_fieldcolumn}<td class="runner-cc runner-clast {$DelDate_class}" {$DelDate_style}>{$DelDate_value}</td>
+          {END DelDate_fieldcolumn}<TD class=runner-cr {$rowstyle}></TD>
           {BEGIN endrecord_block}<TD class=runner-cs {$endrecordblock_attrs}></TD>{END endrecord_block}{END grid_record}</TR>
         {END grid_row}{BEGIN grid_footer}<TR class="runner-bottomrow style1{$gridFooter_class}">{BEGIN record_footer}<TD class=runner-cl><IMG src="images/spacer.gif"></TD>
           {BEGIN listIcons_column}<TD class=runner-cc></TD>
@@ -140,15 +139,12 @@
           {END checkbox_column}{BEGIN Pending_Orders_dtable_column}<td class="runner-cc"></td>
 									{END Pending_Orders_dtable_column}
 
-									{BEGIN ODetailID_fieldheadercolumn}<TD class="runner-cc "></TD>
-          {END ODetailID_fieldheadercolumn}{BEGIN OrderID_fieldheadercolumn}<TD class="runner-cc "></TD>
+									{BEGIN OrderID_fieldheadercolumn}<TD class="runner-cc "></TD>
           {END OrderID_fieldheadercolumn}{BEGIN ProductID_fieldheadercolumn}<TD class="runner-cc "></TD>
           {END ProductID_fieldheadercolumn}{BEGIN OrdQuant_fieldheadercolumn}<TD class="runner-cc "></TD>
           {END OrdQuant_fieldheadercolumn}{BEGIN DelQuant_fieldheadercolumn}<TD class="runner-cc "></TD>
-          {END DelQuant_fieldheadercolumn}{BEGIN Total_fieldheadercolumn}<TD class="runner-cc "></TD>
-          {END Total_fieldheadercolumn}{BEGIN DelDate_fieldheadercolumn}<TD class="runner-cc "></TD>
-          {END DelDate_fieldheadercolumn}{BEGIN BillNo_fieldheadercolumn}<TD class="runner-cc runner-clast"></TD>
-          {END BillNo_fieldheadercolumn}<TD class=runner-cr><IMG src="images/spacer.gif"></TD>
+          {END DelQuant_fieldheadercolumn}{BEGIN DelDate_fieldheadercolumn}<td class="runner-cc runner-clast"></td>
+          {END DelDate_fieldheadercolumn}<TD class=runner-cr><IMG src="images/spacer.gif"></TD>
           {BEGIN endrecordfooter_block}<TD class=runner-cs></TD>{END endrecordfooter_block}{END record_footer}</TR>{END grid_footer}</TABLE>{END grid_block}{END container_grid}
       {BEGIN container_pagination}<TABLE class="runner-c runner-c-pagination" cellPadding=0><TR class="{$cheaderclass_pagination}"><TD class=runner-cl><IMG src="images/spacer.gif"></TD>
           <TD class=runner-cc></TD>

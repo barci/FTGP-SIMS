@@ -239,6 +239,36 @@
 	</td>
 	<td class="runner-cr alt"></td></tr>
 {END Uweight_fieldblock}
+	{BEGIN ReOrLevel_fieldblock}		
+	<tr class="runner-row style1 runner-b-srchfields"><td class="runner-cl"></td>
+		<td class="runner-cc runner-cc1">
+			<div class="fieldlabel_ReOrLevel {$fielddispclass_ReOrLevel}">
+				Re-Order Level
+			</div>
+		</td>
+	</td>
+	<td class="runner-cc alt">
+		<div class="fieldoption_ReOrLevel {$fielddispclass_ReOrLevel}">
+			<input type="checkbox" {$ReOrLevel_notbox}>
+		</div>
+	</td>
+	<td class="runner-cc alt">
+		<div class="fieldoption_ReOrLevel {$fielddispclass_ReOrLevel}">
+			{$searchtype_ReOrLevel}
+		</div>
+	</td>
+	<td class="runner-cc alt">
+		<div class="fieldcontrol_ReOrLevel {$fielddispclass_ReOrLevel}">
+			{$ReOrLevel_editcontrol}&nbsp;
+		</div>
+	</td>
+	<td class="runner-cc alt">
+		<div class="fieldcontrol_ReOrLevel {$fielddispclass_ReOrLevel}">
+			{$ReOrLevel_editcontrol1}&nbsp;
+		</div>
+	</td>
+	<td class="runner-cr alt"></td></tr>
+{END ReOrLevel_fieldblock}
 	{BEGIN QPerUnit_fieldblock}		
 	<tr class="runner-row style1 runner-b-srchfields"><td class="runner-cl"></td>
 		<td class="runner-cc runner-cc1">
@@ -299,36 +329,6 @@
 	</td>
 	<td class="runner-cr alt"></td></tr>
 {END Qty_fieldblock}
-	{BEGIN ReOrLevel_fieldblock}		
-	<tr class="runner-row style1 runner-b-srchfields"><td class="runner-cl"></td>
-		<td class="runner-cc runner-cc1">
-			<div class="fieldlabel_ReOrLevel {$fielddispclass_ReOrLevel}">
-				Re-Order Level
-			</div>
-		</td>
-	</td>
-	<td class="runner-cc alt">
-		<div class="fieldoption_ReOrLevel {$fielddispclass_ReOrLevel}">
-			<input type="checkbox" {$ReOrLevel_notbox}>
-		</div>
-	</td>
-	<td class="runner-cc alt">
-		<div class="fieldoption_ReOrLevel {$fielddispclass_ReOrLevel}">
-			{$searchtype_ReOrLevel}
-		</div>
-	</td>
-	<td class="runner-cc alt">
-		<div class="fieldcontrol_ReOrLevel {$fielddispclass_ReOrLevel}">
-			{$ReOrLevel_editcontrol}&nbsp;
-		</div>
-	</td>
-	<td class="runner-cc alt">
-		<div class="fieldcontrol_ReOrLevel {$fielddispclass_ReOrLevel}">
-			{$ReOrLevel_editcontrol1}&nbsp;
-		</div>
-	</td>
-	<td class="runner-cr alt"></td></tr>
-{END ReOrLevel_fieldblock}
 	{BEGIN Uprice_fieldblock}		
 	<tr class="runner-row style1 runner-b-srchfields"><td class="runner-cl"></td>
 		<td class="runner-cc runner-cc1">
@@ -359,66 +359,6 @@
 	</td>
 	<td class="runner-cr alt"></td></tr>
 {END Uprice_fieldblock}
-	{BEGIN USP_fieldblock}		
-	<tr class="runner-row style1 runner-b-srchfields"><td class="runner-cl"></td>
-		<td class="runner-cc runner-cc1">
-			<div class="fieldlabel_USP {$fielddispclass_USP}">
-				Unit Selling Price
-			</div>
-		</td>
-	</td>
-	<td class="runner-cc alt">
-		<div class="fieldoption_USP {$fielddispclass_USP}">
-			<input type="checkbox" {$USP_notbox}>
-		</div>
-	</td>
-	<td class="runner-cc alt">
-		<div class="fieldoption_USP {$fielddispclass_USP}">
-			{$searchtype_USP}
-		</div>
-	</td>
-	<td class="runner-cc alt">
-		<div class="fieldcontrol_USP {$fielddispclass_USP}">
-			{$USP_editcontrol}&nbsp;
-		</div>
-	</td>
-	<td class="runner-cc alt">
-		<div class="fieldcontrol_USP {$fielddispclass_USP}">
-			{$USP_editcontrol1}&nbsp;
-		</div>
-	</td>
-	<td class="runner-cr alt"></td></tr>
-{END USP_fieldblock}
-	{BEGIN Discount_fieldblock}		
-	<tr class="runner-row style1 runner-b-srchfields"><td class="runner-cl"></td>
-		<td class="runner-cc runner-cc1">
-			<div class="fieldlabel_Discount {$fielddispclass_Discount}">
-				Discount
-			</div>
-		</td>
-	</td>
-	<td class="runner-cc alt">
-		<div class="fieldoption_Discount {$fielddispclass_Discount}">
-			<input type="checkbox" {$Discount_notbox}>
-		</div>
-	</td>
-	<td class="runner-cc alt">
-		<div class="fieldoption_Discount {$fielddispclass_Discount}">
-			{$searchtype_Discount}
-		</div>
-	</td>
-	<td class="runner-cc alt">
-		<div class="fieldcontrol_Discount {$fielddispclass_Discount}">
-			{$Discount_editcontrol}&nbsp;
-		</div>
-	</td>
-	<td class="runner-cc alt">
-		<div class="fieldcontrol_Discount {$fielddispclass_Discount}">
-			{$Discount_editcontrol1}&nbsp;
-		</div>
-	</td>
-	<td class="runner-cr alt"></td></tr>
-{END Discount_fieldblock}
 	{BEGIN Note_fieldblock}		
 	<tr class="runner-row style1 runner-b-srchfields"><td class="runner-cl"></td>
 		<td class="runner-cc runner-cc1">
@@ -449,6 +389,96 @@
 	</td>
 	<td class="runner-cr alt"></td></tr>
 {END Note_fieldblock}
+	{BEGIN USP_fieldblock}		
+	<tr class="runner-row style1 runner-b-srchfields"><td class="runner-cl"></td>
+		<td class="runner-cc runner-cc1">
+			<div class="fieldlabel_USP {$fielddispclass_USP}">
+				Unit Selling Price
+			</div>
+		</td>
+	</td>
+	<td class="runner-cc alt">
+		<div class="fieldoption_USP {$fielddispclass_USP}">
+			<input type="checkbox" {$USP_notbox}>
+		</div>
+	</td>
+	<td class="runner-cc alt">
+		<div class="fieldoption_USP {$fielddispclass_USP}">
+			{$searchtype_USP}
+		</div>
+	</td>
+	<td class="runner-cc alt">
+		<div class="fieldcontrol_USP {$fielddispclass_USP}">
+			{$USP_editcontrol}&nbsp;
+		</div>
+	</td>
+	<td class="runner-cc alt">
+		<div class="fieldcontrol_USP {$fielddispclass_USP}">
+			{$USP_editcontrol1}&nbsp;
+		</div>
+	</td>
+	<td class="runner-cr alt"></td></tr>
+{END USP_fieldblock}
+	{BEGIN staffID_fieldblock}		
+	<tr class="runner-row style1 runner-b-srchfields"><td class="runner-cl"></td>
+		<td class="runner-cc runner-cc1">
+			<div class="fieldlabel_staffID {$fielddispclass_staffID}">
+				Staff ID
+			</div>
+		</td>
+	</td>
+	<td class="runner-cc alt">
+		<div class="fieldoption_staffID {$fielddispclass_staffID}">
+			<input type="checkbox" {$staffID_notbox}>
+		</div>
+	</td>
+	<td class="runner-cc alt">
+		<div class="fieldoption_staffID {$fielddispclass_staffID}">
+			{$searchtype_staffID}
+		</div>
+	</td>
+	<td class="runner-cc alt">
+		<div class="fieldcontrol_staffID {$fielddispclass_staffID}">
+			{$staffID_editcontrol}&nbsp;
+		</div>
+	</td>
+	<td class="runner-cc alt">
+		<div class="fieldcontrol_staffID {$fielddispclass_staffID}">
+			{$staffID_editcontrol1}&nbsp;
+		</div>
+	</td>
+	<td class="runner-cr alt"></td></tr>
+{END staffID_fieldblock}
+	{BEGIN Discount_fieldblock}		
+	<tr class="runner-row style1 runner-b-srchfields"><td class="runner-cl"></td>
+		<td class="runner-cc runner-cc1">
+			<div class="fieldlabel_Discount {$fielddispclass_Discount}">
+				Discount
+			</div>
+		</td>
+	</td>
+	<td class="runner-cc alt">
+		<div class="fieldoption_Discount {$fielddispclass_Discount}">
+			<input type="checkbox" {$Discount_notbox}>
+		</div>
+	</td>
+	<td class="runner-cc alt">
+		<div class="fieldoption_Discount {$fielddispclass_Discount}">
+			{$searchtype_Discount}
+		</div>
+	</td>
+	<td class="runner-cc alt">
+		<div class="fieldcontrol_Discount {$fielddispclass_Discount}">
+			{$Discount_editcontrol}&nbsp;
+		</div>
+	</td>
+	<td class="runner-cc alt">
+		<div class="fieldcontrol_Discount {$fielddispclass_Discount}">
+			{$Discount_editcontrol1}&nbsp;
+		</div>
+	</td>
+	<td class="runner-cr alt"></td></tr>
+{END Discount_fieldblock}
 
 
 

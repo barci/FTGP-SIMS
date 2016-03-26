@@ -120,11 +120,7 @@ if($rowcount) {
 		$keylink.="&key1=".htmlspecialchars(rawurlencode(@$data["ID"]));
 
 	
-	//	ID - 
-			$viewContainer->recId = $recordsCounter;
-		    $value = $viewContainer->showDBValue("ID", $data, $keylink);
-			$row["ID_value"] = $value;
-	//	DrNo - 
+	//	DrNo - Custom
 			$viewContainer->recId = $recordsCounter;
 		    $value = $viewContainer->showDBValue("DrNo", $data, $keylink);
 			$row["DrNo_value"] = $value;
@@ -132,7 +128,7 @@ if($rowcount) {
 			$viewContainer->recId = $recordsCounter;
 		    $value = $viewContainer->showDBValue("orderID", $data, $keylink);
 			$row["orderID_value"] = $value;
-	//	prodID - 
+	//	prodID - Custom
 			$viewContainer->recId = $recordsCounter;
 		    $value = $viewContainer->showDBValue("prodID", $data, $keylink);
 			$row["prodID_value"] = $value;
@@ -140,14 +136,18 @@ if($rowcount) {
 			$viewContainer->recId = $recordsCounter;
 		    $value = $viewContainer->showDBValue("qty", $data, $keylink);
 			$row["qty_value"] = $value;
-	//	eta - Short Date
+	//	eta - Long Date
 			$viewContainer->recId = $recordsCounter;
 		    $value = $viewContainer->showDBValue("eta", $data, $keylink);
 			$row["eta_value"] = $value;
-	//	delFlag - 
+	//	delFlag - Custom
 			$viewContainer->recId = $recordsCounter;
 		    $value = $viewContainer->showDBValue("delFlag", $data, $keylink);
 			$row["delFlag_value"] = $value;
+	//	staffID - 
+			$viewContainer->recId = $recordsCounter;
+		    $value = $viewContainer->showDBValue("staffID", $data, $keylink);
+			$row["staffID_value"] = $value;
 		$rowinfo[] = $row;
 		$data = $cipherer->DecryptFetchedArray($rs);
 	}

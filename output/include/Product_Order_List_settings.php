@@ -1596,6 +1596,7 @@ $proto39["m_columns"][] = "Discount";
 $proto39["m_columns"][] = "Total";
 $proto39["m_columns"][] = "DelDate";
 $proto39["m_columns"][] = "TimeStamp";
+$proto39["m_columns"][] = "staffID";
 $obj = new SQLTable($proto39);
 
 $proto38["m_table"] = $obj;
@@ -1640,6 +1641,7 @@ $proto43["m_columns"][] = "UInOrder";
 $proto43["m_columns"][] = "ReOrLevel";
 $proto43["m_columns"][] = "Note";
 $proto43["m_columns"][] = "TimeStamp";
+$proto43["m_columns"][] = "staffID";
 $obj = new SQLTable($proto43);
 
 $proto42["m_table"] = $obj;

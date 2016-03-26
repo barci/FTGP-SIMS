@@ -99,6 +99,28 @@
 
 
 <td class="runner-cc filler"></td>
+{BEGIN security_block}
+<td  class="runner-cc runner-br runner-b-loggedas" {$brickclass_loggedas}><span>{BEGIN loggedas_message} 
+<span>Logged on as&nbsp;<b>{$username}</b>&nbsp;</span> 
+{END loggedas_message}
+{BEGIN guestloginbutton}
+<span class="runner-btnframe">
+<span class="runner-btnleft"></span>
+<span class="runner-btnright"></span>
+<a href="#" class="runner-button" {$guestloginlink_attrs}>Login</a>
+</span>
+{END guestloginbutton}
+{BEGIN logoutbutton}
+<span class="runner-btnframe">
+<span class="runner-btnleft"></span>
+<span class="runner-btnright"></span>
+<a href="#" class="runner-button" {$logoutlink_attrs}>Log out</a>
+</span>
+{END logoutbutton}
+
+</span></td>
+{END security_block}
+
 
 
 </tr>
@@ -180,6 +202,57 @@
 </span></td>
 {END newrecord_controls_block}
 
+
+{BEGIN record_controls_block}
+<td  class="runner-cc runner-bl runner-b-recordcontrol" {$brickclass_recordcontrol}><span>	
+			{BEGIN editselected_link}
+		<span class="runner-btnframe" {$editselectedlink_span}>
+		<span class="runner-btnleft"></span>
+		<span class="runner-btnright"></span>
+		<a href="#" class="runner-button" {$editselectedlink_attrs}>Edit selected</a>
+		</span>
+	{END editselected_link}
+	{BEGIN saveall_link}
+		<span class="runner-btnframe" {$savealllink_span}>
+		<span class="runner-btnleft"></span>
+		<span class="runner-btnright"></span>
+		<a href="#" class="runner-button" {$savealllink_attrs}>Save all</a>
+		</span>
+	{END saveall_link}
+	{BEGIN cancelall_link}
+		<span class="runner-btnframe" {$cancelalllink_span}>
+		<span class="runner-btnleft"></span>
+		<span class="runner-btnright"></span>
+		<a href="#" class="runner-button" {$cancelalllink_attrs}>Cancel</a>
+		</span>
+	{END cancelall_link}
+
+		{BEGIN deleteselected_link}
+		<span class="runner-btnframe" {$deleteselectedlink_span}>
+		<span class="runner-btnleft"></span>
+		<span class="runner-btnright"></span>
+		<a href="#" class="runner-button" {$deleteselectedlink_attrs}>Delete selected</a>
+		</span>
+	{END deleteselected_link}
+
+		{BEGIN exportselected_link}
+		<span class="runner-btnframe" {$exportselectedlink_span}>
+		<span class="runner-btnleft"></span>
+		<span class="runner-btnright"></span>
+		<a href="#" class="runner-button" {$exportselectedlink_attrs}>Export selected</a>
+		</span>
+	{END exportselected_link}
+
+		{BEGIN printselected_link}
+		<span class="runner-btnframe" {$printselectedlink_span}>
+		<span class="runner-btnleft"></span>
+		<span class="runner-btnright"></span>
+		<a href="#" class="runner-button" {$printselectedlink_attrs}>Print selected</a>
+		</span>
+	{END printselected_link}
+
+</span></td>
+{END record_controls_block}
 
 <td class="runner-cc filler"></td>
 </tr>
@@ -338,79 +411,81 @@
 									<th class="runner-cc" iEditCont="all">&nbsp;</th>
 									{END listIcons_column}	
 
-									
-																		{BEGIN customer_dtable_column}
-									<th class="runner-cc">&nbsp;</th>
-									{END customer_dtable_column}
-																										{BEGIN Customer_ID_fieldheadercolumn}
-									<th class="runner-cc ">
-									{BEGIN Customer_ID_fieldheader}
-																				<a {$Customer_ID_orderlinkattrs}>
-											Customer ID
-										</a>
-									{END Customer_ID_fieldheader}
+																		{BEGIN checkbox_column}
+									<th class="runner-cc runner-bc">
+										<input type="checkbox" {$checkboxheader_attrs}>
 									</th>
-									{END Customer_ID_fieldheadercolumn}
+									{END checkbox_column}
 
-																	{BEGIN Company_Name_fieldheadercolumn}
+																										{BEGIN BRegNo_fieldheadercolumn}
 									<th class="runner-cc ">
-									{BEGIN Company_Name_fieldheader}
-																				<a {$Company_Name_orderlinkattrs}>
+									{BEGIN BRegNo_fieldheader}
+																				<a {$BRegNo_orderlinkattrs}>
+											BReg No
+										</a>
+									{END BRegNo_fieldheader}
+									</th>
+									{END BRegNo_fieldheadercolumn}
+
+																	{BEGIN ComName_fieldheadercolumn}
+									<th class="runner-cc ">
+									{BEGIN ComName_fieldheader}
+																				<a {$ComName_orderlinkattrs}>
 											Company Name
 										</a>
-									{END Company_Name_fieldheader}
+									{END ComName_fieldheader}
 									</th>
-									{END Company_Name_fieldheadercolumn}
+									{END ComName_fieldheadercolumn}
 
-																	{BEGIN Business_Reg_No_fieldheadercolumn}
+																	{BEGIN Fname_fieldheadercolumn}
 									<th class="runner-cc ">
-									{BEGIN Business_Reg_No_fieldheader}
-																				<a {$Business_Reg_No_orderlinkattrs}>
-											Business Reg No
+									{BEGIN Fname_fieldheader}
+																				<a {$Fname_orderlinkattrs}>
+											First name
 										</a>
-									{END Business_Reg_No_fieldheader}
+									{END Fname_fieldheader}
 									</th>
-									{END Business_Reg_No_fieldheadercolumn}
+									{END Fname_fieldheadercolumn}
 
-																	{BEGIN Owner_First_Name_fieldheadercolumn}
+																	{BEGIN Lname_fieldheadercolumn}
 									<th class="runner-cc ">
-									{BEGIN Owner_First_Name_fieldheader}
-																				<a {$Owner_First_Name_orderlinkattrs}>
-											Owner First Name
+									{BEGIN Lname_fieldheader}
+																				<a {$Lname_orderlinkattrs}>
+											Last Name
 										</a>
-									{END Owner_First_Name_fieldheader}
+									{END Lname_fieldheader}
 									</th>
-									{END Owner_First_Name_fieldheadercolumn}
+									{END Lname_fieldheadercolumn}
 
-																	{BEGIN Owner_Last_Name_fieldheadercolumn}
+																	{BEGIN OAddress_fieldheadercolumn}
 									<th class="runner-cc ">
-									{BEGIN Owner_Last_Name_fieldheader}
-																				<a {$Owner_Last_Name_orderlinkattrs}>
-											Owner Last Name
+									{BEGIN OAddress_fieldheader}
+																				<a {$OAddress_orderlinkattrs}>
+											Office Address
 										</a>
-									{END Owner_Last_Name_fieldheader}
+									{END OAddress_fieldheader}
 									</th>
-									{END Owner_Last_Name_fieldheadercolumn}
+									{END OAddress_fieldheadercolumn}
 
-																	{BEGIN Official_Address_fieldheadercolumn}
+																	{BEGIN DAddress_fieldheadercolumn}
 									<th class="runner-cc ">
-									{BEGIN Official_Address_fieldheader}
-																				<a {$Official_Address_orderlinkattrs}>
-											Official Address
-										</a>
-									{END Official_Address_fieldheader}
-									</th>
-									{END Official_Address_fieldheadercolumn}
-
-																	{BEGIN Delivery_Address_fieldheadercolumn}
-									<th class="runner-cc ">
-									{BEGIN Delivery_Address_fieldheader}
-																				<a {$Delivery_Address_orderlinkattrs}>
+									{BEGIN DAddress_fieldheader}
+																				<a {$DAddress_orderlinkattrs}>
 											Delivery Address
 										</a>
-									{END Delivery_Address_fieldheader}
+									{END DAddress_fieldheader}
 									</th>
-									{END Delivery_Address_fieldheadercolumn}
+									{END DAddress_fieldheadercolumn}
+
+																	{BEGIN StaffID_fieldheadercolumn}
+									<th class="runner-cc ">
+									{BEGIN StaffID_fieldheader}
+																				<a {$StaffID_orderlinkattrs}>
+											Staff ID
+										</a>
+									{END StaffID_fieldheader}
+									</th>
+									{END StaffID_fieldheadercolumn}
 
 																	{BEGIN Phone_fieldheadercolumn}
 									<th class="runner-cc ">
@@ -423,7 +498,7 @@
 									{END Phone_fieldheadercolumn}
 
 																	{BEGIN Email_fieldheadercolumn}
-									<th class="runner-cc ">
+									<th class="runner-cc runner-clast">
 									{BEGIN Email_fieldheader}
 																				<a {$Email_orderlinkattrs}>
 											Email
@@ -431,16 +506,6 @@
 									{END Email_fieldheader}
 									</th>
 									{END Email_fieldheadercolumn}
-
-																	{BEGIN Staff_ID_fieldheadercolumn}
-									<th class="runner-cc runner-clast">
-									{BEGIN Staff_ID_fieldheader}
-																				<a {$Staff_ID_orderlinkattrs}>
-											Staff ID
-										</a>
-									{END Staff_ID_fieldheader}
-									</th>
-									{END Staff_ID_fieldheadercolumn}
 
 
 									
@@ -464,68 +529,82 @@
 
 																		{BEGIN listIcons_column}
 									<td class="runner-cc runner-bc runner-icons" iEditCont="all" {$rowstyle}>
-									
-									
-									
-																		</td>	
+																		{BEGIN edit_column}
+									{BEGIN edit_link}
+									<a class="runner-button-img" {$editlink_attrs} title="Edit"><img class="runner-cicon" src="images/icon_edit_new.gif" alt="Edit"></a>
+									{END edit_link}
+									{END edit_column}
+
+																		{BEGIN inlineedit_column}
+									{BEGIN inlineedit_link}
+									<a class="runner-button-img" {$inlineeditlink_attrs} title="Inline Edit"><img class="runner-cicon" src="images/icon_inline_edit_new.gif" alt="Inline Edit"></a>
+									{END inlineedit_link}
+									{END inlineedit_column}
+
+																		{BEGIN copy_column}
+									{BEGIN copy_link}
+									<a class="runner-button-img" {$copylink_attrs} title="Copy"><img class="runner-cicon" src="images/icon_copy_new.gif" alt="Copy"></a>
+									{END copy_link}
+									{END copy_column}
+
+																		{BEGIN view_column}
+									{BEGIN view_link}
+									<a class="runner-button-img" {$viewlink_attrs} title="View"><img class="runner-cicon" src="images/icon_view_new.gif" alt="View"></a>
+									{END view_link}
+									{END view_column}
+									</td>	
 									{END listIcons_column}	
 
-									
-																		{BEGIN customer_dtable_column}
-									<td class="runner-cc runner-nowrap" {$rowstyle}>
-									{BEGIN order_dtable_link}
-									<span>
-									<a {$order_dtablelink_attrs}>
-										Order
-																				<span {$order_childnumber_attr} dir="ltr">{BEGIN order_childcount}({$order_childnumber}){END order_childcount}</span>
-									</a>
-																		&nbsp;
-									</span>
-									{END order_dtable_link}
-																		</td>
-									{END customer_dtable_column}
+																		{BEGIN checkbox_column}
+									<td class="runner-cc runner-bc" iEditCont="checkBox" {$rowstyle}>
+									{BEGIN checkbox}
+									<input type="checkbox" {$checkbox_attrs}>
+									{END checkbox}
+									</td>
+									{END checkbox_column}
 
-										{BEGIN Customer_ID_fieldcolumn}
-	<td class="runner-cc  {$Customer_ID_class}" {$Customer_ID_style}>
-		{$Customer_ID_value}
-	</td>
-{END Customer_ID_fieldcolumn}
 
-	{BEGIN Company_Name_fieldcolumn}
-	<td class="runner-cc  {$Company_Name_class}" {$Company_Name_style}>
-		{$Company_Name_value}
+										{BEGIN BRegNo_fieldcolumn}
+	<td class="runner-cc  {$BRegNo_class}" {$BRegNo_style}>
+		{$BRegNo_value}
 	</td>
-{END Company_Name_fieldcolumn}
+{END BRegNo_fieldcolumn}
 
-	{BEGIN Business_Reg_No_fieldcolumn}
-	<td class="runner-cc  {$Business_Reg_No_class}" {$Business_Reg_No_style}>
-		{$Business_Reg_No_value}
+	{BEGIN ComName_fieldcolumn}
+	<td class="runner-cc  {$ComName_class}" {$ComName_style}>
+		{$ComName_value}
 	</td>
-{END Business_Reg_No_fieldcolumn}
+{END ComName_fieldcolumn}
 
-	{BEGIN Owner_First_Name_fieldcolumn}
-	<td class="runner-cc  {$Owner_First_Name_class}" {$Owner_First_Name_style}>
-		{$Owner_First_Name_value}
+	{BEGIN Fname_fieldcolumn}
+	<td class="runner-cc  {$Fname_class}" {$Fname_style}>
+		{$Fname_value}
 	</td>
-{END Owner_First_Name_fieldcolumn}
+{END Fname_fieldcolumn}
 
-	{BEGIN Owner_Last_Name_fieldcolumn}
-	<td class="runner-cc  {$Owner_Last_Name_class}" {$Owner_Last_Name_style}>
-		{$Owner_Last_Name_value}
+	{BEGIN Lname_fieldcolumn}
+	<td class="runner-cc  {$Lname_class}" {$Lname_style}>
+		{$Lname_value}
 	</td>
-{END Owner_Last_Name_fieldcolumn}
+{END Lname_fieldcolumn}
 
-	{BEGIN Official_Address_fieldcolumn}
-	<td class="runner-cc  {$Official_Address_class}" {$Official_Address_style}>
-		{$Official_Address_value}
+	{BEGIN OAddress_fieldcolumn}
+	<td class="runner-cc  {$OAddress_class}" {$OAddress_style}>
+		{$OAddress_value}
 	</td>
-{END Official_Address_fieldcolumn}
+{END OAddress_fieldcolumn}
 
-	{BEGIN Delivery_Address_fieldcolumn}
-	<td class="runner-cc  {$Delivery_Address_class}" {$Delivery_Address_style}>
-		{$Delivery_Address_value}
+	{BEGIN DAddress_fieldcolumn}
+	<td class="runner-cc  {$DAddress_class}" {$DAddress_style}>
+		{$DAddress_value}
 	</td>
-{END Delivery_Address_fieldcolumn}
+{END DAddress_fieldcolumn}
+
+	{BEGIN StaffID_fieldcolumn}
+	<td class="runner-cc  {$StaffID_class}" {$StaffID_style}>
+		{$StaffID_value}
+	</td>
+{END StaffID_fieldcolumn}
 
 	{BEGIN Phone_fieldcolumn}
 	<td class="runner-cc  {$Phone_class}" {$Phone_style}>
@@ -534,16 +613,10 @@
 {END Phone_fieldcolumn}
 
 	{BEGIN Email_fieldcolumn}
-	<td class="runner-cc  {$Email_class}" {$Email_style}>
+	<td class="runner-cc runner-clast {$Email_class}" {$Email_style}>
 		{$Email_value}
 	</td>
 {END Email_fieldcolumn}
-
-	{BEGIN Staff_ID_fieldcolumn}
-	<td class="runner-cc runner-clast {$Staff_ID_class}" {$Staff_ID_style}>
-		{$Staff_ID_value}
-	</td>
-{END Staff_ID_fieldcolumn}
 
 
 																		<td class="runner-cr" {$rowstyle}></td>
@@ -563,41 +636,38 @@
 									<td class="runner-cc"></td>
 									{END listIcons_column}	
 									
-									
-																		{BEGIN customer_dtable_column}
+																		{BEGIN checkbox_column}
 									<td class="runner-cc"></td>
-									{END customer_dtable_column}
+									{END checkbox_column}
 
-									{BEGIN Customer_ID_fieldheadercolumn}
+
+									{BEGIN BRegNo_fieldheadercolumn}
 <td class="runner-cc "></td>
-{END Customer_ID_fieldheadercolumn}
-{BEGIN Company_Name_fieldheadercolumn}
+{END BRegNo_fieldheadercolumn}
+{BEGIN ComName_fieldheadercolumn}
 <td class="runner-cc "></td>
-{END Company_Name_fieldheadercolumn}
-{BEGIN Business_Reg_No_fieldheadercolumn}
+{END ComName_fieldheadercolumn}
+{BEGIN Fname_fieldheadercolumn}
 <td class="runner-cc "></td>
-{END Business_Reg_No_fieldheadercolumn}
-{BEGIN Owner_First_Name_fieldheadercolumn}
+{END Fname_fieldheadercolumn}
+{BEGIN Lname_fieldheadercolumn}
 <td class="runner-cc "></td>
-{END Owner_First_Name_fieldheadercolumn}
-{BEGIN Owner_Last_Name_fieldheadercolumn}
+{END Lname_fieldheadercolumn}
+{BEGIN OAddress_fieldheadercolumn}
 <td class="runner-cc "></td>
-{END Owner_Last_Name_fieldheadercolumn}
-{BEGIN Official_Address_fieldheadercolumn}
+{END OAddress_fieldheadercolumn}
+{BEGIN DAddress_fieldheadercolumn}
 <td class="runner-cc "></td>
-{END Official_Address_fieldheadercolumn}
-{BEGIN Delivery_Address_fieldheadercolumn}
+{END DAddress_fieldheadercolumn}
+{BEGIN StaffID_fieldheadercolumn}
 <td class="runner-cc "></td>
-{END Delivery_Address_fieldheadercolumn}
+{END StaffID_fieldheadercolumn}
 {BEGIN Phone_fieldheadercolumn}
 <td class="runner-cc "></td>
 {END Phone_fieldheadercolumn}
 {BEGIN Email_fieldheadercolumn}
-<td class="runner-cc "></td>
-{END Email_fieldheadercolumn}
-{BEGIN Staff_ID_fieldheadercolumn}
 <td class="runner-cc runner-clast"></td>
-{END Staff_ID_fieldheadercolumn}
+{END Email_fieldheadercolumn}
 
 									<td class="runner-cr"><img src="images/spacer.gif"></td>
 									

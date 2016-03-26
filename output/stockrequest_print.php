@@ -335,9 +335,6 @@ if($colsonpage<1)
 //	RequestID - 
 			$record["RequestID_value"] = $pageObject->showDBValue("RequestID", $data, $keylink);
 			$record["RequestID_class"] = $pageObject->fieldClass("RequestID");
-//	StaffID - 
-			$record["StaffID_value"] = $pageObject->showDBValue("StaffID", $data, $keylink);
-			$record["StaffID_class"] = $pageObject->fieldClass("StaffID");
 //	ProductID - 
 			$record["ProductID_value"] = $pageObject->showDBValue("ProductID", $data, $keylink);
 			$record["ProductID_class"] = $pageObject->fieldClass("ProductID");
@@ -350,6 +347,9 @@ if($colsonpage<1)
 //	ReceiveFlag - 
 			$record["ReceiveFlag_value"] = $pageObject->showDBValue("ReceiveFlag", $data, $keylink);
 			$record["ReceiveFlag_class"] = $pageObject->fieldClass("ReceiveFlag");
+//	StaffID - 
+			$record["StaffID_value"] = $pageObject->showDBValue("StaffID", $data, $keylink);
+			$record["StaffID_class"] = $pageObject->fieldClass("StaffID");
 			if($col<$colsonpage)
 				$record["endrecord_block"] = true;
 			$record["grid_recordheader"] = true;
@@ -502,10 +502,6 @@ $xt->assign("RequestID_fieldheadercolumn",true);
 $xt->assign("RequestID_fieldheader",true);
 $xt->assign("RequestID_fieldcolumn",true);
 $xt->assign("RequestID_fieldfootercolumn",true);
-$xt->assign("StaffID_fieldheadercolumn",true);
-$xt->assign("StaffID_fieldheader",true);
-$xt->assign("StaffID_fieldcolumn",true);
-$xt->assign("StaffID_fieldfootercolumn",true);
 $xt->assign("ProductID_fieldheadercolumn",true);
 $xt->assign("ProductID_fieldheader",true);
 $xt->assign("ProductID_fieldcolumn",true);
@@ -522,6 +518,10 @@ $xt->assign("ReceiveFlag_fieldheadercolumn",true);
 $xt->assign("ReceiveFlag_fieldheader",true);
 $xt->assign("ReceiveFlag_fieldcolumn",true);
 $xt->assign("ReceiveFlag_fieldfootercolumn",true);
+$xt->assign("StaffID_fieldheadercolumn",true);
+$xt->assign("StaffID_fieldheader",true);
+$xt->assign("StaffID_fieldcolumn",true);
+$xt->assign("StaffID_fieldfootercolumn",true);
 
 	$record_header=array("data"=>array());
 	$record_footer=array("data"=>array());

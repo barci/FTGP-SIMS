@@ -38,6 +38,8 @@ class class_GlobalEvents extends eventsBase
 	function class_GlobalEvents()
 	{
 	// fill list of events
+		$this->events["AfterSuccessfulLogin"]=true;
+
 
 //	onscreen events
 
@@ -47,6 +49,40 @@ class class_GlobalEvents extends eventsBase
 		}
 // Captchas functions	
 //	handlers
+
+		
+		
+		
+		
+		
+		
+				// After successful login
+function AfterSuccessfulLogin($username,$password,&$data)
+{
+
+		$_SESSION["StaffID"]=$data["StaffID"];
+
+
+// Place event code here.
+// Use "Add Action" button to add code snippets.
+;		
+} // function AfterSuccessfulLogin
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 //	onscreen events
 

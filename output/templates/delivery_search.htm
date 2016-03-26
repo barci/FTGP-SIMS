@@ -59,36 +59,6 @@
 	<td class="runner-cc">NOT</td>
 	<td class="runner-cc" colspan=3>&nbsp; </td>
 <td class="runner-cr"></td></tr>
-	{BEGIN ID_fieldblock}		
-	<tr class="runner-row style1 runner-b-srchfields"><td class="runner-cl"></td>
-		<td class="runner-cc runner-cc1">
-			<div class="fieldlabel_ID {$fielddispclass_ID}">
-				ID
-			</div>
-		</td>
-	</td>
-	<td class="runner-cc alt">
-		<div class="fieldoption_ID {$fielddispclass_ID}">
-			<input type="checkbox" {$ID_notbox}>
-		</div>
-	</td>
-	<td class="runner-cc alt">
-		<div class="fieldoption_ID {$fielddispclass_ID}">
-			{$searchtype_ID}
-		</div>
-	</td>
-	<td class="runner-cc alt">
-		<div class="fieldcontrol_ID {$fielddispclass_ID}">
-			{$ID_editcontrol}&nbsp;
-		</div>
-	</td>
-	<td class="runner-cc alt">
-		<div class="fieldcontrol_ID {$fielddispclass_ID}">
-			{$ID_editcontrol1}&nbsp;
-		</div>
-	</td>
-	<td class="runner-cr alt"></td></tr>
-{END ID_fieldblock}
 	{BEGIN DrNo_fieldblock}		
 	<tr class="runner-row style1 runner-b-srchfields"><td class="runner-cl"></td>
 		<td class="runner-cc runner-cc1">
@@ -183,7 +153,7 @@
 	<tr class="runner-row style1 runner-b-srchfields"><td class="runner-cl"></td>
 		<td class="runner-cc runner-cc1">
 			<div class="fieldlabel_qty {$fielddispclass_qty}">
-				Qantity
+				Quantity
 			</div>
 		</td>
 	</td>
@@ -239,6 +209,36 @@
 	</td>
 	<td class="runner-cr alt"></td></tr>
 {END eta_fieldblock}
+	{BEGIN staffID_fieldblock}		
+	<tr class="runner-row style1 runner-b-srchfields"><td class="runner-cl"></td>
+		<td class="runner-cc runner-cc1">
+			<div class="fieldlabel_staffID {$fielddispclass_staffID}">
+				Staff ID
+			</div>
+		</td>
+	</td>
+	<td class="runner-cc alt">
+		<div class="fieldoption_staffID {$fielddispclass_staffID}">
+			<input type="checkbox" {$staffID_notbox}>
+		</div>
+	</td>
+	<td class="runner-cc alt">
+		<div class="fieldoption_staffID {$fielddispclass_staffID}">
+			{$searchtype_staffID}
+		</div>
+	</td>
+	<td class="runner-cc alt">
+		<div class="fieldcontrol_staffID {$fielddispclass_staffID}">
+			{$staffID_editcontrol}&nbsp;
+		</div>
+	</td>
+	<td class="runner-cc alt">
+		<div class="fieldcontrol_staffID {$fielddispclass_staffID}">
+			{$staffID_editcontrol1}&nbsp;
+		</div>
+	</td>
+	<td class="runner-cr alt"></td></tr>
+{END staffID_fieldblock}
 	{BEGIN delFlag_fieldblock}		
 	<tr class="runner-row style1 runner-b-srchfields"><td class="runner-cl"></td>
 		<td class="runner-cc runner-cc1">

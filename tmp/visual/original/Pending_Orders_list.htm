@@ -167,7 +167,14 @@
 {BEGIN record_controls_block}
 <td  class="runner-cc runner-bl runner-b-recordcontrol" {$brickclass_recordcontrol}><span>	
 	
-	
+		{BEGIN deleteselected_link}
+		<span class="runner-btnframe" {$deleteselectedlink_span}>
+		<span class="runner-btnleft"></span>
+		<span class="runner-btnright"></span>
+		<a href="#" class="runner-button" {$deleteselectedlink_attrs}>Delete selected</a>
+		</span>
+	{END deleteselected_link}
+
 	
 		{BEGIN printselected_link}
 		<span class="runner-btnframe" {$printselectedlink_span}>
@@ -346,17 +353,7 @@
 																		{BEGIN Pending_Orders_dtable_column}
 									<th class="runner-cc">&nbsp;</th>
 									{END Pending_Orders_dtable_column}
-																										{BEGIN ODetailID_fieldheadercolumn}
-									<th class="runner-cc ">
-									{BEGIN ODetailID_fieldheader}
-																				<a {$ODetailID_orderlinkattrs}>
-											ID
-										</a>
-									{END ODetailID_fieldheader}
-									</th>
-									{END ODetailID_fieldheadercolumn}
-
-																	{BEGIN OrderID_fieldheadercolumn}
+																										{BEGIN OrderID_fieldheadercolumn}
 									<th class="runner-cc ">
 									{BEGIN OrderID_fieldheader}
 																				<a {$OrderID_orderlinkattrs}>
@@ -396,18 +393,8 @@
 									</th>
 									{END DelQuant_fieldheadercolumn}
 
-																	{BEGIN Total_fieldheadercolumn}
-									<th class="runner-cc ">
-									{BEGIN Total_fieldheader}
-																				<a {$Total_orderlinkattrs}>
-											Total
-										</a>
-									{END Total_fieldheader}
-									</th>
-									{END Total_fieldheadercolumn}
-
 																	{BEGIN DelDate_fieldheadercolumn}
-									<th class="runner-cc ">
+									<th class="runner-cc runner-clast">
 									{BEGIN DelDate_fieldheader}
 																				<a {$DelDate_orderlinkattrs}>
 											Delivery Date
@@ -415,16 +402,6 @@
 									{END DelDate_fieldheader}
 									</th>
 									{END DelDate_fieldheadercolumn}
-
-																	{BEGIN BillNo_fieldheadercolumn}
-									<th class="runner-cc runner-clast">
-									{BEGIN BillNo_fieldheader}
-																				<a {$BillNo_orderlinkattrs}>
-											Bill No
-										</a>
-									{END BillNo_fieldheader}
-									</th>
-									{END BillNo_fieldheadercolumn}
 
 
 									
@@ -476,13 +453,7 @@
 																		</td>
 									{END Pending_Orders_dtable_column}
 
-										{BEGIN ODetailID_fieldcolumn}
-	<td class="runner-cc  {$ODetailID_class}" {$ODetailID_style}>
-		{$ODetailID_value}
-	</td>
-{END ODetailID_fieldcolumn}
-
-	{BEGIN OrderID_fieldcolumn}
+										{BEGIN OrderID_fieldcolumn}
 	<td class="runner-cc  {$OrderID_class}" {$OrderID_style}>
 		{$OrderID_value}
 	</td>
@@ -506,23 +477,11 @@
 	</td>
 {END DelQuant_fieldcolumn}
 
-	{BEGIN Total_fieldcolumn}
-	<td class="runner-cc  {$Total_class}" {$Total_style}>
-		{$Total_value}
-	</td>
-{END Total_fieldcolumn}
-
 	{BEGIN DelDate_fieldcolumn}
-	<td class="runner-cc  {$DelDate_class}" {$DelDate_style}>
+	<td class="runner-cc runner-clast {$DelDate_class}" {$DelDate_style}>
 		{$DelDate_value}
 	</td>
 {END DelDate_fieldcolumn}
-
-	{BEGIN BillNo_fieldcolumn}
-	<td class="runner-cc runner-clast {$BillNo_class}" {$BillNo_style}>
-		{$BillNo_value}
-	</td>
-{END BillNo_fieldcolumn}
 
 
 																		<td class="runner-cr" {$rowstyle}></td>
@@ -550,10 +509,7 @@
 									<td class="runner-cc"></td>
 									{END Pending_Orders_dtable_column}
 
-									{BEGIN ODetailID_fieldheadercolumn}
-<td class="runner-cc "></td>
-{END ODetailID_fieldheadercolumn}
-{BEGIN OrderID_fieldheadercolumn}
+									{BEGIN OrderID_fieldheadercolumn}
 <td class="runner-cc "></td>
 {END OrderID_fieldheadercolumn}
 {BEGIN ProductID_fieldheadercolumn}
@@ -565,15 +521,9 @@
 {BEGIN DelQuant_fieldheadercolumn}
 <td class="runner-cc "></td>
 {END DelQuant_fieldheadercolumn}
-{BEGIN Total_fieldheadercolumn}
-<td class="runner-cc "></td>
-{END Total_fieldheadercolumn}
 {BEGIN DelDate_fieldheadercolumn}
-<td class="runner-cc "></td>
-{END DelDate_fieldheadercolumn}
-{BEGIN BillNo_fieldheadercolumn}
 <td class="runner-cc runner-clast"></td>
-{END BillNo_fieldheadercolumn}
+{END DelDate_fieldheadercolumn}
 
 									<td class="runner-cr"><img src="images/spacer.gif"></td>
 									

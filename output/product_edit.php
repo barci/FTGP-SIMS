@@ -345,6 +345,16 @@ if(@$_POST["a"] == "edited")
 
 		}
 //	processing Usize - end
+//	processing ReOrLevel - begin
+	$condition = $inlineedit==EDIT_INLINE;//($inlineedit) inline mode
+
+	if($condition)
+	{
+		$control_ReOrLevel = $pageObject->getControl("ReOrLevel", $id);
+		$control_ReOrLevel->readWebValue($evalues, $blobfields, $strWhereClause, $oldValuesRead, $efilename_values);
+
+		}
+//	processing ReOrLevel - end
 //	processing Note - begin
 	$condition = $inlineedit==EDIT_INLINE;//($inlineedit) inline mode
 
@@ -462,6 +472,14 @@ if(@$_POST["a"] == "edited")
 					$control_Usize->afterSuccessfulSave();
 				}
 	//	processing Usize - end
+			//	processing ReOrLevel - begin
+							$condition = $inlineedit==EDIT_INLINE;//($inlineedit) inline mode
+			
+				if($condition)
+				{
+					$control_ReOrLevel->afterSuccessfulSave();
+				}
+	//	processing ReOrLevel - end
 			//	processing Note - begin
 							$condition = $inlineedit==EDIT_INLINE;//($inlineedit) inline mode
 			
@@ -615,6 +633,7 @@ if($readevalues)
 	$data["SuppID"] = $evalues["SuppID"];
 	$data["Uweight"] = $evalues["Uweight"];
 	$data["Usize"] = $evalues["Usize"];
+	$data["ReOrLevel"] = $evalues["ReOrLevel"];
 	$data["Note"] = $evalues["Note"];
 	$data["ProdNo"] = $evalues["ProdNo"];
 }
@@ -726,7 +745,7 @@ if (postvalue("a")=="edited" && ($inlineedit == EDIT_INLINE || $inlineedit == ED
 	$showFields[] = "ProdID";
 		$showRawValues["ProdID"] = substr($data["ProdID"],0,100);
 
-//	Pname - 
+//	Pname - Custom
 	$value = $pageObject->showDBValue("Pname", $data, $keylink);
 	$showValues["Pname"] = $value;
 	$showFields[] = "Pname";
@@ -780,7 +799,7 @@ if (postvalue("a")=="edited" && ($inlineedit == EDIT_INLINE || $inlineedit == ED
 	$showFields[] = "Discount";
 		$showRawValues["Discount"] = substr($data["Discount"],0,100);
 
-//	UInStock - 
+//	UInStock - Custom
 	$value = $pageObject->showDBValue("UInStock", $data, $keylink);
 	$showValues["UInStock"] = $value;
 	$showFields[] = "UInStock";
@@ -815,6 +834,12 @@ if (postvalue("a")=="edited" && ($inlineedit == EDIT_INLINE || $inlineedit == ED
 	$showValues["ProdNo"] = $value;
 	$showFields[] = "ProdNo";
 		$showRawValues["ProdNo"] = substr($data["ProdNo"],0,100);
+
+//	staffID - 
+	$value = $pageObject->showDBValue("staffID", $data, $keylink);
+	$showValues["staffID"] = $value;
+	$showFields[] = "staffID";
+		$showRawValues["staffID"] = substr($data["staffID"],0,100);
 /////////////////////////////////////////////////////////////
 //	start inline output
 /////////////////////////////////////////////////////////////
@@ -909,7 +934,7 @@ foreach($pageObject->editFields as $fName)
 				$control[$gfName]["params"]["mode"] = "edit";
 			$controls["controls"]['mode'] = "edit";
 		}
-								
+									
 	if(!$detailKeys || !in_array($fName, $detailKeys))
 		$xt->assignbyref($gfName."_editcontrol",$control[$gfName]);
 	elseif($detailKeys && in_array($fName, $detailKeys))

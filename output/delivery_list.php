@@ -94,10 +94,6 @@ $layout->containers["toplinks"][] = array("name"=>"toplinks_print","block"=>"pri
 $layout->containers["toplinks"][] = array("name"=>"toplinks_advsearch","block"=>"asearch_link","substyle"=>1);
 
 
-$layout->containers["toplinks"][] = array("name"=>"toplinks_import","block"=>"import_link","substyle"=>1);
-
-
-$layout->containers["toplinks"][] = array("name"=>"toplinks_export","block"=>"export_link","substyle"=>1);
 
 
 
@@ -148,7 +144,7 @@ elseif(postvalue("mode") == "lookup")
 	include("classes/searchpanellookup.php");
 	$mode=LIST_LOOKUP;
 	//determine which field should be used to select values
-			$params["lookupSelectField"] = "ID";
+			$params["lookupSelectField"] = "DrNo";
 						}
 elseif(postvalue("mode")=="listdetails")
 {

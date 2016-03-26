@@ -11,7 +11,7 @@ function DisplayMasterTableInfo_product($params)
 	$oldTableName=$strTableName;
 	$strTableName="product";
 
-//$strSQL = "SELECT  ProdID,  Pname,  CatID,  SuppID,  QPerUnit,  Uprice,  USP,  Uweight,  Usize,  Discount,  UInStock,  format((Qperunit*uinstock), 0) AS Qty,  UInOrder,  ReOrLevel,  Note,  ProdNo  FROM product  ";
+//$strSQL = "SELECT  ProdID,  Pname,  CatID,  SuppID,  QPerUnit,  Uprice,  USP,  Uweight,  Usize,  Discount,  UInStock,  format((Qperunit*uinstock), 0) AS Qty,  UInOrder,  ReOrLevel,  Note,  ProdNo,  staffID  FROM product  ";
 
 	$cipherer = new RunnerCipherer($strTableName);
 	$settings = new ProjectSettings($strTableName, PAGE_PRINT);
@@ -79,7 +79,7 @@ if(!$where)
 //	ProdID - 
 			$xt->assign("ProdID_mastervalue", $viewControls->showDBValue("ProdID", $data, $keylink));
 
-//	Pname - 
+//	Pname - Custom
 			$xt->assign("Pname_mastervalue", $viewControls->showDBValue("Pname", $data, $keylink));
 
 //	CatID - 
@@ -106,7 +106,7 @@ if(!$where)
 //	Discount - 
 			$xt->assign("Discount_mastervalue", $viewControls->showDBValue("Discount", $data, $keylink));
 
-//	UInStock - 
+//	UInStock - Custom
 			$xt->assign("UInStock_mastervalue", $viewControls->showDBValue("UInStock", $data, $keylink));
 
 //	Qty - 
@@ -123,6 +123,9 @@ if(!$where)
 
 //	ProdNo - 
 			$xt->assign("ProdNo_mastervalue", $viewControls->showDBValue("ProdNo", $data, $keylink));
+
+//	staffID - 
+			$xt->assign("staffID_mastervalue", $viewControls->showDBValue("staffID", $data, $keylink));
 	$xt->display("product_masterprint.htm");
 	$strTableName=$oldTableName;
 

@@ -255,6 +255,14 @@ if(@$_POST["a"]=="added")
 		$control_eta->readWebValue($avalues, $blobfields, "", false, $afilename_values);
 	}
 //	processing eta - end
+//	processing staffID - start
+	$inlineAddOption = true;
+	if($inlineAddOption)
+	{
+		$control_staffID = $pageObject->getControl("staffID", $id);
+		$control_staffID->readWebValue($avalues, $blobfields, "", false, $afilename_values);
+	}
+//	processing staffID - end
 //	processing delFlag - start
 	$inlineAddOption = true;
 	if($inlineAddOption)
@@ -349,6 +357,13 @@ if(@$_POST["a"]=="added")
 				$control_eta->afterSuccessfulSave();
 			}
 //	processing eta - end
+//	processing staffID - start
+			$inlineAddOption = true;
+			if($inlineAddOption)
+			{
+				$control_staffID->afterSuccessfulSave();
+			}
+//	processing staffID - end
 //	processing delFlag - start
 			$inlineAddOption = true;
 			if($inlineAddOption)
@@ -461,6 +476,7 @@ if(array_key_exists("copyid1",$_REQUEST) || array_key_exists("editid1",$_REQUEST
 }
 else
 {
+	$defvalues["staffID"] = $_SESSION["StaffID"];;
 	$defvalues["delFlag"] = NO;
 }
 
@@ -491,6 +507,7 @@ if($readavalues)
 	$defvalues["qty"]=@$avalues["qty"];
 	$defvalues["eta"]=@$avalues["eta"];
 	$defvalues["delFlag"]=@$avalues["delFlag"];
+	$defvalues["staffID"]=@$avalues["staffID"];
 }
 
 if($eventObj->exists("ProcessValuesAdd"))
@@ -557,6 +574,14 @@ if($inlineadd!=ADD_INLINE)
 	$xt->assign("delFlag_label",true);
 	if(isEnableSection508())
 		$xt->assign_section("delFlag_label","<label for=\"".GetInputElementId("delFlag", $id, PAGE_ADD)."\">","</label>");
+	
+	if(!$pageObject->isAppearOnTabs("staffID"))
+		$xt->assign("staffID_fieldblock",true);
+	else
+		$xt->assign("staffID_tabfieldblock",true);
+	$xt->assign("staffID_label",true);
+	if(isEnableSection508())
+		$xt->assign_section("staffID_label","<label for=\"".GetInputElementId("staffID", $id, PAGE_ADD)."\">","</label>");
 	
 	
 	
@@ -662,16 +687,6 @@ if(@$_POST["a"]=="added" && ($inlineadd == ADD_INLINE || $inlineadd == ADD_MASTE
 	$keylink.="&key1=".htmlspecialchars(rawurlencode(@$data["ID"]));
 	
 ////////////////////////////////////////////
-//	ID
-	$display = false;
-	if($inlineadd==ADD_INLINE || $inlineadd==ADD_ONTHEFLY || $inlineadd==ADD_POPUP)
-		$display = true;
-	if($display)
-	{	
-		$value = $pageObject->showDBValue("ID", $data, $keylink);
-		$showValues["ID"] = $value;
-		$showFields[] = "ID";
-	}	
 //	DrNo
 	$display = false;
 	if($inlineadd==ADD_MASTER)
@@ -744,6 +759,18 @@ if(@$_POST["a"]=="added" && ($inlineadd == ADD_INLINE || $inlineadd == ADD_MASTE
 		$showValues["delFlag"] = $value;
 		$showFields[] = "delFlag";
 	}	
+//	staffID
+	$display = false;
+	if($inlineadd==ADD_MASTER)
+		$display = true;
+	if($inlineadd==ADD_INLINE || $inlineadd==ADD_ONTHEFLY || $inlineadd==ADD_POPUP)
+		$display = true;
+	if($display)
+	{	
+		$value = $pageObject->showDBValue("staffID", $data, $keylink);
+		$showValues["staffID"] = $value;
+		$showFields[] = "staffID";
+	}	
 		$showRawValues["ID"] = substr($data["ID"],0,100);
 		$showRawValues["DrNo"] = substr($data["DrNo"],0,100);
 		$showRawValues["orderID"] = substr($data["orderID"],0,100);
@@ -751,6 +778,7 @@ if(@$_POST["a"]=="added" && ($inlineadd == ADD_INLINE || $inlineadd == ADD_MASTE
 		$showRawValues["qty"] = substr($data["qty"],0,100);
 		$showRawValues["eta"] = substr($data["eta"],0,100);
 		$showRawValues["delFlag"] = substr($data["delFlag"],0,100);
+		$showRawValues["staffID"] = substr($data["staffID"],0,100);
 	
 	// for custom expression for display field
 	if ($dispFieldAlias)

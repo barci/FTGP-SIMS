@@ -79,20 +79,10 @@ if($detailtable == "delivery")
 	$keylink.="&key1=".htmlspecialchars(rawurlencode(@$data["ODetailID"]));
 	
 
-//	ODetailID - 
-			$value="";
-
-					$xt->assign("ODetailID_mastervalue", $viewControls->showDBValue("ODetailID", $data, $keylink));
-
 //	OrderID - 
 			$value="";
 
 					$xt->assign("OrderID_mastervalue", $viewControls->showDBValue("OrderID", $data, $keylink));
-
-//	BillNo - 
-			$value="";
-
-					$xt->assign("BillNo_mastervalue", $viewControls->showDBValue("BillNo", $data, $keylink));
 
 //	ProductID - 
 			$value="";
@@ -109,12 +99,7 @@ if($detailtable == "delivery")
 
 					$xt->assign("DelQuant_mastervalue", $viewControls->showDBValue("DelQuant", $data, $keylink));
 
-//	Total - Number
-			$value="";
-
-					$xt->assign("Total_mastervalue", $viewControls->showDBValue("Total", $data, $keylink));
-
-//	DelDate - Short Date
+//	DelDate - Long Date
 			$value="";
 
 					$xt->assign("DelDate_mastervalue", $viewControls->showDBValue("DelDate", $data, $keylink));

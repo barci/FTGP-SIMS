@@ -455,16 +455,6 @@
 									</th>
 									{END RequestID_fieldheadercolumn}
 
-																	{BEGIN StaffID_fieldheadercolumn}
-									<th class="runner-cc ">
-									{BEGIN StaffID_fieldheader}
-																				<a {$StaffID_orderlinkattrs}>
-											Staff
-										</a>
-									{END StaffID_fieldheader}
-									</th>
-									{END StaffID_fieldheadercolumn}
-
 																	{BEGIN ProductID_fieldheadercolumn}
 									<th class="runner-cc ">
 									{BEGIN ProductID_fieldheader}
@@ -485,6 +475,16 @@
 									</th>
 									{END Qty_fieldheadercolumn}
 
+																	{BEGIN TimeStamp_fieldheadercolumn}
+									<th class="runner-cc ">
+									{BEGIN TimeStamp_fieldheader}
+																				<a {$TimeStamp_orderlinkattrs}>
+											Time Stamp
+										</a>
+									{END TimeStamp_fieldheader}
+									</th>
+									{END TimeStamp_fieldheadercolumn}
+
 																	{BEGIN Notes_fieldheadercolumn}
 									<th class="runner-cc ">
 									{BEGIN Notes_fieldheader}
@@ -496,7 +496,7 @@
 									{END Notes_fieldheadercolumn}
 
 																	{BEGIN ReceiveFlag_fieldheadercolumn}
-									<th class="runner-cc runner-clast">
+									<th class="runner-cc ">
 									{BEGIN ReceiveFlag_fieldheader}
 																				<a {$ReceiveFlag_orderlinkattrs}>
 											Receive Flag
@@ -504,6 +504,16 @@
 									{END ReceiveFlag_fieldheader}
 									</th>
 									{END ReceiveFlag_fieldheadercolumn}
+
+																	{BEGIN StaffID_fieldheadercolumn}
+									<th class="runner-cc runner-clast">
+									{BEGIN StaffID_fieldheader}
+																				<a {$StaffID_orderlinkattrs}>
+											Staff
+										</a>
+									{END StaffID_fieldheader}
+									</th>
+									{END StaffID_fieldheadercolumn}
 
 
 									
@@ -559,12 +569,6 @@
 	</td>
 {END RequestID_fieldcolumn}
 
-	{BEGIN StaffID_fieldcolumn}
-	<td class="runner-cc  {$StaffID_class}" {$StaffID_style}>
-		{$StaffID_value}
-	</td>
-{END StaffID_fieldcolumn}
-
 	{BEGIN ProductID_fieldcolumn}
 	<td class="runner-cc  {$ProductID_class}" {$ProductID_style}>
 		{$ProductID_value}
@@ -577,6 +581,12 @@
 	</td>
 {END Qty_fieldcolumn}
 
+	{BEGIN TimeStamp_fieldcolumn}
+	<td class="runner-cc  {$TimeStamp_class}" {$TimeStamp_style}>
+		{$TimeStamp_value}
+	</td>
+{END TimeStamp_fieldcolumn}
+
 	{BEGIN Notes_fieldcolumn}
 	<td class="runner-cc  {$Notes_class}" {$Notes_style}>
 		{$Notes_value}
@@ -584,10 +594,16 @@
 {END Notes_fieldcolumn}
 
 	{BEGIN ReceiveFlag_fieldcolumn}
-	<td class="runner-cc runner-clast {$ReceiveFlag_class}" {$ReceiveFlag_style}>
+	<td class="runner-cc  {$ReceiveFlag_class}" {$ReceiveFlag_style}>
 		{$ReceiveFlag_value}
 	</td>
 {END ReceiveFlag_fieldcolumn}
+
+	{BEGIN StaffID_fieldcolumn}
+	<td class="runner-cc runner-clast {$StaffID_class}" {$StaffID_style}>
+		{$StaffID_value}
+	</td>
+{END StaffID_fieldcolumn}
 
 
 																		<td class="runner-cr" {$rowstyle}></td>
@@ -618,21 +634,24 @@
 {BEGIN RequestID_fieldheadercolumn}
 <td class="runner-cc "></td>
 {END RequestID_fieldheadercolumn}
-{BEGIN StaffID_fieldheadercolumn}
-<td class="runner-cc "></td>
-{END StaffID_fieldheadercolumn}
 {BEGIN ProductID_fieldheadercolumn}
 <td class="runner-cc "></td>
 {END ProductID_fieldheadercolumn}
 {BEGIN Qty_fieldheadercolumn}
 <td class="runner-cc "></td>
 {END Qty_fieldheadercolumn}
+{BEGIN TimeStamp_fieldheadercolumn}
+<td class="runner-cc "></td>
+{END TimeStamp_fieldheadercolumn}
 {BEGIN Notes_fieldheadercolumn}
 <td class="runner-cc "></td>
 {END Notes_fieldheadercolumn}
 {BEGIN ReceiveFlag_fieldheadercolumn}
-<td class="runner-cc runner-clast"></td>
+<td class="runner-cc "></td>
 {END ReceiveFlag_fieldheadercolumn}
+{BEGIN StaffID_fieldheadercolumn}
+<td class="runner-cc runner-clast"></td>
+{END StaffID_fieldheadercolumn}
 
 									<td class="runner-cr"><img src="images/spacer.gif"></td>
 									

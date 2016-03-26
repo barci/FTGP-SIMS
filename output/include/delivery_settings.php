@@ -20,12 +20,14 @@ if(mlang_getcurrentlang()=="English")
 	$fieldToolTipsdelivery["English"]["orderID"] = "";
 	$fieldLabelsdelivery["English"]["prodID"] = "Product";
 	$fieldToolTipsdelivery["English"]["prodID"] = "";
-	$fieldLabelsdelivery["English"]["qty"] = "Qantity";
+	$fieldLabelsdelivery["English"]["qty"] = "Quantity";
 	$fieldToolTipsdelivery["English"]["qty"] = "";
 	$fieldLabelsdelivery["English"]["eta"] = "ETA";
 	$fieldToolTipsdelivery["English"]["eta"] = "";
 	$fieldLabelsdelivery["English"]["delFlag"] = "Delivery Flag";
 	$fieldToolTipsdelivery["English"]["delFlag"] = "";
+	$fieldLabelsdelivery["English"]["staffID"] = "Staff ID";
+	$fieldToolTipsdelivery["English"]["staffID"] = "";
 	if (count($fieldToolTipsdelivery["English"]))
 		$tdatadelivery[".isUseToolTips"] = true;
 }
@@ -63,12 +65,8 @@ $tdatadelivery[".listAjax"] = false;
 
 $tdatadelivery[".listIcons"] = true;
 $tdatadelivery[".edit"] = true;
-$tdatadelivery[".inlineEdit"] = true;
 $tdatadelivery[".inlineAdd"] = true;
-$tdatadelivery[".copy"] = true;
-$tdatadelivery[".view"] = true;
 
-$tdatadelivery[".exportTo"] = true;
 
 $tdatadelivery[".printFriendly"] = true;
 
@@ -97,12 +95,12 @@ $tdatadelivery[".isUseTimeForSearch"] = false;
 
 $tdatadelivery[".allSearchFields"] = array();
 
-$tdatadelivery[".allSearchFields"][] = "ID";
 $tdatadelivery[".allSearchFields"][] = "DrNo";
 $tdatadelivery[".allSearchFields"][] = "orderID";
 $tdatadelivery[".allSearchFields"][] = "prodID";
 $tdatadelivery[".allSearchFields"][] = "qty";
 $tdatadelivery[".allSearchFields"][] = "eta";
+$tdatadelivery[".allSearchFields"][] = "staffID";
 $tdatadelivery[".allSearchFields"][] = "delFlag";
 
 $tdatadelivery[".googleLikeFields"][] = "ID";
@@ -112,14 +110,15 @@ $tdatadelivery[".googleLikeFields"][] = "prodID";
 $tdatadelivery[".googleLikeFields"][] = "qty";
 $tdatadelivery[".googleLikeFields"][] = "eta";
 $tdatadelivery[".googleLikeFields"][] = "delFlag";
+$tdatadelivery[".googleLikeFields"][] = "staffID";
 
 
-$tdatadelivery[".advSearchFields"][] = "ID";
 $tdatadelivery[".advSearchFields"][] = "DrNo";
 $tdatadelivery[".advSearchFields"][] = "orderID";
 $tdatadelivery[".advSearchFields"][] = "prodID";
 $tdatadelivery[".advSearchFields"][] = "qty";
 $tdatadelivery[".advSearchFields"][] = "eta";
+$tdatadelivery[".advSearchFields"][] = "staffID";
 $tdatadelivery[".advSearchFields"][] = "delFlag";
 
 $tdatadelivery[".isTableType"] = "list";
@@ -134,16 +133,17 @@ $tdatadelivery[".isTableType"] = "list";
 
 $tdatadelivery[".pageSize"] = 20;
 
-$tstrOrderBy = "";
+$tstrOrderBy = "ORDER BY eta desc";
 if(strlen($tstrOrderBy) && strtolower(substr($tstrOrderBy,0,8))!="order by")
 	$tstrOrderBy = "order by ".$tstrOrderBy;
 $tdatadelivery[".strOrderBy"] = $tstrOrderBy;
 
 $tdatadelivery[".orderindexes"] = array();
+$tdatadelivery[".orderindexes"][] = array(6, (0 ? "ASC" : "DESC"), "eta");
 
-$tdatadelivery[".sqlHead"] = "SELECT ID,  DrNo,  orderID,  prodID,  qty,  eta,  delFlag";
+$tdatadelivery[".sqlHead"] = "SELECT ID,  DrNo,  orderID,  prodID,  qty,  eta,  delFlag,  staffID";
 $tdatadelivery[".sqlFrom"] = "FROM delivery";
-$tdatadelivery[".sqlWhereExpr"] = "delFlag = 'NO'";
+$tdatadelivery[".sqlWhereExpr"] = "";
 $tdatadelivery[".sqlTail"] = "";
 
 
@@ -176,22 +176,15 @@ $tableKeysdelivery[] = "ID";
 $tdatadelivery[".Keys"] = $tableKeysdelivery;
 
 $tdatadelivery[".listFields"] = array();
-$tdatadelivery[".listFields"][] = "ID";
 $tdatadelivery[".listFields"][] = "DrNo";
 $tdatadelivery[".listFields"][] = "orderID";
 $tdatadelivery[".listFields"][] = "prodID";
 $tdatadelivery[".listFields"][] = "qty";
-$tdatadelivery[".listFields"][] = "eta";
 $tdatadelivery[".listFields"][] = "delFlag";
+$tdatadelivery[".listFields"][] = "eta";
+$tdatadelivery[".listFields"][] = "staffID";
 
 $tdatadelivery[".viewFields"] = array();
-$tdatadelivery[".viewFields"][] = "ID";
-$tdatadelivery[".viewFields"][] = "DrNo";
-$tdatadelivery[".viewFields"][] = "orderID";
-$tdatadelivery[".viewFields"][] = "prodID";
-$tdatadelivery[".viewFields"][] = "qty";
-$tdatadelivery[".viewFields"][] = "eta";
-$tdatadelivery[".viewFields"][] = "delFlag";
 
 $tdatadelivery[".addFields"] = array();
 $tdatadelivery[".addFields"][] = "DrNo";
@@ -199,6 +192,7 @@ $tdatadelivery[".addFields"][] = "orderID";
 $tdatadelivery[".addFields"][] = "prodID";
 $tdatadelivery[".addFields"][] = "qty";
 $tdatadelivery[".addFields"][] = "eta";
+$tdatadelivery[".addFields"][] = "staffID";
 $tdatadelivery[".addFields"][] = "delFlag";
 
 $tdatadelivery[".inlineAddFields"] = array();
@@ -206,41 +200,26 @@ $tdatadelivery[".inlineAddFields"][] = "DrNo";
 $tdatadelivery[".inlineAddFields"][] = "orderID";
 $tdatadelivery[".inlineAddFields"][] = "prodID";
 $tdatadelivery[".inlineAddFields"][] = "qty";
-$tdatadelivery[".inlineAddFields"][] = "eta";
 $tdatadelivery[".inlineAddFields"][] = "delFlag";
+$tdatadelivery[".inlineAddFields"][] = "eta";
+$tdatadelivery[".inlineAddFields"][] = "staffID";
 
 $tdatadelivery[".editFields"] = array();
-$tdatadelivery[".editFields"][] = "DrNo";
-$tdatadelivery[".editFields"][] = "orderID";
 $tdatadelivery[".editFields"][] = "prodID";
 $tdatadelivery[".editFields"][] = "qty";
-$tdatadelivery[".editFields"][] = "eta";
 $tdatadelivery[".editFields"][] = "delFlag";
 
 $tdatadelivery[".inlineEditFields"] = array();
-$tdatadelivery[".inlineEditFields"][] = "DrNo";
-$tdatadelivery[".inlineEditFields"][] = "orderID";
-$tdatadelivery[".inlineEditFields"][] = "prodID";
-$tdatadelivery[".inlineEditFields"][] = "qty";
-$tdatadelivery[".inlineEditFields"][] = "eta";
-$tdatadelivery[".inlineEditFields"][] = "delFlag";
 
 $tdatadelivery[".exportFields"] = array();
-$tdatadelivery[".exportFields"][] = "ID";
-$tdatadelivery[".exportFields"][] = "DrNo";
-$tdatadelivery[".exportFields"][] = "orderID";
-$tdatadelivery[".exportFields"][] = "prodID";
-$tdatadelivery[".exportFields"][] = "qty";
-$tdatadelivery[".exportFields"][] = "eta";
-$tdatadelivery[".exportFields"][] = "delFlag";
 
 $tdatadelivery[".printFields"] = array();
-$tdatadelivery[".printFields"][] = "ID";
 $tdatadelivery[".printFields"][] = "DrNo";
 $tdatadelivery[".printFields"][] = "orderID";
 $tdatadelivery[".printFields"][] = "prodID";
 $tdatadelivery[".printFields"][] = "qty";
 $tdatadelivery[".printFields"][] = "eta";
+$tdatadelivery[".printFields"][] = "staffID";
 $tdatadelivery[".printFields"][] = "delFlag";
 
 //	ID
@@ -256,27 +235,21 @@ $tdatadelivery[".printFields"][] = "delFlag";
 		$fdata["AutoInc"] = true;
 	
 		
-		$fdata["bListPage"] = true; 
-	
 		
 		
 		
 		
-		$fdata["bViewPage"] = true; 
-	
-		$fdata["bAdvancedSearch"] = true; 
-	
-		$fdata["bPrinterPage"] = true; 
-	
-		$fdata["bExportPage"] = true; 
-	
+		
+		
+		
+		
+		
 		$fdata["strField"] = "ID"; 
 		$fdata["FullName"] = "ID";
 	
 		
 		
-				$fdata["FieldPermissions"] = true;
-	
+				
 				$fdata["UploadFolder"] = "files";
 		
 //  Begin View Formats
@@ -361,18 +334,14 @@ $tdatadelivery[".printFields"][] = "delFlag";
 	
 		$fdata["bInlineAdd"] = true; 
 	
-		$fdata["bEditPage"] = true; 
-	
-		$fdata["bInlineEdit"] = true; 
-	
-		$fdata["bViewPage"] = true; 
-	
+		
+		
+		
 		$fdata["bAdvancedSearch"] = true; 
 	
 		$fdata["bPrinterPage"] = true; 
 	
-		$fdata["bExportPage"] = true; 
-	
+		
 		$fdata["strField"] = "DrNo"; 
 		$fdata["FullName"] = "DrNo";
 	
@@ -385,7 +354,7 @@ $tdatadelivery[".printFields"][] = "delFlag";
 //  Begin View Formats
 	$fdata["ViewFormats"] = array();
 	
-	$vdata = array("ViewFormat" => "");
+	$vdata = array("ViewFormat" => "Custom");
 	
 		
 		
@@ -397,23 +366,50 @@ $tdatadelivery[".printFields"][] = "delFlag";
 		
 		
 		
-		$vdata["NeedEncode"] = true;
-	
+		
 	$fdata["ViewFormats"]["view"] = $vdata;
 //  End View Formats
 
 //	Begin Edit Formats 	
 	$fdata["EditFormats"] = array();
 	
-	$edata = array("EditFormat" => "Text field");
+	$edata = array("EditFormat" => "Lookup wizard");
 	
 		
 		
 	
 //	Begin Lookup settings
+								$edata["LookupType"] = 2;
+	$edata["freeInput"] = 1;
+	$edata["autoCompleteFieldsOnEdit"] = 0;
+	$edata["autoCompleteFields"] = array();
+				$edata["LCType"] = 1;
+			
+		
+			$edata["LookupUnique"] = true;
+	
+	$edata["LinkField"] = "DrNo";
+	$edata["LinkFieldType"] = 200;
+	$edata["DisplayField"] = "DrNo";
+	
+		
+	$edata["LookupTable"] = "delivery";
+	$edata["LookupOrderBy"] = "DrNo";
+	
+		$edata["LookupDesc"] = true;
+	
+		
+		
+		$edata["FastType"] = true; 
+	
+		
+				
+	
+	
 	//	End Lookup Settings
 
-		
+		$edata["IsRequired"] = true; 
+	
 		
 		
 		
@@ -425,13 +421,12 @@ $tdatadelivery[".printFields"][] = "delFlag";
 		
 		
 		
-		$edata["EditParams"] = "";
-			$edata["EditParams"].= " maxlength=10";
-	
+		
 		
 //	Begin validation
 	$edata["validateAs"] = array();
-		
+						$edata["validateAs"]["basicValidate"][] = "IsRequired";
+	
 	//	End validation
 	
 		
@@ -462,18 +457,14 @@ $tdatadelivery[".printFields"][] = "delFlag";
 	
 		$fdata["bInlineAdd"] = true; 
 	
-		$fdata["bEditPage"] = true; 
-	
-		$fdata["bInlineEdit"] = true; 
-	
-		$fdata["bViewPage"] = true; 
-	
+		
+		
+		
 		$fdata["bAdvancedSearch"] = true; 
 	
 		$fdata["bPrinterPage"] = true; 
 	
-		$fdata["bExportPage"] = true; 
-	
+		
 		$fdata["strField"] = "orderID"; 
 		$fdata["FullName"] = "orderID";
 	
@@ -526,7 +517,7 @@ $tdatadelivery[".printFields"][] = "delFlag";
 	
 		
 	$edata["LookupTable"] = "orderentry";
-	$edata["LookupOrderBy"] = "";
+	$edata["LookupOrderBy"] = "OrderID";
 	
 		
 		
@@ -590,16 +581,13 @@ $tdatadelivery[".printFields"][] = "delFlag";
 	
 		$fdata["bEditPage"] = true; 
 	
-		$fdata["bInlineEdit"] = true; 
-	
-		$fdata["bViewPage"] = true; 
-	
+		
+		
 		$fdata["bAdvancedSearch"] = true; 
 	
 		$fdata["bPrinterPage"] = true; 
 	
-		$fdata["bExportPage"] = true; 
-	
+		
 		$fdata["strField"] = "prodID"; 
 		$fdata["FullName"] = "prodID";
 	
@@ -612,7 +600,7 @@ $tdatadelivery[".printFields"][] = "delFlag";
 //  Begin View Formats
 	$fdata["ViewFormats"] = array();
 	
-	$vdata = array("ViewFormat" => "");
+	$vdata = array("ViewFormat" => "Custom");
 	
 		
 		
@@ -624,8 +612,7 @@ $tdatadelivery[".printFields"][] = "delFlag";
 		
 		
 		
-		$vdata["NeedEncode"] = true;
-	
+		
 	$fdata["ViewFormats"]["view"] = $vdata;
 //  End View Formats
 
@@ -703,7 +690,7 @@ $tdatadelivery[".printFields"][] = "delFlag";
 	$fdata["strName"] = "qty";
 	$fdata["GoodName"] = "qty";
 	$fdata["ownerTable"] = "delivery";
-	$fdata["Label"] = "Qantity"; 
+	$fdata["Label"] = "Quantity"; 
 	$fdata["FieldType"] = 3;
 	
 		
@@ -716,16 +703,13 @@ $tdatadelivery[".printFields"][] = "delFlag";
 	
 		$fdata["bEditPage"] = true; 
 	
-		$fdata["bInlineEdit"] = true; 
-	
-		$fdata["bViewPage"] = true; 
-	
+		
+		
 		$fdata["bAdvancedSearch"] = true; 
 	
 		$fdata["bPrinterPage"] = true; 
 	
-		$fdata["bExportPage"] = true; 
-	
+		
 		$fdata["strField"] = "qty"; 
 		$fdata["FullName"] = "qty";
 	
@@ -817,18 +801,14 @@ $tdatadelivery[".printFields"][] = "delFlag";
 	
 		$fdata["bInlineAdd"] = true; 
 	
-		$fdata["bEditPage"] = true; 
-	
-		$fdata["bInlineEdit"] = true; 
-	
-		$fdata["bViewPage"] = true; 
-	
+		
+		
+		
 		$fdata["bAdvancedSearch"] = true; 
 	
 		$fdata["bPrinterPage"] = true; 
 	
-		$fdata["bExportPage"] = true; 
-	
+		
 		$fdata["strField"] = "eta"; 
 		$fdata["FullName"] = "eta";
 	
@@ -841,7 +821,7 @@ $tdatadelivery[".printFields"][] = "delFlag";
 //  Begin View Formats
 	$fdata["ViewFormats"] = array();
 	
-	$vdata = array("ViewFormat" => "Short Date");
+	$vdata = array("ViewFormat" => "Long Date");
 	
 		
 		
@@ -923,16 +903,13 @@ $tdatadelivery[".printFields"][] = "delFlag";
 	
 		$fdata["bEditPage"] = true; 
 	
-		$fdata["bInlineEdit"] = true; 
-	
-		$fdata["bViewPage"] = true; 
-	
+		
+		
 		$fdata["bAdvancedSearch"] = true; 
 	
 		$fdata["bPrinterPage"] = true; 
 	
-		$fdata["bExportPage"] = true; 
-	
+		
 		$fdata["strField"] = "delFlag"; 
 		$fdata["FullName"] = "delFlag";
 	
@@ -945,7 +922,7 @@ $tdatadelivery[".printFields"][] = "delFlag";
 //  Begin View Formats
 	$fdata["ViewFormats"] = array();
 	
-	$vdata = array("ViewFormat" => "");
+	$vdata = array("ViewFormat" => "Custom");
 	
 		
 		
@@ -957,8 +934,7 @@ $tdatadelivery[".printFields"][] = "delFlag";
 		
 		
 		
-		$vdata["NeedEncode"] = true;
-	
+		
 	$fdata["ViewFormats"]["view"] = $vdata;
 //  End View Formats
 
@@ -1017,6 +993,126 @@ $tdatadelivery[".printFields"][] = "delFlag";
 		
 		
 	$tdatadelivery["delFlag"] = $fdata;
+//	staffID
+//	Custom field settings
+	$fdata = array();
+	$fdata["Index"] = 8;
+	$fdata["strName"] = "staffID";
+	$fdata["GoodName"] = "staffID";
+	$fdata["ownerTable"] = "delivery";
+	$fdata["Label"] = "Staff ID"; 
+	$fdata["FieldType"] = 200;
+	
+		
+		
+		$fdata["bListPage"] = true; 
+	
+		$fdata["bAddPage"] = true; 
+	
+		$fdata["bInlineAdd"] = true; 
+	
+		
+		
+		
+		$fdata["bAdvancedSearch"] = true; 
+	
+		$fdata["bPrinterPage"] = true; 
+	
+		
+		$fdata["strField"] = "staffID"; 
+		$fdata["FullName"] = "staffID";
+	
+		
+		
+				$fdata["FieldPermissions"] = true;
+	
+				$fdata["UploadFolder"] = "files";
+		
+//  Begin View Formats
+	$fdata["ViewFormats"] = array();
+	
+	$vdata = array("ViewFormat" => "");
+	
+		
+		
+		
+			
+		
+		
+		
+		
+		
+		
+		$vdata["NeedEncode"] = true;
+	
+	$fdata["ViewFormats"]["view"] = $vdata;
+//  End View Formats
+
+//	Begin Edit Formats 	
+	$fdata["EditFormats"] = array();
+	
+	$edata = array("EditFormat" => "Lookup wizard");
+	
+		
+		
+	
+//	Begin Lookup settings
+								$edata["LookupType"] = 2;
+	$edata["freeInput"] = 0;
+	$edata["autoCompleteFieldsOnEdit"] = 0;
+	$edata["autoCompleteFields"] = array();
+				$edata["LCType"] = 1;
+			
+		
+			
+	$edata["LinkField"] = "StaffID";
+	$edata["LinkFieldType"] = 3;
+	$edata["DisplayField"] = "Name";
+	
+		
+	$edata["LookupTable"] = "staff";
+	$edata["LookupOrderBy"] = "";
+	
+		
+		
+		
+		$edata["FastType"] = true; 
+	
+		
+				
+	
+	
+	//	End Lookup Settings
+
+		
+		
+		
+		
+			$edata["acceptFileTypes"] = ".+$";
+	
+		$edata["maxNumberOfFiles"] = 1;
+	
+		
+		
+		
+		
+		
+		
+//	Begin validation
+	$edata["validateAs"] = array();
+		
+	//	End validation
+	
+		
+				
+		$fdata["EditFormats"]["edit"] = $edata;
+//	End Edit Formats
+	
+		$fdata["isSeparate"] = false;
+	
+		
+		
+	$tdatadelivery["staffID"] = $fdata;
 
 	
 $tables_data["delivery"]=&$tdatadelivery;
@@ -1067,23 +1163,22 @@ function createSqlQuery_delivery()
 {
 $proto0=array();
 $proto0["m_strHead"] = "SELECT";
-$proto0["m_strFieldList"] = "ID,  DrNo,  orderID,  prodID,  qty,  eta,  delFlag";
+$proto0["m_strFieldList"] = "ID,  DrNo,  orderID,  prodID,  qty,  eta,  delFlag,  staffID";
 $proto0["m_strFrom"] = "FROM delivery";
-$proto0["m_strWhere"] = "delFlag = 'NO'";
-$proto0["m_strOrderBy"] = "";
+$proto0["m_strWhere"] = "";
+$proto0["m_strOrderBy"] = "ORDER BY eta desc";
 $proto0["m_strTail"] = "";
 $proto0["cipherer"] = null;
 $proto1=array();
-$proto1["m_sql"] = "delFlag = 'NO'";
+$proto1["m_sql"] = "";
 $proto1["m_uniontype"] = "SQLL_UNKNOWN";
-						$obj = new SQLField(array(
-	"m_strName" => "delFlag",
-	"m_strTable" => "delivery"
+	$obj = new SQLNonParsed(array(
+	"m_sql" => ""
 ));
 
 $proto1["m_column"]=$obj;
 $proto1["m_contained"] = array();
-$proto1["m_strCase"] = "= 'NO'";
+$proto1["m_strCase"] = "";
 $proto1["m_havingmode"] = "0";
 $proto1["m_inBrackets"] = "0";
 $proto1["m_useAlias"] = "0";
@@ -1184,51 +1279,75 @@ $proto17["m_alias"] = "";
 $obj = new SQLFieldListItem($proto17);
 
 $proto0["m_fieldlist"][]=$obj;
-$proto0["m_fromlist"] = array();
-												$proto19=array();
-$proto19["m_link"] = "SQLL_MAIN";
-			$proto20=array();
-$proto20["m_strName"] = "delivery";
-$proto20["m_columns"] = array();
-$proto20["m_columns"][] = "ID";
-$proto20["m_columns"][] = "DrNo";
-$proto20["m_columns"][] = "orderID";
-$proto20["m_columns"][] = "prodID";
-$proto20["m_columns"][] = "qty";
-$proto20["m_columns"][] = "eta";
-$proto20["m_columns"][] = "delFlag";
-$proto20["m_columns"][] = "TimeStamp";
-$obj = new SQLTable($proto20);
+						$proto19=array();
+			$obj = new SQLField(array(
+	"m_strName" => "staffID",
+	"m_strTable" => "delivery"
+));
 
-$proto19["m_table"] = $obj;
+$proto19["m_expr"]=$obj;
 $proto19["m_alias"] = "";
-$proto21=array();
-$proto21["m_sql"] = "";
-$proto21["m_uniontype"] = "SQLL_UNKNOWN";
+$obj = new SQLFieldListItem($proto19);
+
+$proto0["m_fieldlist"][]=$obj;
+$proto0["m_fromlist"] = array();
+												$proto21=array();
+$proto21["m_link"] = "SQLL_MAIN";
+			$proto22=array();
+$proto22["m_strName"] = "delivery";
+$proto22["m_columns"] = array();
+$proto22["m_columns"][] = "ID";
+$proto22["m_columns"][] = "DrNo";
+$proto22["m_columns"][] = "orderID";
+$proto22["m_columns"][] = "prodID";
+$proto22["m_columns"][] = "qty";
+$proto22["m_columns"][] = "eta";
+$proto22["m_columns"][] = "delFlag";
+$proto22["m_columns"][] = "TimeStamp";
+$proto22["m_columns"][] = "staffID";
+$obj = new SQLTable($proto22);
+
+$proto21["m_table"] = $obj;
+$proto21["m_alias"] = "";
+$proto23=array();
+$proto23["m_sql"] = "";
+$proto23["m_uniontype"] = "SQLL_UNKNOWN";
 	$obj = new SQLNonParsed(array(
 	"m_sql" => ""
 ));
 
-$proto21["m_column"]=$obj;
-$proto21["m_contained"] = array();
-$proto21["m_strCase"] = "";
-$proto21["m_havingmode"] = "0";
-$proto21["m_inBrackets"] = "0";
-$proto21["m_useAlias"] = "0";
-$obj = new SQLLogicalExpr($proto21);
+$proto23["m_column"]=$obj;
+$proto23["m_contained"] = array();
+$proto23["m_strCase"] = "";
+$proto23["m_havingmode"] = "0";
+$proto23["m_inBrackets"] = "0";
+$proto23["m_useAlias"] = "0";
+$obj = new SQLLogicalExpr($proto23);
 
-$proto19["m_joinon"] = $obj;
-$obj = new SQLFromListItem($proto19);
+$proto21["m_joinon"] = $obj;
+$obj = new SQLFromListItem($proto21);
 
 $proto0["m_fromlist"][]=$obj;
 $proto0["m_groupby"] = array();
 $proto0["m_orderby"] = array();
+												$proto25=array();
+						$obj = new SQLField(array(
+	"m_strName" => "eta",
+	"m_strTable" => "delivery"
+));
+
+$proto25["m_column"]=$obj;
+$proto25["m_bAsc"] = 0;
+$proto25["m_nColumn"] = 0;
+$obj = new SQLOrderByItem($proto25);
+
+$proto0["m_orderby"][]=$obj;					
 $obj = new SQLQuery($proto0);
 
 	return $obj;
 }
 $queryData_delivery = createSqlQuery_delivery();
-							$tdatadelivery[".sqlquery"] = $queryData_delivery;
+								$tdatadelivery[".sqlquery"] = $queryData_delivery;
 
 include_once(getabspath("include/delivery_events.php"));
 $tableEvents["delivery"] = new eventclass_delivery;

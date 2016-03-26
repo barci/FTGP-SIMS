@@ -110,24 +110,6 @@
 {END asearch_link}
 
 
-{BEGIN import_link}
-<td  class="runner-cc runner-bl runner-b-toplinks_import" {$brickclass_toplinks_import}><span>	<span class="runner-btnframe">
-	<span class="runner-btnleft"></span>
-	<span class="runner-btnright"></span>
-	<a href="delivery_import.php?{$crosstable_attrs}" class="runner-button" {$importlink_attrs}>Import</a>
-	</span>
-</span></td>
-{END import_link}
-
-
-{BEGIN export_link}
-<td  class="runner-cc runner-bl runner-b-toplinks_export" {$brickclass_toplinks_export}><span>	<span class="runner-btnframe">
-	<span class="runner-btnleft"></span>
-	<span class="runner-btnright"></span>
-	<a target="_blank" href="delivery_export.php" class="runner-button" {$exportlink_attrs}>Export results</a>
-	</span>
-</span></td>
-{END export_link}
 
 
 <td class="runner-cc filler"></td>
@@ -237,14 +219,7 @@
 
 {BEGIN record_controls_block}
 <td  class="runner-cc runner-bl runner-b-recordcontrol" {$brickclass_recordcontrol}><span>	
-			{BEGIN editselected_link}
-		<span class="runner-btnframe" {$editselectedlink_span}>
-		<span class="runner-btnleft"></span>
-		<span class="runner-btnright"></span>
-		<a href="#" class="runner-button" {$editselectedlink_attrs}>Edit selected</a>
-		</span>
-	{END editselected_link}
-	{BEGIN saveall_link}
+			{BEGIN saveall_link}
 		<span class="runner-btnframe" {$savealllink_span}>
 		<span class="runner-btnleft"></span>
 		<span class="runner-btnright"></span>
@@ -267,14 +242,7 @@
 		</span>
 	{END deleteselected_link}
 
-		{BEGIN exportselected_link}
-		<span class="runner-btnframe" {$exportselectedlink_span}>
-		<span class="runner-btnleft"></span>
-		<span class="runner-btnright"></span>
-		<a href="#" class="runner-button" {$exportselectedlink_attrs}>Export selected</a>
-		</span>
-	{END exportselected_link}
-
+	
 		{BEGIN printselected_link}
 		<span class="runner-btnframe" {$printselectedlink_span}>
 		<span class="runner-btnleft"></span>
@@ -449,17 +417,7 @@
 									</th>
 									{END checkbox_column}
 
-																										{BEGIN ID_fieldheadercolumn}
-									<th class="runner-cc ">
-									{BEGIN ID_fieldheader}
-																				<a {$ID_orderlinkattrs}>
-											ID
-										</a>
-									{END ID_fieldheader}
-									</th>
-									{END ID_fieldheadercolumn}
-
-																	{BEGIN DrNo_fieldheadercolumn}
+																										{BEGIN DrNo_fieldheadercolumn}
 									<th class="runner-cc ">
 									{BEGIN DrNo_fieldheader}
 																				<a {$DrNo_orderlinkattrs}>
@@ -493,11 +451,21 @@
 									<th class="runner-cc ">
 									{BEGIN qty_fieldheader}
 																				<a {$qty_orderlinkattrs}>
-											Qantity
+											Quantity
 										</a>
 									{END qty_fieldheader}
 									</th>
 									{END qty_fieldheadercolumn}
+
+																	{BEGIN delFlag_fieldheadercolumn}
+									<th class="runner-cc ">
+									{BEGIN delFlag_fieldheader}
+																				<a {$delFlag_orderlinkattrs}>
+											Delivery Flag
+										</a>
+									{END delFlag_fieldheader}
+									</th>
+									{END delFlag_fieldheadercolumn}
 
 																	{BEGIN eta_fieldheadercolumn}
 									<th class="runner-cc ">
@@ -509,15 +477,15 @@
 									</th>
 									{END eta_fieldheadercolumn}
 
-																	{BEGIN delFlag_fieldheadercolumn}
+																	{BEGIN staffID_fieldheadercolumn}
 									<th class="runner-cc runner-clast">
-									{BEGIN delFlag_fieldheader}
-																				<a {$delFlag_orderlinkattrs}>
-											Delivery Flag
+									{BEGIN staffID_fieldheader}
+																				<a {$staffID_orderlinkattrs}>
+											Staff ID
 										</a>
-									{END delFlag_fieldheader}
+									{END staffID_fieldheader}
 									</th>
-									{END delFlag_fieldheadercolumn}
+									{END staffID_fieldheadercolumn}
 
 
 									
@@ -547,24 +515,9 @@
 									{END edit_link}
 									{END edit_column}
 
-																		{BEGIN inlineedit_column}
-									{BEGIN inlineedit_link}
-									<a class="runner-button-img" {$inlineeditlink_attrs} title="Inline Edit"><img class="runner-cicon" src="images/icon_inline_edit_new.gif" alt="Inline Edit"></a>
-									{END inlineedit_link}
-									{END inlineedit_column}
-
-																		{BEGIN copy_column}
-									{BEGIN copy_link}
-									<a class="runner-button-img" {$copylink_attrs} title="Copy"><img class="runner-cicon" src="images/icon_copy_new.gif" alt="Copy"></a>
-									{END copy_link}
-									{END copy_column}
-
-																		{BEGIN view_column}
-									{BEGIN view_link}
-									<a class="runner-button-img" {$viewlink_attrs} title="View"><img class="runner-cicon" src="images/icon_view_new.gif" alt="View"></a>
-									{END view_link}
-									{END view_column}
-									</td>	
+									
+									
+																		</td>	
 									{END listIcons_column}	
 
 																		{BEGIN checkbox_column}
@@ -576,13 +529,7 @@
 									{END checkbox_column}
 
 
-										{BEGIN ID_fieldcolumn}
-	<td class="runner-cc  {$ID_class}" {$ID_style}>
-		{$ID_value}
-	</td>
-{END ID_fieldcolumn}
-
-	{BEGIN DrNo_fieldcolumn}
+										{BEGIN DrNo_fieldcolumn}
 	<td class="runner-cc  {$DrNo_class}" {$DrNo_style}>
 		{$DrNo_value}
 	</td>
@@ -606,17 +553,23 @@
 	</td>
 {END qty_fieldcolumn}
 
+	{BEGIN delFlag_fieldcolumn}
+	<td class="runner-cc  {$delFlag_class}" {$delFlag_style}>
+		{$delFlag_value}
+	</td>
+{END delFlag_fieldcolumn}
+
 	{BEGIN eta_fieldcolumn}
 	<td class="runner-cc  {$eta_class}" {$eta_style}>
 		{$eta_value}
 	</td>
 {END eta_fieldcolumn}
 
-	{BEGIN delFlag_fieldcolumn}
-	<td class="runner-cc runner-clast {$delFlag_class}" {$delFlag_style}>
-		{$delFlag_value}
+	{BEGIN staffID_fieldcolumn}
+	<td class="runner-cc runner-clast {$staffID_class}" {$staffID_style}>
+		{$staffID_value}
 	</td>
-{END delFlag_fieldcolumn}
+{END staffID_fieldcolumn}
 
 
 																		<td class="runner-cr" {$rowstyle}></td>
@@ -641,10 +594,7 @@
 									{END checkbox_column}
 
 
-									{BEGIN ID_fieldheadercolumn}
-<td class="runner-cc "></td>
-{END ID_fieldheadercolumn}
-{BEGIN DrNo_fieldheadercolumn}
+									{BEGIN DrNo_fieldheadercolumn}
 <td class="runner-cc "></td>
 {END DrNo_fieldheadercolumn}
 {BEGIN orderID_fieldheadercolumn}
@@ -656,12 +606,15 @@
 {BEGIN qty_fieldheadercolumn}
 <td class="runner-cc "></td>
 {END qty_fieldheadercolumn}
+{BEGIN delFlag_fieldheadercolumn}
+<td class="runner-cc "></td>
+{END delFlag_fieldheadercolumn}
 {BEGIN eta_fieldheadercolumn}
 <td class="runner-cc "></td>
 {END eta_fieldheadercolumn}
-{BEGIN delFlag_fieldheadercolumn}
+{BEGIN staffID_fieldheadercolumn}
 <td class="runner-cc runner-clast"></td>
-{END delFlag_fieldheadercolumn}
+{END staffID_fieldheadercolumn}
 
 									<td class="runner-cr"><img src="images/spacer.gif"></td>
 									

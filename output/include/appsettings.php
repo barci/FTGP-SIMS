@@ -320,12 +320,15 @@ $tableCaptions["English"]["role"] = "User Roles";
 $tableCaptions["English"]["staff"] = "Users";
 $tableCaptions["English"]["Product_Order_List"] = "Product-Order List";
 $tableCaptions["English"]["orderdetail"] = "Order Detail";
-$tableCaptions["English"]["orderentry"] = "Order Entry";
 $tableCaptions["English"]["delivery"] = "Delivery";
 $tableCaptions["English"]["Product_Listing"] = "Product Listing";
 $tableCaptions["English"]["stockrequest"] = "Stockrequest";
 $tableCaptions["English"]["Pending_Orders"] = "Pending Orders";
 $tableCaptions["English"]["Stocks_Received"] = "Stocks Received";
+$tableCaptions["English"]["DR_Printing"] = "DR Printing";
+$tableCaptions["English"]["packinglist"] = "Packinglist";
+$tableCaptions["English"]["Delivery_List_View"] = "Delivery List View";
+$tableCaptions["English"]["orderentry"] = "Orderentry";
 
 $globalEvents = new class_GlobalEvents;
 $tableEvents = array();

@@ -32,6 +32,8 @@ if(mlang_getcurrentlang()=="English")
 	$fieldToolTipscustomer["English"]["DAddress"] = "";
 	$fieldLabelscustomer["English"]["StaffID"] = "Staff ID";
 	$fieldToolTipscustomer["English"]["StaffID"] = "";
+	$fieldLabelscustomer["English"]["DrNo"] = "Dr No";
+	$fieldToolTipscustomer["English"]["DrNo"] = "";
 	if (count($fieldToolTipscustomer["English"]))
 		$tdatacustomer[".isUseToolTips"] = true;
 }

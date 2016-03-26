@@ -28,10 +28,10 @@
 		
 	if(!$isAdminTable){
 		if(!$quickjump){
-					if(!$horizontal)
-				$xt->assign("treeLikeTypeMenu",true);
-			else	
+					if(!isMobile())
 				$xt->assign("simpleTypeMenu",true);
+			else
+				$xt->assign("treeLikeTypeMenu",true);
 		}
 		if($pageType == PAGE_MENU && IsAdmin() && !isMobile())
 				$xt->assign("adminarea_link",true);
@@ -59,8 +59,7 @@
 		$mainmenu["begin"]="<a name=\"skipmenu\"></a>";
 	$mainmenu["end"] = '';
 	//$mainmenu["end"]='<script type="text/javascript" language="javascript" src="include/jquery.dropshadow.js"></script>';
-		//$mainmenu["end"] .= '<script type="text/javascript" language="javascript" src="include/cookies.js"></script>';
-	
+		
 	$countLinks = 0;
 	$countGroups = 0;
 	foreach($menuRoot->children as $ind=>$val)

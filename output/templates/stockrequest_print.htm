@@ -107,13 +107,6 @@ Page {$pageno} of {$maxpages}
 	{END RequestID_fieldheader}
 </th>
 {END RequestID_fieldheadercolumn}
-	{BEGIN StaffID_fieldheadercolumn}
-<th class="runner-cc">
-	{BEGIN StaffID_fieldheader}
-	<b>Staff</b>
-	{END StaffID_fieldheader}
-</th>
-{END StaffID_fieldheadercolumn}
 	{BEGIN ProductID_fieldheadercolumn}
 <th class="runner-cc">
 	{BEGIN ProductID_fieldheader}
@@ -142,6 +135,13 @@ Page {$pageno} of {$maxpages}
 	{END ReceiveFlag_fieldheader}
 </th>
 {END ReceiveFlag_fieldheadercolumn}
+	{BEGIN StaffID_fieldheadercolumn}
+<th class="runner-cc">
+	{BEGIN StaffID_fieldheader}
+	<b>Staff</b>
+	{END StaffID_fieldheader}
+</th>
+{END StaffID_fieldheadercolumn}
 		
 			{END record_header}
 			<td class="runner-cr"><img src="images/spacer.gif"></td>
@@ -166,11 +166,6 @@ Page {$pageno} of {$maxpages}
 	{$RequestID_value}
 </td>
 {END RequestID_fieldcolumn}
-	{BEGIN StaffID_fieldcolumn}
-<td  class="runner-cc {$StaffID_class}" {$StaffID_style}>
-	{$StaffID_value}
-</td>
-{END StaffID_fieldcolumn}
 	{BEGIN ProductID_fieldcolumn}
 <td  class="runner-cc {$ProductID_class}" {$ProductID_style}>
 	{$ProductID_value}
@@ -191,6 +186,11 @@ Page {$pageno} of {$maxpages}
 	{$ReceiveFlag_value}
 </td>
 {END ReceiveFlag_fieldcolumn}
+	{BEGIN StaffID_fieldcolumn}
+<td  class="runner-cc {$StaffID_class}" {$StaffID_style}>
+	{$StaffID_value}
+</td>
+{END StaffID_fieldcolumn}
 
 		{END grid_record}
 		<td class="runner-cr"></td>
@@ -209,9 +209,6 @@ Page {$pageno} of {$maxpages}
 {BEGIN RequestID_fieldfootercolumn}
 <td class="runner-cc "></td>
 {END RequestID_fieldfootercolumn}
-{BEGIN StaffID_fieldfootercolumn}
-<td class="runner-cc "></td>
-{END StaffID_fieldfootercolumn}
 {BEGIN ProductID_fieldfootercolumn}
 <td class="runner-cc "></td>
 {END ProductID_fieldfootercolumn}
@@ -222,8 +219,11 @@ Page {$pageno} of {$maxpages}
 <td class="runner-cc "></td>
 {END Notes_fieldfootercolumn}
 {BEGIN ReceiveFlag_fieldfootercolumn}
-<td class="runner-cc runner-clast"></td>
+<td class="runner-cc "></td>
 {END ReceiveFlag_fieldfootercolumn}
+{BEGIN StaffID_fieldfootercolumn}
+<td class="runner-cc runner-clast"></td>
+{END StaffID_fieldfootercolumn}
 
 									{END record_footer}
 									<td class="runner-cr"><img src="images/spacer.gif"></td>

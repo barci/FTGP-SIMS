@@ -215,15 +215,6 @@ if(@$_POST["a"]=="added")
 	$afilename_values=array();
 	$avalues=array();
 	$blobfields=array();
-//	processing ODetailID - start
-	$inlineAddOption = true;
-	$inlineAddOption = $inlineadd==ADD_INLINE;
-	if($inlineAddOption)
-	{
-		$control_ODetailID = $pageObject->getControl("ODetailID", $id);
-		$control_ODetailID->readWebValue($avalues, $blobfields, "", false, $afilename_values);
-	}
-//	processing ODetailID - end
 //	processing OrderID - start
 	$inlineAddOption = true;
 	if($inlineAddOption)
@@ -248,15 +239,6 @@ if(@$_POST["a"]=="added")
 		$control_OrdQuant->readWebValue($avalues, $blobfields, "", false, $afilename_values);
 	}
 //	processing OrdQuant - end
-//	processing DelQuant - start
-	$inlineAddOption = true;
-	$inlineAddOption = $inlineadd==ADD_INLINE;
-	if($inlineAddOption)
-	{
-		$control_DelQuant = $pageObject->getControl("DelQuant", $id);
-		$control_DelQuant->readWebValue($avalues, $blobfields, "", false, $afilename_values);
-	}
-//	processing DelQuant - end
 //	processing DelDate - start
 	$inlineAddOption = true;
 	if($inlineAddOption)
@@ -265,15 +247,14 @@ if(@$_POST["a"]=="added")
 		$control_DelDate->readWebValue($avalues, $blobfields, "", false, $afilename_values);
 	}
 //	processing DelDate - end
-//	processing BillNo - start
+//	processing staffID - start
 	$inlineAddOption = true;
-	$inlineAddOption = $inlineadd==ADD_INLINE;
 	if($inlineAddOption)
 	{
-		$control_BillNo = $pageObject->getControl("BillNo", $id);
-		$control_BillNo->readWebValue($avalues, $blobfields, "", false, $afilename_values);
+		$control_staffID = $pageObject->getControl("staffID", $id);
+		$control_staffID->readWebValue($avalues, $blobfields, "", false, $afilename_values);
 	}
-//	processing BillNo - end
+//	processing staffID - end
 
 
 //	insert masterkey value if exists and if not specified
@@ -284,6 +265,13 @@ if(@$_POST["a"]=="added")
 		
 		if($avalues["OrderID"]==""){
 			$avalues["OrderID"] = prepare_for_db("OrderID",$_SESSION[$sessionPrefix."_masterkey1"]);
+		}
+			
+		if(postvalue("masterkey2"))
+			$_SESSION[$sessionPrefix."_masterkey2"] = postvalue("masterkey2");
+		
+		if($avalues["DelDate"]==""){
+			$avalues["DelDate"] = prepare_for_db("DelDate",$_SESSION[$sessionPrefix."_masterkey2"]);
 		}
 			
 	}
@@ -318,14 +306,6 @@ if(@$_POST["a"]=="added")
 				$auditObj->LogAdd($strTableName,$avalues,$keys);
 				
 // Give possibility to all edit controls to clean their data				
-//	processing ODetailID - start
-			$inlineAddOption = true;
-			$inlineAddOption = $inlineadd==ADD_INLINE;
-			if($inlineAddOption)
-			{
-				$control_ODetailID->afterSuccessfulSave();
-			}
-//	processing ODetailID - end
 //	processing OrderID - start
 			$inlineAddOption = true;
 			if($inlineAddOption)
@@ -347,14 +327,6 @@ if(@$_POST["a"]=="added")
 				$control_OrdQuant->afterSuccessfulSave();
 			}
 //	processing OrdQuant - end
-//	processing DelQuant - start
-			$inlineAddOption = true;
-			$inlineAddOption = $inlineadd==ADD_INLINE;
-			if($inlineAddOption)
-			{
-				$control_DelQuant->afterSuccessfulSave();
-			}
-//	processing DelQuant - end
 //	processing DelDate - start
 			$inlineAddOption = true;
 			if($inlineAddOption)
@@ -362,14 +334,13 @@ if(@$_POST["a"]=="added")
 				$control_DelDate->afterSuccessfulSave();
 			}
 //	processing DelDate - end
-//	processing BillNo - start
+//	processing staffID - start
 			$inlineAddOption = true;
-			$inlineAddOption = $inlineadd==ADD_INLINE;
 			if($inlineAddOption)
 			{
-				$control_BillNo->afterSuccessfulSave();
+				$control_staffID->afterSuccessfulSave();
 			}
-//	processing BillNo - end
+//	processing staffID - end
 
 			$afterAdd_id = '';	
 			if($eventObj->exists("AfterAdd") && $inlineadd!=ADD_MASTER){
@@ -476,6 +447,7 @@ if(array_key_exists("copyid1",$_REQUEST) || array_key_exists("editid1",$_REQUEST
 else
 {
 	$defvalues["OrdQuant"] = 0;
+	$defvalues["staffID"] = $_SESSION["StaffID"];;
 }
 
 
@@ -489,6 +461,12 @@ if(@$_SESSION[$sessionPrefix."_mastertable"]=="orderentry")
 	if(postvalue("mainMPageType")<>"add")
 		$defvalues["OrderID"] = @$_SESSION[$sessionPrefix."_masterkey1"];	
 	
+	if(postvalue("masterkey2"))
+		$_SESSION[$sessionPrefix."_masterkey2"] = postvalue("masterkey2");
+
+	if(postvalue("mainMPageType")<>"add")
+		$defvalues["DelDate"] = @$_SESSION[$sessionPrefix."_masterkey2"];	
+	
 }
 
 if($readavalues)
@@ -497,6 +475,7 @@ if($readavalues)
 	$defvalues["ProductID"]=@$avalues["ProductID"];
 	$defvalues["OrdQuant"]=@$avalues["OrdQuant"];
 	$defvalues["DelDate"]=@$avalues["DelDate"];
+	$defvalues["staffID"]=@$avalues["staffID"];
 }
 
 if($eventObj->exists("ProcessValuesAdd"))
@@ -547,6 +526,14 @@ if($inlineadd!=ADD_INLINE)
 	$xt->assign("DelDate_label",true);
 	if(isEnableSection508())
 		$xt->assign_section("DelDate_label","<label for=\"".GetInputElementId("DelDate", $id, PAGE_ADD)."\">","</label>");
+	
+	if(!$pageObject->isAppearOnTabs("staffID"))
+		$xt->assign("staffID_fieldblock",true);
+	else
+		$xt->assign("staffID_tabfieldblock",true);
+	$xt->assign("staffID_label",true);
+	if(isEnableSection508())
+		$xt->assign_section("staffID_label","<label for=\"".GetInputElementId("staffID", $id, PAGE_ADD)."\">","</label>");
 	
 	
 	
@@ -730,6 +717,18 @@ if(@$_POST["a"]=="added" && ($inlineadd == ADD_INLINE || $inlineadd == ADD_MASTE
 		$showValues["DelDate"] = $value;
 		$showFields[] = "DelDate";
 	}	
+//	staffID
+	$display = false;
+	if($inlineadd==ADD_MASTER)
+		$display = true;
+	if($inlineadd==ADD_INLINE || $inlineadd==ADD_ONTHEFLY || $inlineadd==ADD_POPUP)
+		$display = true;
+	if($display)
+	{	
+		$value = $pageObject->showDBValue("staffID", $data, $keylink);
+		$showValues["staffID"] = $value;
+		$showFields[] = "staffID";
+	}	
 		$showRawValues["ODetailID"] = substr($data["ODetailID"],0,100);
 		$showRawValues["OrderID"] = substr($data["OrderID"],0,100);
 		$showRawValues["BillNo"] = substr($data["BillNo"],0,100);
@@ -738,6 +737,7 @@ if(@$_POST["a"]=="added" && ($inlineadd == ADD_INLINE || $inlineadd == ADD_MASTE
 		$showRawValues["DelQuant"] = substr($data["DelQuant"],0,100);
 		$showRawValues["Total"] = substr($data["Total"],0,100);
 		$showRawValues["DelDate"] = substr($data["DelDate"],0,100);
+		$showRawValues["staffID"] = substr($data["staffID"],0,100);
 	
 	// for custom expression for display field
 	if ($dispFieldAlias)
